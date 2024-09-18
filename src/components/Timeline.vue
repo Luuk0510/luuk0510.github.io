@@ -1,7 +1,7 @@
 <template>
     <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
         <li v-for="(item, index) in timelineItems" :key="index" :ref="setObserver"
-            :class="[{ 'fade-in-up': item.isVisible }, { 'invisible': !item.isVisible }]">
+        v-motion-slide-visible-bottom>
             <hr v-if="index > 0" />
             <div class="timeline-middle">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
@@ -16,7 +16,7 @@
                     <div class="card-body">
                         <div class="text-lg font-black">{{ item.title }}</div>
                         <p>{{ item.description }}</p>
-                        <router-link to="/about-me" class="flex flex-col justify-center items-center">
+                        <router-link to="/" class="flex flex-col justify-center items-center">
                             <div class="btn btn-primary text-base">
                                 Meer lezen
                             </div>
@@ -65,42 +65,7 @@ const timelineItems = ref([
     },
 ]);
 
-const observer = ref(null);
-
-const setObserver = (el, index) => {
-    if (el && observer.value) {
-        observer.value.observe(el);
-    }
-};
-
-onMounted(() => {
-    observer.value = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                const index = [...entry.target.parentElement.children].indexOf(entry.target);
-                timelineItems.value[index].isVisible = true;
-                observer.value.unobserve(entry.target);
-            }
-        });
-    });
-
-    return () => {
-        if (observer.value) {
-            observer.value.disconnect();
-        }
-    };
-});
 </script>
 
 <style scoped>
-.invisible {
-    opacity: 0;
-    transform: translateY(20px);
-}
-
-.fade-in-up {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
 </style>

@@ -12,6 +12,7 @@ const routes = [
         name: 'Home', 
         component: Home,
         meta: {
+            index: 0,  // Voeg een index toe
             enterClass: 'animate__animated animate__fadeInLeft',
             leaveClass: 'animate__animated animate__fadeOutRight',
         },
@@ -21,6 +22,7 @@ const routes = [
         name: 'AboutMe', 
         component: AboutMe,
         meta: {
+            index: 1,  // Voeg een index toe
             enterClass: 'animate__animated animate__fadeInRight',
             leaveClass: 'animate__animated animate__fadeOutLeft',
         },
@@ -28,8 +30,9 @@ const routes = [
     { 
         path: '/skills', 
         name: 'Skills', 
-        component: Skills ,
+        component: Skills,
         meta: {
+            index: 2,  // Voeg een index toe
             enterClass: 'animate__animated animate__fadeInRight',
             leaveClass: 'animate__animated animate__fadeOutLeft',
         },
@@ -39,6 +42,7 @@ const routes = [
         name: 'Experience', 
         component: Experience,
         meta: {
+            index: 3,
             enterClass: 'animate__animated animate__fadeInRight',
             leaveClass: 'animate__animated animate__fadeOutLeft',
         },  
@@ -48,6 +52,7 @@ const routes = [
         name: 'Education', 
         component: Education,
         meta: {
+            index: 4,
             enterClass: 'animate__animated animate__fadeInRight',
             leaveClass: 'animate__animated animate__fadeOutLeft',
         },  
@@ -57,11 +62,13 @@ const routes = [
         name: 'Contact', 
         component: Contact,
         meta: {
+            index: 5,
             enterClass: 'animate__animated animate__fadeInRight',
             leaveClass: 'animate__animated animate__fadeOutLeft',
         }, 
     }
 ]
+
 
 const router = createRouter({
     history: createWebHistory(),

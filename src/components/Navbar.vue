@@ -23,21 +23,20 @@
           tabindex="0"
           class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
         >
-          <li><router-link to="/about-me" class="text-xl">Over mij</router-link></li>
+          <li><router-link to="/" class="text-xl">Over mij</router-link></li>
           <li><router-link to="/skills" class="text-xl">Vaardigheden</router-link></li>
           <li><router-link to="/experience" class="text-xl">Werkervaring</router-link></li>
           <li><router-link to="/education" class="text-xl">Opleiding</router-link></li>
           <li><router-link to="/contact" class="text-xl">Contact</router-link></li>
         </ul>
       </div>
-      <router-link to="/" class="btn btn-ghost text-2xl">Luuk Spruijtenburg</router-link>
     </div>
 
     <!-- Navbar Center -->
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
         <li>
-          <router-link to="/about-me" class="btn btn-ghost text-xl">Over mij</router-link>
+          <router-link to="/" class="btn btn-ghost text-xl">Over mij</router-link>
         </li>
         <li>
           <router-link to="/skills" class="btn btn-ghost text-xl">Vaardigheden</router-link>

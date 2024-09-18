@@ -1,18 +1,17 @@
-<script setup>
-</script>
-
 <template>
-    <section>
-        <h1>Werkervaring</h1>
-        <ul>
-            <li>
-                <h3>Marvelous Solution BV (Stage)</h3>
-                <p>Ontwikkeling van backend-applicaties met C# en Backlot framework, gebruikmakend van Resharper en IIS.
-                </p>
-                <span>2024 - nu</span>
-            </li>
-        </ul>
-    </section>
+    <div class="absolute">
+        <section class="h-screen">
+            <h1 class="text-center text-4xl font-bold">
+                Werkervaring
+            </h1>
+        </section>
+    </div>
 </template>
+
+
+
+<script setup>
+
+</script>
 
 <style scoped></style>
