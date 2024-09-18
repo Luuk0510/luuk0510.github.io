@@ -1,18 +1,17 @@
-<script setup>
-</script>
-
 <template>
-    <section>
-        <h1>Opleiding</h1>
-        <ul>
-            <li>
-                <h3>HBO Informatica</h3>
-                <p>Avans Hogeschool, 3e jaar</p>
-                <p>Relevante vakken: Software Engineering, Web Development, Databases, Objectgeoriënteerd programmeren
-                </p>
-            </li>
-        </ul>
-    </section>
+    <div class="absolute">
+        <section class="h-screen">
+            <h1 class="text-center text-4xl font-bold">
+                Opleiding
+            </h1>
+        </section>
+    </div>
 </template>
+
+
+
+<script setup>
+
+</script>
 
 <style scoped></style>
