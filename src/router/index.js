@@ -5,6 +5,7 @@ import Skills from '@/views/Skills.vue'
 import Experience from '@/views/Experience.vue'
 import Education from '@/views/Education.vue'
 import Contact from '@/views/Contact.vue'
+import Leijgraaf from '@/views/leijgraaf/Leijgraaf.vue'
 
 const routes = [
     {
@@ -61,6 +62,16 @@ const routes = [
         path: '/contact', 
         name: 'Contact', 
         component: Contact,
+        meta: {
+            index: 5,
+            enterClass: 'animate__animated animate__fadeInRight',
+            leaveClass: 'animate__animated animate__fadeOutLeft',
+        }, 
+    },
+    { 
+        path: '/leijgraaf', 
+        name: 'Leijgraaf', 
+        component: Leijgraaf,
         meta: {
             index: 5,
             enterClass: 'animate__animated animate__fadeInRight',

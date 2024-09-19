@@ -1,13 +1,7 @@
 <script setup>
 import Navbar from '@/components/Navbar.vue'
-import { ref, watch, onMounted } from 'vue'
+import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { themeChange } from 'theme-change'
-
-onMounted(() => {
-    themeChange(false)
-})
-
 const enterClass = ref('')
 const leaveClass = ref('')
 
