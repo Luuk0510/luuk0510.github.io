@@ -1,32 +1,18 @@
-<template>
-    <div class="absolute">
-        <section class="flex flex-col justify-center items-center text-center lg:m-[30vh]">
-            <h1 class=" text-6xl font-jetbrains  mb-5">
-                {{ displayedText }}
-                <span v-if="isTyping" class="solid-cursor"></span>
-                <span v-if="showBlinkingCursor" class="blinking-cursor"></span>
-            </h1>
-
-            <p>Ik ben een derdejaars HBO Informatica student aan Avans Hogeschool met ervaring in
-                softwareontwikkeling en
-                IT-bijbanen.</p>
-        </section>
-        <section class="mt-20">
-            <Timeline />
-        </section>
-    </div>
-</template>
-
-
 <script setup>
+import { ref, onMounted } from 'vue';
+
 import Timeline from '@/components/Timeline.vue';
 
-import { ref, onMounted } from 'vue';
+import IconDownArrow from '@/components/icons/IconDownArrow.vue';
+import IconGitHub from '@/components/icons/IconGitHub.vue';
+import IconLinkedIn from '@/components/icons/IconLinkedIn.vue';
+
 
 const fullText = "Welkom op mijn portfolio!";
 const displayedText = ref("");
 const isTyping = ref(true);
 const showBlinkingCursor = ref(false);
+const showButton = ref(false);
 
 const typingSpeed = 150;
 const cursorBlinkDuration = 3000;
@@ -34,7 +20,6 @@ const cursorBlinkDuration = 3000;
 onMounted(() => {
     setTimeout(() => {
         let index = 0;
-
         const type = () => {
             if (index < fullText.length) {
                 displayedText.value += fullText[index];
@@ -49,12 +34,117 @@ onMounted(() => {
                 }, cursorBlinkDuration);
             }
         };
-
         type();
-    }, 1000); // Wacht 1 seconde voordat het typen begint
+    }, 1000);
+
+    setTimeout(() => {
+        showButton.value = true;
+    }, 5500);
+
+    window.addEventListener('scroll', handleScroll);
 });
+
+function handleScroll() {
+    const button = document.querySelector('.bounce2');
+    if (button) {
+        if (window.scrollY > 200) {
+            button.style.opacity = '0';
+        } else {
+            button.style.opacity = '1';
+        }
+    }
+}
+
+function scrollToItem() {
+    const timeline = document.querySelector('.item-scroll');
+    if (timeline) {
+        const timelinePosition = timeline.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+            top: timelinePosition - 250,
+            behavior: 'smooth'
+        });
+    }
+}
 </script>
 
+<template>
+    <div class="absolute">
+        <section class="flex flex-col justify-center items-center text-center h-[calc(100vh-200px)]">
+            <h1 class="text-6xl font-jetbrains mb-5">
+                {{ displayedText }}
+                <span v-if="isTyping" class="solid-cursor"></span>
+                <span v-if="showBlinkingCursor" class="blinking-cursor"></span>
+            </h1>
+            <div class="flex justify-center mt-2 gap-x-2">
+                <a href="https://github.com/Luuk0510" target="_blank">
+                    <IconGitHub v-motion-slide-left :delay="4000" :duration="1200" size="60px" />
+                </a>
+                <a href="https://www.linkedin.com/in/luuk-spruijtenburg-05aa89243/" target="_blank">
+                    <IconLinkedIn v-motion-slide-right :delay="4000" :duration="1200" size="60px" />
+                </a>
+            </div>
+
+        </section>
+
+        <div v-if="showButton" class="flex justify-center">
+            <div class="bounce2 cursor-pointer" style="opacity: 1;" @click="scrollToItem">
+                <IconDownArrow size="100px" />
+            </div>
+        </div>
+
+        <section class="mt-40 mb-20 item-scroll" v-motion-slide-visible-once-bottom>
+            <div class="flex flex-col justify-center items-center">
+                <div class="card bg-neutral text-neutral-content lg:w-3/6">
+                    <div class="card-body items-center">
+                        <h2 class="card-title font-black text-4xl">Over mij!</h2>
+                        <p>
+                            Hallo! Ik ben Luuk, een derdejaars HBO Informatica student met een passie voor
+                            softwareontwikkeling en nieuwe technologieën.
+                            Ik hou ervan om creatieve oplossingen te vinden en ben altijd op zoek naar manieren om mijn
+                            vaardigheden verder te ontwikkelen.
+                            In mijn vrije tijd werk ik aan projecten, leer ik nieuwe programmeertalen en speel ik graag
+                            games.
+                            Welkom op mijn portfolio, waar je een kijkje kunt nemen in mijn werk en projecten!
+                        </p>
+                    </div>
+                </div>
+                <div class="my-20">
+                    <div v-motion-slide-visible-once-bottom>
+                        <h3 class="text-4xl font-black text-center mb-4">Kennis</h3>
+                    </div>
+                    <div class="flex gap-x-10">
+                        <div v-motion-pop-visible-once :duration="700">
+                            <div class="card bg-base-200 shadow-xl">
+                                <div class="card-body">
+                                    <p>C#</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-motion-pop-visible-once :delay="200" :duration="700">
+                            <div class="card bg-base-200 shadow-xl">
+                                <div class="card-body">
+                                    <p>PHP</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-motion-pop-visible-once :delay="400" :duration="700">
+                            <div class="card bg-base-200 shadow-xl">
+                                <div class="card-body">
+                                    <p>Vue</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="mt-20">
+            <Timeline />
+        </section>
+    </div>
+</template>
 
 <style scoped>
 .solid-cursor {
@@ -70,6 +160,35 @@ onMounted(() => {
 @keyframes blink {
     50% {
         border-right-color: transparent;
+    }
+}
+
+.bounce2 {
+    animation: bounce2 2s ease infinite;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.fade-in {
+    opacity: 1;
+}
+
+@keyframes bounce2 {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-30px);
+    }
+
+    60% {
+        transform: translateY(-15px);
     }
 }
 </style>
