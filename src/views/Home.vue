@@ -18,7 +18,6 @@ const typingSpeed = 150;
 const cursorBlinkDuration = 3000;
 
 onMounted(() => {
-    // Typing effect
     setTimeout(() => {
         let index = 0;
         const type = () => {
@@ -38,12 +37,10 @@ onMounted(() => {
         type();
     }, 1000);
 
-    // Knop zichtbaar maken na 5 seconden
     setTimeout(() => {
         showButton.value = true;
     }, 5500);
 
-    // Scroll-event toevoegen
     window.addEventListener('scroll', handleScroll);
 });
 
@@ -51,29 +48,24 @@ function handleScroll() {
     const button = document.querySelector('.bounce2');
     if (button) {
         if (window.scrollY > 200) {
-            button.style.opacity = '0'; 
+            button.style.opacity = '0';
         } else {
             button.style.opacity = '1';
         }
     }
 }
 
-function scrollToTimeline() {
-    const timeline = document.querySelector('.timeline');
+function scrollToItem() {
+    const timeline = document.querySelector('.item-scroll');
     if (timeline) {
         const timelinePosition = timeline.getBoundingClientRect().top + window.scrollY;
         window.scrollTo({
-            top: timelinePosition - 80,
-            behavior: 'smooth' 
+            top: timelinePosition - 250,
+            behavior: 'smooth'
         });
     }
 }
-
-
 </script>
-
-
-
 
 <template>
     <div class="absolute">
@@ -83,31 +75,76 @@ function scrollToTimeline() {
                 <span v-if="isTyping" class="solid-cursor"></span>
                 <span v-if="showBlinkingCursor" class="blinking-cursor"></span>
             </h1>
-            <div class="flex justify-center mt-2">
-                <div></div>
-                <a href="https://github.com/Luuk0510" target="_blank" >
-                    <IconGitHub v-motion-slide-left :delay="5000" size="60px" />
+            <div class="flex justify-center mt-2 gap-x-2">
+                <a href="https://github.com/Luuk0510" target="_blank">
+                    <IconGitHub v-motion-slide-left :delay="4000" :duration="1200" size="60px" />
                 </a>
-                <a href="https://www.linkedin.com/in/luuk-spruijtenburg-05aa89243/" target="_blank" >
-                    <IconLinkedIn v-motion-slide-right :delay="5000" size="60px" />
+                <a href="https://www.linkedin.com/in/luuk-spruijtenburg-05aa89243/" target="_blank">
+                    <IconLinkedIn v-motion-slide-right :delay="4000" :duration="1200" size="60px" />
                 </a>
             </div>
 
         </section>
 
         <div v-if="showButton" class="flex justify-center">
-            <div class="bounce2" style="opacity: 1;" @click="scrollToTimeline">
+            <div class="bounce2 cursor-pointer" style="opacity: 1;" @click="scrollToItem">
                 <IconDownArrow size="100px" />
             </div>
         </div>
 
-        <section class="mt-20 timeline">
+        <section class="mt-40 mb-20 item-scroll" v-motion-slide-visible-once-bottom>
+            <div class="flex flex-col justify-center items-center">
+                <div class="card bg-neutral text-neutral-content lg:w-3/6">
+                    <div class="card-body items-center">
+                        <h2 class="card-title font-black text-4xl">Over mij!</h2>
+                        <p>
+                            Hallo! Ik ben Luuk, een derdejaars HBO Informatica student met een passie voor
+                            softwareontwikkeling en nieuwe technologieën.
+                            Ik hou ervan om creatieve oplossingen te vinden en ben altijd op zoek naar manieren om mijn
+                            vaardigheden verder te ontwikkelen.
+                            In mijn vrije tijd werk ik aan projecten, leer ik nieuwe programmeertalen en speel ik graag
+                            games.
+                            Welkom op mijn portfolio, waar je een kijkje kunt nemen in mijn werk en projecten!
+                        </p>
+                    </div>
+                </div>
+                <div class="my-20">
+                    <div v-motion-slide-visible-once-bottom>
+                        <h3 class="text-4xl font-black text-center mb-4">Kennis</h3>
+                    </div>
+                    <div class="flex gap-x-10">
+                        <div v-motion-pop-visible-once :duration="700">
+                            <div class="card bg-base-200 shadow-xl">
+                                <div class="card-body">
+                                    <p>C#</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-motion-pop-visible-once :delay="200" :duration="700">
+                            <div class="card bg-base-200 shadow-xl">
+                                <div class="card-body">
+                                    <p>PHP</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-motion-pop-visible-once :delay="400" :duration="700">
+                            <div class="card bg-base-200 shadow-xl">
+                                <div class="card-body">
+                                    <p>Vue</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="mt-20">
             <Timeline />
         </section>
     </div>
 </template>
-
-
 
 <style scoped>
 .solid-cursor {
@@ -128,12 +165,12 @@ function scrollToTimeline() {
 
 .bounce2 {
     animation: bounce2 2s ease infinite;
-    opacity: 0; /* Begin met onzichtbaar */
-    transition: opacity 0.5s ease; /* Voeg een overgang toe voor opacity */
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
 .fade-in {
-    opacity: 1; /* Maak het zichtbaar */
+    opacity: 1;
 }
 
 @keyframes bounce2 {
