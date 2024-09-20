@@ -29,7 +29,7 @@ watch(
 <template>
     <div>
         <Navbar />
-        <main class="mt-20 m-4">
+        <main class="mt-20 lg:m-4">
             <router-view v-slot="{ Component, route }">
                 <transition
                   :enter-active-class="enterClass"

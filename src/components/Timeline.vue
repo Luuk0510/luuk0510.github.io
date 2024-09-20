@@ -4,13 +4,6 @@ import IconCheckFill from './icons/IconCheckFill.vue';
 
 const timelineItems = ref([
     {
-        time: 'Heden',
-        title: 'First Macintosh computer',
-        description: 'De introductie van de eerste Macintosh was revolutionair voor de computerwereld. Ontdek hoe deze innovatie... ',
-        isVisible: false,
-        link: '/',
-    },
-    {
         time: 'sep 2024 - jan 2025',
         title: 'Marvelous',
         description: 'Ik loop momenteel stage bij Marvelous in Den Bosch. Hier werk ik aan uitdagende projecten die processen automatiseren en innovatie stimuleren. Meer over mijn stage... ',
@@ -39,7 +32,16 @@ const timelineItems = ref([
         link: '/leijgraaf',
     },
 ]);
+
+// Functie om naar de bovenkant van de pagina te scrollen
+const scrollToTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+    });
+};
 </script>
+
 
 <template>
     <h1 class="text-center text-4xl font-black mb-10">Tijdlijn</h1>
@@ -56,7 +58,7 @@ const timelineItems = ref([
                     <div class="card-body">
                         <div class="text-lg font-black">{{ item.title }}</div>
                         <p>{{ item.description }}</p>
-                        <router-link :to="item.link" class="flex flex-col justify-center items-center">
+                        <router-link :to="item.link" @click.native="scrollToTop" class="flex flex-col justify-center items-center">
                             <div class="btn btn-primary text-base">
                                 Meer lezen
                             </div>

@@ -81,7 +81,6 @@ function scrollToItem(): void {
                     <IconLinkedIn v-motion-slide-right :delay="4000" :duration="1200" size="60px" />
                 </a>
             </div>
-
         </section>
 
         <div v-if="showButton" class="flex justify-center">
