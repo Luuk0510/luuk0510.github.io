@@ -1,31 +1,30 @@
-<script setup>
+<script setup lang="ts">
 import Navbar from '@/components/Navbar.vue'
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-const enterClass = ref('')
-const leaveClass = ref('')
+
+const enterClass = ref<string>('')
+const leaveClass = ref<string>('')
 
 const route = useRoute()
 
-watch(() => route.fullPath, (to, from) => {
-    console.log(to);
-    console.log(from);
-     
-    const toIndex = (to.meta && to.meta.index) || 0
-    const fromIndex = (from.meta && from.meta.index) || 0
+watch(
+    () => route.fullPath,
+    (newPath, oldPath) => {
+        const toIndex = (route.meta?.index as number | undefined) || 0;
+        const fromIndex = (route.meta?.index as number | undefined) || 0;
 
-    if (toIndex < fromIndex) {
-        enterClass.value = 'animate__animated animate__fadeInLeft'
-        leaveClass.value = 'animate__animated animate__fadeOutRight'
-    } else {
-        enterClass.value = 'animate__animated animate__fadeInRight'
-        leaveClass.value = 'animate__animated animate__fadeOutLeft'
+        if (toIndex < fromIndex) {
+            enterClass.value = 'animate__animated animate__fadeInLeft';
+            leaveClass.value = 'animate__animated animate__fadeOutRight';
+        } else {
+            enterClass.value = 'animate__animated animate__fadeInRight';
+            leaveClass.value = 'animate__animated animate__fadeOutLeft';
+        }
     }
-
-    console.log('Navigating to route with index:', route)
-    console.log('Navigating from route with index:', route)
-})
+);
 </script>
+
 
 <template>
     <div>

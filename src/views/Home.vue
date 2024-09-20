@@ -1,18 +1,16 @@
-<script setup>
+<script lang="ts" setup>
 import { ref, onMounted } from 'vue';
-
 import Timeline from '@/components/Timeline.vue';
-
+import InteractiveImage from '@/components/InteractiveImage.vue';
 import IconDownArrow from '@/components/icons/IconDownArrow.vue';
 import IconGitHub from '@/components/icons/IconGitHub.vue';
 import IconLinkedIn from '@/components/icons/IconLinkedIn.vue';
 
-
 const fullText = "Welkom op mijn portfolio!";
-const displayedText = ref("");
-const isTyping = ref(true);
-const showBlinkingCursor = ref(false);
-const showButton = ref(false);
+const displayedText = ref<string>("");
+const isTyping = ref<boolean>(true);
+const showBlinkingCursor = ref<boolean>(false); 
+const showButton = ref<boolean>(false);
 
 const typingSpeed = 150;
 const cursorBlinkDuration = 3000;
@@ -44,8 +42,8 @@ onMounted(() => {
     window.addEventListener('scroll', handleScroll);
 });
 
-function handleScroll() {
-    const button = document.querySelector('.bounce2');
+function handleScroll(): void {
+    const button = document.querySelector<HTMLDivElement>('.bounce2');
     if (button) {
         if (window.scrollY > 200) {
             button.style.opacity = '0';
@@ -55,13 +53,13 @@ function handleScroll() {
     }
 }
 
-function scrollToItem() {
-    const timeline = document.querySelector('.item-scroll');
+function scrollToItem(): void {
+    const timeline = document.querySelector<HTMLDivElement>('.item-scroll');
     if (timeline) {
         const timelinePosition = timeline.getBoundingClientRect().top + window.scrollY;
         window.scrollTo({
             top: timelinePosition - 250,
-            behavior: 'smooth'
+            behavior: 'smooth',
         });
     }
 }
@@ -108,30 +106,32 @@ function scrollToItem() {
                         </p>
                     </div>
                 </div>
-                <div class="my-20">
-                    <div v-motion-slide-visible-once-bottom>
-                        <h3 class="text-4xl font-black text-center mb-4">Kennis</h3>
+            </div>
+        </section>
+        <section>
+            <div class="my-40">
+                <div v-motion-slide-visible-once-bottom>
+                    <h3 class="text-4xl font-black text-center mb-4">Kennis</h3>
+                </div>
+                <div class="flex flex-wrap justify-center gap-6 md:gap-10">
+                    <div v-motion-pop-visible-once :duration="700">
+                        <div class="card bg-base-200 shadow-xl">
+                            <div class="card-body">
+                                <InteractiveImage src="../assets/images/csharp_logo.png" alt="C# logo" />
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex gap-x-10">
-                        <div v-motion-pop-visible-once :duration="700">
-                            <div class="card bg-base-200 shadow-xl">
-                                <div class="card-body">
-                                    <p>C#</p>
-                                </div>
+                    <div v-motion-pop-visible-once :delay="200" :duration="700">
+                        <div class="card bg-base-200 shadow-xl">
+                            <div class="card-body">
+                                <InteractiveImage src="../assets/images/php_logo.png" alt="PHP logo" />
                             </div>
                         </div>
-                        <div v-motion-pop-visible-once :delay="200" :duration="700">
-                            <div class="card bg-base-200 shadow-xl">
-                                <div class="card-body">
-                                    <p>PHP</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div v-motion-pop-visible-once :delay="400" :duration="700">
-                            <div class="card bg-base-200 shadow-xl">
-                                <div class="card-body">
-                                    <p>Vue</p>
-                                </div>
+                    </div>
+                    <div v-motion-pop-visible-once :delay="400" :duration="700">
+                        <div class="card bg-base-200 shadow-xl">
+                            <div class="card-body">
+                                <InteractiveImage src="../assets/images/vue_logo.png" alt="Vue logo" />
                             </div>
                         </div>
                     </div>

@@ -5,7 +5,7 @@ import Skills from '@/views/Skills.vue'
 import Experience from '@/views/Experience.vue'
 import Education from '@/views/Education.vue'
 import Contact from '@/views/Contact.vue'
-import Leijgraaf from '@/views/leijgraaf/Leijgraaf.vue'
+import Leijgraaf from '@/views/Leijgraaf.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -13,7 +13,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'Home', 
         component: Home,
         meta: {
-            index: 0,  // Voeg een index toe
+            index: 0, 
             enterClass: 'animate__animated animate__fadeInLeft',
             leaveClass: 'animate__animated animate__fadeOutRight',
         },
@@ -23,7 +23,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'AboutMe', 
         component: AboutMe,
         meta: {
-            index: 1,  // Voeg een index toe
+            index: 1,
             enterClass: 'animate__animated animate__fadeInRight',
             leaveClass: 'animate__animated animate__fadeOutLeft',
         },
@@ -33,7 +33,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'Skills', 
         component: Skills,
         meta: {
-            index: 2,  // Voeg een index toe
+            index: 2,
             enterClass: 'animate__animated animate__fadeInRight',
             leaveClass: 'animate__animated animate__fadeOutLeft',
         },
