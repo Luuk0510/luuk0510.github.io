@@ -28,10 +28,13 @@ const cardTransform = computed(() => {
     return isOutside.value ? '' : `perspective(${elementWidth.value}px) rotateX(${rX}deg) rotateY(${rY}deg)`;
 });
 </script>
+
 <template>
     <div ref="target"
         :style="{ transform: cardTransform, transition: 'transform 0.25s ease-out', backgroundImage: `url(${imageSrc})` }"
-        class="logo">
+        class="logo"
+        :aria-label="props.alt"
+        role="img">
     </div>
 </template>
 

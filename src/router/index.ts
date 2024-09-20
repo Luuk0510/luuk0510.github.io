@@ -6,6 +6,9 @@ import Experience from '@/views/Experience.vue'
 import Education from '@/views/Education.vue'
 import Contact from '@/views/Contact.vue'
 import Leijgraaf from '@/views/Leijgraaf.vue'
+import Mobicoach from '@/views/Mobicoach.vue'
+import Avans from '@/views/avans/Avans.vue'
+import Marvelous from '@/views/Marvelous.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -72,6 +75,36 @@ const routes: Array<RouteRecordRaw> = [
         path: '/leijgraaf', 
         name: 'Leijgraaf', 
         component: Leijgraaf,
+        meta: {
+            index: 5,
+            enterClass: 'animate__animated animate__fadeInRight',
+            leaveClass: 'animate__animated animate__fadeOutLeft',
+        }, 
+    },
+    { 
+        path: '/mobicoach', 
+        name: 'Mobicoach', 
+        component: Mobicoach,
+        meta: {
+            index: 5,
+            enterClass: 'animate__animated animate__fadeInRight',
+            leaveClass: 'animate__animated animate__fadeOutLeft',
+        }, 
+    },
+    { 
+        path: '/avans', 
+        name: 'Avans', 
+        component: Avans,
+        meta: {
+            index: 5,
+            enterClass: 'animate__animated animate__fadeInRight',
+            leaveClass: 'animate__animated animate__fadeOutLeft',
+        }, 
+    },
+    { 
+        path: '/marvelous', 
+        name: 'Marvelous', 
+        component: Marvelous,
         meta: {
             index: 5,
             enterClass: 'animate__animated animate__fadeInRight',
