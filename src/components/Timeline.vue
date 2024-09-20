@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 import IconCheckFill from './icons/IconCheckFill.vue';
 
@@ -6,35 +6,35 @@ const timelineItems = ref([
     {
         time: 'Heden',
         title: 'First Macintosh computer',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sagittis pharetra velit, at venenatis turpis laoreet volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; In volutpat laoreet pharetra. Cras et rutrum nisi, eget vestibulum libero. Morbi ac nulla nec ex suscipit euismod id vel leo. Nullam efficitur lacinia mi sed consectetur. Integer id euismod ex. Vivamus porta, lacus at porttitor pulvinar, erat ligula varius metus, sit amet iaculis tellus magna eu turpis. Mauris ac condimentum dolor. Morbi in ipsum cursus neque rutrum faucibus. Vestibulum blandit consectetur sapien ac hendrerit. Vestibulum quis augue vehicula libero tempus congue. Nulla massa metus, pulvinar vel convallis ut, blandit sit amet tellus. ',
+        description: 'De introductie van de eerste Macintosh was revolutionair voor de computerwereld. Ontdek hoe deze innovatie... ',
         isVisible: false,
         link: '/',
     },
     {
         time: 'sep 2024 - jan 2025',
         title: 'Marvelous',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sagittis pharetra velit, at venenatis turpis laoreet volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; In volutpat laoreet pharetra. Cras et rutrum nisi, eget vestibulum libero. Morbi ac nulla nec ex suscipit euismod id vel leo. Nullam efficitur lacinia mi sed consectetur. Integer id euismod ex. Vivamus porta, lacus at porttitor pulvinar, erat ligula varius metus, sit amet iaculis tellus magna eu turpis. Mauris ac condimentum dolor. Morbi in ipsum cursus neque rutrum faucibus. Vestibulum blandit consectetur sapien ac hendrerit. Vestibulum quis augue vehicula libero tempus congue. Nulla massa metus, pulvinar vel convallis ut, blandit sit amet tellus. ',
+        description: 'Ik loop momenteel stage bij Marvelous in Den Bosch. Hier werk ik aan uitdagende projecten die processen automatiseren en innovatie stimuleren. Meer over mijn stage... ',
         isVisible: false,
         link: '/marvelous',
     },
     {
         time: 'sep 2022 - Heden',
-        title: 'Avans',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sagittis pharetra velit, at venenatis turpis laoreet volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; In volutpat laoreet pharetra. Cras et rutrum nisi, eget vestibulum libero. Morbi ac nulla nec ex suscipit euismod id vel leo. Nullam efficitur lacinia mi sed consectetur. Integer id euismod ex. Vivamus porta, lacus at porttitor pulvinar, erat ligula varius metus, sit amet iaculis tellus magna eu turpis. Mauris ac condimentum dolor. Morbi in ipsum cursus neque rutrum faucibus. Vestibulum blandit consectetur sapien ac hendrerit. Vestibulum quis augue vehicula libero tempus congue. Nulla massa metus, pulvinar vel convallis ut, blandit sit amet tellus. ',
+        title: 'Avans Hogeschool',
+        description: 'Als derdejaars student Informatica aan Avans in Den Bosch werk ik aan verschillende projecten en leer ik onder andere C#, Laravel, Python en Unity. Meer over mijn ervaringen... ',
         isVisible: false,
-        link: '/mobicoach',
+        link: '/avans',
     },
     {
         time: '2024',
         title: 'Mobicoach',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sagittis pharetra velit, at venenatis turpis laoreet volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; In volutpat laoreet pharetra. Cras et rutrum nisi, eget vestibulum libero. Morbi ac nulla nec ex suscipit euismod id vel leo. Nullam efficitur lacinia mi sed consectetur. Integer id euismod ex. Vivamus porta, lacus at porttitor pulvinar, erat ligula varius metus, sit amet iaculis tellus magna eu turpis. Mauris ac condimentum dolor. Morbi in ipsum cursus neque rutrum faucibus. Vestibulum blandit consectetur sapien ac hendrerit. Vestibulum quis augue vehicula libero tempus congue. Nulla massa metus, pulvinar vel convallis ut, blandit sit amet tellus. ',
+        description: 'Als onderdeel van mijn opleiding bij de Leijgraaf werkte ik aan Mobicoach, een platform voor mobiele coaches. Ontdek meer over dit project... ',
         isVisible: false,
         link: '/mobicoach',
     },
     {
         time: 'aug 2019 - jun 2022',
         title: 'De Leijgraaf',
-        description: 'Ik heb mijn MBO-niveau 4 opleiding in Software Development afgerond aan De Leijgraaf in Oss, nu onderdeel van het Koning Willem I College. Tijdens deze opleiding heb ik onder andere PHP geleerd en waardevolle ervaring opgedaan door te werken aan verschillende projecten. Daarnaast heb ik veel aandacht besteed aan UX/UI design, waardoor ik niet alleen technische vaardigheden heb ontwikkeld, maar ook heb geleerd hoe ik gebruiksvriendelijke en aantrekkelijke interfaces kan ontwerpen.',
+        description: 'Tijdens mijn MBO-opleiding Software Development leerde ik onder andere PHP en UX/UI design. Meer over deze ervaring... ',
         isVisible: false,
         link: '/leijgraaf',
     },
@@ -68,8 +68,6 @@ const timelineItems = ref([
         </li>
     </ul>
 </template>
-
-
 
 <style scoped>
 </style>
