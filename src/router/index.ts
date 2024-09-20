@@ -1,19 +1,19 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Home from '@/views/Home.vue'
 import AboutMe from '@/views/AboutMe.vue'
 import Skills from '@/views/Skills.vue'
 import Experience from '@/views/Experience.vue'
 import Education from '@/views/Education.vue'
 import Contact from '@/views/Contact.vue'
-import Leijgraaf from '@/views/leijgraaf/Leijgraaf.vue'
+import Leijgraaf from '@/views/Leijgraaf.vue'
 
-const routes = [
+const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
         name: 'Home', 
         component: Home,
         meta: {
-            index: 0,  // Voeg een index toe
+            index: 0, 
             enterClass: 'animate__animated animate__fadeInLeft',
             leaveClass: 'animate__animated animate__fadeOutRight',
         },
@@ -23,7 +23,7 @@ const routes = [
         name: 'AboutMe', 
         component: AboutMe,
         meta: {
-            index: 1,  // Voeg een index toe
+            index: 1,
             enterClass: 'animate__animated animate__fadeInRight',
             leaveClass: 'animate__animated animate__fadeOutLeft',
         },
@@ -33,7 +33,7 @@ const routes = [
         name: 'Skills', 
         component: Skills,
         meta: {
-            index: 2,  // Voeg een index toe
+            index: 2,
             enterClass: 'animate__animated animate__fadeInRight',
             leaveClass: 'animate__animated animate__fadeOutLeft',
         },

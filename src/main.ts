@@ -1,11 +1,9 @@
-
-
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { MotionPlugin } from '@vueuse/motion'
  
 import App from './App.vue'
-import router from './router'
+import router from './router/index'
 import './assets/app.css'
 import 'animate.css';
 
