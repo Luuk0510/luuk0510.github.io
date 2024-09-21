@@ -123,7 +123,11 @@ function scrollToItem(): void {
                     <div v-motion-pop-visible-once :delay="200" :duration="700">
                         <div class="card bg-base-200 shadow-xl">
                             <div class="card-body">
+<<<<<<< Updated upstream
                                 <InteractiveImage src="../assets/images/php_logo.png" alt="PHP logo" />
+=======
+                                <InteractiveImage src="..//assets/images/php_logo.png" alt="PHP logo" />
+>>>>>>> Stashed changes
                             </div>
                         </div>
                     </div>
