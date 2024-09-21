@@ -116,21 +116,21 @@ function scrollToItem(): void {
                     <div v-motion-pop-visible-once :duration="700">
                         <div class="card bg-base-200 shadow-xl">
                             <div class="card-body">
-                                <InteractiveImage src="/assets/images/csharp_logo.png" alt="C# logo" />
+                                <InteractiveImage src="../assets/images/csharp_logo.png" alt="C# logo" />
                             </div>
                         </div>
                     </div>
                     <div v-motion-pop-visible-once :delay="200" :duration="700">
                         <div class="card bg-base-200 shadow-xl">
                             <div class="card-body">
-                                <InteractiveImage src="/assets/images/php_logo.png" alt="PHP logo" />
+                                <InteractiveImage src="../assets/images/php_logo.png" alt="PHP logo" />
                             </div>
                         </div>
                     </div>
                     <div v-motion-pop-visible-once :delay="400" :duration="700">
                         <div class="card bg-base-200 shadow-xl">
                             <div class="card-body">
-                                <InteractiveImage src="/assets/images/vue_logo.png" alt="Vue logo" />
+                                <InteractiveImage src="../assets/images/vue_logo.png" alt="Vue logo" />
                             </div>
                         </div>
                     </div>
