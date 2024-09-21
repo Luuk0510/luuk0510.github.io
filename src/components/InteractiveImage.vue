@@ -31,21 +31,28 @@ const cardTransform = computed(() => {
 
 <template>
     <div ref="target"
-        :style="{ transform: cardTransform, transition: 'transform 0.25s ease-out', backgroundImage: `url(${imageSrc})` }"
-        class="logo"
+        :style="{ transform: cardTransform, transition: 'transform 0.25s ease-out' }"
+        class="logo-container"
         :aria-label="props.alt"
         role="img">
+        <img :src="imageSrc" :alt="props.alt" class="logo" />
     </div>
 </template>
 
 <style scoped>
-.logo {
+.logo-container {
     width: 128px;
     height: 128px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
     margin: 1rem;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 500px;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 </style>
