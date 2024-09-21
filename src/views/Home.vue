@@ -5,6 +5,9 @@ import InteractiveImage from '@/components/InteractiveImage.vue';
 import IconDownArrow from '@/components/icons/IconDownArrow.vue';
 import IconGitHub from '@/components/icons/IconGitHub.vue';
 import IconLinkedIn from '@/components/icons/IconLinkedIn.vue';
+import CSharpLogo from '@/assets/images/csharp_logo.png';
+import PHPLogo from '@/assets/images/php_logo.png';
+import VueLogo from '@/assets/images/vue_logo.png';
 
 const fullText = "Welkom op mijn portfolio!";
 const displayedText = ref<string>("");
@@ -116,21 +119,21 @@ function scrollToItem(): void {
                     <div v-motion-pop-visible-once :duration="700">
                         <div class="card bg-base-200 shadow-xl">
                             <div class="card-body">
-                                <InteractiveImage src="../assets/images/csharp_logo.png" alt="C# logo" />
+                                <InteractiveImage :src="CSharpLogo" alt="C Sharp logo" width="150px" height="150px" />
                             </div>
                         </div>
                     </div>
                     <div v-motion-pop-visible-once :delay="200" :duration="700">
                         <div class="card bg-base-200 shadow-xl">
                             <div class="card-body">
-                                <InteractiveImage src="../assets/images/php_logo.png" alt="PHP logo" />
+                                <InteractiveImage :src="PHPLogo" alt="PHP logo" width="150px" height="150px" />
                             </div>
                         </div>
                     </div>
                     <div v-motion-pop-visible-once :delay="400" :duration="700">
                         <div class="card bg-base-200 shadow-xl">
                             <div class="card-body">
-                                <InteractiveImage src="../assets/images/vue_logo.png" alt="Vue logo" />
+                                <InteractiveImage :src="VueLogo" alt="Vue logo" width="150px" height="150px" />
                             </div>
                         </div>
                     </div>
