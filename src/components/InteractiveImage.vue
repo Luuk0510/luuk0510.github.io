@@ -32,9 +32,7 @@ const cardTransform = computed(() => {
 <template>
     <div ref="target"
         :style="{ transform: cardTransform, transition: 'transform 0.25s ease-out' }"
-        class="logo-container"
-        :aria-label="props.alt"
-        role="img">
+        class="logo-container">
         <img :src="imageSrc" :alt="props.alt" class="logo" />
     </div>
 </template>
