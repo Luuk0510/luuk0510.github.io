@@ -5,7 +5,10 @@ import { useMouseInElement } from '@vueuse/core';
 interface Props {
     src: string;
     alt: string;
+    width: string;
+    height: string;
 }
+
 
 const props = defineProps<Props>();
 
@@ -31,26 +34,11 @@ const cardTransform = computed(() => {
 
 <template>
     <div ref="target"
-        :style="{ transform: cardTransform, transition: 'transform 0.25s ease-out' }"
-        class="logo-container">
-        <img :src="imageSrc" :alt="props.alt" class="logo" />
+        :style="{ transform: cardTransform, transition: 'transform 0.25s ease-out', width: props.width, height: props.height }"
+        class="flex justify-center items-center">
+        <img :src="imageSrc" :alt="props.alt" class="w-full h-full object-contain" />
     </div>
 </template>
 
 <style scoped>
-.logo-container {
-    width: 128px;
-    height: 128px;
-    margin: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    perspective: 500px;
-}
-
-.logo {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
 </style>
