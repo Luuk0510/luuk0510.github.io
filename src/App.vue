@@ -35,7 +35,7 @@ watch(
                   :enter-active-class="enterClass"
                   :leave-active-class="leaveClass"
                 >
-                    <div :key="route.path">
+                    <div :key="route.path" >
                         <component :is="Component"></component>
                     </div>
                 </transition>
