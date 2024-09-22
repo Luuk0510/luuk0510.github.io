@@ -43,7 +43,6 @@ const scrollToTop = () => {
 
 
 <template>
-    <h1 class="text-center text-4xl font-black mb-10">Tijdlijn</h1>
     <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
         <li v-for="(item, index) in timelineItems" :key="index"
         v-motion-slide-visible-bottom>

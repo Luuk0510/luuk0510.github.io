@@ -3,7 +3,7 @@
 
 <template>
     <div class="absolute lg:inset-0 justify-center items-center">
-        <section class="flex flex-col justify-center items-center lg:my-20 md:mb-20">
+        <section class="flex flex-col justify-center items-center lg:my-20 mb-20">
             <h1 class="text-4xl font-black mb-5">
                 Mijn vaardigheden
             </h1>
@@ -17,7 +17,7 @@
             </div>
         </section>
 
-        <section class="flex flex-col justify-center items-center lg:my-20 md:mb-20">
+        <section class="flex flex-col justify-center items-center lg:my-20 mb-20">
             <div class="card bg-neutral text-neutral-content lg:w-3/6">
                 <div class="card-body items-center">
                     <h1 class="card-title text-3xl font-bold">PHP</h1>
@@ -28,7 +28,7 @@
             </div>
         </section>
 
-        <section class="flex flex-col justify-center items-center lg:my-20 md:mb-20">
+        <section class="flex flex-col justify-center items-center lg:my-20 mb-20">
             <div class="card bg-neutral text-neutral-content lg:w-3/6">
                 <div class="card-body items-center">
                     <h1 class="card-title text-3xl font-bold">Vue.js</h1>

@@ -12,48 +12,55 @@ const projects = ref([
     },
     {
         title: 'Ninja manager',
-        badges: ['C#'],
+        badges: ['C#', 'Bootstrap'],
         description: 'Dit is een beschrijving van Project 2. Hier kun je meer vertellen over het project en wat het inhoudt.',
+        link: 'https://github.com/Luuk0510/space-project'
     },
     {
         title: 'Bumbo',
-        badges: ['C#'],
+        badges: ['C#', 'Bootstrap'],
         description: 'Dit is een beschrijving van Project 1. Hier kun je meer vertellen over het project en wat het inhoudt.',
     },
     {
         title: 'Beestje op je feestje',
-        badges: ['C#'],
+        badges: ['C#', 'Bootstrap'],
         description: 'Dit is een beschrijving van Project 1. Hier kun je meer vertellen over het project en wat het inhoudt.',
+        link: 'https://github.com/Luuk0510/space-project'
     },
     {
         title: 'Ninja Frog',
         badges: ['Unity'],
         description: 'Dit is een beschrijving van Project 2. Hier kun je meer vertellen over het project en wat het inhoudt.',
+        link: 'https://github.com/Luuk0510/space-project'
     },
     {
         title: 'Project Agile',
-        badges: ['Laravel'],
+        badges: ['Laravel', 'Tailwind', 'Preline UI'],
         description: 'Dit is een beschrijving van Project 1. Hier kun je meer vertellen over het project en wat het inhoudt.',
     },
     {
         title: 'Bazaar website',
-        badges: ['Laravel'],
+        badges: ['Laravel', 'Tailwind', 'Preline UI'],
         description: 'Dit is een beschrijving van Project 1. Hier kun je meer vertellen over het project en wat het inhoudt. Tailwind met Preline library',
+        link: 'https://github.com/Luuk0510/space-project'
     },
     {
         title: 'Bazaar transport',
         badges: ['Javascript'],
         description: 'Dit is een beschrijving van Project 1. Hier kun je meer vertellen over het project en wat het inhoudt.',
+        link: 'https://github.com/Luuk0510/space-project'
     },
     {
         title: 'Galactic Gladiators',
         badges: ['Python'],
         description: 'Dit is een beschrijving van Project 3. Hier kun je meer vertellen over het project en wat het inhoudt.',
+        link: 'https://github.com/Luuk0510/space-project'
     },
     {
         title: 'De Gouden Draak',
-        badges: ['Laravel', 'Vue'],
+        badges: ['Laravel', 'Vue', 'Tailwind', 'Preline UI'],
         description: 'Dit is een beschrijving van Project 3. Hier kun je meer vertellen over het project en wat het inhoudt.',
+        link: 'https://github.com/Luuk0510/space-project'
     }
 ]);
 </script>

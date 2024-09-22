@@ -1,13 +1,23 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
+
 import Timeline from '@/components/Timeline.vue';
 import InteractiveImage from '@/components/InteractiveImage.vue';
+
 import IconDownArrow from '@/components/icons/IconDownArrow.vue';
 import IconGitHub from '@/components/icons/IconGitHub.vue';
 import IconLinkedIn from '@/components/icons/IconLinkedIn.vue';
+
+import HTML5Logo from '@/assets/images/html5_logo.png';
+import CSS3Logo from '@/assets/images/css3_logo.png';
+import JavaScriptLogo from '@/assets/images/javascript_logo.png'
+import TailwindLogo from '@/assets/images/tailwind_logo.png'
+import VueLogo from '@/assets/images/vue_logo.png';
+import SQLLogo from '@/assets/images/sql_logo.png';
 import CSharpLogo from '@/assets/images/csharp_logo.png';
 import PHPLogo from '@/assets/images/php_logo.png';
-import VueLogo from '@/assets/images/vue_logo.png';
+import LaravelLogo from '@/assets/images/laravel_logo.png';
+import PythonLogo from '@/assets/images/python_logo.png';
 
 const fullText = "Welkom op mijn portfolio!";
 const displayedText = ref<string>("");
@@ -121,40 +131,89 @@ const scrollToTop = () => {
         <section>
             <div class="my-40">
                 <div v-motion-slide-visible-once-bottom>
-                    <h3 class="text-4xl font-black text-center mb-4">Vaardigheden</h3>
+                    <h2 class="text-4xl font-black text-center mb-4">Vaardigheden</h2>
                 </div>
                 <div class="flex flex-wrap justify-center gap-6 md:gap-10">
-                    <div v-motion-pop-visible-once :duration="700">
+                    <div v-motion-pop-visible-once :delay="100" :duration="700">
                         <div class="card bg-base-200 shadow-xl">
                             <div class="card-body">
-                                <InteractiveImage :src="CSharpLogo" alt="C Sharp logo" width="150px" height="150px" />
+                                <InteractiveImage :src="HTML5Logo" alt="HTML logo" width="150px" height="150px" />
                             </div>
                         </div>
                     </div>
                     <div v-motion-pop-visible-once :delay="200" :duration="700">
                         <div class="card bg-base-200 shadow-xl">
                             <div class="card-body">
-                                <InteractiveImage :src="PHPLogo" alt="PHP logo" width="150px" height="150px" />
+                                <InteractiveImage :src="CSS3Logo" alt="CSS logo" width="150px" height="150px" />
+                            </div>
+                        </div>
+                    </div>
+                    <div v-motion-pop-visible-once :delay="300" :duration="700">
+                        <div class="card bg-base-200 shadow-xl">
+                            <div class="card-body">
+                                <InteractiveImage :src="JavaScriptLogo" alt="JavaScript logo" width="150px" height="150px" />
                             </div>
                         </div>
                     </div>
                     <div v-motion-pop-visible-once :delay="400" :duration="700">
                         <div class="card bg-base-200 shadow-xl">
                             <div class="card-body">
+                                <InteractiveImage :src="TailwindLogo" alt="Tailwind logo" width="150px" height="150px" />
+                            </div>
+                        </div>
+                    </div>
+                    <div v-motion-pop-visible-once :delay="500" :duration="700">
+                        <div class="card bg-base-200 shadow-xl">
+                            <div class="card-body">
                                 <InteractiveImage :src="VueLogo" alt="Vue logo" width="150px" height="150px" />
                             </div>
                         </div>
                     </div>
-
+                    <div v-motion-pop-visible-once :delay="600" :duration="700">
+                        <div class="card bg-base-200 shadow-xl">
+                            <div class="card-body">
+                                <InteractiveImage :src="SQLLogo" alt="SQL logo" width="150px" height="150px" />
+                            </div>
+                        </div>
+                    </div>
+                    <div v-motion-pop-visible-once :delay="700" :duration="700">
+                        <div class="card bg-base-200 shadow-xl">
+                            <div class="card-body">
+                                <InteractiveImage :src="CSharpLogo" alt="C Sharp logo" width="150px" height="150px" />
+                            </div>
+                        </div>
+                    </div>
+                    <div v-motion-pop-visible-once :delay="800" :duration="700">
+                        <div class="card bg-base-200 shadow-xl">
+                            <div class="card-body">
+                                <InteractiveImage :src="PHPLogo" alt="PHP logo" width="150px" height="150px" />
+                            </div>
+                        </div>
+                    </div>
+                    <div v-motion-pop-visible-once :delay="900" :duration="700">
+                        <div class="card bg-base-200 shadow-xl">
+                            <div class="card-body">
+                                <InteractiveImage :src="LaravelLogo" alt="Laravel logo" width="150px" height="150px" />
+                            </div>
+                        </div>
+                    </div>
+                    <div v-motion-pop-visible-once :delay="1000" :duration="700">
+                        <div class="card bg-base-200 shadow-xl">
+                            <div class="card-body">
+                                <InteractiveImage :src="PythonLogo" alt="Python logo" width="150px" height="150px" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex justify-center items-center mt-10" v-motion-pop-visible-once :delay="600" :duration="700">
-                    <router-link to="/skills" @click.native="scrollToTop" class="btn btn-primary text-base">Lees meer over mijn vaardigheden</router-link>
+                <div class="flex justify-center items-center mt-10" v-motion-pop-visible-once :delay="1000" :duration="500">
+                    <router-link to="/skills" @click.native="scrollToTop" class="btn btn-primary text-lg">Lees meer over mijn vaardigheden</router-link>
                 </div>
             </div>
         </section>
 
 
         <section class="mt-20">
+            <h2 class="text-center text-4xl font-black mb-10" v-motion-slide-visible-once-bottom>Tijdlijn</h2>
             <Timeline />
         </section>
     </div>
