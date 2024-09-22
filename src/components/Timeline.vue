@@ -33,7 +33,6 @@ const timelineItems = ref([
     },
 ]);
 
-// Functie om naar de bovenkant van de pagina te scrollen
 const scrollToTop = () => {
     window.scrollTo({
         top: 0,

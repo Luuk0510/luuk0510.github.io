@@ -40,7 +40,7 @@ onMounted(() => {
 
     setTimeout(() => {
         showButton.value = true;
-    }, 5500);
+    }, 6500);
 
     window.addEventListener('scroll', handleScroll);
 });
@@ -66,6 +66,13 @@ function scrollToItem(): void {
         });
     }
 }
+
+const scrollToTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+    });
+};
 </script>
 
 <template>
@@ -78,15 +85,15 @@ function scrollToItem(): void {
             </h1>
             <div class="flex justify-center mt-2 gap-x-2">
                 <a href="https://github.com/Luuk0510" target="_blank">
-                    <IconGitHub v-motion-slide-left :delay="4000" :duration="1200" size="60px" />
+                    <IconGitHub v-motion-slide-left :delay="5000" :duration="1200" size="60px" />
                 </a>
                 <a href="https://www.linkedin.com/in/luuk-spruijtenburg-05aa89243/" target="_blank">
-                    <IconLinkedIn v-motion-slide-right :delay="4000" :duration="1200" size="60px" />
+                    <IconLinkedIn v-motion-slide-right :delay="5000" :duration="1200" size="60px" />
                 </a>
             </div>
         </section>
 
-        <div v-if="showButton" class="flex justify-center">
+        <div v-if="showButton" class="flex justify-center lg:-mt-10 -mt-20">
             <div class="bounce2 cursor-pointer" style="opacity: 1;" @click="scrollToItem">
                 <IconDownArrow size="100px" />
             </div>
@@ -110,10 +117,11 @@ function scrollToItem(): void {
                 </div>
             </div>
         </section>
+
         <section>
             <div class="my-40">
                 <div v-motion-slide-visible-once-bottom>
-                    <h3 class="text-4xl font-black text-center mb-4">Kennis</h3>
+                    <h3 class="text-4xl font-black text-center mb-4">Vaardigheden</h3>
                 </div>
                 <div class="flex flex-wrap justify-center gap-6 md:gap-10">
                     <div v-motion-pop-visible-once :duration="700">
@@ -137,6 +145,10 @@ function scrollToItem(): void {
                             </div>
                         </div>
                     </div>
+
+                </div>
+                <div class="flex justify-center items-center mt-10" v-motion-pop-visible-once :delay="600" :duration="700">
+                    <router-link to="/skills" @click.native="scrollToTop" class="btn btn-primary text-base">Lees meer over mijn vaardigheden</router-link>
                 </div>
             </div>
         </section>
