@@ -40,13 +40,13 @@ const projects = ref([
     },
     {
         title: 'Bazaar transport',
-        badges: ['Javascript', 'CSS'],
+        badges: ['Javascript', 'SCSS'],
         description: 'Dit is een beschrijving van het Project.',
         link: 'https://github.com/Luuk0510/bazaar-transport'
     },
     {
         title: 'Galactic Gladiators',
-        badges: ['Python'],
+        badges: ['Python', 'PyGame'],
         description: 'Dit is een beschrijving van het Project.',
         link: 'https://github.com/Luuk0510/galactic-gladiators'
     },

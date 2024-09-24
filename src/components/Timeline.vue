@@ -18,7 +18,7 @@ const timelineItems = ref([
         link: '/avans',
     },
     {
-        time: '2024',
+        time: 'feb 2021 - aug 2024',
         title: 'Mobicoach',
         description: 'Als onderdeel van mijn opleiding bij de Leijgraaf werkte ik aan Mobicoach, een platform voor mobiele coaches. Ontdek meer over dit project... ',
         isVisible: false,
