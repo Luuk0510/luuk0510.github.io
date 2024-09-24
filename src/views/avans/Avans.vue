@@ -7,19 +7,13 @@ const projects = ref([
     {
         title: 'Space project',
         badges: ['HTML', 'CSS'],
-        description: 'In project moesten we een website gaan maken met alleen maar HTML en CSS, geen javascript, frameworks en libraries. Kennis over HTML en CSS.',
-        link: 'https://github.com/Luuk0510/space-project'
-    },
-    {
-        title: 'Ninja manager',
-        badges: ['C#', 'Bootstrap'],
-        description: 'Dit is een beschrijving van het Project.',
+        description: 'In project moesten we een website gaan maken met alleen maar HTML en CSS, geen javascript, frameworks en libraries zodat we goed HTML en CSS goed kennen. Kennis over HTML en CSS.',
         link: 'https://github.com/Luuk0510/space-project'
     },
     {
         title: 'Beestje op je feestje',
         badges: ['C#', 'Bootstrap'],
-        description: 'Dit is een beschrijving van het Project.',
+        description: 'Voor de eindopdracht van het vak PROG6 heb ik samen met een medestudent een webapplicatie ontwikkeld genaamd "Beestje op je Feestje". Deze applicatie is ontworpen voor een boerderij die beestjes verhuurt voor feesten. Met de applicatie kunnen gebruikers eenvoudig beestjes reserveren voor hun evenementen.',
         link: 'https://github.com/Luuk0510/beestje-op-je-feestje'
     },
     {
@@ -46,13 +40,13 @@ const projects = ref([
     },
     {
         title: 'Bazaar transport',
-        badges: ['Javascript', 'CSS'],
+        badges: ['Javascript', 'SCSS'],
         description: 'Dit is een beschrijving van het Project.',
         link: 'https://github.com/Luuk0510/bazaar-transport'
     },
     {
         title: 'Galactic Gladiators',
-        badges: ['Python'],
+        badges: ['Python', 'PyGame'],
         description: 'Dit is een beschrijving van het Project.',
         link: 'https://github.com/Luuk0510/galactic-gladiators'
     },
@@ -93,25 +87,30 @@ const projects = ref([
             <h2 class="text-3xl font-black text-center mb-10">Projecten</h2>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:w-5/6 w-full">
-                <div v-for="(project, index) in projects" :key="index" v-motion
+                <div 
+                    v-for="(project, index) in projects" 
+                    :key="index" 
+                    v-motion
                     :initial="{ opacity: 0, x: (Math.floor(index / 3) % 2 === 0) ? -200 : 200 }"
-                    :enter="{ opacity: 1, x: 0 }" :delay="1000 + (index * 200)" :duration="500"
-                    class="card bg-base-200 shadow-xl mb-6">
+                    :enter="{ opacity: 1, x: 0 }" 
+                    :delay="1000 + (index * 200)" 
+                    :duration="500"
+                    class="card bg-base-200 shadow-xl mb-6 relative"
+                >
                     <div class="card-body">
-                        <div class="relative">
-                            <h3 class="text-2xl font-bold text-center">{{ project.title }}</h3>
-                            <a v-if="project.link" :href="project.link" target="_blank" class="absolute right-0 top-0">
-                                <IconGitHub size="40px" />
-                            </a>
-                        </div>
-                        <div v-if="project.badges" class="flex justify-center items gap-x-2 mb-1">
-                            <div v-for="(badge, i) in project.badges" :key="i"
-                                class="badge badge-accent badge-outline badge-lg font-bold">
+                        <h3 class="text-2xl font-bold text-center px-10">{{ project.title }}</h3>
+                        <a v-if="project.link" :href="project.link" target="_blank" class="absolute mt-4 right-4 top-4">
+                            <IconGitHub size="40px" />
+                        </a>
+                        <div v-if="project.badges" class="flex flex-wrap justify-center items-center gap-2 mb-2">
+                            <div v-for="(badge, i) in project.badges" :key="i" class="badge badge-accent badge-outline badge-lg font-bold">
                                 {{ badge }}
                             </div>
                         </div>
                         <p class="text-start">{{ project.description }}</p>
-                        <router-link to="/" class="btn btn-primary text-base">Meer info</router-link>
+                        <div class="flex justify-center mb-4">
+                            <router-link to="/" class="btn btn-primary text-base">Meer info</router-link>
+                        </div>
                     </div>
                 </div>
             </div>
