@@ -28,6 +28,24 @@ const showButton = ref<boolean>(false);
 const typingSpeed = 150;
 const cursorBlinkDuration = 3000;
 
+interface Logo {
+    src: string;
+    alt: string;
+}
+
+const logos = ref<Logo[]>([
+    { src: HTML5Logo, alt: "HTML logo" },
+    { src: CSS3Logo, alt: "CSS logo" },
+    { src: JavaScriptLogo, alt: "JavaScript logo" },
+    { src: TailwindLogo, alt: "Tailwind logo" },
+    { src: VueLogo, alt: "Vue logo" },
+    { src: SQLLogo, alt: "SQL logo" },
+    { src: CSharpLogo, alt: "C Sharp logo" },
+    { src: PHPLogo, alt: "PHP logo" },
+    { src: LaravelLogo, alt: "Laravel logo" },
+    { src: PythonLogo, alt: "Python logo" },
+]);
+
 onMounted(() => {
     setTimeout(() => {
         let index = 0;
@@ -71,7 +89,7 @@ function scrollToItem(): void {
     if (timeline) {
         const timelinePosition = timeline.getBoundingClientRect().top + window.scrollY;
         window.scrollTo({
-            top: timelinePosition - 250,
+            top: timelinePosition - 200,
             behavior: 'smooth',
         });
     }
@@ -87,7 +105,7 @@ const scrollToTop = () => {
 
 <template>
     <div class="absolute">
-        <section class="flex flex-col justify-center items-center text-center h-[calc(100vh-200px)]">
+        <section class="flex flex-col justify-center items-center text-center h-[calc(100vh-100px)]">
             <h1 class="text-6xl font-jetbrains mb-5">
                 {{ displayedText }}
                 <span v-if="isTyping" class="solid-cursor"></span>
@@ -134,73 +152,21 @@ const scrollToTop = () => {
                     <h2 class="text-4xl font-black text-center mb-4">Vaardigheden</h2>
                 </div>
                 <div class="flex flex-wrap justify-center gap-6 md:gap-10">
-                    <div v-motion-pop-visible-once :delay="100" :duration="700">
+                    <div 
+                        v-for="(logo, index) in logos" 
+                        :key="logo.alt" 
+                        v-motion-pop-visible-once 
+                        :delay="index * 100" 
+                        :duration="700"
+                    >
                         <div class="card bg-base-200 shadow-xl">
                             <div class="card-body">
-                                <InteractiveImage :src="HTML5Logo" alt="HTML logo" width="150px" height="150px" />
-                            </div>
-                        </div>
-                    </div>
-                    <div v-motion-pop-visible-once :delay="200" :duration="700">
-                        <div class="card bg-base-200 shadow-xl">
-                            <div class="card-body">
-                                <InteractiveImage :src="CSS3Logo" alt="CSS logo" width="150px" height="150px" />
-                            </div>
-                        </div>
-                    </div>
-                    <div v-motion-pop-visible-once :delay="300" :duration="700">
-                        <div class="card bg-base-200 shadow-xl">
-                            <div class="card-body">
-                                <InteractiveImage :src="JavaScriptLogo" alt="JavaScript logo" width="150px" height="150px" />
-                            </div>
-                        </div>
-                    </div>
-                    <div v-motion-pop-visible-once :delay="400" :duration="700">
-                        <div class="card bg-base-200 shadow-xl">
-                            <div class="card-body">
-                                <InteractiveImage :src="TailwindLogo" alt="Tailwind logo" width="150px" height="150px" />
-                            </div>
-                        </div>
-                    </div>
-                    <div v-motion-pop-visible-once :delay="500" :duration="700">
-                        <div class="card bg-base-200 shadow-xl">
-                            <div class="card-body">
-                                <InteractiveImage :src="VueLogo" alt="Vue logo" width="150px" height="150px" />
-                            </div>
-                        </div>
-                    </div>
-                    <div v-motion-pop-visible-once :delay="600" :duration="700">
-                        <div class="card bg-base-200 shadow-xl">
-                            <div class="card-body">
-                                <InteractiveImage :src="SQLLogo" alt="SQL logo" width="150px" height="150px" />
-                            </div>
-                        </div>
-                    </div>
-                    <div v-motion-pop-visible-once :delay="700" :duration="700">
-                        <div class="card bg-base-200 shadow-xl">
-                            <div class="card-body">
-                                <InteractiveImage :src="CSharpLogo" alt="C Sharp logo" width="150px" height="150px" />
-                            </div>
-                        </div>
-                    </div>
-                    <div v-motion-pop-visible-once :delay="800" :duration="700">
-                        <div class="card bg-base-200 shadow-xl">
-                            <div class="card-body">
-                                <InteractiveImage :src="PHPLogo" alt="PHP logo" width="150px" height="150px" />
-                            </div>
-                        </div>
-                    </div>
-                    <div v-motion-pop-visible-once :delay="900" :duration="700">
-                        <div class="card bg-base-200 shadow-xl">
-                            <div class="card-body">
-                                <InteractiveImage :src="LaravelLogo" alt="Laravel logo" width="150px" height="150px" />
-                            </div>
-                        </div>
-                    </div>
-                    <div v-motion-pop-visible-once :delay="1000" :duration="700">
-                        <div class="card bg-base-200 shadow-xl">
-                            <div class="card-body">
-                                <InteractiveImage :src="PythonLogo" alt="Python logo" width="150px" height="150px" />
+                                <InteractiveImage 
+                                    :src="logo.src" 
+                                    :alt="logo.alt" 
+                                    width="150px" 
+                                    height="150px" 
+                                />
                             </div>
                         </div>
                     </div>

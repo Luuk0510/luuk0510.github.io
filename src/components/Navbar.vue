@@ -23,9 +23,9 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="fixed top-0 w-full navbar bg-base-100 max-min-xl z-10">
+    <header class="fixed top-0 w-full navbar bg-base-100 max-min-xl z-10">
         <!-- Navbar Start -->
-        <div class="navbar-start">
+        <nav class="navbar-start">
             <div class="dropdown">
                 <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
@@ -43,10 +43,10 @@ onMounted(() => {
                     <li><router-link to="/contact" class="text-xl">Contact</router-link></li>
                 </ul>
             </div>
-        </div>
+        </nav>
 
         <!-- Navbar Center -->
-        <div class="navbar-center hidden lg:flex">
+        <nav class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
                 <li>
                     <router-link to="/" class="btn btn-ghost text-xl" :class="{ 'btn-active': $route.path === '/' }">
@@ -78,8 +78,7 @@ onMounted(() => {
                     </router-link>
                 </li>
             </ul>
-
-        </div>
+        </nav>
 
         <!-- Navbar End -->
         <div class="navbar-end">
@@ -125,7 +124,7 @@ onMounted(() => {
                 </ul>
             </div>
         </div>
-    </div>
+    </header>
 </template>
 
 <style scoped></style>
