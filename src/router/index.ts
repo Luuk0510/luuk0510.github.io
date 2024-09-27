@@ -22,21 +22,11 @@ const routes: Array<RouteRecordRaw> = [
         },
     },
     { 
-        path: '/about-me', 
-        name: 'AboutMe', 
-        component: AboutMe,
-        meta: {
-            index: 1,
-            enterClass: 'animate__animated animate__fadeInRight',
-            leaveClass: 'animate__animated animate__fadeOutLeft',
-        },
-    },
-    { 
         path: '/skills', 
         name: 'Skills', 
         component: Skills,
         meta: {
-            index: 2,
+            index: 1,
             enterClass: 'animate__animated animate__fadeInRight',
             leaveClass: 'animate__animated animate__fadeOutLeft',
         },
@@ -46,7 +36,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'Experience', 
         component: Experience,
         meta: {
-            index: 3,
+            index: 2,
             enterClass: 'animate__animated animate__fadeInRight',
             leaveClass: 'animate__animated animate__fadeOutLeft',
         },  
@@ -56,7 +46,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'Education', 
         component: Education,
         meta: {
-            index: 4,
+            index: 3,
             enterClass: 'animate__animated animate__fadeInRight',
             leaveClass: 'animate__animated animate__fadeOutLeft',
         },  
@@ -66,7 +56,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'Contact', 
         component: Contact,
         meta: {
-            index: 5,
+            index: 4,
             enterClass: 'animate__animated animate__fadeInRight',
             leaveClass: 'animate__animated animate__fadeOutLeft',
         }, 
@@ -86,7 +76,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'Mobicoach', 
         component: Mobicoach,
         meta: {
-            index: 5,
+            index: 6,
             enterClass: 'animate__animated animate__fadeInRight',
             leaveClass: 'animate__animated animate__fadeOutLeft',
         }, 
@@ -96,7 +86,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'Avans', 
         component: Avans,
         meta: {
-            index: 5,
+            index: 7,
             enterClass: 'animate__animated animate__fadeInRight',
             leaveClass: 'animate__animated animate__fadeOutLeft',
         }, 
@@ -106,7 +96,7 @@ const routes: Array<RouteRecordRaw> = [
         name: 'Marvelous', 
         component: Marvelous,
         meta: {
-            index: 5,
+            index: 8,
             enterClass: 'animate__animated animate__fadeInRight',
             leaveClass: 'animate__animated animate__fadeOutLeft',
         }, 
