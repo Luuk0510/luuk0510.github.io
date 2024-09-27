@@ -1,74 +1,83 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue';
+
+import SkillCard from '@/components/SkillCard.vue';
+import Link from '@/components/Link.vue';
+
+import HTML5Logo from '@/assets/images/html5_logo.png';
+import CSS3Logo from '@/assets/images/css3_logo.png';
+import JavaScriptLogo from '@/assets/images/javascript_logo.png'
+import TailwindLogo from '@/assets/images/tailwind_logo.png'
+import VueLogo from '@/assets/images/vue_logo.png';
+import SQLLogo from '@/assets/images/sql_logo.png';
+import CSharpLogo from '@/assets/images/csharp_logo.png';
+import PHPLogo from '@/assets/images/php_logo.png';
+import LaravelLogo from '@/assets/images/laravel_logo.png';
+import PythonLogo from '@/assets/images/python_logo.png';
+
+const isBlackTheme = ref(false);
+
+onMounted(() => {
+    const theme = document.documentElement.getAttribute('data-theme');
+    isBlackTheme.value = theme === 'black';
+});
 </script>
 
 <template>
-    <div class="absolute lg:inset-0 justify-center items-center">
-        <section class="flex flex-col justify-center items-center lg:my-20 mb-20">
+    <div class="lg:inset-0 justify-center items-center">
+        <div class="flex flex-col justify-center items-center lg:my-20 mb-20">
             <h1 class="text-4xl font-black mb-5">Mijn vaardigheden</h1>
 
-            <h2 class="text-3xl font-bold my-4">Frontend Vaardigheden</h2>
-            <div class="card bg-neutral text-neutral-content lg:w-3/6 mb-4">
-                <div class="card-body items-center">
-                    <h1 class="card-title text-2xl font-black">HTML</h1>
-                    <p>
-                        HTML is de basis van mijn webontwikkelingservaring. Ik gebruik het om de structuur van webpagina's te definiëren, waarbij ik semantische HTML toepas om de inhoud betekenisvoller te maken. Dit helpt gebruikers de pagina's gemakkelijker te begrijpen en te navigeren.
-                    </p>
-                </div>
-            </div>
-            <div class="card bg-neutral text-neutral-content lg:w-3/6 mb-4">
-                <div class="card-body items-center">
-                    <h1 class="card-title text-3xl font-bold">CSS</h1>
-                    <p>
-                        Ik heb een grondige kennis van CSS en vind het belangrijk dat applicaties er goed uitzien en gebruiksvriendelijk zijn. Ik zorg ervoor dat er altijd een duidelijk kleurcontrast is, zodat slechtzienden de inhoud beter kunnen waarnemen. Ik heb ervaring met frameworks zoals Bootstrap, Tailwind CSS, en gebruik momenteel DaisyUI in dit portfolio. Door deze tools te combineren, kan ik aantrekkelijke en responsieve ontwerpen creëren die de gebruikerservaring verbeteren.
-                    </p>
-                </div>
-            </div>
-            <div class="card bg-neutral text-neutral-content lg:w-3/6 mb-4">
-                <div class="card-body items-center">
-                    <h1 class="card-title text-3xl font-bold">JavaScript</h1>
-                    <p>
-                        JavaScript stelt me in staat om interactieve en dynamische webapplicaties te bouwen. Ik heb ervaring met moderne frameworks zoals Vue.js, waarmee ik component-gebaseerde toepassingen kan ontwikkelen.
-                    </p>
-                </div>
-            </div>
-            <div class="card bg-neutral text-neutral-content lg:w-3/6 mb-4">
-                <div class="card-body items-center">
-                    <h1 class="card-title text-3xl font-bold">Vue.js</h1>
-                    <p>
-                        Met Vue.js heb ik dit portfolio ontwikkeld, waarbij ik de kracht van dit frontend framework volledig heb benut. Ik heb Vue.js niet alleen zelfstandig gebruikt, maar ook geïntegreerd met backend-technologieën voor dynamische en responsieve webapplicaties.
-                    </p>
-                </div>
-            </div>
+            <div class="grid lg:grid-cols-2 gap-10 lg:m-4">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4 text-center">Frontend</h2>
 
-            <h2 class="text-3xl font-bold my-4">Backend Vaardigheden</h2>
-            <div class="card bg-neutral text-neutral-content lg:w-3/6 mb-4">
-                <div class="card-body items-center">
-                    <h1 class="card-title text-3xl font-bold">C#</h1>
-                    <p>
-                        Ik heb uitgebreide ervaring met C# door het werken aan diverse projecten, waaronder het ontwikkelen van console-applicaties en services. Met ASP.NET bouw ik schaalbare webapplicaties en RESTful APIs.
-                    </p>
+                    <SkillCard :src="HTML5Logo" alt="html" :delay="900">
+                        HTML vormt de basis van mijn webontwikkeling. Ik gebruik het om webpagina's te structureren en semantische HTML toe te passen voor toegankelijkere en beter leesbare content.
+                    </SkillCard>
+                
+                    <SkillCard :src="CSS3Logo" alt="css" :delay="1200">
+                        Ik heb uitgebreide ervaring met CSS, inclusief frameworks zoals Tailwind en Bootstrap. CSS is essentieel om visueel aantrekkelijke en toegankelijke interfaces te bouwen.
+                    </SkillCard>
+                
+                    <SkillCard :src="TailwindLogo" alt="tailwind" :delay="1500">
+                      Ik maak veel gebruik van Tailwind CSS en ben vertrouwd met bibliotheken zoals <Link href="https://preline.co/" target="_blank">Preline UI</Link> en <Link href="https://daisyui.com/" target="_blank">daisyUI</Link>, die ik in dit portfolio heb gebruikt voor een consistente ervaring.
+                    </SkillCard>
+                
+                    <SkillCard :src="JavaScriptLogo" alt="javascript" :delay="1800">
+                      JavaScript geeft mij de mogelijkheid om interactieve en dynamische webapplicaties te bouwen.
+                    </SkillCard>
+                
+                    <SkillCard :src="VueLogo" alt="vue.js" :delay="2000">
+                      Vue.js is mijn go-to framework voor het ontwikkelen van dynamische interfaces. Ik heb het in verschillende projecten gebruikt, waaronder dit portfolio.
+                    </SkillCard>
+                </div>
+
+                <div>
+                    <h2 class="text-3xl font-bold mb-4 text-center">Backend</h2>
+                    <SkillCard :src="SQLLogo" alt="sql logo" :delay="900">
+                        Ik heb ervaring met databasebeheer in zowel MySQL als Microsoft SQL. Dit stelt me in staat om robuuste en efficiënte backends te bouwen die gegevens veilig opslaan en verwerken.
+                    </SkillCard>        
+
+                    <SkillCard :src="CSharpLogo" alt="csharp logo" :delay="1200">
+                        Met C# en ASP.NET heb ik diverse webapplicaties ontwikkeld, inclusief RESTful APIs en backends voor schaalbare systemen. Mijn ervaring omvat object-georiënteerde programmeerprincipes en best practices.
+                    </SkillCard>        
+
+                    <SkillCard :src="PHPLogo" alt="php  logo" :delay="1500">
+                        Tijdens mijn studie heb ik met PHP gewerkt, met name in combinatie met Laravel voor het bouwen van efficiënte webapplicaties en API's, waarbij ik MySQL-databases heb geïntegreerd.
+                    </SkillCard>        
+
+                    <SkillCard :src="LaravelLogo" alt="laravel logo" :delay="1800">
+                        Laravel is het framework waarin ik tijdens mijn studie veel ervaring heb opgedaan. Ik heb het gebruikt voor het bouwen van complexe backends voor verschillende webapplicaties.
+                    </SkillCard>        
+
+                    <SkillCard :src="PythonLogo" alt="python logo" :delay="2000">
+                        Python gebruik ik voor het automatiseren van processen, het bouwen van scripts, en data-analyse. Het is een flexibele taal die ik heb gebruikt in zowel kleine scripts als grotere applicaties. Later wil ik Python gebruiken voor AI.
+                    </SkillCard>
                 </div>
             </div>
-            <div class="card bg-neutral text-neutral-content lg:w-3/6 mb-4">
-                <div class="card-body items-center">
-                    <h1 class="card-title text-3xl font-bold">PHP</h1>
-                    <p>
-                        Tijdens mijn studie heb ik met PHP gewerkt, waarbij ik de basisprincipes van webontwikkeling heb geleerd. Bij Mobicoach heb ik verder gewerkt met het Laravel-framework, waarmee ik MySQL-databases heb geïntegreerd.
-                    </p>
-                </div>
-            </div>
-            <div class="card bg-neutral text-neutral-content lg:w-3/6 mb-4">
-                <div class="card-body items-center">
-                    <h1 class="card-title text-3xl font-bold">Python</h1>
-                    <p>
-                        Mijn ervaring met Python omvat het bouwen van scripts en applicaties voor diverse doeleinden. Deze taal helpt me om efficiënt en effectief te programmeren, vooral in data-analyse en automatisering.
-                    </p>
-                </div>
-            </div>
-        </section>
+        </div>
     </div>
 </template>
 
-
-<style scoped>
-</style>
+<style scoped></style>

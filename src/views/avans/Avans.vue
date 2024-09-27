@@ -1,66 +1,70 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
+import Link from '@/components/Link.vue';
+import InteractiveImage from '@/components/InteractiveImage.vue';
+
+import MarvelousLogo from '@/assets/images/marvelous_logo.png'
 import IconGitHub from '@/components/icons/IconGitHub.vue';
 
 const projects = ref([
     {
         title: 'Space project',
         badges: ['HTML', 'CSS'],
-        description: 'In project moesten we een website gaan maken met alleen maar HTML en CSS, geen javascript, frameworks en libraries zodat we goed HTML en CSS goed kennen. Kennis over HTML en CSS.',
+        description: 'In eindopdracht moesten we een website gaan maken met alleen maar HTML en CSS, geen javascript, frameworks en libraries zodat we goed HTML en CSS goed kennen. Kennis over HTML en CSS.',
         link: 'https://github.com/Luuk0510/space-project'
     },
     {
         title: 'Beestje op je feestje',
         badges: ['C#', 'Bootstrap'],
-        description: 'Voor de eindopdracht van het vak PROG6 heb ik samen met een medestudent een webapplicatie ontwikkeld genaamd "Beestje op je Feestje". Deze applicatie is ontworpen voor een boerderij die beestjes verhuurt voor feesten. Met de applicatie kunnen gebruikers eenvoudig beestjes reserveren voor hun evenementen.',
+        description: 'In deze eindopdracht heb ik samen met een medestudent een webapplicatie ontwikkeld genaamd "Beestje op je Feestje". Deze applicatie is ontworpen voor een boerderij die beestjes verhuurt voor feesten. Met de applicatie kunnen gebruikers eenvoudig beestjes reserveren voor hun evenementen.',
         link: 'https://github.com/Luuk0510/beestje-op-je-feestje'
     },
     {
         title: 'Bumbo',
         badges: ['C#', 'Bootstrap'],
-        description: 'Dit is een beschrijving van het Project.',
+        description: 'In deze project heb ik met mijn team gewerkt aan een oplossing voor het fictieve bedrijf Bumbo. We hebben een roostersysteem ontwikkeld dat filiaalmanagers ondersteunt bij het efficiënter inplannen van medewerkers en het bijhouden van gewerkte uren. Daarnaast hebben we een nieuw kloksysteem geïntegreerd met NFC-technologie om tijdregistratie te vereenvoudigen.',
+        link: 'https://github.com/Luuk0510/bumbo'
     },
     {
         title: 'Ninja Frog',
-        badges: ['Unity'],
-        description: 'Dit is een beschrijving van het Project.',
+        badges: ['Unity', 'C#'],
+        description: 'In deze eindopdracht heb ik een Unity-game gemaakt genaamd "Ninja Frog," een 2D-platformspel in de stijl van Super Mario Bros. In het spel bestuur je een ninja kikker die door uitdagende levels springt, vijanden verslaat en fruit verzamelt. Het spel bevat power-ups, checkpoints en een highscoresysteem.',
         link: 'https://github.com/Luuk0510/space-project'
     },
     {
         title: 'Project Agile',
         badges: ['Laravel', 'Tailwind', 'Preline UI'],
-        description: 'Dit is een beschrijving van het Project.',
+        description: 'In dit project heb ik samen met mijn team een CMS ontwikkeld voor een echte klant, waarbij we gebruik hebben gemaakt van de Scrum- en Agile-methodologieën.',
     },
     {
         title: 'Bazaar',
         badges: ['Laravel', 'Tailwind', 'Preline UI'],
-        description: 'Dit is een beschrijving van het Project.',
+        description: 'In deze eindopdracht heb ik samen met een team een platform ontwikkeld voor een startup die een concurrent van Marktplaats wil worden, met extra functies zoals veilingen en verhuur. Het platform is geschikt voor particulieren en bedrijven en biedt whitelabel-opties. We werkten volgens Scrum en Agile.',
         link: 'https://github.com/Luuk0510/bazaar'
     },
     {
         title: 'Bazaar transport',
         badges: ['Javascript', 'SCSS'],
-        description: 'Dit is een beschrijving van het Project.',
+        description: 'Voor deze eindopdracht heb ik samen met een medestudent een transport-simulatie-app ontwikkeld in JavaScript. De app simuleert hoe pakketten in vrachtwagens worden geladen, met drag-and-drop functies en weersafhankelijke beperkingen.',
         link: 'https://github.com/Luuk0510/bazaar-transport'
     },
     {
         title: 'Galactic Gladiators',
         badges: ['Python', 'PyGame'],
-        description: 'Dit is een beschrijving van het Project.',
+        description: 'Voor deze eindopdracht heb ik samen met een medestudent een strategisch bordspel genaamd "Galactic Gladiators" ontwikkeld in Python. We gebruikten PyGame om het spel volledig te bouwen, waarbij spelers een leger besturen om de vlag van de tegenstander te veroveren.',
         link: 'https://github.com/Luuk0510/galactic-gladiators'
     },
     {
         title: 'De Gouden Draak',
         badges: ['Laravel', 'Vue', 'Tailwind', 'Preline UI'],
-        description: 'Dit is een beschrijving van het Project.',
+        description: 'Voor deze eindopdracht heb ik samen met een medestudent een nieuwe website ontwikkeld voor het fictieve restaurant De Gouden Draak. We gebruikten Laravel en Vue.js en implementeerden een OTAP-omgeving, met functies zoals een menu configurator en een vernieuwd kassasysteem met tablets',
         link: 'https://github.com/Luuk0510/de-gouden-draak'
     }
 ]);
 </script>
 
 <template>
-    <div class="absolute">
         <section class="flex flex-col justify-center items-center lg:my-20 md:mb-20">
             <h1 class="text-4xl font-black mb-5">
                 Avans Hogeschool
@@ -68,7 +72,7 @@ const projects = ref([
             <div class="card bg-neutral text-neutral-content lg:w-3/6">
                 <div class="card-body items-center">
                     <p>
-                        Ik ben derdejaars student Informatica aan Avans Hogeschool in Den Bosch. Tijdens mijn studie heb ik gewerkt met programmeertalen zoals C#, Laravel, Python en Unity, met een focus op webapplicaties.
+                        Ik ben derdejaars student Informatica aan <Link href="https://www.avans.nl/" target="_blank">Avans Hogeschool</Link> in Den Bosch. Tijdens mijn studie heb ik gewerkt met programmeertalen zoals C#, Laravel, Python en Unity, met een focus op webapplicaties.
                     </p>
                     <p>
                         In duo's heb ik veel ervaring opgedaan met samenwerking en projectmanagement. Ik heb methodieken zoals Agile, Scrum en Kanban gebruikt, wat mijn vaardigheden in planning, communicatie en flexibiliteit heeft verbeterd.
@@ -82,6 +86,21 @@ const projects = ref([
                 </div>
             </div>
         </section>
+
+        <section class="flex flex-col justify-center items-center text-center lg:my-20 md:mb-20">
+            <h2 class="text-3xl font-black text-center mb-5">Stage</h2>
+            <div class="card bg-neutral-content shadow-xl">
+                <div class="card-body">
+                    <InteractiveImage 
+                        :src="MarvelousLogo" 
+                        alt="Marvelous solutions logo" 
+                        width="350px" 
+                        height="100px" 
+                    />
+                    <router-link to="/marvelous" class="btn btn-primary text-base mt-2">Lees meer over mijn stage bij Marvelous</router-link>
+                </div>
+            </div>  
+        </section>  
 
         <section class="flex flex-col justify-center items-center text-center">
             <h2 class="text-3xl font-black text-center mb-10">Projecten</h2>
@@ -115,7 +134,7 @@ const projects = ref([
                 </div>
             </div>
         </section>
-    </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>
