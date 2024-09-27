@@ -13,35 +13,36 @@ const projects = ref([
     {
         title: 'Beestje op je feestje',
         badges: ['C#', 'Bootstrap'],
-        description: 'Voor de eindopdracht van het vak PROG6 heb ik samen met een medestudent een webapplicatie ontwikkeld genaamd "Beestje op je Feestje". Deze applicatie is ontworpen voor een boerderij die beestjes verhuurt voor feesten. Met de applicatie kunnen gebruikers eenvoudig beestjes reserveren voor hun evenementen.',
+        description: 'In dit project heb ik samen met een medestudent een webapplicatie ontwikkeld genaamd "Beestje op je Feestje". Deze applicatie is ontworpen voor een boerderij die beestjes verhuurt voor feesten. Met de applicatie kunnen gebruikers eenvoudig beestjes reserveren voor hun evenementen.',
         link: 'https://github.com/Luuk0510/beestje-op-je-feestje'
     },
     {
         title: 'Bumbo',
         badges: ['C#', 'Bootstrap'],
-        description: 'Dit is een beschrijving van het Project.',
+        description: 'In dit project heb ik met mijn team gewerkt aan een oplossing voor het fictieve bedrijf Bumbo. We hebben een roostersysteem ontwikkeld dat filiaalmanagers ondersteunt bij het efficiënter inplannen van medewerkers en het bijhouden van gewerkte uren. Daarnaast hebben we een nieuw kloksysteem geïntegreerd met NFC-technologie om tijdregistratie te vereenvoudigen.',
+        link: 'https://github.com/Luuk0510/bumbo'
     },
     {
         title: 'Ninja Frog',
         badges: ['Unity'],
-        description: 'Dit is een beschrijving van het Project.',
+        description: 'In dit project heb ik een Unity-game gemaakt genaamd "Ninja Frog," een 2D-platformspel in de stijl van Super Mario Bros. In het spel bestuur je een ninja kikker die door uitdagende levels springt, vijanden verslaat en fruit verzamelt. Het spel bevat power-ups, checkpoints en een highscoresysteem.',
         link: 'https://github.com/Luuk0510/space-project'
     },
     {
         title: 'Project Agile',
         badges: ['Laravel', 'Tailwind', 'Preline UI'],
-        description: 'Dit is een beschrijving van het Project.',
+        description: 'In dit project heb ik samen met mijn team een CMS ontwikkeld voor een echte klant, waarbij we gebruik hebben gemaakt van de Scrum- en Agile-methodologieën.',
     },
     {
         title: 'Bazaar',
         badges: ['Laravel', 'Tailwind', 'Preline UI'],
-        description: 'Dit is een beschrijving van het Project.',
+        description: 'In dit project heb ik samen met een team een platform ontwikkeld voor een startup die een concurrent van Marktplaats wil worden, met extra functies zoals veilingen en verhuur. Het platform is geschikt voor particulieren en bedrijven en biedt whitelabel-opties. We werkten volgens Scrum en Agile.',
         link: 'https://github.com/Luuk0510/bazaar'
     },
     {
         title: 'Bazaar transport',
         badges: ['Javascript', 'SCSS'],
-        description: 'Dit is een beschrijving van het Project.',
+        description: 'Voor deze eindopdracht heb ik samen met een medestudent een transport-simulatie-app ontwikkeld in JavaScript. De app simuleert hoe pakketten in vrachtwagens worden geladen, met drag-and-drop functies en weersafhankelijke beperkingen.',
         link: 'https://github.com/Luuk0510/bazaar-transport'
     },
     {
