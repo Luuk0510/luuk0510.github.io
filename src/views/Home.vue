@@ -68,7 +68,7 @@ onMounted(() => {
 
     setTimeout(() => {
         showButton.value = true;
-    }, 6500);
+    }, 7500);
 
     window.addEventListener('scroll', handleScroll);
 });

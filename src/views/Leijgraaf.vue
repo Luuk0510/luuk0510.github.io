@@ -32,7 +32,7 @@ usePageTitle();
         </div>
     </section>
 
-    <section class="flex flex-col justify-center items-center text-center lg:my-20 md:mb-20">
+    <section class="flex flex-col justify-center items-center text-center mb-20">
         <h2 class="text-3xl font-black text-center mb-5">Stage</h2>
         <div class="card bg-neutral-content shadow-xl">
             <div class="card-body">

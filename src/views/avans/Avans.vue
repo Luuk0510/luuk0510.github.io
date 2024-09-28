@@ -90,7 +90,7 @@ usePageTitle();
         </div>
     </section>
 
-    <section class="flex flex-col justify-center items-center text-center lg:my-20 md:mb-20">
+    <section class="flex flex-col justify-center items-center text-center mb-20">
         <h2 class="text-3xl font-black text-center mb-5">Stage</h2>
         <div class="card bg-neutral-content shadow-xl">
             <div class="card-body">
@@ -109,13 +109,7 @@ usePageTitle();
         <h2 class="text-3xl font-black text-center mb-10">Projecten</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:w-5/6 w-full">
             <div 
-                v-for="(project, index) in projects" 
-                :key="index" 
-                v-motion
-                :initial="{ opacity: 0, x: (Math.floor(index / 3) % 2 === 0) ? -200 : 200 }"
-                :enter="{ opacity: 1, x: 0 }" 
-                :delay="1000 + (index * 200)" 
-                :duration="500"
+                v-for="(project) in projects" 
                 class="card bg-base-200 shadow-xl mb-6 relative"
             >
                 <div class="card-body">
