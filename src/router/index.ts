@@ -1,112 +1,51 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Home from '@/views/Home.vue'
-import AboutMe from '@/views/AboutMe.vue'
-import Skills from '@/views/Skills.vue'
-import Experience from '@/views/Experience.vue'
-import Education from '@/views/Education.vue'
-import Contact from '@/views/Contact.vue'
-import Leijgraaf from '@/views/Leijgraaf.vue'
-import Mobicoach from '@/views/Mobicoach.vue'
-import Avans from '@/views/avans/Avans.vue'
-import Marvelous from '@/views/Marvelous.vue'
+
+// Lazy load voor betere performance
+const Home = () => import('@/views/Home.vue')
+const Skills = () => import('@/views/Skills.vue')
+const Experience = () => import('@/views/Experience.vue')
+const Education = () => import('@/views/Education.vue')
+const Contact = () => import('@/views/Contact.vue')
+const Leijgraaf = () => import('@/views/Leijgraaf.vue')
+const Mobicoach = () => import('@/views/Mobicoach.vue')
+const Avans = () => import('@/views/avans/Avans.vue')
+const Marvelous = () => import('@/views/Marvelous.vue')
+
+const createRoute = (
+  path: string, 
+  name: string, 
+  component: any, 
+  index: number, 
+  title: string | null = null
+): RouteRecordRaw => {
+  return {
+    path,
+    name,
+    component,
+    meta: {
+      index,
+      enterClass: 'animate__animated animate__fadeInRight',
+      leaveClass: 'animate__animated animate__fadeOutLeft',
+      title: title || name,
+    },
+  }
+}
 
 const routes: Array<RouteRecordRaw> = [
-    {
-        path: '/',
-        name: 'Home', 
-        component: Home,
-        meta: {
-            index: 0, 
-            enterClass: 'animate__animated animate__fadeInLeft',
-            leaveClass: 'animate__animated animate__fadeOutRight',
-        },
-    },
-    { 
-        path: '/skills', 
-        name: 'Skills', 
-        component: Skills,
-        meta: {
-            index: 1,
-            enterClass: 'animate__animated animate__fadeInRight',
-            leaveClass: 'animate__animated animate__fadeOutLeft',
-        },
-    },
-    { 
-        path: '/experience', 
-        name: 'Experience', 
-        component: Experience,
-        meta: {
-            index: 2,
-            enterClass: 'animate__animated animate__fadeInRight',
-            leaveClass: 'animate__animated animate__fadeOutLeft',
-        },  
-    },
-    { 
-        path: '/education', 
-        name: 'Education', 
-        component: Education,
-        meta: {
-            index: 3,
-            enterClass: 'animate__animated animate__fadeInRight',
-            leaveClass: 'animate__animated animate__fadeOutLeft',
-        },  
-    },
-    { 
-        path: '/contact', 
-        name: 'Contact', 
-        component: Contact,
-        meta: {
-            index: 4,
-            enterClass: 'animate__animated animate__fadeInRight',
-            leaveClass: 'animate__animated animate__fadeOutLeft',
-        }, 
-    },
-    { 
-        path: '/leijgraaf', 
-        name: 'Leijgraaf', 
-        component: Leijgraaf,
-        meta: {
-            index: 5,
-            enterClass: 'animate__animated animate__fadeInRight',
-            leaveClass: 'animate__animated animate__fadeOutLeft',
-        }, 
-    },
-    { 
-        path: '/mobicoach', 
-        name: 'Mobicoach', 
-        component: Mobicoach,
-        meta: {
-            index: 6,
-            enterClass: 'animate__animated animate__fadeInRight',
-            leaveClass: 'animate__animated animate__fadeOutLeft',
-        }, 
-    },
-    { 
-        path: '/avans', 
-        name: 'Avans', 
-        component: Avans,
-        meta: {
-            index: 7,
-            enterClass: 'animate__animated animate__fadeInRight',
-            leaveClass: 'animate__animated animate__fadeOutLeft',
-        }, 
-    },
-    { 
-        path: '/marvelous', 
-        name: 'Marvelous', 
-        component: Marvelous,
-        meta: {
-            index: 8,
-            enterClass: 'animate__animated animate__fadeInRight',
-            leaveClass: 'animate__animated animate__fadeOutLeft',
-        }, 
-    }
+  createRoute('/', 'Home', Home, 0),
+  createRoute('/skills', 'Skills', Skills, 1, 'Vaardigheden'),
+  createRoute('/experience', 'Experience', Experience, 2, 'Ervaring'),
+  createRoute('/education', 'Education', Education, 3, 'Opleiding'),
+  createRoute('/contact', 'Contact', Contact, 4, 'Contact'),
+  createRoute('/leijgraaf', 'Leijgraaf', Leijgraaf, 5, 'Leijgraaf'),
+  createRoute('/mobicoach', 'Mobicoach', Mobicoach, 6, 'Mobicoach'),
+  createRoute('/avans', 'Avans', Avans, 7, 'Avans'),
+  createRoute('/marvelous', 'Marvelous', Marvelous, 8, 'Marvelous'),
 ]
 
-
 const router = createRouter({
-    history: createWebHistory(),
-    routes
+  history: createWebHistory(),
+  routes,
 })
 
 export default router
