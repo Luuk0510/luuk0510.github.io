@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue';
 
 import Timeline from '@/components/Timeline.vue';
@@ -132,7 +132,7 @@ const scrollToTop = () => {
                 <div class="card-body items-center">
                     <h2 class="card-title font-black text-4xl">Over mij!</h2>
                     <p>
-                        Hallo! Ik ben Luuk Spruijtenburg, een derdejaars HBO Informatica student met een passie voor softwareontwikkeling en nieuwe technologieën.
+                        Hallo! Ik ben Luuk, een derdejaars HBO Informatica student met een passie voor softwareontwikkeling en nieuwe technologieën.
                         Ik werk graag aan uitdagende projecten en gebruik mijn kennis in programmeertalen zoals C#, Laravel, JavaScript, SQL, HTML en CSS om creatieve oplossingen te vinden.
                     </p>
                     <p>

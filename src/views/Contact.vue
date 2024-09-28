@@ -1,17 +1,17 @@
-<script setup>
-import IconLinkedIn from '@/components/icons/IconLinkedIn.vue';
+<script setup lang="ts">
+import { usePageTitle } from '@/composables/usePageTitle'
+
+import Link from '@/components/Link.vue';
+
+usePageTitle();
 </script>
 
 <template>
-    <div class="justify-center items-center">
-        <div class="flex flex-col justify-center items-center lg:my-20 mb-20">
+    <div class="flex justify-center items-center min-h-screen">
+        <section class="flex flex-col justify-center items-center">
             <h1 class="text-4xl font-black mb-5">Contact</h1>
-            <p>Contracteer mij a.u.b op LinkedIn:
-                <a href="https://www.linkedin.com/in/luuk-spruijtenburg-05aa89243/" target="_blank">
-                    <IconLinkedIn size="60px" />
-                </a>
-            </p>
-        </div>  
+            <p>Contacteer mij astublieft op mijn <Link href="www.linkedin.com/in/luuk-spruijtenburg-05aa89243" target="_blank">LinkedIn</Link></p>
+        </section>  
     </div>  
 </template>
 

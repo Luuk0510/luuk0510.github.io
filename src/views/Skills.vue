@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
+import { usePageTitle } from '@/composables/usePageTitle'
 
 import SkillCard from '@/components/SkillCard.vue';
 import Link from '@/components/Link.vue';
@@ -21,11 +22,13 @@ onMounted(() => {
     const theme = document.documentElement.getAttribute('data-theme');
     isBlackTheme.value = theme === 'black';
 });
+
+usePageTitle();
 </script>
 
 <template>
     <div class="lg:inset-0 justify-center items-center">
-        <div class="flex flex-col justify-center items-center lg:my-20 mb-20">
+        <div class="flex flex-col justify-center items-center mt-24 mb-20">
             <h1 class="text-4xl font-black mb-5">Mijn vaardigheden</h1>
 
             <div class="grid lg:grid-cols-2 gap-10 lg:m-4">
