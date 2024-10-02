@@ -1,15 +1,15 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
-// Lazy load voor betere performance
-const Home = () => import('@/views/Home.vue')
-const Skills = () => import('@/views/Skills.vue')
-const Experience = () => import('@/views/Experience.vue')
-const Education = () => import('@/views/Education.vue')
-const Contact = () => import('@/views/Contact.vue')
-const Leijgraaf = () => import('@/views/Leijgraaf.vue')
-const Mobicoach = () => import('@/views/Mobicoach.vue')
-const Avans = () => import('@/views/avans/Avans.vue')
-const Marvelous = () => import('@/views/Marvelous.vue')
+const Home = () => import('@/views/Home.vue');
+const Skills = () => import('@/views/Skills.vue');
+const Experience = () => import('@/views/Experience.vue');
+const Education = () => import('@/views/Education.vue');
+const Contact = () => import('@/views/Contact.vue');
+const Leijgraaf = () => import('@/views/Leijgraaf.vue');
+const Mobicoach = () => import('@/views/Mobicoach.vue');
+const Avans = () => import('@/views/avans/Avans.vue');
+const SpaceProject = () => import('@/views/avans/ProjectSpace.vue');
+const Marvelous = () => import('@/views/Marvelous.vue');
 
 const createRoute = (
   path: string, 
@@ -40,7 +40,8 @@ const routes: Array<RouteRecordRaw> = [
   createRoute('/leijgraaf', 'Leijgraaf', Leijgraaf, 5, 'Leijgraaf'),
   createRoute('/mobicoach', 'Mobicoach', Mobicoach, 6, 'Mobicoach'),
   createRoute('/avans', 'Avans', Avans, 7, 'Avans'),
-  createRoute('/marvelous', 'Marvelous', Marvelous, 8, 'Marvelous'),
+  createRoute('/spaceproject', 'Space Project', SpaceProject, 8, 'Space Project'),
+  createRoute('/marvelous', 'Marvelous', Marvelous, 20, 'Marvelous'),
 ]
 
 const router = createRouter({

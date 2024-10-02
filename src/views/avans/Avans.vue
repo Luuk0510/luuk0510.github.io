@@ -124,7 +124,7 @@ usePageTitle();
                     </div>
                     <p class="text-start">{{ project.description }}</p>
                     <div class="flex justify-center mb-4">
-                        <router-link to="/" class="btn btn-primary text-base">Meer info</router-link>
+                        <router-link to="/spaceproject" class="btn btn-primary text-base">Meer info</router-link>
                     </div>
                 </div>
             </div>
