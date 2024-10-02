@@ -1,0 +1,1 @@
+import{_ as o,o as c,c as t,a}from"./index-DoStB4vt.js";const s={};function n(r,e){return c(),t("div",null,e[0]||(e[0]=[a("h1",{class:"text-4xl font-black"},"Mobicoach",-1)]))}const f=o(s,[["render",n]]);export{f as default};
