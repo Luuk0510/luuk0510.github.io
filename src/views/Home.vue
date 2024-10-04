@@ -10,8 +10,8 @@ import IconLinkedIn from '@/components/icons/IconLinkedIn.vue';
 
 import HTML5Logo from '@/assets/images/html5_logo.png';
 import CSS3Logo from '@/assets/images/css3_logo.png';
-import JavaScriptLogo from '@/assets/images/javascript_logo.png'
-import TailwindLogo from '@/assets/images/tailwind_logo.png'
+import JavaScriptLogo from '@/assets/images/javascript_logo.png';
+import TailwindLogo from '@/assets/images/tailwind_logo.png';
 import VueLogo from '@/assets/images/vue_logo.png';
 import SQLLogo from '@/assets/images/sql_logo.png';
 import CSharpLogo from '@/assets/images/csharp_logo.png';
@@ -24,6 +24,7 @@ const displayedText = ref<string>("");
 const isTyping = ref<boolean>(true);
 const showBlinkingCursor = ref<boolean>(false); 
 const showButton = ref<boolean>(false);
+const linksAnimated = ref<boolean>(false);
 
 const typingSpeed = 150;
 const cursorBlinkDuration = 3000;
@@ -47,40 +48,59 @@ const logos = ref<Logo[]>([
 ]);
 
 onMounted(() => {
-    setTimeout(() => {
-        let index = 0;
-        const type = () => {
-            if (index < fullText.length) {
-                displayedText.value += fullText[index];
-                index++;
-                setTimeout(type, typingSpeed);
-            } else {
-                isTyping.value = false;
-                showBlinkingCursor.value = true;
-
-                setTimeout(() => {
-                    showBlinkingCursor.value = false;
-                }, cursorBlinkDuration);
-            }
-        };
-        type();
-    }, 1000);
-
-    setTimeout(() => {
-        showButton.value = true;
-    }, 7500);
-
+    handleTextTyping();
+    handleLinkAnimations();
     window.addEventListener('scroll', handleScroll);
 });
+
+function handleTextTyping(): void {
+    const hasTyped = sessionStorage.getItem('hasTyped');
+
+    if (!hasTyped) {
+        typeText(() => {
+            sessionStorage.setItem('hasTyped', 'true');
+        });
+    } else {
+        displayedText.value = fullText;
+        showButton.value = true;
+        isTyping.value = false;
+        showBlinkingCursor.value = false;
+    }
+}
+
+function handleLinkAnimations(): void {
+    const hasAnimatedLinks = sessionStorage.getItem('hasAnimatedLinks');
+    if (!hasAnimatedLinks) {
+        linksAnimated.value = true;
+        sessionStorage.setItem('hasAnimatedLinks', 'true');
+    }
+}
+
+function typeText(onComplete: () => void): void {
+    let index = 0;
+    const type = () => {
+        if (index < fullText.length) {
+            displayedText.value += fullText[index];
+            index++;
+            setTimeout(type, typingSpeed);
+        } else {
+            isTyping.value = false;
+            showBlinkingCursor.value = true;
+
+            setTimeout(() => {
+                showBlinkingCursor.value = false;
+                showButton.value = true;
+                onComplete();
+            }, cursorBlinkDuration);
+        }
+    };
+    type();
+}
 
 function handleScroll(): void {
     const button = document.querySelector<HTMLDivElement>('.bounce2');
     if (button) {
-        if (window.scrollY > 200) {
-            button.style.opacity = '0';
-        } else {
-            button.style.opacity = '1';
-        }
+        button.style.opacity = window.scrollY > 200 ? '0' : '1';
     }
 }
 
@@ -89,19 +109,13 @@ function scrollToItem(): void {
     if (timeline) {
         const timelinePosition = timeline.getBoundingClientRect().top + window.scrollY;
         window.scrollTo({
-            top: timelinePosition - 150,
+            top: timelinePosition - 200,
             behavior: 'smooth',
         });
     }
 }
-
-const scrollToTop = () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-    });
-};
 </script>
+
 
 <template>
     <section class="flex flex-col justify-center items-center text-center h-[calc(100vh-100px)]">
@@ -112,10 +126,30 @@ const scrollToTop = () => {
         </h1>
         <div class="flex justify-center mt-2 gap-x-2">
             <a href="https://github.com/Luuk0510" target="_blank">
-                <IconGitHub v-motion-slide-left :delay="5000" :duration="1200" size="60px" />
+                <IconGitHub 
+                    v-if="linksAnimated" 
+                    v-motion-slide-left 
+                    :delay="4500" 
+                    :duration="1200" 
+                    size="60px" 
+                />
+                <IconGitHub 
+                    v-else 
+                    size="60px" 
+                />
             </a>
             <a href="https://www.linkedin.com/in/luuk-spruijtenburg-05aa89243/" target="_blank">
-                <IconLinkedIn v-motion-slide-right :delay="5000" :duration="1200" size="60px" />
+                <IconLinkedIn 
+                    v-if="linksAnimated" 
+                    v-motion-slide-right 
+                    :delay="4500" 
+                    :duration="1200" 
+                    size="60px" 
+                />
+                <IconLinkedIn 
+                    v-else 
+                    size="60px" 
+                />
             </a>
         </div>
     </section>
@@ -172,7 +206,7 @@ const scrollToTop = () => {
                 </div>
             </div>
             <div class="flex justify-center items-center mt-10" v-motion-pop-visible-once :delay="1000" :duration="500">
-                <router-link to="/skills" @click.native="scrollToTop" class="btn btn-primary text-lg">Lees meer over mijn vaardigheden</router-link>
+                <router-link to="/skills" class="btn btn-primary text-lg">Lees meer over mijn vaardigheden</router-link>
             </div>
         </div>
     </section>

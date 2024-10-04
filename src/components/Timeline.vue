@@ -33,12 +33,6 @@ const timelineItems = ref([
     },
 ]);
 
-const scrollToTop = () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-    });
-};
 </script>
 
 
@@ -56,7 +50,7 @@ const scrollToTop = () => {
                     <div class="card-body">
                         <div class="text-lg font-black">{{ item.title }}</div>
                         <p>{{ item.description }}</p>
-                        <router-link :to="item.link" @click.native="scrollToTop" class="flex flex-col justify-center items-center">
+                        <router-link :to="item.link" class="flex flex-col justify-center items-center">
                             <div class="btn btn-primary text-base">
                                 Meer lezen
                             </div>
