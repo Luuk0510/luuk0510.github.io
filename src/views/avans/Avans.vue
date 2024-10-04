@@ -22,7 +22,7 @@ const projects = ref([
         badges: ['C#', 'Bootstrap'],
         description: 'In deze eindopdracht heb ik samen met een medestudent een webapplicatie ontwikkeld genaamd "Beestje op je Feestje". Deze applicatie is ontworpen voor een boerderij die beestjes verhuurt voor feesten. Met de applicatie kunnen gebruikers eenvoudig beestjes reserveren voor hun evenementen.',
         link: 'https://github.com/Luuk0510/beestje-op-je-feestje',
-        route: '/beestjeopjefeesje',
+        route: '/beestjeopjefeestje',
         buttonText: 'Meer lezen',
     },
     {

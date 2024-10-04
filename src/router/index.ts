@@ -8,7 +8,7 @@ const Contact = () => import('@/views/Contact.vue');
 const Leijgraaf = () => import('@/views/Leijgraaf.vue');
 const Mobicoach = () => import('@/views/Mobicoach.vue');
 const Avans = () => import('@/views/avans/Avans.vue');
-const SpaceProject = () => import('@/views/avans/ProjectSpace.vue');
+const SpaceProject = () => import('@/views/avans/SpaceProject.vue');
 const BeestjeOpJeFeestje = () => import('@/views/avans/BeestjeOpJeFeestje.vue');
 const Bumbo = () => import('@/views/avans/Bumbo.vue');
 const NinjaFrog = () => import('@/views/avans/NinjaFrog.vue');
