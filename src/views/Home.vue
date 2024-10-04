@@ -89,7 +89,7 @@ function scrollToItem(): void {
     if (timeline) {
         const timelinePosition = timeline.getBoundingClientRect().top + window.scrollY;
         window.scrollTo({
-            top: timelinePosition - 150,
+            top: timelinePosition - 170,
             behavior: 'smooth',
         });
     }
