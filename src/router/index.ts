@@ -19,10 +19,10 @@ const GoudenDraak = () => import('@/views/avans/GoudenDraak.vue');
 const Marvelous = () => import('@/views/Marvelous.vue');
 
 const createRoute = (
-  path: string, 
-  name: string, 
-  component: any, 
-  index: number, 
+  path: string,
+  name: string,
+  component: any,
+  index: number,
   title: string | null = null
 ): RouteRecordRaw => {
   return {
@@ -61,6 +61,21 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
-})
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+          resolve({ top: 0 });
+        }, 300);
+      });
+    }
+  },
+});
 
 export default router

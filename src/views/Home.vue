@@ -89,18 +89,11 @@ function scrollToItem(): void {
     if (timeline) {
         const timelinePosition = timeline.getBoundingClientRect().top + window.scrollY;
         window.scrollTo({
-            top: timelinePosition - 170,
+            top: timelinePosition - 200,
             behavior: 'smooth',
         });
     }
 }
-
-const scrollToTop = () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-    });
-};
 </script>
 
 <template>
@@ -172,7 +165,7 @@ const scrollToTop = () => {
                 </div>
             </div>
             <div class="flex justify-center items-center mt-10" v-motion-pop-visible-once :delay="1000" :duration="500">
-                <router-link to="/skills" @click.native="scrollToTop" class="btn btn-primary text-lg">Lees meer over mijn vaardigheden</router-link>
+                <router-link to="/skills" class="btn btn-primary text-lg">Lees meer over mijn vaardigheden</router-link>
             </div>
         </div>
     </section>
