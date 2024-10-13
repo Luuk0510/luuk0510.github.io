@@ -191,7 +191,7 @@ function scrollToItem(): void {
                     :key="logo.alt" 
                     v-motion-pop-visible-once 
                     :delay="index * 100" 
-                    :duration="700"
+                    :duration="600"
                 >
                     <div class="card bg-base-200 shadow-xl">
                         <div class="card-body">
@@ -205,7 +205,7 @@ function scrollToItem(): void {
                     </div>
                 </div>
             </div>
-            <div class="flex justify-center items-center mt-10" v-motion-pop-visible-once :delay="1000" :duration="500">
+            <div class="flex justify-center items-center mt-10" v-motion-pop-visible-once :delay="1000" :duration="300">
                 <router-link to="/skills" class="btn btn-primary text-lg">Lees meer over mijn vaardigheden</router-link>
             </div>
         </div>

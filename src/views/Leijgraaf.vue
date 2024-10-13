@@ -2,7 +2,6 @@
 import { usePageTitle } from '@/composables/usePageTitle'
 
 import Link from '@/components/Link.vue';
-import InteractiveImage from '@/components/InteractiveImage.vue';
 
 import MobicoachLogo from '@/assets/images/mobicoach_logo.png';
 
@@ -36,7 +35,7 @@ usePageTitle();
         <h2 class="text-3xl font-black text-center mb-5">Stage</h2>
         <div class="card bg-neutral-content shadow-xl">
             <div class="card-body">
-                <InteractiveImage 
+                <img 
                     :src="MobicoachLogo" 
                     alt="Mobicoach logo" 
                     width="400px" 
