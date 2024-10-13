@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import VueEasyLightbox from 'vue-easy-lightbox';
+import Screenshot from '@/components/Screenshot.vue';
 import { usePageTitle } from '@/composables/usePageTitle';
 
 import homePage from '@/assets/images/projects/space_project/space_project_home.png';
@@ -89,37 +89,9 @@ usePageTitle();
         </div>
     </section>
 
-    <h1 class="text-4xl font-black text-center">Screenshots</h1>
-    <section class="flex flex-wrap items-center justify-center mt-10 gap-6">
-        <div class="w-full">
-            <div class="flex flex-wrap justify-center gap-6 mb-6">
-                <div v-for="(image, imageIndex) in images" :key="imageIndex" class="w-full md:w-1/4 lg:w-1/4">
-                    <img
-                        @click="showLightbox(imageIndex)"
-                        :src="image"
-                        class="w-full h-64 object-cover rounded-lg shadow-lg transition-transform transform hover:scale-105 cursor-pointer"
-                    />
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <vue-easy-lightbox
-        :visible="visible"
-        :imgs="images"
-        :index="index"
-        :hide-toolbar="true"
-        @hide="visible = false"
-    />
+    <Screenshot :images="images" />
+    
 </template>
 
 <style scoped>
-@media (max-width: 768px) {
-  .flex-wrap {
-    flex-direction: column;
-  }
-  .w-full {
-    width: 100%;
-  }
-}
 </style>
