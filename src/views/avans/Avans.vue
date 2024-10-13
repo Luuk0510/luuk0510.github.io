@@ -112,7 +112,7 @@ usePageTitle();
         <h2 class="text-3xl font-black text-center mb-5">Stage</h2>
         <div class="card bg-neutral-content shadow-xl">
             <div class="card-body">
-                <InteractiveImage 
+                <img 
                     :src="MarvelousLogo" 
                     alt="Marvelous solutions logo" 
                     width="400px" 
