@@ -4,9 +4,23 @@ import Screenshot from '@/components/Screenshot.vue';
 import { usePageTitle } from '@/composables/usePageTitle';
 
 import homePage from '@/assets/images/projects/beestje_op_je_feestje/home_page.png';
+import step1Page from '@/assets/images/projects/beestje_op_je_feestje/step_1_page.png';
+import step2Page from '@/assets/images/projects/beestje_op_je_feestje/step_2_page.png';
+import step3Page from '@/assets/images/projects/beestje_op_je_feestje/step_3_page.png';
+import step4Page from '@/assets/images/projects/beestje_op_je_feestje/step_4_page.png';
+import loginPage from '@/assets/images/projects/beestje_op_je_feestje/login_page.png';
+import beestjeBeheerPage from '@/assets/images/projects/beestje_op_je_feestje/beestje_beheer_page.png';
+import create_user_Page from '@/assets/images/projects/beestje_op_je_feestje/create_user_page.png';
 
 const images = ref<string[]>([
     homePage,
+    step1Page,
+    step2Page,
+    step3Page,
+    step4Page,
+    loginPage,
+    beestjeBeheerPage,
+    create_user_Page,
 ]);
 
 usePageTitle();
