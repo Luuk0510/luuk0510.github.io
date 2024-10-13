@@ -2,12 +2,27 @@
 import { ref } from 'vue';
 import VueEasyLightbox from 'vue-easy-lightbox';
 import { usePageTitle } from '@/composables/usePageTitle';
-import homePage from '@/assets/images/projects/spaceproject/space_project_home.png';
+
+import homePage from '@/assets/images/projects/space_project/space_project_home.png';
+import earthPage from '@/assets/images/projects/space_project/space_project_earth.png';
+import earthPagePhone from '@/assets/images/projects/space_project/space_project_earth_phone.png';
+import venusPage from '@/assets/images/projects/space_project/space_project_venus.png';
+import venus2Page from '@/assets/images/projects/space_project/space_project_venus_2.png';
+import venusPagePhone from '@/assets/images/projects/space_project/space_project_venus_phone.png';
+import marsPage from '@/assets/images/projects/space_project/space_project_mars.png';
+import marsPagePhone from '@/assets/images/projects/space_project/space_project_mars_phone.png';
+import footer from '@/assets/images/projects/space_project/space_project_footer.png';
 
 const images = ref<string[]>([
-    homePage, homePage, homePage, homePage,
-    homePage, homePage, homePage,
-    homePage, homePage,
+    homePage, 
+    earthPage, 
+    earthPagePhone, 
+    venusPage,
+    venus2Page, 
+    venusPagePhone, 
+    marsPage,
+    marsPagePhone,
+    footer,
 ]);
 
 const visible = ref<boolean>(false);
@@ -18,30 +33,11 @@ function showLightbox(idx: number): void {
     visible.value = true;
 }
 
-function groupImages(images: string[]): string[][] {
-    const groups = [];
-    let currentIndex = 0;
-
-    while (currentIndex < images.length) {
-        if ((groups.length % 2) === 0) {
-            // Voeg een groep van 4 toe
-            groups.push(images.slice(currentIndex, currentIndex + 4));
-            currentIndex += 4;
-        } else {
-            // Voeg een groep van 3 toe
-            groups.push(images.slice(currentIndex, currentIndex + 3));
-            currentIndex += 3;
-        }
-    }
-
-    return groups;
-}
-
 usePageTitle();
 </script>
 
 <template>
-    <section class="flex flex-col justify-center items-center mt-24 mb-20">
+    <section class="flex flex-col justify-center items-center mt-24 mb-10">
         <h1 class="text-4xl font-black text-center mb-5">
             Space Project
         </h1>
@@ -94,16 +90,12 @@ usePageTitle();
     </section>
 
     <h1 class="text-4xl font-black text-center">Screenshots</h1>
-    <section class="flex flex-col items-center mt-10 gap-6">
+    <section class="flex flex-wrap items-center justify-center mt-10 gap-6">
         <div class="w-full">
-            <div v-for="(group, groupIndex) in groupImages(images)" :key="groupIndex" class="flex justify-center gap-6 mb-6">
-                <div 
-                    v-for="(image, imageIndex) in group" 
-                    :key="imageIndex" 
-                    :class="groupIndex % 2 === 0 ? 'w-1/4' : 'w-1/4'"
-                >
+            <div class="flex flex-wrap justify-center gap-6 mb-6">
+                <div v-for="(image, imageIndex) in images" :key="imageIndex" class="w-full md:w-1/4 lg:w-1/4">
                     <img
-                        @click="showLightbox(groupIndex * group.length + imageIndex)"
+                        @click="showLightbox(imageIndex)"
                         :src="image"
                         class="w-full h-64 object-cover rounded-lg shadow-lg transition-transform transform hover:scale-105 cursor-pointer"
                     />
@@ -111,7 +103,6 @@ usePageTitle();
             </div>
         </div>
     </section>
-
 
     <vue-easy-lightbox
         :visible="visible"
@@ -122,4 +113,13 @@ usePageTitle();
     />
 </template>
 
-<style scoped></style>
+<style scoped>
+@media (max-width: 768px) {
+  .flex-wrap {
+    flex-direction: column;
+  }
+  .w-full {
+    width: 100%;
+  }
+}
+</style>

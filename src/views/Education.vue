@@ -2,7 +2,6 @@
 import { usePageTitle } from '@/composables/usePageTitle'
 
 import Link from '@/components/Link.vue';
-import InteractiveImage from '@/components/InteractiveImage.vue';
 
 import LeijgraafLogo from '@/assets/images/leijgraaf_logo.png';
 import AvansLogo from '@/assets/images/avans_logo.png';
@@ -21,7 +20,7 @@ usePageTitle();
                     <p v-motion-slide-bottom :delay="800" :duration="800" class="font-mono italic text-lg text-center">sep 2022 - heden</p>
                     <div v-motion-slide-bottom :delay="1000" :duration="800" class="card bg-neutral text-neutral-content">
                         <div class="card-body items-center">
-                            <InteractiveImage 
+                            <img 
                                 :src="AvansLogo" 
                                 alt="Avans logo" 
                                 width="300px" 
@@ -55,7 +54,7 @@ usePageTitle();
                     <p v-motion-slide-bottom :delay="800" :duration="800" class="font-mono italic text-lg text-center">aug 2019 - juni 2022</p>
                     <div v-motion-slide-bottom :delay="1000" :duration="800" class="card bg-neutral text-neutral-content">
                         <div class="card-body items-center">
-                            <InteractiveImage 
+                            <img 
                                 :src="LeijgraafLogo" 
                                 alt="Leijgraaf logo" 
                                 width="300px" 
