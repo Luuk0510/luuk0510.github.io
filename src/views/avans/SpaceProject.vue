@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import Screenshot from '@/components/Screenshot.vue';
 import { usePageTitle } from '@/composables/usePageTitle';
+import Screenshot from '@/components/Screenshot.vue';
 
 import homePage from '@/assets/images/projects/space_project/space_project_home.png';
 import earthPage from '@/assets/images/projects/space_project/space_project_earth.png';
@@ -24,14 +24,6 @@ const images = ref<string[]>([
     marsPagePhone,
     footer,
 ]);
-
-const visible = ref<boolean>(false);
-const index = ref<number>(0);
-
-function showLightbox(idx: number): void {
-    index.value = idx;
-    visible.value = true;
-}
 
 usePageTitle();
 </script>
@@ -85,6 +77,9 @@ usePageTitle();
                     <li><span class="font-bold">HTML/CSS:</span> De website is gebouwd met alleen HTML en CSS, waarbij gebruik is gemaakt van best practices om een nette en functionele website te maken.</li>
                     <li><span class="font-bold">Media Queries:</span> Er zijn media queries gebruikt om de website responsive te maken en ervoor te zorgen dat de layout op verschillende apparaten goed werkt.</li>
                 </ul>
+                <div class="flex justify-center">
+                    <a href="https://luuk0510.github.io/space-project/" target="_blank" class="btn btn-primary text-lg">Link naar project</a>
+                </div>
             </div>
         </div>
     </section>

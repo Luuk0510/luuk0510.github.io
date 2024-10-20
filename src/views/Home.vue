@@ -8,16 +8,16 @@ import IconDownArrow from '@/components/icons/IconDownArrow.vue';
 import IconGitHub from '@/components/icons/IconGitHub.vue';
 import IconLinkedIn from '@/components/icons/IconLinkedIn.vue';
 
-import HTML5Logo from '@/assets/images/html5_logo.png';
-import CSS3Logo from '@/assets/images/css3_logo.png';
-import JavaScriptLogo from '@/assets/images/javascript_logo.png';
-import TailwindLogo from '@/assets/images/tailwind_logo.png';
-import VueLogo from '@/assets/images/vue_logo.png';
-import SQLLogo from '@/assets/images/sql_logo.png';
-import CSharpLogo from '@/assets/images/csharp_logo.png';
-import PHPLogo from '@/assets/images/php_logo.png';
-import LaravelLogo from '@/assets/images/laravel_logo.png';
-import PythonLogo from '@/assets/images/python_logo.png';
+import HTML5Logo from '@/assets/images/logo/html5_logo.png';
+import CSS3Logo from '@/assets/images/logo/css3_logo.png';
+import JavaScriptLogo from '@/assets/images/logo/javascript_logo.png';
+import TailwindLogo from '@/assets/images/logo/tailwind_logo.png';
+import VueLogo from '@/assets/images/logo/vue_logo.png';
+import SQLLogo from '@/assets/images/logo/sql_logo.png';
+import CSharpLogo from '@/assets/images/logo/csharp_logo.png';
+import PHPLogo from '@/assets/images/logo/php_logo.png';
+import LaravelLogo from '@/assets/images/logo/laravel_logo.png';
+import PythonLogo from '@/assets/images/logo/python_logo.png';
 
 const fullText = "Welkom op mijn portfolio!";
 const displayedText = ref<string>("");
@@ -78,6 +78,7 @@ function handleLinkAnimations(): void {
 
 function typeText(onComplete: () => void): void {
     let index = 0;
+
     const type = () => {
         if (index < fullText.length) {
             displayedText.value += fullText[index];
@@ -94,7 +95,10 @@ function typeText(onComplete: () => void): void {
             }, cursorBlinkDuration);
         }
     };
-    type();
+
+    setTimeout(() => {
+        type();
+    }, 500);
 }
 
 function handleScroll(): void {
@@ -245,7 +249,6 @@ function scrollToItem(): void {
 }
 
 @keyframes bounce2 {
-
     0%,
     20%,
     50%,
