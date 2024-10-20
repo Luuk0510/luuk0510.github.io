@@ -78,6 +78,7 @@ function handleLinkAnimations(): void {
 
 function typeText(onComplete: () => void): void {
     let index = 0;
+
     const type = () => {
         if (index < fullText.length) {
             displayedText.value += fullText[index];
@@ -94,7 +95,10 @@ function typeText(onComplete: () => void): void {
             }, cursorBlinkDuration);
         }
     };
-    type();
+
+    setTimeout(() => {
+        type();
+    }, 500);
 }
 
 function handleScroll(): void {
