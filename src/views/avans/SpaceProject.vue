@@ -3,6 +3,8 @@ import { ref } from 'vue';
 import Screenshot from '@/components/Screenshot.vue';
 import { usePageTitle } from '@/composables/usePageTitle';
 
+import Link from '@/components/Link.vue';
+
 import homePage from '@/assets/images/projects/space_project/space_project_home.png';
 import earthPage from '@/assets/images/projects/space_project/space_project_earth.png';
 import earthPagePhone from '@/assets/images/projects/space_project/space_project_earth_phone.png';
@@ -85,6 +87,9 @@ usePageTitle();
                     <li><span class="font-bold">HTML/CSS:</span> De website is gebouwd met alleen HTML en CSS, waarbij gebruik is gemaakt van best practices om een nette en functionele website te maken.</li>
                     <li><span class="font-bold">Media Queries:</span> Er zijn media queries gebruikt om de website responsive te maken en ervoor te zorgen dat de layout op verschillende apparaten goed werkt.</li>
                 </ul>
+                <div class="flex justify-center">
+                    <a href="https://luuk0510.github.io/space-project/" target="_blank" class="btn btn-primary text-lg">Link naar project</a>
+                </div>
             </div>
         </div>
     </section>
