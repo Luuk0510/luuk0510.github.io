@@ -6,7 +6,7 @@ import SkillCard from '@/components/SkillCard.vue';
 import Link from '@/components/Link.vue';
 
 import HTML5Logo from '@/assets/images/logo/html5_logo.png';
-import CSS3Logo from '@/assets/imageslogo//css3_logo.png';
+import CSS3Logo from '@/assets/images/logo/css3_logo.png';
 import JavaScriptLogo from '@/assets/images/logo/javascript_logo.png'
 import TailwindLogo from '@/assets/images/logo/tailwind_logo.png'
 import VueLogo from '@/assets/images/logo/vue_logo.png';
