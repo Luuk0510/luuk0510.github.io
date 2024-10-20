@@ -3,8 +3,6 @@ import { ref } from 'vue';
 import Screenshot from '@/components/Screenshot.vue';
 import { usePageTitle } from '@/composables/usePageTitle';
 
-import Link from '@/components/Link.vue';
-
 import homePage from '@/assets/images/projects/space_project/space_project_home.png';
 import earthPage from '@/assets/images/projects/space_project/space_project_earth.png';
 import earthPagePhone from '@/assets/images/projects/space_project/space_project_earth_phone.png';
@@ -26,14 +24,6 @@ const images = ref<string[]>([
     marsPagePhone,
     footer,
 ]);
-
-const visible = ref<boolean>(false);
-const index = ref<number>(0);
-
-function showLightbox(idx: number): void {
-    index.value = idx;
-    visible.value = true;
-}
 
 usePageTitle();
 </script>
