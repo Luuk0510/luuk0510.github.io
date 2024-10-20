@@ -1,5 +1,17 @@
 <script setup lang="ts">
-import { usePageTitle } from '@/composables/usePageTitle'
+import { ref } from 'vue';
+import { usePageTitle } from '@/composables/usePageTitle';
+import Screenshot from '@/components/Screenshot.vue';
+
+import screenshot_1 from '@/assets/images/projects/bazaar_transport/screenshot_1.png';
+import screenshot_2 from '@/assets/images/projects/bazaar_transport/screenshot_2.png';
+import screenshot_3 from '@/assets/images/projects/bazaar_transport/screenshot_3.png';
+
+const images = ref<string[]>([
+    screenshot_1,
+    screenshot_2,
+    screenshot_3
+]);
 
 usePageTitle();
 </script>
@@ -50,6 +62,9 @@ usePageTitle();
             </div>
         </div>
     </section>        
+
+    <Screenshot :images="images" />
+
 </template>
 
 <style scoped></style>

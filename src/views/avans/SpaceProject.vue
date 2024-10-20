@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import Screenshot from '@/components/Screenshot.vue';
 import { usePageTitle } from '@/composables/usePageTitle';
+import Screenshot from '@/components/Screenshot.vue';
 
 import homePage from '@/assets/images/projects/space_project/space_project_home.png';
 import earthPage from '@/assets/images/projects/space_project/space_project_earth.png';
