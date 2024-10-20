@@ -3,9 +3,8 @@ import { ref } from 'vue'
 import { usePageTitle } from '@/composables/usePageTitle'
 
 import Link from '@/components/Link.vue';
-import InteractiveImage from '@/components/InteractiveImage.vue';
 
-import MarvelousLogo from '@/assets/images/marvelous_logo.png'
+import MarvelousLogo from '@/assets/images/logo/marvelous_logo.png'
 import IconGitHub from '@/components/icons/IconGitHub.vue';
 
 const projects = ref([

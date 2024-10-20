@@ -3,7 +3,7 @@ import { usePageTitle } from '@/composables/usePageTitle'
 
 import Link from '@/components/Link.vue';
 
-import MobicoachLogo from '@/assets/images/mobicoach_logo.png';
+import MobicoachLogo from '@/assets/images/logo/mobicoach_logo.png';
 
 usePageTitle();
 </script>
