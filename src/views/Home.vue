@@ -249,7 +249,6 @@ function scrollToItem(): void {
 }
 
 @keyframes bounce2 {
-
     0%,
     20%,
     50%,
