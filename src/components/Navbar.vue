@@ -35,7 +35,7 @@ onMounted(() => {
                     </svg>
                 </div>
                 <ul tabindex="0"
-                    class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                    class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow-sm">
                     <li><router-link to="/" class="text-xl">Over mij</router-link></li>
                     <li><router-link to="/skills" class="text-xl">Vaardigheden</router-link></li>
                     <li><router-link to="/experience" class="text-xl">Werkervaring</router-link></li>
@@ -90,7 +90,7 @@ onMounted(() => {
                         <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
                     </svg>
                 </div>
-                <ul tabindex="0" class="dropdown-content bg-base-300 rounded-box z-[1] w-52 p-2 shadow-2xl">
+                <ul tabindex="0" class="dropdown-content bg-base-300 rounded-box z-1 w-52 p-2 shadow-2xl">
                     <li>
                         <input type="radio" name="theme-dropdown"
                             class="theme-controller btn btn-sm btn-block btn-ghost justify-start text-xl"
@@ -115,11 +115,6 @@ onMounted(() => {
                         <input type="radio" name="theme-dropdown"
                             class="theme-controller btn btn-sm btn-block btn-ghost justify-start text-xl"
                             aria-label="Black" data-set-theme="black" value="black" @change="updateTheme" />
-                    </li>
-                    <li>
-                        <input type="radio" name="theme-dropdown"
-                            class="theme-controller btn btn-sm btn-block btn-ghost justify-start text-xl"
-                            aria-label="Cupcake" data-set-theme="cupcake" value="cupcake" @change="updateTheme" />
                     </li>
                 </ul>
             </div>

@@ -46,7 +46,7 @@ const timelineItems = ref([
             </div>
             <div :class="['mb-10', 'lg:w-3/5', 'md:w-5/6', 'sm:w-full', index % 2 === 0 ? 'timeline-start md:text-end' : 'timeline-end']">
                 <time class="font-mono italic text-lg">{{ item.time }}</time>
-                <div class="card bg-base-300 shadow-xl">
+                <div class="card bg-base-200 shadow-xl">
                     <div class="card-body">
                         <div class="text-lg font-black">{{ item.title }}</div>
                         <p>{{ item.description }}</p>

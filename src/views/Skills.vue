@@ -14,7 +14,6 @@ import SQLLogo from '@/assets/images/logo/sql_logo.png';
 import CSharpLogo from '@/assets/images/logo/csharp_logo.png';
 import PHPLogo from '@/assets/images/logo/php_logo.png';
 import LaravelLogo from '@/assets/images/logo/laravel_logo.png';
-import PythonLogo from '@/assets/images/logo/python_logo.png';
 
 const isBlackTheme = ref(false);
 
@@ -59,12 +58,12 @@ usePageTitle();
                 <div>
                     <h2 class="text-3xl font-bold mb-4 text-center">Backend</h2>
                     <SkillCard :src="SQLLogo" alt="sql logo" :delay="900">
-                        Ik heb ervaring met databasebeheer in zowel MySQL als Microsoft SQL. Dit stelt me in staat om robuuste en efficiënte backends te bouwen die gegevens veilig opslaan en verwerken.
+                        Ik heb ervaring met databasebeheer in zowel MySQL als Microsoft SQL. Daarnaast heb ik gewerkt met NoSQL-databases, wat me in staat stelt om flexibele en schaalbare datamodellen te ontwerpen en implementeren.
                     </SkillCard>        
-
+                    
                     <SkillCard :src="CSharpLogo" alt="csharp logo" :delay="1200">
-                        Met C# en ASP.NET heb ik diverse webapplicaties ontwikkeld, inclusief RESTful APIs en backends voor schaalbare systemen. Mijn ervaring omvat object-georiënteerde programmeerprincipes en best practices.
-                    </SkillCard>        
+                        Met C# en ASP.NET heb ik diverse webapplicaties ontwikkeld. Ik heb gewerkt met MVC en Razor Pages en heb ervaring met object-georiënteerde programmeerprincipes en best practices.
+                    </SkillCard>
 
                     <SkillCard :src="PHPLogo" alt="php  logo" :delay="1500">
                         Tijdens mijn studie heb ik met PHP gewerkt, met name in combinatie met Laravel voor het bouwen van efficiënte webapplicaties en API's, waarbij ik MySQL-databases heb geïntegreerd.
@@ -73,10 +72,6 @@ usePageTitle();
                     <SkillCard :src="LaravelLogo" alt="laravel logo" :delay="1800">
                         Laravel is het framework waarin ik tijdens mijn studie veel ervaring heb opgedaan. Ik heb het gebruikt voor het bouwen van complexe backends voor verschillende webapplicaties.
                     </SkillCard>        
-
-                    <SkillCard :src="PythonLogo" alt="python logo" :delay="2000">
-                        Python gebruik ik voor het automatiseren van processen, het bouwen van scripts, en data-analyse. Het is een flexibele taal die ik heb gebruikt in zowel kleine scripts als grotere applicaties. Later wil ik Python gebruiken voor AI.
-                    </SkillCard>
                 </div>
             </div>
         </div>
