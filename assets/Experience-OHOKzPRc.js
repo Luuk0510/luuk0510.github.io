@@ -1,1 +1,0 @@
-import{_ as t,o as s,c as r,a as c}from"./index-4jJTe8pw.js";const n={},o={class:"h-screen"};function a(_,e){return s(),r("section",o,e[0]||(e[0]=[c("h1",{class:"text-center text-4xl font-bold"}," Werkervaring ",-1)]))}const f=t(n,[["render",a]]);export{f as default};
