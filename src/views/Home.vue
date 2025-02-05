@@ -17,7 +17,6 @@ import SQLLogo from '@/assets/images/logo/sql_logo.png';
 import CSharpLogo from '@/assets/images/logo/csharp_logo.png';
 import PHPLogo from '@/assets/images/logo/php_logo.png';
 import LaravelLogo from '@/assets/images/logo/laravel_logo.png';
-import PythonLogo from '@/assets/images/logo/python_logo.png';
 
 const fullText = "Welkom op mijn portfolio!";
 const displayedText = ref<string>("");
@@ -44,7 +43,6 @@ const logos = ref<Logo[]>([
     { src: CSharpLogo, alt: "C Sharp logo" },
     { src: PHPLogo, alt: "PHP logo" },
     { src: LaravelLogo, alt: "Laravel logo" },
-    { src: PythonLogo, alt: "Python logo" },
 ]);
 
 onMounted(() => {
