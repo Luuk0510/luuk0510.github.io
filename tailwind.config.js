@@ -11,7 +11,7 @@ export default {
   },
   darkMode: 'media',
   plugins: [
-    require("daisyui")
+
   ],
   daisyui: {
     themes: ["light", "dark", "retro", "black", "cupcake"],

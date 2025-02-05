@@ -78,6 +78,14 @@ const projects = ref([
         link: 'https://github.com/Luuk0510/de-gouden-draak',
         route: 'goudendraak',
         buttonText: 'Meer lezen',
+    },
+    {
+        title: 'More coming soon...',
+        badges: ['.....'],
+        description: '',
+        link: '',
+        route: '',
+        buttonText: '',
     }
 ]);
 
