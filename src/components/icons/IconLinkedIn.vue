@@ -22,6 +22,6 @@ const props = defineProps({
 
 <style scoped>
 .icon:hover {
-    stroke: oklch(var(--a));
+  stroke: var(--color-base-300);
 }
 </style>
