@@ -90,15 +90,15 @@ onMounted(() => {
                         <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
                     </svg>
                 </div>
-                <ul tabindex="0" class="dropdown-content bg-base-300 rounded-box z-1 w-52 p-2 shadow-2xl">
+                <ul tabindex="0" class="dropdown-content bg-base-200 text-4xl rounded-box z-1 w-52 p-2 shadow-2xl">
                     <li>
                         <input type="radio" name="theme-dropdown"
-                            class="theme-controller btn btn-sm btn-block btn-ghost justify-start text-xl"
+                            class="theme-controller btn btn-sm btn-block btn-ghost justify-start text-4xl"
                             aria-label="Default" data-set-theme="default" value="default" @change="updateTheme" />
                     </li>
                     <li>
                         <input type="radio" name="theme-dropdown"
-                            class="theme-controller btn btn-sm btn-block btn-ghost justify-start text-xl"
+                            class="theme-controller btn btn-sm btn-block btn-ghost justify-start text-4xl"
                             aria-label="Light" data-set-theme="light" value="light" @change="updateTheme" />
                     </li>
                     <li>
@@ -122,4 +122,8 @@ onMounted(() => {
     </header>
 </template>
 
-<style scoped></style>
+<style scoped>
+input {
+  font-size: 1rem; 
+}
+</style>
