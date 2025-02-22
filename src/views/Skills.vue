@@ -39,22 +39,22 @@ usePageTitle();
                     </SkillCard>
                 
                     <SkillCard :src="CSS3Logo" alt="css" :delay="1200">
-                        Ik heb uitgebreide ervaring met CSS, inclusief frameworks zoals Tailwind en Bootstrap. CSS is essentieel om visueel aantrekkelijke en toegankelijke interfaces te bouwen.
+                        Ik heb ervaring met CSS, inclusief frameworks zoals Tailwind en Bootstrap. Ik vind het leuk om een front end te maken. CSS is belangrijk om visueel aantrekkelijke en toegankelijke interfaces te bouwen.
                     </SkillCard>
                 
                     <SkillCard :src="TailwindLogo" alt="tailwind" :delay="1500">
-                      Ik maak veel gebruik van Tailwind CSS en ben vertrouwd met bibliotheken zoals <Link href="https://preline.co/" target="_blank">Preline UI</Link> en <Link href="https://daisyui.com/" target="_blank">daisyUI</Link>, die ik in dit portfolio heb gebruikt voor een consistente ervaring.
+                        Ik maak veel gebruik van Tailwind CSS en ben vertrouwd met bibliotheken zoals <Link href="https://preline.co/" target="_blank">Preline UI</Link> en <Link href="https://daisyui.com/" target="_blank">daisyUI</Link>, die ik in dit portfolio heb gebruikt voor een consistente ervaring.
                     </SkillCard>
                 
                     <SkillCard :src="JavaScriptLogo" alt="javascript" :delay="1800">
-                      JavaScript geeft mij de mogelijkheid om interactieve en dynamische webapplicaties te bouwen.
+                        JavaScript geeft mij de mogelijkheid om interactieve en dynamische webapplicaties te bouwen.
                     </SkillCard>
                 
                     <SkillCard :src="VueLogo" alt="vue.js" :delay="2000">
-                      Vue.js is mijn go-to framework voor het ontwikkelen van dynamische interfaces. Ik heb het in verschillende projecten gebruikt, waaronder dit portfolio.
+                        Vue.js is mijn go-to framework voor het ontwikkelen van dynamische interfaces. Ik heb het in verschillende projecten gebruikt, waaronder dit portfolio.
                     </SkillCard>
                 </div>
-
+                
                 <div>
                     <h2 class="text-3xl font-bold mb-4 text-center">Backend</h2>
                     <SkillCard :src="SQLLogo" alt="sql logo" :delay="900">
@@ -62,7 +62,7 @@ usePageTitle();
                     </SkillCard>        
                     
                     <SkillCard :src="CSharpLogo" alt="csharp logo" :delay="1200">
-                        Met C# en ASP.NET heb ik diverse webapplicaties ontwikkeld. Ik heb gewerkt met MVC en Razor Pages en heb ervaring met object-georiënteerde programmeerprincipes en best practices.
+                        Met C# en ASP.NET Core heb ik diverse webapplicaties ontwikkeld. Ik heb gewerkt met MVC en Razor Pages. Daarnaast heb ik ook .NET MAUI Blazor Hybrid gebruikt. Ik volg object-georiënteerde programmeerprincipes en best practices.
                     </SkillCard>
 
                     <SkillCard :src="PHPLogo" alt="php  logo" :delay="1500">
