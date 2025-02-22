@@ -111,7 +111,7 @@ function scrollToItem(): void {
     if (timeline) {
         const timelinePosition = timeline.getBoundingClientRect().top + window.scrollY;
         window.scrollTo({
-            top: timelinePosition - 200,
+            top: timelinePosition - 125,
             behavior: 'smooth',
         });
     }
@@ -156,7 +156,7 @@ function scrollToItem(): void {
         </div>
     </section>
 
-    <div v-if="showButton" class="flex justify-center lg:-mt-10 -mt-20">
+    <div v-if="showButton" class="flex justify-center -mt-32">
         <div class="bounce2 cursor-pointer" style="opacity: 1;" @click="scrollToItem">
             <IconDownArrow size="100px" />
         </div>
@@ -221,12 +221,12 @@ function scrollToItem(): void {
 
 <style scoped>
 .solid-cursor {
-    border-right: 4px solid oklch(var(--bc));
+    border-right: 4px solid var(--color-base-300);
     animation: none;
 }
 
 .blinking-cursor {
-    border-right: 4px solid oklch(var(--bc));
+    border-right: 4px solid var(--color-base-300);
     animation: blink 1.25s step-end infinite;
 }
 
