@@ -1,0 +1,114 @@
+@use 'variables' as *;
+
+/* Glass card with gradient ring */
+.card {
+  position: relative;
+  border-radius: $radius-xl;
+  padding: 1.25rem;
+  box-shadow: $shadow-elevated;
+
+  /* iets lichter zodat de blur opvalt */
+  background: rgba(255,255,255,0.05);
+
+  /* sterkere blur + vendor prefix */
+  backdrop-filter: blur($blur-soft);
+  -webkit-backdrop-filter: blur($blur-soft);
+
+  transition: transform 0.3s $ease-smooth, box-shadow 0.3s $ease-smooth;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: $grad-card-border;
+
+  /* Mask zodat alleen de ring zichtbaar is */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+
+  pointer-events: none;
+  animation: spin 15s linear infinite;
+}
+
+/* Skills grid: small responsive cards */
+.skills-grid {
+  /* One source of truth for tile size (scales with screen) */
+  --tile-size: clamp(160px, 12vw, 220px);
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--tile-size), 1fr));
+  gap: clamp(12px, 2vw, 24px);
+  justify-items: center; /* center tiles inside their grid cell */
+  margin-top: 10px;
+}
+
+.skill-tile {
+  border-radius: $radius-lg;
+  background: rgba(255,255,255,0.03);
+    backdrop-filter: blur($blur-soft);
+
+  box-shadow: $shadow-floating;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s $ease-smooth, box-shadow 0.3s $ease-smooth;
+}
+
+.skill-tile:hover::after {
+  opacity: 0.35;
+}
+
+.skill-tile:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+@media (min-width: 900px)  { .skills-grid{ --card-min: 180px; } }
+@media (min-width: 1200px) { .skills-grid{ --card-min: 200px; } }
+
+.skill-card{
+  display: grid; place-items: center; min-height: 140px;
+  background: rgba(255,255,255,.03);
+  border-radius: $radius-lg;
+}
+
+.skill-card img, .skill-card svg, .skill-card canvas {
+  width: 84px; height: 84px; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,.35));
+}
+
+.skill-card:hover{ transform: translateY(-2px); }
+
+/* Primary gradient button */
+.btn-primary{
+  display: inline-block;
+  border-radius: 999px;
+  padding: .8rem 1.4rem;
+  font-weight: 800;
+  color: #0b1220;
+  background: $grad-button;
+  background-size: 200% 100%;
+  transition: transform .12s ease, box-shadow .2s ease, background-position .5s ease;
+  box-shadow: 0 10px 30px rgba(96,165,250,.35);
+}
+.btn-primary:hover{ background-position: 100% 0; transform: translateY(-1px); }
+.btn-primary:active{ transform: translateY(0); }
+
+/* Center row below grids */
+.cta-row{ display: grid; place-items: center; margin-top: 18px; }
+
+.icon {
+  transition: stroke 0.25s $ease-smooth, filter 0.25s $ease-smooth, transform 0.25s $ease-smooth;
+}
+
+.icon:hover {
+  stroke: $accent-1;
+  filter: drop-shadow(0 0 16px $glow-blue);
+  transform: translateY(-3px) scale(1.05);
+}

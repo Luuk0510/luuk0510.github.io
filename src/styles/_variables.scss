@@ -1,0 +1,51 @@
+@use "sass:color";
+
+/* Theme tokens (dark by default) */
+$nav-height: 72px;
+
+/* Base palette */
+$bg-0: #070b14;   /* page background */
+$bg-1: #0b1220;   /* surfaces */
+$bg-2: #0f172a;   /* elevated surfaces */
+
+$text-1: #e6e9ef;
+$text-2: #b6c0d4;
+
+$accent-1: #60a5fa; /* blue */
+$accent-2: #a78bfa; /* violet */
+$accent-3: #22d3ee; /* cyan */
+
+$accent-1-d: color.adjust($accent-1, $lightness: -12%);
+$accent-2-d: color.adjust($accent-2, $lightness: -12%);
+$accent-3-d: color.adjust($accent-3, $lightness: -12%);
+
+/* Effects */
+$radius-xl: 16px;
+$radius-lg: 12px;
+$shadow-soft: 0 10px 30px rgba(0,0,0,.35);
+
+/* Gradients */
+$grad-aurora: radial-gradient(1200px 600px at 10% 0%,
+                  rgba(96,165,250,.22), transparent 60%),
+              radial-gradient(900px 500px at 85% 10%,
+                  rgba(167,139,250,.18), transparent 55%),
+              radial-gradient(900px 500px at 50% 85%,
+                  rgba(34,211,238,.14), transparent 60%);
+
+$grad-button: linear-gradient(90deg, $accent-3, $accent-1, $accent-2);
+$grad-card-border: conic-gradient(from 180deg,
+                    $accent-3 0deg, $accent-1 120deg, $accent-2 240deg, $accent-3 360deg);
+
+$blur-soft: 12px;
+$blur-strong: 18px;
+
+$shadow-elevated: 0 8px 32px rgba(0,0,0,0.35);
+$shadow-floating: 0 4px 18px rgba(0,0,0,0.25);
+
+/* Animation timing */
+$ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+
+/* Accent glows */
+$glow-blue: rgba(96, 165, 250, 0.5);
+$glow-violet: rgba(167, 139, 250, 0.5);
+$glow-cyan: rgba(34, 211, 238, 0.5);

@@ -3,7 +3,8 @@ import { MotionPlugin } from '@vueuse/motion'
  
 import App from './App.vue'
 import router from './router/index'
-import './assets/app.css'
+
+import './styles/main.scss'
 import 'animate.css';
 
 const app = createApp(App)

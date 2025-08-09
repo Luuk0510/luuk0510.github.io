@@ -1,0 +1,84 @@
+@use 'variables' as *;
+
+:root {
+  --dot-gap: 30px;
+  --dot-size: 1.6px;
+  --hx: 50vw;
+  --hy: 50vh;
+  --hover-radius: 150px; /* grotere fall‑off */
+
+  --dot-base-1: rgba(120,140,170,0.12);
+  --dot-base-2: rgba(120,140,170,0.08);
+  --dot-hover-1: rgba(56,189,248,0.55);
+  --dot-hover-2: rgba(167,139,250,0.45);
+}
+
+body {
+  color: $text-1;
+  background-color: $bg-0;
+  overflow-x: hidden;
+
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  background-image:
+    radial-gradient(var(--dot-base-1) var(--dot-size), transparent var(--dot-size)),
+    radial-gradient(var(--dot-base-2) var(--dot-size), transparent var(--dot-size));
+  background-size:
+    var(--dot-gap) var(--dot-gap),
+    var(--dot-gap) var(--dot-gap);
+  background-position:
+    0 0,
+    calc(var(--dot-gap) / 2) calc(var(--dot-gap) / 2);
+  background-attachment: fixed;
+}
+
+.dot-color-mask {
+  /* exact hetzelfde raster als de basis, maar in hover‑kleuren */
+  background-image:
+    radial-gradient(var(--dot-hover-1) var(--dot-size), transparent var(--dot-size)),
+    radial-gradient(var(--dot-hover-2) var(--dot-size), transparent var(--dot-size));
+  background-size:
+    var(--dot-gap) var(--dot-gap),
+    var(--dot-gap) var(--dot-gap);
+  background-position:
+    0 0,
+    calc(var(--dot-gap)/2) calc(var(--dot-gap)/2);
+  background-attachment: fixed;
+
+  /* grote, zachte fade zodat de cirkel nauwelijks zichtbaar is */
+  -webkit-mask-image: radial-gradient(
+    circle var(--hover-radius) at var(--hx) var(--hy),
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.6) 50%,
+    transparent 100%
+  );
+          mask-image: radial-gradient(
+    circle var(--hover-radius) at var(--hx) var(--hy),
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.6) 50%,
+    transparent 100%
+  );
+  mask-repeat: no-repeat;
+}
+
+
+/* Links */
+a { color: $accent-1; text-decoration: none; }
+a:hover { color: $accent-1-d; }
+
+/* Sections */
+.section-container { max-width: 1200px; margin: 0 auto; padding: 2rem 1.25rem; }
+
+.section-title {
+  text-align: center;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  font-size: clamp(1.75rem, 1.25rem + 2vw, 2.5rem);
+  color: $text-1;
+  margin-bottom: 1.25rem;
+  background: linear-gradient(180deg, #fff, #bcd3ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; /* gradient text */
+  opacity: .9;
+}
