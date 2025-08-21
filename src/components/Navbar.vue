@@ -1,24 +1,57 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
+
+const THEME_KEY = 'theme' // zelfde key als jij gebruikte
+
+const applyTheme = (theme: string | null) => {
+  if (!theme || theme === 'default') {
+    document.documentElement.removeAttribute('data-theme'); // niets forceren
+    localStorage.removeItem('theme');                       // geen override
+  } else {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }
+};
 
 const updateTheme = (event: Event) => {
   const target = event.target as HTMLInputElement
-  const selectedTheme = target.value
-  document.documentElement.setAttribute('data-theme', selectedTheme)
-  localStorage.setItem('theme', selectedTheme)
+  applyTheme(target.value)
+}
+
+let mql: MediaQueryList | null = null
+
+const handleSystemChange = () => {
+  const saved = localStorage.getItem(THEME_KEY)
+  if (!saved) {
+    document.documentElement.removeAttribute('data-theme')
+  }
 }
 
 onMounted(() => {
-  const savedTheme = localStorage.getItem('theme') || 'default'
-  document.documentElement.setAttribute('data-theme', savedTheme)
+  mql = window.matchMedia('(prefers-color-scheme: dark)')
 
-  const themeControllers = document.querySelectorAll('input[name="theme-dropdown"]') as NodeListOf<HTMLInputElement>
+  if ('addEventListener' in mql) {
+    mql.addEventListener('change', handleSystemChange)
+  } else {
+    // @ts-expect-error: legacy Safari
+    mql.addListener(handleSystemChange)
+  }
 
-  themeControllers.forEach((controller) => {
-    if (controller.value === savedTheme) {
-      controller.checked = true
-    }
-  })
+  const savedTheme = localStorage.getItem(THEME_KEY)
+  applyTheme(savedTheme || null)
+
+  const radios = document.querySelectorAll('input[name="theme-dropdown"]') as NodeListOf<HTMLInputElement>
+  radios.forEach(r => { r.checked = !!savedTheme && r.value === savedTheme })
+})
+
+onUnmounted(() => {
+  if (!mql) return
+  if ('removeEventListener' in mql) {
+    mql.removeEventListener('change', handleSystemChange)
+  } else {
+    // @ts-expect-error: legacy Safari
+    mql.removeListener(handleSystemChange)
+  }
 })
 </script>
 
@@ -91,11 +124,6 @@ onMounted(() => {
                     </svg>
                 </div>
                 <ul tabindex="0" class="dropdown-content bg-base-200 text-4xl rounded-box z-1 w-52 p-2 shadow-2xl">
-                    <li>
-                        <input type="radio" name="theme-dropdown"
-                            class="theme-controller btn btn-sm btn-block btn-ghost justify-start text-4xl"
-                            aria-label="Default" data-set-theme="default" value="default" @change="updateTheme" />
-                    </li>
                     <li>
                         <input type="radio" name="theme-dropdown"
                             class="theme-controller btn btn-sm btn-block btn-ghost justify-start text-4xl"

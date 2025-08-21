@@ -2,6 +2,7 @@
 @plugin "daisyui" {
   themes: light --default, dark --prefersdark, retro, black;
 }
+
 @plugin "daisyui/theme" {
   name: "light";
   --color-base-100: oklch(96% 0.007 247.896);
@@ -16,6 +17,7 @@
   --size-selector: 0.28125rem;
   --size-field: 0.28125rem;
 }
+
 @plugin "daisyui/theme" {
   name: "dark";
   --color-base-200: oklch(21% 0.034 264.665);
@@ -27,15 +29,7 @@
   --size-selector: 0.28125rem;
   --size-field: 0.28125rem;
 }
-@plugin "daisyui/theme" {
-  name: "default";
-  --radius-selector: 2rem;
-  --radius-field: 2rem;
-  --radius-box: 2rem;
-  --border: 0.5px;
-  --size-selector: 0.28125rem;
-  --size-field: 0.28125rem;
-}
+
 
 @config '../../tailwind.config.js';
 
