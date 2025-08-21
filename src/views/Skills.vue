@@ -29,49 +29,96 @@ usePageTitle();
     <div class="lg:inset-0 justify-center items-center">
         <div class="flex flex-col justify-center items-center mt-24 mb-20">
             <h1 class="text-4xl font-black mb-5">Mijn vaardigheden</h1>
-
+            <div class="flex flex-col justify-center items-center">
+                <div class="card bg-neutral text-neutral-content lg:w-3/6">
+                    <div class="card-body items-center">
+                        <p class="mb-4">
+                            Als softwareontwikkelaar vind ik het belangrijk om niet alleen te weten <em>hoe</em> je een
+                            oplossing bouwt,
+                            maar ook <em>waarom</em> je een bepaalde aanpak kiest. Ik combineer graag mijn technische
+                            kennis
+                            met creativiteit en oog voor detail, zodat ik projecten kan opleveren die zowel functioneel
+                            als gebruiksvriendelijk zijn.
+                        </p>
+                        <p>
+                            Hieronder vind je een overzicht van de programmeertalen, frameworks en tools waar ik
+                            ervaring mee heb.
+                            Deze vaardigheden heb ik ontwikkeld tijdens mijn studie, stage en persoonlijke projecten, en
+                            ik blijf ze
+                            continu uitbreiden en verbeteren.
+                        </p>
+                    </div>
+                </div>
+            </div>
             <div class="grid lg:grid-cols-2 gap-10 lg:m-4">
                 <div>
-                    <h2 class="text-3xl font-bold mb-4 text-center">Frontend</h2>
+                    <v-motion
+                        v-motion-slide-bottom
+                        :delay="800"
+                        :duration="800"
+                        tag="section"
+                        >
+                        <h2 class="text-3xl font-bold mb-4 text-center">Frontend</h2>
+                    </v-motion>
 
                     <SkillCard :src="HTML5Logo" alt="html" :delay="900">
-                        HTML vormt de basis van mijn webontwikkeling. Ik gebruik het om webpagina's te structureren en semantische HTML toe te passen voor toegankelijkere en beter leesbare content.
+                        HTML vormt de basis van mijn webontwikkeling. Ik gebruik het om webpagina's te structureren en
+                        semantische HTML toe te passen voor toegankelijkere en beter leesbare content.
                     </SkillCard>
-                
+
                     <SkillCard :src="CSS3Logo" alt="css" :delay="1200">
-                        Ik heb ervaring met CSS, inclusief frameworks zoals Tailwind en Bootstrap. Ik vind het leuk om een front end te maken. CSS is belangrijk om visueel aantrekkelijke en toegankelijke interfaces te bouwen.
+                        Ik heb ervaring met CSS, inclusief frameworks zoals Tailwind en Bootstrap. Ik vind het leuk om
+                        een front end te maken. CSS is belangrijk om visueel aantrekkelijke en toegankelijke interfaces
+                        te bouwen.
                     </SkillCard>
-                
+
                     <SkillCard :src="TailwindLogo" alt="tailwind" :delay="1500">
-                        Ik maak veel gebruik van Tailwind CSS en ben vertrouwd met bibliotheken zoals <Link href="https://preline.co/" target="_blank">Preline UI</Link> en <Link href="https://daisyui.com/" target="_blank">daisyUI</Link>, die ik in dit portfolio heb gebruikt voor een consistente ervaring.
+                        Ik maak veel gebruik van Tailwind CSS en ben vertrouwd met bibliotheken zoals
+                        <Link href="https://preline.co/" target="_blank">Preline UI</Link> en
+                        <Link href="https://daisyui.com/" target="_blank">daisyUI</Link>, die ik in dit portfolio heb
+                        gebruikt voor een consistente ervaring.
                     </SkillCard>
-                
+
                     <SkillCard :src="JavaScriptLogo" alt="javascript" :delay="1800">
                         JavaScript geeft mij de mogelijkheid om interactieve en dynamische webapplicaties te bouwen.
                     </SkillCard>
-                
+
                     <SkillCard :src="VueLogo" alt="vue.js" :delay="2000">
-                        Vue.js is mijn go-to framework voor het ontwikkelen van dynamische interfaces. Ik heb het in verschillende projecten gebruikt, waaronder dit portfolio.
+                        Vue.js is mijn go-to framework voor het ontwikkelen van dynamische interfaces. Ik heb het in
+                        verschillende projecten gebruikt, waaronder dit portfolio.
                     </SkillCard>
                 </div>
-                
+
                 <div>
-                    <h2 class="text-3xl font-bold mb-4 text-center">Backend</h2>
+                    <v-motion
+                        v-motion-slide-bottom
+                        :delay="800"
+                        :duration="800"
+                        tag="section"
+                        >
+                        <h2 class="text-3xl font-bold mb-4 text-center">Backend</h2>
+                    </v-motion>
                     <SkillCard :src="SQLLogo" alt="sql logo" :delay="900">
-                        Ik heb ervaring met databasebeheer in zowel MySQL als Microsoft SQL. Daarnaast heb ik gewerkt met NoSQL-databases, wat me in staat stelt om flexibele en schaalbare datamodellen te ontwerpen en implementeren.
-                    </SkillCard>        
-                    
+                        Ik heb ervaring met databasebeheer in zowel MySQL als Microsoft SQL. Daarnaast heb ik gewerkt
+                        met NoSQL-databases, wat me in staat stelt om flexibele en schaalbare datamodellen te ontwerpen
+                        en implementeren.
+                    </SkillCard>
+
                     <SkillCard :src="CSharpLogo" alt="csharp logo" :delay="1200">
-                        Met C# en ASP.NET Core heb ik diverse webapplicaties ontwikkeld. Ik heb gewerkt met MVC en Razor Pages. Daarnaast heb ik ook .NET MAUI Blazor Hybrid gebruikt. Ik volg object-georiënteerde programmeerprincipes en best practices.
+                        Met C# en ASP.NET Core heb ik diverse webapplicaties ontwikkeld. Ik heb gewerkt met MVC en Razor
+                        Pages. Daarnaast heb ik ook .NET MAUI Blazor Hybrid gebruikt. Ik volg object-georiënteerde
+                        programmeerprincipes en best practices.
                     </SkillCard>
 
                     <SkillCard :src="PHPLogo" alt="php  logo" :delay="1500">
-                        Tijdens mijn studie heb ik met PHP gewerkt, met name in combinatie met Laravel voor het bouwen van efficiënte webapplicaties en API's, waarbij ik MySQL-databases heb geïntegreerd.
-                    </SkillCard>        
+                        Tijdens mijn studie heb ik met PHP gewerkt, met name in combinatie met Laravel voor het bouwen
+                        van efficiënte webapplicaties en API's, waarbij ik MySQL-databases heb geïntegreerd.
+                    </SkillCard>
 
                     <SkillCard :src="LaravelLogo" alt="laravel logo" :delay="1800">
-                        Laravel is het framework waarin ik tijdens mijn studie veel ervaring heb opgedaan. Ik heb het gebruikt voor het bouwen van complexe backends voor verschillende webapplicaties.
-                    </SkillCard>        
+                        Laravel is het framework waarin ik tijdens mijn studie veel ervaring heb opgedaan. Ik heb het
+                        gebruikt voor het bouwen van complexe backends voor verschillende webapplicaties.
+                    </SkillCard>
                 </div>
             </div>
         </div>
