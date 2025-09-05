@@ -4,9 +4,16 @@ import IconCheckFill from './icons/IconCheckFill.vue';
 
 const timelineItems = ref([
     {
+        time: 'sep 2025 - heden',
+        title: 'Minor - Artificial Intelligence',
+        description: 'Ik ben momenteel bezig met een minor in Artificial Intelligence aan Avans Hogeschool. Hier leer ik de basisprincipes van AI en hoe deze kunnen worden toegepast in softwareontwikkeling.',
+        isVisible: false,
+        link: '/',
+    },
+    {
         time: 'sep 2024 - jan 2025',
         title: 'Marvelous',
-        description: 'Ik loop momenteel stage bij Marvelous in Den Bosch. Hier werk ik aan uitdagende projecten die processen automatiseren en innovatie stimuleren. Meer over mijn stage... ',
+        description: 'Ik heb mijn derdejaars stage bij Marvelous in Den Bosch gelopen. Daar heb ik gewerkt aan uitdagende projecten die processen automatiseerden en innovatie stimuleerden. Meer over mijn stage...',
         isVisible: false,
         link: '/marvelous',
     },

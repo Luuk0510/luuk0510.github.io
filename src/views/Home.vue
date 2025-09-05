@@ -15,13 +15,14 @@ import TailwindLogo from '@/assets/images/logo/tailwind_logo.png';
 import VueLogo from '@/assets/images/logo/vue_logo.png';
 import SQLLogo from '@/assets/images/logo/sql_logo.png';
 import CSharpLogo from '@/assets/images/logo/csharp_logo.png';
+import PythonLogo from '@/assets/images/logo/python_logo.png';
 import PHPLogo from '@/assets/images/logo/php_logo.png';
 import LaravelLogo from '@/assets/images/logo/laravel_logo.png';
 
 const fullText = "Welkom op mijn portfolio!";
 const displayedText = ref<string>("");
 const isTyping = ref<boolean>(true);
-const showBlinkingCursor = ref<boolean>(false); 
+const showBlinkingCursor = ref<boolean>(false);
 const showButton = ref<boolean>(false);
 const linksAnimated = ref<boolean>(false);
 
@@ -41,6 +42,7 @@ const logos = ref<Logo[]>([
     { src: VueLogo, alt: "Vue logo" },
     { src: SQLLogo, alt: "SQL logo" },
     { src: CSharpLogo, alt: "C Sharp logo" },
+    { src: PythonLogo, alt: "Python logo"},
     { src: PHPLogo, alt: "PHP logo" },
     { src: LaravelLogo, alt: "Laravel logo" },
 ]);
@@ -111,7 +113,7 @@ function scrollToItem(): void {
     if (timeline) {
         const timelinePosition = timeline.getBoundingClientRect().top + window.scrollY;
         window.scrollTo({
-            top: timelinePosition - 200,
+            top: timelinePosition - 125,
             behavior: 'smooth',
         });
     }
@@ -128,54 +130,43 @@ function scrollToItem(): void {
         </h1>
         <div class="flex justify-center mt-2 gap-x-2">
             <a href="https://github.com/Luuk0510" target="_blank">
-                <IconGitHub 
-                    v-if="linksAnimated" 
-                    v-motion-slide-left 
-                    :delay="4500" 
-                    :duration="1200" 
-                    size="60px" 
-                />
-                <IconGitHub 
-                    v-else 
-                    size="60px" 
-                />
+                <IconGitHub v-if="linksAnimated" v-motion-slide-left :delay="4500" :duration="1200" size="60px" />
+                <IconGitHub v-else size="60px" />
             </a>
             <a href="https://www.linkedin.com/in/luuk-spruijtenburg-05aa89243/" target="_blank">
-                <IconLinkedIn 
-                    v-if="linksAnimated" 
-                    v-motion-slide-right 
-                    :delay="4500" 
-                    :duration="1200" 
-                    size="60px" 
-                />
-                <IconLinkedIn 
-                    v-else 
-                    size="60px" 
-                />
+                <IconLinkedIn v-if="linksAnimated" v-motion-slide-right :delay="4500" :duration="1200" size="60px" />
+                <IconLinkedIn v-else size="60px" />
             </a>
         </div>
     </section>
 
-    <div v-if="showButton" class="flex justify-center lg:-mt-10 -mt-20">
+    <div v-if="showButton" class="flex justify-center -mt-32">
         <div class="bounce2 cursor-pointer" style="opacity: 1;" @click="scrollToItem">
             <IconDownArrow size="100px" />
         </div>
     </div>
-    
+
     <section class="mt-40 mb-20 item-scroll" v-motion-slide-visible-once-bottom>
         <div class="flex flex-col justify-center items-center">
             <div class="card bg-neutral text-neutral-content lg:w-3/6">
                 <div class="card-body items-center">
                     <h2 class="card-title font-black text-4xl">Over mij!</h2>
                     <p>
-                        Hallo! Ik ben Luuk, een derdejaars HBO Informatica student met een passie voor softwareontwikkeling en nieuwe technologieën.
-                        Ik werk graag aan uitdagende projecten en gebruik mijn kennis in programmeertalen zoals C#, Laravel, JavaScript, SQL, HTML en CSS om creatieve oplossingen te vinden.
+                        Hallo! Ik ben Luuk, derdejaars HBO Informatica student met een passie voor softwareontwikkeling
+                        en nieuwe technologieën.
+                        Ik werk graag aan uitdagende projecten en zet mijn kennis in programmeertalen zoals C#, Laravel,
+                        JavaScript, SQL, HTML en CSS
+                        in om creatieve en praktische oplossingen te realiseren.
                     </p>
                     <p>
-                        Samenwerken in teams en het behalen van doelen zijn aspecten van mijn werk die ik erg waardeer. Ik ben altijd leergierig en op zoek naar manieren om mijn vaardigheden verder te ontwikkelen.
-                    </p>    
+                        Samenwerken in teams en het behalen van duidelijke doelen geven mij energie.
+                        Ik ben leergierig en altijd op zoek naar nieuwe manieren om mijn vaardigheden verder te
+                        ontwikkelen.
+                    </p>
                     <p>
-                        In mijn vrije tijd houd ik van programmeren, lezen, films en series kijken, en natuurlijk gamen. Welkom op mijn portfolio, waar je een kijkje kunt nemen in mijn werk en projecten!
+                        In mijn vrije tijd programmeer ik graag, lees ik boeken, kijk ik films en series en game ik af
+                        en toe.
+                        Welkom op mijn portfolio! Hier vind je een overzicht van mijn werk en projecten.
                     </p>
                 </div>
             </div>
@@ -188,21 +179,11 @@ function scrollToItem(): void {
                 <h2 class="text-4xl font-black text-center mb-4">Vaardigheden</h2>
             </div>
             <div class="flex flex-wrap justify-center gap-6 md:gap-10">
-                <div 
-                    v-for="(logo, index) in logos" 
-                    :key="logo.alt" 
-                    v-motion-pop-visible-once 
-                    :delay="index * 100" 
-                    :duration="600"
-                >
+                <div v-for="(logo, index) in logos" :key="logo.alt" v-motion-pop-visible-once :delay="index * 100"
+                    :duration="600">
                     <div class="card bg-base-200 shadow-xl">
                         <div class="card-body">
-                            <InteractiveImage 
-                                :src="logo.src" 
-                                :alt="logo.alt" 
-                                width="150px" 
-                                height="150px" 
-                            />
+                            <InteractiveImage :src="logo.src" :alt="logo.alt" width="150px" height="150px" />
                         </div>
                     </div>
                 </div>
@@ -221,12 +202,12 @@ function scrollToItem(): void {
 
 <style scoped>
 .solid-cursor {
-    border-right: 4px solid oklch(var(--bc));
+    border-right: 4px solid var(--color-base-300);
     animation: none;
 }
 
 .blinking-cursor {
-    border-right: 4px solid oklch(var(--bc));
+    border-right: 4px solid var(--color-base-300);
     animation: blink 1.25s step-end infinite;
 }
 
@@ -247,6 +228,7 @@ function scrollToItem(): void {
 }
 
 @keyframes bounce2 {
+
     0%,
     20%,
     50%,

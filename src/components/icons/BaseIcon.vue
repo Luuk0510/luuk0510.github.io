@@ -35,6 +35,6 @@ const props = withDefaults(defineProps<Props>(), {
 
 <style scoped>
 .icon:hover {
-    stroke: oklch(var(--color-base-300));
+    stroke: var(--color-base-300);
 }
 </style>
