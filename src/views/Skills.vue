@@ -29,27 +29,6 @@ usePageTitle();
     <div class="lg:inset-0 justify-center items-center">
         <div class="flex flex-col justify-center items-center mt-24 mb-20">
             <h1 class="text-4xl font-black mb-5">Mijn vaardigheden</h1>
-            <div class="flex flex-col justify-center items-center">
-                <div class="card bg-neutral text-neutral-content lg:w-3/6">
-                    <div class="card-body items-center">
-                        <p class="mb-4">
-                            Als softwareontwikkelaar vind ik het belangrijk om niet alleen te weten <em>hoe</em> je een
-                            oplossing bouwt,
-                            maar ook <em>waarom</em> je een bepaalde aanpak kiest. Ik combineer graag mijn technische
-                            kennis
-                            met creativiteit en oog voor detail, zodat ik projecten kan opleveren die zowel functioneel
-                            als gebruiksvriendelijk zijn.
-                        </p>
-                        <p>
-                            Hieronder vind je een overzicht van de programmeertalen, frameworks en tools waar ik
-                            ervaring mee heb.
-                            Deze vaardigheden heb ik ontwikkeld tijdens mijn studie, stage en persoonlijke projecten, en
-                            ik blijf ze
-                            continu uitbreiden en verbeteren.
-                        </p>
-                    </div>
-                </div>
-            </div>
             <div class="grid lg:grid-cols-2 gap-10 lg:m-4">
                 <div>
                     <v-motion

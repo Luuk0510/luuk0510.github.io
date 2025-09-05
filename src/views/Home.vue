@@ -15,6 +15,7 @@ import TailwindLogo from '@/assets/images/logo/tailwind_logo.png';
 import VueLogo from '@/assets/images/logo/vue_logo.png';
 import SQLLogo from '@/assets/images/logo/sql_logo.png';
 import CSharpLogo from '@/assets/images/logo/csharp_logo.png';
+import PythonLogo from '@/assets/images/logo/python_logo.png';
 import PHPLogo from '@/assets/images/logo/php_logo.png';
 import LaravelLogo from '@/assets/images/logo/laravel_logo.png';
 
@@ -41,6 +42,7 @@ const logos = ref<Logo[]>([
     { src: VueLogo, alt: "Vue logo" },
     { src: SQLLogo, alt: "SQL logo" },
     { src: CSharpLogo, alt: "C Sharp logo" },
+    { src: PythonLogo, alt: "Python logo"},
     { src: PHPLogo, alt: "PHP logo" },
     { src: LaravelLogo, alt: "Laravel logo" },
 ]);
