@@ -91,7 +91,10 @@ usePageTitle();
                     </SkillCard>
 
                     <SkillCard :src="PythonLogo" alt="Python logo" :delay="1500">
-                        
+                        Tijdens mijn minor Artificial Intelligence heb ik veel met Python gewerkt. Ik gebruikte libraries zoals 
+                        <strong>NumPy</strong> en <strong>Pandas</strong> om data te analyseren en te bewerken. Ook heb ik 
+                        grafieken en visualisaties gemaakt om resultaten duidelijk te presenteren. Hierdoor heb ik ervaring opgedaan 
+                        in het voorbereiden en verwerken van data en het inzichtelijk maken van patronen.
                     </SkillCard>
 
                     <SkillCard :src="PHPLogo" alt="php  logo" :delay="1800">
