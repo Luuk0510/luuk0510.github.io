@@ -12,6 +12,7 @@ import TailwindLogo from '@/assets/images/logo/tailwind_logo.png'
 import VueLogo from '@/assets/images/logo/vue_logo.png';
 import SQLLogo from '@/assets/images/logo/sql_logo.png';
 import CSharpLogo from '@/assets/images/logo/csharp_logo.png';
+import PythonLogo from '@/assets/images/logo/python_logo.png';
 import PHPLogo from '@/assets/images/logo/php_logo.png';
 import LaravelLogo from '@/assets/images/logo/laravel_logo.png';
 
@@ -89,12 +90,16 @@ usePageTitle();
                         programmeerprincipes en best practices.
                     </SkillCard>
 
-                    <SkillCard :src="PHPLogo" alt="php  logo" :delay="1500">
+                    <SkillCard :src="PythonLogo" alt="Python logo" :delay="1500">
+                        
+                    </SkillCard>
+
+                    <SkillCard :src="PHPLogo" alt="php  logo" :delay="1800">
                         Tijdens mijn studie heb ik met PHP gewerkt, met name in combinatie met Laravel voor het bouwen
                         van efficiënte webapplicaties en API's, waarbij ik MySQL-databases heb geïntegreerd.
                     </SkillCard>
 
-                    <SkillCard :src="LaravelLogo" alt="laravel logo" :delay="1800">
+                    <SkillCard :src="LaravelLogo" alt="laravel logo" :delay="2100">
                         Laravel is het framework waarin ik tijdens mijn studie veel ervaring heb opgedaan. Ik heb het
                         gebruikt voor het bouwen van complexe backends voor verschillende webapplicaties.
                     </SkillCard>
