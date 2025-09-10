@@ -1,1 +1,0 @@
-import{_ as o,c,o as t,a}from"./index-wT9e9fuY.js";const s={};function n(r,e){return t(),c("div",null,e[0]||(e[0]=[a("h1",{class:"text-4xl font-black"},"Mobicoach",-1)]))}const f=o(s,[["render",n]]);export{f as default};
