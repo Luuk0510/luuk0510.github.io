@@ -126,7 +126,7 @@ onUnmounted(() => {
                 <ul tabindex="0" class="dropdown-content bg-base-200 text-4xl rounded-box z-1 w-52 p-2 shadow-2xl">
                     <li>
                         <input type="radio" name="theme-dropdown"
-                            class="theme-controller btn btn-sm btn-block btn-ghost justify-start text-4xl"
+                            class="theme-controller btn btn-sm btn-block btn-ghost justify-start text-4xl checked:text-white"
                             aria-label="Light" data-set-theme="light" value="light" @change="updateTheme" />
                     </li>
                     <li>
