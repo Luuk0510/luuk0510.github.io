@@ -142,7 +142,7 @@ function scrollToItem(): void {
 
     <div v-if="showButton" class="flex justify-center -mt-32">
         <div class="bounce2 cursor-pointer" style="opacity: 1;" @click="scrollToItem">
-            <IconDownArrow size="100px" />
+            <IconDownArrow size="100px" class="hover:text-primary transition" />
         </div>
     </div>
 
@@ -164,8 +164,7 @@ function scrollToItem(): void {
                         ontwikkelen.
                     </p>
                     <p>
-                        In mijn vrije tijd programmeer ik graag, lees ik boeken, kijk ik films en series en game ik af
-                        en toe.
+                        In mijn vrije tijd programmeer ik graag, lees ik boeken, kijk ik films en series en game ik met vrienden.
                         Welkom op mijn portfolio! Hier vind je een overzicht van mijn werk en projecten.
                     </p>
                 </div>

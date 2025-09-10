@@ -10,7 +10,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <base-icon :size="size" color="currentColor" additional-classes="icon-tabler-brand-linkedin">
+  <base-icon :size="size" color="currentColor" additional-classes="icon-tabler-brand-linkedin transition">
   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
         <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
         <path d="M8 11l0 5" />
@@ -22,6 +22,6 @@ const props = defineProps({
 
 <style scoped>
 .icon:hover {
-  stroke: var(--color-base-300);
+  stroke: var(--color-primary);
 }
 </style>

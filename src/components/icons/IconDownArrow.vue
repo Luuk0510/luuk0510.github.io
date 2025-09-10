@@ -31,6 +31,6 @@ const { size = '60px' } = defineProps({
 
 <style scoped>
 .icon:hover {
-    stroke: oklch(var(--a));
+    stroke: oklch(var(--color-primary));
 }
 </style>
