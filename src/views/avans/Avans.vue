@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import { usePageTitle } from '@/composables/usePageTitle'
 
 import Link from '@/components/Link.vue';
@@ -8,6 +9,8 @@ import IconGitHub from '@/components/icons/IconGitHub.vue';
 import { avansProjects, type Project } from '@/data/projects';
 
 usePageTitle();
+
+const projects = computed<Project[]>(() => avansProjects);
 </script>
 
 <template>
@@ -52,7 +55,7 @@ usePageTitle();
         <h2 class="text-3xl font-black text-center mb-10">Projecten</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:w-5/6 w-full">
             <div 
-                v-for="(project) in avansProjects" 
+                v-for="project in projects" 
                 class="card bg-base-200 shadow-xl mb-6 relative"
             >
                 <div class="card-body">

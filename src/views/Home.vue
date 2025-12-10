@@ -8,11 +8,11 @@ import IconDownArrow from '@/components/icons/IconDownArrow.vue';
 import IconGitHub from '@/components/icons/IconGitHub.vue';
 import IconLinkedIn from '@/components/icons/IconLinkedIn.vue';
 import { useHero } from '@/composables/useHero';
-import { heroLogos } from '@/data/logos';
+import { heroLogos, type Logo } from '@/data/logos';
 
 const { displayedText, isTyping, showBlinkingCursor, showButton, linksAnimated, scrollToItem } = useHero();
 
-const logos = ref(heroLogos);
+const logos = ref<Logo[]>(heroLogos);
 </script>
 
 
