@@ -5,7 +5,7 @@ import Link from '@/components/Link.vue';
 
 import MarvelousLogo from '@/assets/images/logo/marvelous_logo.png'
 import IconGitHub from '@/components/icons/IconGitHub.vue';
-import { avansProjects } from '@/data/projects';
+import { avansProjects, type Project } from '@/data/projects';
 
 usePageTitle();
 </script>

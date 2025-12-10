@@ -3,11 +3,12 @@ import { computed } from 'vue';
 import { usePageTitle } from '@/composables/usePageTitle'
 import { skills } from '@/data/skills';
 import SkillCard from '@/components/SkillCard.vue';
+import type { SkillItem } from '@/data/skills';
 
 usePageTitle();
 
-const frontendSkills = computed(() => skills.filter((skill) => skill.category === 'frontend'));
-const backendSkills = computed(() => skills.filter((skill) => skill.category === 'backend'));
+const frontendSkills = computed<SkillItem[]>(() => skills.filter((skill) => skill.category === 'frontend'));
+const backendSkills = computed<SkillItem[]>(() => skills.filter((skill) => skill.category === 'backend'));
 </script>
 
 <template>

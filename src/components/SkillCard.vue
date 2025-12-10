@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 
-const props = defineProps({
-  src: String,
-  alt: String,
-  description: String,
-  delay: Number,
-})
+const props = defineProps<{
+  src: string
+  alt: string
+  description?: string
+  delay?: number
+}>()
 </script>
 
 <template>
