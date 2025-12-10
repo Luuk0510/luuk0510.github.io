@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 
 import Timeline from '@/components/Timeline.vue';
 import InteractiveImage from '@/components/InteractiveImage.vue';
@@ -7,6 +7,7 @@ import InteractiveImage from '@/components/InteractiveImage.vue';
 import IconDownArrow from '@/components/icons/IconDownArrow.vue';
 import IconGitHub from '@/components/icons/IconGitHub.vue';
 import IconLinkedIn from '@/components/icons/IconLinkedIn.vue';
+import { useHero } from '@/composables/useHero';
 
 import HTML5Logo from '@/assets/images/logo/html5_logo.png';
 import CSS3Logo from '@/assets/images/logo/css3_logo.png';
@@ -20,15 +21,7 @@ import PHPLogo from '@/assets/images/logo/php_logo.png';
 import LaravelLogo from '@/assets/images/logo/laravel_logo.png';
 import FlutterLogo from '@/assets/images/logo/flutter_logo.png';
 
-const fullText = "Welkom op mijn portfolio!";
-const displayedText = ref<string>("");
-const isTyping = ref<boolean>(true);
-const showBlinkingCursor = ref<boolean>(false);
-const showButton = ref<boolean>(false);
-const linksAnimated = ref<boolean>(false);
-
-const typingSpeed = 150;
-const cursorBlinkDuration = 3000;
+const { displayedText, isTyping, showBlinkingCursor, showButton, linksAnimated, scrollToItem } = useHero();
 
 interface Logo {
     src: string;
@@ -48,78 +41,6 @@ const logos = ref<Logo[]>([
     { src: LaravelLogo, alt: "Laravel logo" },
     { src: FlutterLogo, alt: "Flutter logo" },
 ]);
-
-onMounted(() => {
-    handleTextTyping();
-    handleLinkAnimations();
-    window.addEventListener('scroll', handleScroll);
-});
-
-function handleTextTyping(): void {
-    const hasTyped = sessionStorage.getItem('hasTyped');
-
-    if (!hasTyped) {
-        typeText(() => {
-            sessionStorage.setItem('hasTyped', 'true');
-        });
-    } else {
-        displayedText.value = fullText;
-        showButton.value = true;
-        isTyping.value = false;
-        showBlinkingCursor.value = false;
-    }
-}
-
-function handleLinkAnimations(): void {
-    const hasAnimatedLinks = sessionStorage.getItem('hasAnimatedLinks');
-    if (!hasAnimatedLinks) {
-        linksAnimated.value = true;
-        sessionStorage.setItem('hasAnimatedLinks', 'true');
-    }
-}
-
-function typeText(onComplete: () => void): void {
-    let index = 0;
-
-    const type = () => {
-        if (index < fullText.length) {
-            displayedText.value += fullText[index];
-            index++;
-            setTimeout(type, typingSpeed);
-        } else {
-            isTyping.value = false;
-            showBlinkingCursor.value = true;
-
-            setTimeout(() => {
-                showBlinkingCursor.value = false;
-                showButton.value = true;
-                onComplete();
-            }, cursorBlinkDuration);
-        }
-    };
-
-    setTimeout(() => {
-        type();
-    }, 500);
-}
-
-function handleScroll(): void {
-    const button = document.querySelector<HTMLDivElement>('.bounce2');
-    if (button) {
-        button.style.opacity = window.scrollY > 200 ? '0' : '1';
-    }
-}
-
-function scrollToItem(): void {
-    const timeline = document.querySelector<HTMLDivElement>('.item-scroll');
-    if (timeline) {
-        const timelinePosition = timeline.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({
-            top: timelinePosition - 125,
-            behavior: 'smooth',
-        });
-    }
-}
 </script>
 
 
