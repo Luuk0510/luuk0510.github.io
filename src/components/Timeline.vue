@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import IconCheckFill from './icons/IconCheckFill.vue';
-import { timelineItems } from '@/data/timeline';
+import { useTimeline } from '@/composables/useTimeline';
+
+const { items } = useTimeline();
 </script>
 
 
 <template>
     <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
-        <li v-for="(item, index) in timelineItems" :key="index"
+        <li v-for="(item, index) in items" :key="index"
         v-motion-slide-visible-once-bottom>
             <hr v-if="index > 0" />
             <div class="timeline-middle">
