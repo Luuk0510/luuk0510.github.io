@@ -1,58 +1,13 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue'
+import { useThemeSwitcher } from '@/composables/useThemeSwitcher'
 
-const THEME_KEY = 'theme' // zelfde key als jij gebruikte
+const { theme, setTheme } = useThemeSwitcher()
 
-const applyTheme = (theme: string | null) => {
-  if (!theme || theme === 'default') {
-    document.documentElement.removeAttribute('data-theme'); // niets forceren
-    localStorage.removeItem('theme');                       // geen override
-  } else {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  }
-};
-
-const updateTheme = (event: Event) => {
-  const target = event.target as HTMLInputElement
-  applyTheme(target.value)
+const handleThemeChange = (value: string) => {
+  setTheme(value)
 }
 
-let mql: MediaQueryList | null = null
-
-const handleSystemChange = () => {
-  const saved = localStorage.getItem(THEME_KEY)
-  if (!saved) {
-    document.documentElement.removeAttribute('data-theme')
-  }
-}
-
-onMounted(() => {
-  mql = window.matchMedia('(prefers-color-scheme: dark)')
-
-  if ('addEventListener' in mql) {
-    mql.addEventListener('change', handleSystemChange)
-  } else {
-    // @ts-expect-error: legacy Safari
-    mql.addListener(handleSystemChange)
-  }
-
-  const savedTheme = localStorage.getItem(THEME_KEY)
-  applyTheme(savedTheme || null)
-
-  const radios = document.querySelectorAll('input[name="theme-dropdown"]') as NodeListOf<HTMLInputElement>
-  radios.forEach(r => { r.checked = !!savedTheme && r.value === savedTheme })
-})
-
-onUnmounted(() => {
-  if (!mql) return
-  if ('removeEventListener' in mql) {
-    mql.removeEventListener('change', handleSystemChange)
-  } else {
-    // @ts-expect-error: legacy Safari
-    mql.removeListener(handleSystemChange)
-  }
-})
+const isChecked = (value: string) => theme.value === value
 </script>
 
 <template>
@@ -127,22 +82,22 @@ onUnmounted(() => {
                     <li>
                         <input type="radio" name="theme-dropdown"
                             class="theme-controller btn btn-sm btn-block btn-ghost justify-start text-4xl checked:text-white"
-                            aria-label="Light" data-set-theme="light" value="light" @change="updateTheme" />
+                            aria-label="Light" data-set-theme="light" value="light" :checked="isChecked('light')" @change="handleThemeChange('light')" />
                     </li>
                     <li>
                         <input type="radio" name="theme-dropdown"
                             class="theme-controller btn btn-sm btn-block btn-ghost justify-start text-xl"
-                            aria-label="Dark" data-set-theme="dark" value="dark" @change="updateTheme" />
+                            aria-label="Dark" data-set-theme="dark" value="dark" :checked="isChecked('dark')" @change="handleThemeChange('dark')" />
                     </li>
                     <li>
                         <input type="radio" name="theme-dropdown"
                             class="theme-controller btn btn-sm btn-block btn-ghost justify-start text-xl"
-                            aria-label="Retro" data-set-theme="retro" value="retro" @change="updateTheme" />
+                            aria-label="Retro" data-set-theme="retro" value="retro" :checked="isChecked('retro')" @change="handleThemeChange('retro')" />
                     </li>
                     <li>
                         <input type="radio" name="theme-dropdown"
                             class="theme-controller btn btn-sm btn-block btn-ghost justify-start text-xl"
-                            aria-label="Black" data-set-theme="black" value="black" @change="updateTheme" />
+                            aria-label="Black" data-set-theme="black" value="black" :checked="isChecked('black')" @change="handleThemeChange('black')" />
                     </li>
                 </ul>
             </div>
