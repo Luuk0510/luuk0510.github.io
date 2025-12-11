@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { useThemeSwitcher } from '@/composables/useThemeSwitcher'
 
 const props = defineProps<{
@@ -11,7 +10,7 @@ const { isBlackTheme } = useThemeSwitcher()
 </script>
 
 <template>
-  <a :class="isBlackTheme ? 'link' : 'link link-accent'" :href="href" :target="target">
+  <a :class="isBlackTheme ? 'link' : 'link link-accent'" :href="props.href" :target="props.target">
     <slot />
   </a>
 </template>
