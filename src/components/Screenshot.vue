@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import VueEasyLightbox from 'vue-easy-lightbox'
 
-const props = defineProps<{
+defineProps<{
   images: string[]
 }>()
 
@@ -20,7 +20,7 @@ function showLightbox(idx: number): void {
   <section class="flex flex-wrap items-center justify-center mt-10 gap-6">
     <div class="w-full">
       <div class="flex flex-wrap justify-center gap-6 mb-6">
-        <div v-for="(image, imageIndex) in props.images" :key="imageIndex" class="w-full md:w-1/4 lg:w-1/4">
+        <div v-for="(image, imageIndex) in images" :key="imageIndex" class="w-full md:w-1/4 lg:w-1/4">
           <img
             @click="showLightbox(imageIndex)"
             :src="image"
