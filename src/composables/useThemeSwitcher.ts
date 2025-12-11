@@ -1,27 +1,11 @@
 import { onBeforeUnmount, onMounted } from 'vue'
-import { useStorage } from '@vueuse/core'
-
-const THEME_KEY = 'theme'
+import { useThemeStore, type ThemeChoice } from '@/stores/theme'
 
 export function useThemeSwitcher() {
-  const theme = useStorage<string | null>(THEME_KEY, null)
+  const themeStore = useThemeStore()
+  const { theme, setTheme, applyTheme } = themeStore
 
   let mql: MediaQueryList | null = null
-
-  const applyTheme = (value: string | null) => {
-    if (!value || value === 'default') {
-      document.documentElement.removeAttribute('data-theme')
-      localStorage.removeItem(THEME_KEY)
-    } else {
-      document.documentElement.setAttribute('data-theme', value)
-      localStorage.setItem(THEME_KEY, value)
-    }
-  }
-
-  const setTheme = (value: string | null) => {
-    theme.value = value
-    applyTheme(value)
-  }
 
   const handleSystemChange = () => {
     if (!theme.value || theme.value === 'default') {
@@ -30,7 +14,7 @@ export function useThemeSwitcher() {
   }
 
   onMounted(() => {
-    applyTheme(theme.value)
+    applyTheme(theme.value as ThemeChoice)
 
     if (typeof window !== 'undefined') {
       mql = window.matchMedia('(prefers-color-scheme: dark)')
