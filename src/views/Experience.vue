@@ -34,8 +34,8 @@ usePageTitle();
                     <p class="text-4xl font-black mb-5 text-center">
                         {{ experience.title }}
                     </p>
-                    <p>
-                        {{ experience.description }}
+                    <p v-for="(paragraph, i) in experience.description" :key="i">
+                        {{ paragraph }}
                     </p>
                 </BaseCard>
             </div>

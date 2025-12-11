@@ -47,7 +47,7 @@ const projects = computed<Project[]>(() => avansProjects);
                     width="400px" 
                     height="170px" 
                 />
-                <router-link to="/marvelous" class="btn btn-primary text-base mt-2">Lees meer over mijn stage bij Marvelous</router-link>
+                <router-link to="/experience#marvelous" class="btn btn-primary text-base mt-2">Lees meer over mijn stage bij Marvelous</router-link>
             </div>
         </div>  
     </section>  
