@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { computed } from 'vue'
 import { useStorage } from '@vueuse/core'
 
 export type ThemeChoice = 'light' | 'dark' | 'retro' | 'black' | 'default' | null
@@ -25,5 +26,6 @@ export const useThemeStore = defineStore('theme', () => {
     theme,
     setTheme,
     applyTheme,
+    isBlackTheme: computed(() => theme.value === 'black'),
   }
 })

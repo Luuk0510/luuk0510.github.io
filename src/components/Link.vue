@@ -7,8 +7,7 @@ const props = defineProps<{
   target?: string
 }>()
 
-const { theme } = useThemeSwitcher()
-const isBlackTheme = computed(() => theme.value === 'black')
+const { isBlackTheme } = useThemeSwitcher()
 </script>
 
 <template>

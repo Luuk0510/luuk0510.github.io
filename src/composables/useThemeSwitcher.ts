@@ -5,7 +5,7 @@ import { useThemeStore, type ThemeChoice } from '@/stores/theme'
 export function useThemeSwitcher() {
   const themeStore = useThemeStore()
   const { setTheme, applyTheme } = themeStore
-  const { theme } = storeToRefs(themeStore)
+  const { theme, isBlackTheme } = storeToRefs(themeStore)
 
   let mql: MediaQueryList | null = null
 
@@ -42,6 +42,7 @@ export function useThemeSwitcher() {
 
   return {
     theme,
+    isBlackTheme,
     setTheme,
   }
 }
