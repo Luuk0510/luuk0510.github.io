@@ -18,7 +18,7 @@ export const timelineItems: TimelineItem[] = [
     title: 'Stage - Marvelous',
     description:
       'Ik heb mijn derdejaars stage bij Marvelous in Den Bosch gelopen. Daar heb ik gewerkt aan uitdagende projecten die processen automatiseerden en innovatie stimuleerden. Meer over mijn stage...',
-    link: '/marvelous',
+    link: '/experience#marvelous',
   },
   {
     time: 'sep 2022 - Heden',
@@ -32,7 +32,7 @@ export const timelineItems: TimelineItem[] = [
     title: 'Stage & Werk - Mobicoach',
     description:
       'Als onderdeel van mijn opleiding bij de Leijgraaf werkte ik aan Mobicoach, een platform voor mobiele coaches. Ontdek meer over dit project... ',
-    link: '/mobicoach',
+    link: '/experience',
   },
   {
     time: 'aug 2019 - jun 2022',
