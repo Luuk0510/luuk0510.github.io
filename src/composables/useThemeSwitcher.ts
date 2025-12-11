@@ -1,9 +1,11 @@
 import { onBeforeUnmount, onMounted } from 'vue'
+import { storeToRefs } from 'pinia'
 import { useThemeStore, type ThemeChoice } from '@/stores/theme'
 
 export function useThemeSwitcher() {
   const themeStore = useThemeStore()
-  const { theme, setTheme, applyTheme } = themeStore
+  const { setTheme, applyTheme } = themeStore
+  const { theme } = storeToRefs(themeStore)
 
   let mql: MediaQueryList | null = null
 

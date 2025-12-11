@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { useThemeSwitcher } from '@/composables/useThemeSwitcher'
+import type { ThemeChoice } from '@/stores/theme'
 
 const { theme, setTheme } = useThemeSwitcher()
 
-const handleThemeChange = (value: string) => {
+const handleThemeChange = (value: ThemeChoice) => {
   setTheme(value)
 }
 
-const isChecked = (value: string) => theme.value === value
+const isChecked = (value: ThemeChoice) => theme.value === value
 </script>
 
 <template>
