@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import IconCheckFill from './icons/IconCheckFill.vue';
+import BaseCard from '@/components/BaseCard.vue';
 import { useTimeline } from '@/composables/useTimeline';
 
 const { items } = useTimeline();
@@ -16,17 +17,17 @@ const { items } = useTimeline();
             </div>
             <div :class="['mb-10', 'lg:w-3/5', 'md:w-5/6', 'sm:w-full', index % 2 === 0 ? 'timeline-start md:text-end' : 'timeline-end']">
                 <time class="font-mono italic text-lg">{{ item.time }}</time>
-                <div class="card bg-base-200 shadow-xl">
-                    <div class="card-body">
+                <BaseCard cardClass="bg-base-200 shadow-xl" :motion="true" :delay="index * 50" :duration="600">
+                    <template #header>
                         <div class="text-lg font-black">{{ item.title }}</div>
-                        <p>{{ item.description }}</p>
-                        <router-link :to="item.link" class="flex flex-col justify-center items-center">
-                            <div class="btn btn-primary text-base">
-                                Meer lezen
-                            </div>
-                        </router-link>
-                    </div>
-                </div>
+                    </template>
+                    <p>{{ item.description }}</p>
+                    <router-link :to="item.link" class="flex flex-col justify-center items-center">
+                        <div class="btn btn-primary text-base">
+                            Meer lezen
+                        </div>
+                    </router-link>
+                </BaseCard>
             </div>
             <hr />
         </li>

@@ -8,6 +8,7 @@ import IconDownArrow from '@/components/icons/IconDownArrow.vue';
 import IconGitHub from '@/components/icons/IconGitHub.vue';
 import IconLinkedIn from '@/components/icons/IconLinkedIn.vue';
 import { useHero } from '@/composables/useHero';
+import BaseCard from '@/components/BaseCard.vue';
 import { heroLogos, type Logo } from '@/data/logos';
 
 const { displayedText, isTyping, showBlinkingCursor, showButton, linksAnimated, scrollToItem } = useHero();
@@ -43,27 +44,27 @@ const logos = ref<Logo[]>(heroLogos);
 
     <section class="mt-40 mb-20 item-scroll" v-motion-slide-visible-once-bottom>
         <div class="flex flex-col justify-center items-center">
-            <div class="card bg-neutral text-neutral-content lg:w-3/6">
-                <div class="card-body items-center">
+            <BaseCard cardClass="bg-neutral text-neutral-content lg:w-3/6" bodyClass="items-center">
+                <template #header>
                     <h2 class="card-title font-black text-4xl">Over mij!</h2>
-                    <p>
-                        Hallo! Ik ben Luuk, derdejaars HBO Informatica student met een passie voor softwareontwikkeling
-                        en nieuwe technologieën.
-                        Ik werk graag aan uitdagende projecten en zet mijn kennis in programmeertalen zoals C#, Laravel,
-                        JavaScript, SQL, HTML en CSS
-                        in om creatieve en praktische oplossingen te realiseren.
-                    </p>
-                    <p>
-                        Samenwerken in teams en het behalen van duidelijke doelen geven mij energie.
-                        Ik ben leergierig en altijd op zoek naar nieuwe manieren om mijn vaardigheden verder te
-                        ontwikkelen.
-                    </p>
-                    <p>
-                        In mijn vrije tijd programmeer ik graag, lees ik boeken, kijk ik films en series en game ik met vrienden.
-                        Welkom op mijn portfolio! Hier vind je een overzicht van mijn werk en projecten.
-                    </p>
-                </div>
-            </div>
+                </template>
+                <p>
+                    Hallo! Ik ben Luuk, derdejaars HBO Informatica student met een passie voor softwareontwikkeling
+                    en nieuwe technologieën.
+                    Ik werk graag aan uitdagende projecten en zet mijn kennis in programmeertalen zoals C#, Laravel,
+                    JavaScript, SQL, HTML en CSS
+                    in om creatieve en praktische oplossingen te realiseren.
+                </p>
+                <p>
+                    Samenwerken in teams en het behalen van duidelijke doelen geven mij energie.
+                    Ik ben leergierig en altijd op zoek naar nieuwe manieren om mijn vaardigheden verder te
+                    ontwikkelen.
+                </p>
+                <p>
+                    In mijn vrije tijd programmeer ik graag, lees ik boeken, kijk ik films en series en game ik met vrienden.
+                    Welkom op mijn portfolio! Hier vind je een overzicht van mijn werk en projecten.
+                </p>
+            </BaseCard>
         </div>
     </section>
 
