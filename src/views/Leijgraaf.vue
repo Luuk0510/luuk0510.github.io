@@ -41,7 +41,7 @@ usePageTitle();
                     width="400px" 
                     height="150px" 
                 />
-                <router-link to="/mobicoach" class="btn btn-primary text-base mt-6">Lees meer over mijn stage bij Mobicoach</router-link>
+                <router-link to="/experience#mobicoach" class="btn btn-primary text-base mt-6">Lees meer over mijn stage bij Mobicoach</router-link>
             </div>
         </div>  
     </section>  
