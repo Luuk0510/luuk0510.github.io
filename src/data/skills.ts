@@ -99,4 +99,12 @@ export const skills: SkillItem[] = [
     delay: 2100,
     category: 'backend',
   },
+  {
+    title: 'Flutter',
+    logo: LaravelLogo,
+    description:
+      'Flutter gebruikt voor mijn Shiny Counter app',
+    delay: 2300,
+    category: 'backend',
+  },
 ]
