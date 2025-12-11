@@ -3,7 +3,9 @@ import { ref } from 'vue';
 import { defineProps } from 'vue';
 import VueEasyLightbox from 'vue-easy-lightbox';
 
-const props = defineProps<{ images: string[] }>();
+const props = defineProps<{
+  images: string[]
+}>()
 
 const visible = ref<boolean>(false);
 const index = ref<number>(0);

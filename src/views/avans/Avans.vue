@@ -7,6 +7,7 @@ import Link from '@/components/Link.vue';
 import MarvelousLogo from '@/assets/images/logo/marvelous_logo.png'
 import IconGitHub from '@/components/icons/IconGitHub.vue';
 import { avansProjects, type Project } from '@/data/projects';
+import ProjectCard from '@/components/ProjectCard.vue';
 
 usePageTitle();
 
@@ -54,26 +55,25 @@ const projects = computed<Project[]>(() => avansProjects);
     <section class="flex flex-col justify-center items-center text-center">
         <h2 class="text-3xl font-black text-center mb-10">Projecten</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:w-5/6 w-full">
-            <div 
-                v-for="project in projects" 
-                class="card bg-base-200 shadow-xl mb-6 relative"
+            <ProjectCard
+                v-for="project in projects"
+                :key="project.title"
+                :title="project.title"
+                :badges="project.badges"
+                :description="project.description"
+                :github-link="project.link"
+                :route="project.route"
+                :button-text="project.buttonText"
             >
-                <div class="card-body">
-                    <h3 class="text-2xl font-bold text-center px-10">{{ project.title }}</h3>
-                    <a v-if="project.link" :href="project.link" target="_blank" class="absolute mt-4 right-4 top-4">
-                        <IconGitHub size="40px" />
-                    </a>
-                    <div v-if="project.badges" class="flex flex-wrap justify-center items-center gap-2 mb-2">
-                        <div v-for="(badge, i) in project.badges" :key="i" class="badge badge-accent badge-outline badge-lg font-bold">
-                            {{ badge }}
-                        </div>
-                    </div>
-                    <p class="text-start">{{ project.description }}</p>
-                    <div v-if="project.route !== null && project.route !== ''" class="flex justify-center mb-4">
-                        <router-link :to="project.route" class="btn btn-primary text-base">{{project.buttonText}}</router-link>
-                    </div>
-                </div>
-            </div>
+                <template #githubIcon>
+                    <IconGitHub size="40px" />
+                </template>
+                <template #cta>
+                    <router-link v-if="project.route" :to="project.route" class="btn btn-primary text-base">
+                        {{ project.buttonText }}
+                    </router-link>
+                </template>
+            </ProjectCard>
         </div>
     </section>
 </template>

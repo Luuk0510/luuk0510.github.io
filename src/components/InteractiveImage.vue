@@ -9,7 +9,6 @@ interface Props {
     height: string;
 }
 
-
 const props = defineProps<Props>();
 
 const target = ref(null);

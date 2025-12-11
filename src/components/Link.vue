@@ -2,16 +2,10 @@
 import { computed } from 'vue'
 import { useThemeSwitcher } from '@/composables/useThemeSwitcher'
 
-const props = defineProps({
-  href: {
-    type: String,
-    required: true,
-  },
-  target: {
-    type: String,
-    default: '_self',
-  },
-})
+const props = defineProps<{
+  href: string
+  target?: string
+}>()
 
 const { theme } = useThemeSwitcher()
 const isBlackTheme = computed(() => theme.value === 'black')
