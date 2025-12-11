@@ -2,6 +2,19 @@
 import { useThemeSwitcher } from '@/composables/useThemeSwitcher'
 import type { ThemeChoice } from '@/stores/theme'
 
+type MenuLink = {
+  path: string
+  label: string
+}
+
+const menuLinks: MenuLink[] = [
+  { path: '/', label: 'Over mij' },
+  { path: '/skills', label: 'Vaardigheden' },
+  { path: '/experience', label: 'Werkervaring' },
+  { path: '/education', label: 'Opleiding' },
+  { path: '/contact', label: 'Contact' },
+]
+
 const { theme, setTheme } = useThemeSwitcher()
 
 const handleThemeChange = (value: ThemeChoice) => {
@@ -9,6 +22,7 @@ const handleThemeChange = (value: ThemeChoice) => {
 }
 
 const isChecked = (value: ThemeChoice) => theme.value === value
+
 </script>
 
 <template>
@@ -25,11 +39,9 @@ const isChecked = (value: ThemeChoice) => theme.value === value
                 </div>
                 <ul tabindex="0"
                     class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow-sm">
-                    <li><router-link to="/" class="text-xl">Over mij</router-link></li>
-                    <li><router-link to="/skills" class="text-xl">Vaardigheden</router-link></li>
-                    <li><router-link to="/experience" class="text-xl">Werkervaring</router-link></li>
-                    <li><router-link to="/education" class="text-xl">Opleiding</router-link></li>
-                    <li><router-link to="/contact" class="text-xl">Contact</router-link></li>
+                    <li v-for="link in menuLinks" :key="link.path">
+                        <router-link :to="link.path" class="text-xl">{{ link.label }}</router-link>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -37,33 +49,13 @@ const isChecked = (value: ThemeChoice) => theme.value === value
         <!-- Navbar Center -->
         <nav class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
-                <li>
-                    <router-link to="/" class="btn btn-ghost text-xl" :class="{ 'btn-active': $route.path === '/' }">
-                        Over mij
-                    </router-link>
-                </li>
-                <li>
-                    <router-link to="/skills" class="btn btn-ghost text-xl"
-                        :class="{ 'btn-active': $route.path === '/skills' }">
-                        Vaardigheden
-                    </router-link>
-                </li>
-                <li>
-                    <router-link to="/experience" class="btn btn-ghost text-xl"
-                        :class="{ 'btn-active': $route.path === '/experience' }">
-                        Werkervaring
-                    </router-link>
-                </li>
-                <li>
-                    <router-link to="/education" class="btn btn-ghost text-xl"
-                        :class="{ 'btn-active': $route.path === '/education' }">
-                        Opleiding
-                    </router-link>
-                </li>
-                <li>
-                    <router-link to="/contact" class="btn btn-ghost text-xl"
-                        :class="{ 'btn-active': $route.path === '/contact' }">
-                        Contact
+                <li v-for="link in menuLinks" :key="link.path">
+                    <router-link
+                        :to="link.path"
+                        class="btn btn-ghost text-xl"
+                        :class="{ 'btn-active': $route.path === link.path }"
+                    >
+                        {{ link.label }}
                     </router-link>
                 </li>
             </ul>
