@@ -1,6 +1,6 @@
 const projectImages = import.meta.glob('../assets/images/projects/**/*', {
   eager: true,
-  import: 'default',
+  import: 'default'
 }) as Record<string, string>
 
 export function projectImage(path: string): string {
