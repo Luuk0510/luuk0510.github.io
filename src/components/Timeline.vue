@@ -1,51 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import IconCheckFill from './icons/IconCheckFill.vue';
+import BaseCard from '@/components/BaseCard.vue';
+import { useTimeline } from '@/composables/useTimeline';
 
-const timelineItems = ref([
-    {
-        time: 'sep 2025 - heden',
-        title: 'Minor - Artificial Intelligence',
-        description: 'Ik ben momenteel bezig met een minor in Artificial Intelligence aan Avans Hogeschool in Breda. Hier leer ik de basisprincipes van AI en hoe deze kunnen worden toegepast in softwareontwikkeling. Meer over mijn minor...',
-        isVisible: false,
-        link: '/minor',
-    },
-    {
-        time: 'sep 2024 - jan 2025',
-        title: 'Stage - Marvelous',
-        description: 'Ik heb mijn derdejaars stage bij Marvelous in Den Bosch gelopen. Daar heb ik gewerkt aan uitdagende projecten die processen automatiseerden en innovatie stimuleerden. Meer over mijn stage...',
-        isVisible: false,
-        link: '/marvelous',
-    },
-    {
-        time: 'sep 2022 - Heden',
-        title: 'HBO - Avans Hogeschool',
-        description: 'Als derdejaars student Informatica aan Avans in Den Bosch werk ik aan verschillende projecten en leer ik onder andere C#, Laravel, Python en Unity. Meer over mijn ervaringen... ',
-        isVisible: false,
-        link: '/avans',
-    },
-    {
-        time: 'feb 2021 - aug 2024',
-        title: 'Stage & Werk - Mobicoach',
-        description: 'Als onderdeel van mijn opleiding bij de Leijgraaf werkte ik aan Mobicoach, een platform voor mobiele coaches. Ontdek meer over dit project... ',
-        isVisible: false,
-        link: '/mobicoach',
-    },
-    {
-        time: 'aug 2019 - jun 2022',
-        title: 'MBO - De Leijgraaf',
-        description: 'Tijdens mijn MBO-opleiding Software Development in Oss leerde ik onder andere PHP en UX/UI design. Meer over deze ervaring... ',
-        isVisible: false,
-        link: '/leijgraaf',
-    },
-]);
-
+const { items } = useTimeline();
 </script>
 
 
 <template>
     <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
-        <li v-for="(item, index) in timelineItems" :key="index"
+        <li v-for="(item, index) in items" :key="index"
         v-motion-slide-visible-once-bottom>
             <hr v-if="index > 0" />
             <div class="timeline-middle">
@@ -53,17 +17,17 @@ const timelineItems = ref([
             </div>
             <div :class="['mb-10', 'lg:w-3/5', 'md:w-5/6', 'sm:w-full', index % 2 === 0 ? 'timeline-start md:text-end' : 'timeline-end']">
                 <time class="font-mono italic text-lg">{{ item.time }}</time>
-                <div class="card bg-base-200 shadow-xl">
-                    <div class="card-body">
+                <BaseCard cardClass="bg-base-200 shadow-xl" :motion="true" :delay="index * 50" :duration="600">
+                    <template #header>
                         <div class="text-lg font-black">{{ item.title }}</div>
-                        <p>{{ item.description }}</p>
-                        <router-link :to="item.link" class="flex flex-col justify-center items-center">
-                            <div class="btn btn-primary text-base">
-                                Meer lezen
-                            </div>
-                        </router-link>
-                    </div>
-                </div>
+                    </template>
+                    <p>{{ item.description }}</p>
+                    <router-link :to="item.link" class="flex flex-col justify-center items-center">
+                        <div class="btn btn-primary text-base">
+                            Meer lezen
+                        </div>
+                    </router-link>
+                </BaseCard>
             </div>
             <hr />
         </li>
