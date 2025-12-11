@@ -1,19 +1,7 @@
 <script setup lang="ts">
 import { useThemeSwitcher } from '@/composables/useThemeSwitcher'
 import type { ThemeChoice } from '@/stores/theme'
-
-type MenuLink = {
-  path: string
-  label: string
-}
-
-const menuLinks: MenuLink[] = [
-  { path: '/', label: 'Over mij' },
-  { path: '/skills', label: 'Vaardigheden' },
-  { path: '/experience', label: 'Werkervaring' },
-  { path: '/education', label: 'Opleiding' },
-  { path: '/contact', label: 'Contact' },
-]
+import { navLinks } from '@/data/navLinks'
 
 const { theme, setTheme } = useThemeSwitcher()
 
@@ -39,7 +27,7 @@ const isChecked = (value: ThemeChoice) => theme.value === value
                 </div>
                 <ul tabindex="0"
                     class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow-sm">
-                    <li v-for="link in menuLinks" :key="link.path">
+                    <li v-for="link in navLinks" :key="link.path">
                         <router-link :to="link.path" class="text-xl">{{ link.label }}</router-link>
                     </li>
                 </ul>
@@ -49,7 +37,7 @@ const isChecked = (value: ThemeChoice) => theme.value === value
         <!-- Navbar Center -->
         <nav class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
-                <li v-for="link in menuLinks" :key="link.path">
+                <li v-for="link in navLinks" :key="link.path">
                     <router-link
                         :to="link.path"
                         class="btn btn-ghost text-xl"
