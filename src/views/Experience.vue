@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { usePageTitle } from '@/composables/usePageTitle'
 import BaseCard from '@/components/BaseCard.vue'
+import { experienceItems } from '@/data/experience'
 
 usePageTitle();
 </script>
@@ -10,28 +11,31 @@ usePageTitle();
         <div class="flex flex-col justify-center items-center mt-24 mb-20 gap-8">
             <h1 class="text-4xl font-black mb-5">Werkervaring</h1>
 
-            <div class="flex flex-col items-center gap-2">
-                <p class="font-mono italic">sep 2024 - jan 2025</p>
-                <BaseCard :motion="true" :delay="800" :duration="800"
-                    cardClass="bg-neutral text-neutral-content lg:w-3/6 shadow-xl" bodyClass="items-center">
+            <div
+              v-for="(experience, index) in experienceItems"
+              :key="experience.title"
+              class="flex flex-col items-center gap-2"
+            >
+                <p
+                  class="font-mono italic"
+                  v-motion-slide-bottom
+                  :delay="700 + index * 100"
+                  :duration="700"
+                >
+                  {{ experience.dates }}
+                </p>
+                <BaseCard
+                    :motion="true"
+                    :delay="800 + index * 100"
+                    :duration="800"
+                    cardClass="bg-neutral text-neutral-content lg:w-3/6 shadow-xl"
+                    bodyClass="items-center"
+                >
                     <p class="text-4xl font-black mb-5 text-center">
-                        Marvelous
+                        {{ experience.title }}
                     </p>
                     <p>
-                        Hier komt een tekst over de stage bij Marvelous en wat ik heb gedaan.
-                    </p>
-                </BaseCard>
-            </div>
-
-            <div class="flex flex-col items-center gap-2">
-                <p class="font-mono italic">feb 2021 - aug 2024</p>
-                <BaseCard :motion="true" :delay="900" :duration="800"
-                    cardClass="bg-neutral text-neutral-content lg:w-3/6 shadow-xl" bodyClass="items-center">
-                    <p class="text-4xl font-black mb-5 text-center">
-                        Mobicoach
-                    </p>
-                    <p>
-                        Hier komt tekst over de stage en part time werk bij Mobicaoch en wat ik heb gedaan.
+                        {{ experience.description }}
                     </p>
                 </BaseCard>
             </div>
