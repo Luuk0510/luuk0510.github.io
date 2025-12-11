@@ -30,8 +30,8 @@ const createRoute = (
     component,
     meta: {
       index,
-      enterClass: 'animate__animated animate__fadeInRight',
-      leaveClass: 'animate__animated animate__fadeOutLeft',
+      enterClass: 'route-slide-in-right',
+      leaveClass: 'route-slide-out-left',
       title: title || name,
     },
   }
