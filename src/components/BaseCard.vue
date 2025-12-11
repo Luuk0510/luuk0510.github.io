@@ -10,14 +10,8 @@ defineProps<{
 </script>
 
 <template>
-  <v-motion
-    v-if="motion"
-    v-motion-slide-bottom
-    :delay="delay"
-    :duration="duration"
-    :tag="tag || 'section'"
-    :class="['card', cardClass]"
-  >
+  <v-motion v-if="motion" v-motion-slide-bottom :delay="delay" :duration="duration" :tag="tag || 'section'"
+    :class="['card', cardClass]">
     <div :class="['card-body', bodyClass]">
       <header v-if="$slots.header" class="card-header mb-2">
         <slot name="header" />
@@ -29,11 +23,7 @@ defineProps<{
     </div>
   </v-motion>
 
-  <component
-    v-else
-    :is="tag || 'section'"
-    :class="['card', cardClass]"
-  >
+  <component v-else :is="tag || 'section'" :class="['card', cardClass]">
     <div :class="['card-body', bodyClass]">
       <header v-if="$slots.header" class="card-header mb-2">
         <slot name="header" />
@@ -46,5 +36,4 @@ defineProps<{
   </component>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
