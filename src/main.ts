@@ -5,6 +5,7 @@ import { MotionPlugin } from '@vueuse/motion'
 import App from './App.vue'
 import router from './router/index'
 import './assets/app.css'
+import './assets/transitions.css'
 import 'animate.css';
 
 const app = createApp(App)

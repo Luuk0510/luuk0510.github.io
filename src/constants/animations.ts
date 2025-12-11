@@ -6,4 +6,5 @@ export const HERO = {
 
 export const TRANSITIONS = {
   slideDurationMs: 450,
+  slideEase: 'ease',
 }
