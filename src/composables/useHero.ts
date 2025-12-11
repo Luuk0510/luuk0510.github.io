@@ -1,5 +1,6 @@
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { useStorage } from '@vueuse/core'
+import { HERO } from '@/constants/animations'
 
 // Guard sessionStorage for non-browser contexts (SSR/tests)
 const storage = typeof window !== 'undefined' ? sessionStorage : undefined
@@ -13,9 +14,9 @@ export function useHero() {
   const showButton = ref<boolean>(false)
   const linksAnimated = ref<boolean>(false)
 
-  const typingSpeed = 150
-  const cursorBlinkDuration = 3000
-  const typingDelay = 500
+  const typingSpeed = HERO.typingSpeed
+  const cursorBlinkDuration = HERO.cursorBlinkDuration
+  const typingDelay = HERO.typingDelay
 
   // Persist one-time flags so typing and link animations only run on first visit
   const hasTyped = useStorage<boolean>('hero-hasTyped', false, storage)
