@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { defineProps, withDefaults } from 'vue';
-
 interface Props {
   size: string;
   color: string;
@@ -17,7 +15,7 @@ const props = withDefaults(defineProps<Props>(), {
 <template>
     <svg
         xmlns="http://www.w3.org/2000/svg"
-        :class="['icon icon-tabler', additionalClasses]"
+        :class="['icon icon-tabler', props.additionalClasses]"
         :width="size"
         :height="size"
         viewBox="0 0 24 24"

@@ -1,0 +1,35 @@
+.route-slide-in-right {
+    animation: slideInFromRight var(--route-slide-duration, 0.45s) var(--route-slide-ease, ease) both;
+}
+
+.route-slide-out-left {
+    animation: slideOutToLeft var(--route-slide-duration, 0.45s) var(--route-slide-ease, ease) both;
+}
+
+.route-slide-in-left {
+    animation: slideInFromLeft var(--route-slide-duration, 0.45s) var(--route-slide-ease, ease) both;
+}
+
+.route-slide-out-right {
+    animation: slideOutToRight var(--route-slide-duration, 0.45s) var(--route-slide-ease, ease) both;
+}
+
+@keyframes slideInFromRight {
+    from { transform: translateX(100%); opacity: 1; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutToLeft {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(-40%); opacity: 1; }
+}
+
+@keyframes slideInFromLeft {
+    from { transform: translateX(-100%); opacity: 1; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutToRight {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(40%); opacity: 1; }
+}

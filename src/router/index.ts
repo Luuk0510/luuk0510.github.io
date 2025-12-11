@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import type { Component } from 'vue'
 
 const Home = () => import('@/views/Home.vue');
 const Skills = () => import('@/views/Skills.vue');
@@ -21,7 +22,7 @@ const Marvelous = () => import('@/views/Marvelous.vue');
 const createRoute = (
   path: string,
   name: string,
-  component: any,
+  component: Component,
   index: number,
   title: string | null = null
 ): RouteRecordRaw => {

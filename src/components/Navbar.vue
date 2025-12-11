@@ -1,58 +1,28 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue'
+import { useThemeSwitcher } from '@/composables/useThemeSwitcher'
+import type { ThemeChoice } from '@/stores/theme'
 
-const THEME_KEY = 'theme' // zelfde key als jij gebruikte
-
-const applyTheme = (theme: string | null) => {
-  if (!theme || theme === 'default') {
-    document.documentElement.removeAttribute('data-theme'); // niets forceren
-    localStorage.removeItem('theme');                       // geen override
-  } else {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  }
-};
-
-const updateTheme = (event: Event) => {
-  const target = event.target as HTMLInputElement
-  applyTheme(target.value)
+type MenuLink = {
+  path: string
+  label: string
 }
 
-let mql: MediaQueryList | null = null
+const menuLinks: MenuLink[] = [
+  { path: '/', label: 'Over mij' },
+  { path: '/skills', label: 'Vaardigheden' },
+  { path: '/experience', label: 'Werkervaring' },
+  { path: '/education', label: 'Opleiding' },
+  { path: '/contact', label: 'Contact' },
+]
 
-const handleSystemChange = () => {
-  const saved = localStorage.getItem(THEME_KEY)
-  if (!saved) {
-    document.documentElement.removeAttribute('data-theme')
-  }
+const { theme, setTheme } = useThemeSwitcher()
+
+const handleThemeChange = (value: ThemeChoice) => {
+  setTheme(value)
 }
 
-onMounted(() => {
-  mql = window.matchMedia('(prefers-color-scheme: dark)')
+const isChecked = (value: ThemeChoice) => theme.value === value
 
-  if ('addEventListener' in mql) {
-    mql.addEventListener('change', handleSystemChange)
-  } else {
-    // @ts-expect-error: legacy Safari
-    mql.addListener(handleSystemChange)
-  }
-
-  const savedTheme = localStorage.getItem(THEME_KEY)
-  applyTheme(savedTheme || null)
-
-  const radios = document.querySelectorAll('input[name="theme-dropdown"]') as NodeListOf<HTMLInputElement>
-  radios.forEach(r => { r.checked = !!savedTheme && r.value === savedTheme })
-})
-
-onUnmounted(() => {
-  if (!mql) return
-  if ('removeEventListener' in mql) {
-    mql.removeEventListener('change', handleSystemChange)
-  } else {
-    // @ts-expect-error: legacy Safari
-    mql.removeListener(handleSystemChange)
-  }
-})
 </script>
 
 <template>
@@ -69,11 +39,9 @@ onUnmounted(() => {
                 </div>
                 <ul tabindex="0"
                     class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow-sm">
-                    <li><router-link to="/" class="text-xl">Over mij</router-link></li>
-                    <li><router-link to="/skills" class="text-xl">Vaardigheden</router-link></li>
-                    <li><router-link to="/experience" class="text-xl">Werkervaring</router-link></li>
-                    <li><router-link to="/education" class="text-xl">Opleiding</router-link></li>
-                    <li><router-link to="/contact" class="text-xl">Contact</router-link></li>
+                    <li v-for="link in menuLinks" :key="link.path">
+                        <router-link :to="link.path" class="text-xl">{{ link.label }}</router-link>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -81,33 +49,13 @@ onUnmounted(() => {
         <!-- Navbar Center -->
         <nav class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
-                <li>
-                    <router-link to="/" class="btn btn-ghost text-xl" :class="{ 'btn-active': $route.path === '/' }">
-                        Over mij
-                    </router-link>
-                </li>
-                <li>
-                    <router-link to="/skills" class="btn btn-ghost text-xl"
-                        :class="{ 'btn-active': $route.path === '/skills' }">
-                        Vaardigheden
-                    </router-link>
-                </li>
-                <li>
-                    <router-link to="/experience" class="btn btn-ghost text-xl"
-                        :class="{ 'btn-active': $route.path === '/experience' }">
-                        Werkervaring
-                    </router-link>
-                </li>
-                <li>
-                    <router-link to="/education" class="btn btn-ghost text-xl"
-                        :class="{ 'btn-active': $route.path === '/education' }">
-                        Opleiding
-                    </router-link>
-                </li>
-                <li>
-                    <router-link to="/contact" class="btn btn-ghost text-xl"
-                        :class="{ 'btn-active': $route.path === '/contact' }">
-                        Contact
+                <li v-for="link in menuLinks" :key="link.path">
+                    <router-link
+                        :to="link.path"
+                        class="btn btn-ghost text-xl"
+                        :class="{ 'btn-active': $route.path === link.path }"
+                    >
+                        {{ link.label }}
                     </router-link>
                 </li>
             </ul>
@@ -127,22 +75,22 @@ onUnmounted(() => {
                     <li>
                         <input type="radio" name="theme-dropdown"
                             class="theme-controller btn btn-sm btn-block btn-ghost justify-start text-4xl checked:text-white"
-                            aria-label="Light" data-set-theme="light" value="light" @change="updateTheme" />
+                            aria-label="Light" data-set-theme="light" value="light" :checked="isChecked('light')" @change="handleThemeChange('light')" />
                     </li>
                     <li>
                         <input type="radio" name="theme-dropdown"
                             class="theme-controller btn btn-sm btn-block btn-ghost justify-start text-xl"
-                            aria-label="Dark" data-set-theme="dark" value="dark" @change="updateTheme" />
+                            aria-label="Dark" data-set-theme="dark" value="dark" :checked="isChecked('dark')" @change="handleThemeChange('dark')" />
                     </li>
                     <li>
                         <input type="radio" name="theme-dropdown"
                             class="theme-controller btn btn-sm btn-block btn-ghost justify-start text-xl"
-                            aria-label="Retro" data-set-theme="retro" value="retro" @change="updateTheme" />
+                            aria-label="Retro" data-set-theme="retro" value="retro" :checked="isChecked('retro')" @change="handleThemeChange('retro')" />
                     </li>
                     <li>
                         <input type="radio" name="theme-dropdown"
                             class="theme-controller btn btn-sm btn-block btn-ghost justify-start text-xl"
-                            aria-label="Black" data-set-theme="black" value="black" @change="updateTheme" />
+                            aria-label="Black" data-set-theme="black" value="black" :checked="isChecked('black')" @change="handleThemeChange('black')" />
                     </li>
                 </ul>
             </div>
