@@ -2,7 +2,6 @@
 import { ref } from 'vue';
 import Screenshot from '@/components/Screenshot.vue';
 import BaseCard from '@/components/BaseCard.vue';
-import { usePageTitle } from '@/composables/usePageTitle';
 import { projectImage } from '@/utils/projectImage';
 
 const images = ref<string[]>([
@@ -15,8 +14,6 @@ const images = ref<string[]>([
     projectImage('beestje_op_je_feestje/beestje_beheer_page.png'),
     projectImage('beestje_op_je_feestje/create_user_page.png'),
 ]);
-
-usePageTitle();
 </script>
 
 <template>

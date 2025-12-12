@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { usePageTitle } from '@/composables/usePageTitle';
 import Screenshot from '@/components/Screenshot.vue';
 import BaseCard from '@/components/BaseCard.vue';
 import { projectImage } from '@/utils/projectImage';
@@ -16,8 +15,6 @@ const images = ref<string[]>([
     projectImage('space_project/space_project_mars_phone.png'),
     projectImage('space_project/space_project_footer.png'),
 ]);
-
-usePageTitle();
 </script>
 
 <template>
@@ -85,7 +82,7 @@ usePageTitle();
                 </li>
             </ul>
             <div class="flex justify-center">
-                <a href="https://luuk0510.github.io/space-project/" target="_blank" class="btn btn-primary text-lg">Link
+                <a href="https://luuk0510.github.io/space-project/" target="_blank" rel="noopener noreferrer" class="btn btn-primary text-lg">Link
                     naar project</a>
             </div>
         </BaseCard>

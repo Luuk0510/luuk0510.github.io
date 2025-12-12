@@ -8,6 +8,7 @@ const Education = () => import('@/views/Education.vue');
 const Contact = () => import('@/views/Contact.vue');
 const Leijgraaf = () => import('@/views/Leijgraaf.vue');
 const Avans = () => import('@/views/avans/Avans.vue');
+const Minor = () => import('@/views/avans/Minor.vue');
 const SpaceProject = () => import('@/views/avans/SpaceProject.vue');
 const BeestjeOpJeFeestje = () => import('@/views/avans/BeestjeOpJeFeestje.vue');
 const Bumbo = () => import('@/views/avans/Bumbo.vue');
@@ -45,6 +46,7 @@ const routes: Array<RouteRecordRaw> = [
   createRoute('/contact', 'Contact', Contact, 4, 'Contact'),
   createRoute('/leijgraaf', 'Leijgraaf', Leijgraaf, 5, 'Leijgraaf'),
   createRoute('/avans', 'Avans', Avans, 7, 'Avans'),
+  createRoute('/minor', 'Minor', Minor, 16, 'Minor'),
   createRoute('/spaceproject', 'Space Project', SpaceProject, 8, 'Space Project'),
   createRoute('/beestjeopjefeestje', 'Beestje Op Je Feestje', BeestjeOpJeFeestje, 9, 'Beestje Op Je Feestje'),
   createRoute('/bumbo', 'Bumbo', Bumbo, 10, 'Bumbo'),
@@ -59,20 +61,24 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
   scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
-    } else {
+    if (savedPosition) return savedPosition
+
+    if (to.hash) {
       return new Promise((resolve) => {
-        setTimeout(() => {
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-          resolve({ top: 0 });
-        }, 300);
-      });
+        // Wait a tick so the routed component exists (and transitions can mount).
+        setTimeout(() => resolve({ el: to.hash, behavior: 'smooth' }), 350)
+      })
     }
+
+    return { top: 0, behavior: 'smooth' }
   },
-});
+})
+
+router.afterEach((to) => {
+  if (typeof document === 'undefined') return
+  const baseTitle = 'Portfolio'
+  const titleSuffix = to.meta?.title
+  document.title = titleSuffix ? `${baseTitle} - ${titleSuffix}` : baseTitle
+})
 
 export default router

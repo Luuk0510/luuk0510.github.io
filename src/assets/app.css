@@ -20,8 +20,32 @@
 
 @plugin "daisyui/theme" {
   name: "dark";
-  --color-base-200: oklch(21% 0.034 264.665);
-  --color-neutral: oklch(27% 0.033 256.848);
+  --color-base-100: oklch(16% 0.03 250);
+  --color-base-200: oklch(22% 0.03 250);
+  --color-base-300: oklch(28% 0.03 250);
+  --color-base-content: oklch(92% 0.01 250);
+
+  --color-neutral: oklch(27% 0.02 250);
+  --color-neutral-content: oklch(92% 0.01 250);
+
+  --color-primary: oklch(72% 0.16 250);
+  --color-primary-content: oklch(15% 0.04 250);
+
+  --color-secondary: oklch(70% 0.12 315);
+  --color-secondary-content: oklch(15% 0.03 315);
+
+  --color-accent: oklch(74% 0.13 165);
+  --color-accent-content: oklch(15% 0.03 165);
+
+  --color-info: oklch(72% 0.12 240);
+  --color-info-content: oklch(15% 0.03 240);
+  --color-success: oklch(72% 0.14 145);
+  --color-success-content: oklch(15% 0.03 145);
+  --color-warning: oklch(82% 0.14 85);
+  --color-warning-content: oklch(20% 0.05 85);
+  --color-error: oklch(65% 0.18 25);
+  --color-error-content: oklch(15% 0.03 25);
+
   --radius-selector: 2rem;
   --radius-field: 2rem;
   --radius-box: 2rem;
@@ -30,17 +54,49 @@
   --size-field: 0.28125rem;
 }
 
+@plugin "daisyui/theme" {
+  name: "black";
+  /* OLED monochrome: black + white only. */
+  --color-base-100: oklch(0% 0 0);
+  --color-base-200: oklch(18% 0 0);
+  --color-base-300: oklch(19% 0 0);
+  --color-base-content: oklch(95% 0 0);
+
+  /* Cards using `bg-neutral` should pop from the OLED background. */
+  --color-neutral: oklch(20% 0 0);
+  --color-neutral-content: oklch(95% 0 0);
+
+  /* Keep UI states readable using grayscale. */
+  --color-primary: oklch(92% 0 0);
+  --color-primary-content: oklch(0% 0 0);
+
+  --color-secondary: oklch(86% 0 0);
+  --color-secondary-content: oklch(0% 0 0);
+
+  /* Used by `badge-accent` in ProjectCard. */
+  --color-accent: oklch(92% 0 0);
+  --color-accent-content: oklch(0% 0 0);
+
+  --color-info: oklch(88% 0 0);
+  --color-info-content: oklch(0% 0 0);
+  --color-success: oklch(88% 0 0);
+  --color-success-content: oklch(0% 0 0);
+  --color-warning: oklch(88% 0 0);
+  --color-warning-content: oklch(0% 0 0);
+  --color-error: oklch(82% 0 0);
+  --color-error-content: oklch(0% 0 0);
+
+  --radius-selector: 1rem;
+  --radius-field: 1rem;
+  --radius-box: 1rem;
+  --border: 0.5px;
+  --size-selector: 0.28125rem;
+  --size-field: 0.28125rem;
+}
+
 
 @config '../../tailwind.config.js';
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
   *,
   ::after,
@@ -48,6 +104,38 @@
   ::backdrop,
   ::file-selector-button {
     border-color: var(--color-gray-200, currentColor);
+  }
+
+  :where(a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])):focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Make hover/focus states more noticeable, especially on btn-ghost. */
+  .btn {
+    transition-property: background-color, border-color, color, filter;
+    transition-duration: 160ms;
+    transition-timing-function: ease;
+  }
+
+  .btn:hover {
+    filter: brightness(1.08) saturate(1.05);
+  }
+
+  .btn.btn-primary:hover {
+    filter: brightness(1.12) saturate(1.1);
+  }
+
+  .btn.btn-ghost:hover {
+    background-color: color-mix(in oklab, var(--color-primary) 16%, transparent);
+    border-color: color-mix(in oklab, var(--color-primary) 28%, transparent);
+  }
+
+  /* Outline badges can be hard to see on dark cards. */
+  .badge.badge-outline {
+    border-width: 2px;
   }
 }
 

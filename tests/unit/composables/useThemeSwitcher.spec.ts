@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { defineComponent } from 'vue'
 import { createPinia, setActivePinia } from 'pinia'
-import { useThemeSwitcher } from '../useThemeSwitcher'
+import { useThemeSwitcher } from '@/composables/useThemeSwitcher'
 
 const matchMediaMock = () =>
   ({
@@ -40,7 +40,8 @@ describe('useThemeSwitcher', () => {
     wrapper.vm.setTheme('dark')
     vi.runAllTimers()
     expect(document.documentElement.getAttribute('data-theme')).toBe('dark')
-    expect(wrapper.vm.theme.value).toBe('dark')
+    // Component instance proxies unwrap refs.
+    expect(wrapper.vm.theme).toBe('dark')
     expect(localStorage.getItem('theme')).toBe('dark')
   })
 

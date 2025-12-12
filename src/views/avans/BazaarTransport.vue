@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { usePageTitle } from '@/composables/usePageTitle';
 import Screenshot from '@/components/Screenshot.vue';
 import BaseCard from '@/components/BaseCard.vue';
 import { projectImage } from '@/utils/projectImage';
@@ -10,8 +9,6 @@ const images = ref<string[]>([
     projectImage('bazaar_transport/screenshot_2.png'),
     projectImage('bazaar_transport/screenshot_3.png')
 ]);
-
-usePageTitle();
 </script>
 
 <template>
@@ -69,7 +66,7 @@ usePageTitle();
                     weersomstandigheden te wisselen.</li>
             </ul>
             <div class="flex justify-center">
-                <a href="https://luuk0510.github.io/bazaar-transport/" target="_blank"
+                <a href="https://luuk0510.github.io/bazaar-transport/" target="_blank" rel="noopener noreferrer"
                     class="btn btn-primary text-lg">Link naar project</a>
             </div>
         </BaseCard>
