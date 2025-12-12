@@ -10,10 +10,14 @@ import IconLinkedIn from '@/components/icons/IconLinkedIn.vue';
 import { useHero } from '@/composables/useHero';
 import BaseCard from '@/components/BaseCard.vue';
 import { heroLogos, type Logo } from '@/data/logos';
+import { useAnimateOnce } from '@/composables/useAnimateOnce'
+import { STORAGE_KEYS } from '@/constants/storageKeys'
+import { HOME } from '@/constants/animations'
 
 const { displayedText, isTyping, showBlinkingCursor, showButton, linksAnimated, scrollToItem } = useHero();
 
 const logos = ref<Logo[]>(heroLogos);
+const { shouldAnimate } = useAnimateOnce(STORAGE_KEYS.homeHasAnimated)
 </script>
 
 
@@ -42,9 +46,37 @@ const logos = ref<Logo[]>(heroLogos);
         </div>
     </div>
 
-    <section class="mt-40 mb-20 item-scroll" v-motion-slide-visible-once-bottom>
+    <section class="mt-40 mb-20 item-scroll">
         <div class="flex flex-col justify-center items-center">
-            <BaseCard cardClass="bg-neutral text-neutral-content lg:w-3/6" bodyClass="items-center">
+            <div
+              v-if="shouldAnimate"
+              v-motion-slide-visible-once-bottom
+              class="w-full flex justify-center"
+            >
+              <BaseCard cardClass="bg-neutral text-neutral-content lg:w-3/6" bodyClass="items-center">
+                  <template #header>
+                      <h2 class="card-title font-black text-4xl">Over mij!</h2>
+                  </template>
+                  <p>
+                      Hallo! Ik ben Luuk, derdejaars HBO Informatica student met een passie voor softwareontwikkeling
+                      en nieuwe technologieën.
+                      Ik werk graag aan uitdagende projecten en zet mijn kennis in programmeertalen zoals C#, Laravel,
+                      JavaScript, SQL, HTML en CSS
+                      in om creatieve en praktische oplossingen te realiseren.
+                  </p>
+                  <p>
+                      Samenwerken in teams en het behalen van duidelijke doelen geven mij energie.
+                      Ik ben leergierig en altijd op zoek naar nieuwe manieren om mijn vaardigheden verder te
+                      ontwikkelen.
+                  </p>
+                  <p>
+                      In mijn vrije tijd programmeer ik graag, lees ik boeken, kijk ik films en series en game ik met vrienden.
+                      Welkom op mijn portfolio! Hier vind je een overzicht van mijn werk en projecten.
+                  </p>
+              </BaseCard>
+            </div>
+
+            <BaseCard v-else cardClass="bg-neutral text-neutral-content lg:w-3/6" bodyClass="items-center">
                 <template #header>
                     <h2 class="card-title font-black text-4xl">Over mij!</h2>
                 </template>
@@ -70,28 +102,64 @@ const logos = ref<Logo[]>(heroLogos);
 
     <section>
         <div class="my-40">
-            <div v-motion-slide-visible-once-bottom>
-                <h2 class="text-4xl font-black text-center mb-4">Vaardigheden</h2>
+            <div
+              v-if="shouldAnimate"
+              v-motion-slide-visible-once-bottom
+              class="block w-full"
+            >
+              <h2 class="text-4xl font-black text-center mb-4">Vaardigheden</h2>
             </div>
+            <h2 v-else class="text-4xl font-black text-center mb-4">Vaardigheden</h2>
             <div class="flex flex-wrap justify-center gap-6 md:gap-10">
-                <div v-for="(logo, index) in logos" :key="logo.alt" v-motion-pop-visible-once :delay="index * 100"
-                    :duration="600">
-                    <div class="card bg-base-200 shadow-xl">
-                        <div class="card-body">
-                            <InteractiveImage :src="logo.src" :alt="logo.alt" width="150px" height="150px" />
-                        </div>
+                <template v-for="(logo, index) in logos" :key="logo.alt">
+                  <div
+                    v-if="shouldAnimate"
+                    :key="`${logo.alt}-motion`"
+                    v-motion-pop-visible-once
+                    :delay="index * HOME.logoStaggerDelay"
+                    :duration="HOME.logoDuration"
+                    class="card bg-base-200 shadow-xl"
+                  >
+                    <div class="card-body">
+                      <InteractiveImage :src="logo.src" :alt="logo.alt" width="150px" height="150px" />
                     </div>
-                </div>
+                  </div>
+                  <div v-else :key="`${logo.alt}-static`" class="card bg-base-200 shadow-xl">
+                    <div class="card-body">
+                      <InteractiveImage :src="logo.src" :alt="logo.alt" width="150px" height="150px" />
+                    </div>
+                  </div>
+                </template>
             </div>
-            <div class="flex justify-center items-center mt-10" v-motion-pop-visible-once :delay="1000" :duration="300">
-                <router-link to="/skills" class="btn btn-primary text-lg">Lees meer over mijn vaardigheden</router-link>
+            <div
+              v-if="shouldAnimate"
+              v-motion-pop-visible-once
+              :delay="HOME.ctaDelay"
+              :duration="HOME.ctaDuration"
+              class="flex justify-center items-center mt-10"
+            >
+              <router-link to="/skills" class="btn btn-primary text-lg">
+                Lees meer over mijn vaardigheden
+              </router-link>
+            </div>
+            <div v-else class="flex justify-center items-center mt-10">
+              <router-link to="/skills" class="btn btn-primary text-lg">
+                Lees meer over mijn vaardigheden
+              </router-link>
             </div>
         </div>
     </section>
 
     <section class="mt-20">
-        <h2 class="text-center text-4xl font-black mb-10" v-motion-slide-visible-once-bottom>Tijdlijn</h2>
-        <Timeline />
+        <div
+          v-if="shouldAnimate"
+          v-motion-slide-visible-once-bottom
+          class="block w-full"
+        >
+          <h2 class="text-center text-4xl font-black mb-10">Tijdlijn</h2>
+        </div>
+        <h2 v-else class="text-center text-4xl font-black mb-10">Tijdlijn</h2>
+        <Timeline :motion="shouldAnimate" />
     </section>
 </template>
 

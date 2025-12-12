@@ -18,6 +18,18 @@ export const EDUCATION = {
   duration: 800,
 } as const
 
+export const TIMELINE = {
+  cardStaggerDelay: 50,
+  cardDuration: 600,
+} as const
+
+export const HOME = {
+  logoStaggerDelay: 100,
+  logoDuration: TIMELINE.cardDuration,
+  ctaDelay: 200,
+  ctaDuration: 300,
+} as const
+
 export const TRANSITIONS = {
   slideDurationMs: 450,
   slideEase: 'ease',
