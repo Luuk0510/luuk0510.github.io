@@ -14,7 +14,14 @@ defineProps<{
     <div class="card-body">
       <header class="flex justify-center items-center mb-2">
         <h3 class="text-2xl font-bold text-center px-10">{{ title }}</h3>
-        <a v-if="githubLink" :href="githubLink" target="_blank" class="absolute mt-4 right-4 top-4">
+        <a
+          v-if="githubLink"
+          :href="githubLink"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open GitHub repository"
+          class="absolute mt-4 right-4 top-4"
+        >
           <slot name="githubIcon" />
         </a>
       </header>

@@ -82,7 +82,7 @@ const images = ref<string[]>([
                 </li>
             </ul>
             <div class="flex justify-center">
-                <a href="https://luuk0510.github.io/space-project/" target="_blank" class="btn btn-primary text-lg">Link
+                <a href="https://luuk0510.github.io/space-project/" target="_blank" rel="noopener noreferrer" class="btn btn-primary text-lg">Link
                     naar project</a>
             </div>
         </BaseCard>

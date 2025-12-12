@@ -66,7 +66,7 @@ const images = ref<string[]>([
                     weersomstandigheden te wisselen.</li>
             </ul>
             <div class="flex justify-center">
-                <a href="https://luuk0510.github.io/bazaar-transport/" target="_blank"
+                <a href="https://luuk0510.github.io/bazaar-transport/" target="_blank" rel="noopener noreferrer"
                     class="btn btn-primary text-lg">Link naar project</a>
             </div>
         </BaseCard>

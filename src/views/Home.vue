@@ -29,11 +29,11 @@ const { shouldAnimate } = useAnimateOnce(STORAGE_KEYS.homeHasAnimated)
             <span v-if="showBlinkingCursor" class="blinking-cursor"></span>
         </h1>
         <div class="flex justify-center mt-2 gap-x-2">
-            <a href="https://github.com/Luuk0510" target="_blank">
+            <a href="https://github.com/Luuk0510" target="_blank" rel="noopener noreferrer" aria-label="GitHub profiel">
                 <IconGitHub v-if="linksAnimated" v-motion-slide-left :delay="4500" :duration="1200" size="60px" />
                 <IconGitHub v-else size="60px" />
             </a>
-            <a href="https://www.linkedin.com/in/luuk-spruijtenburg-05aa89243/" target="_blank">
+            <a href="https://www.linkedin.com/in/luuk-spruijtenburg-05aa89243/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profiel">
                 <IconLinkedIn v-if="linksAnimated" v-motion-slide-right :delay="4500" :duration="1200" size="60px" />
                 <IconLinkedIn v-else size="60px" />
             </a>
