@@ -1,6 +1,7 @@
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { useStorage } from '@vueuse/core'
 import { HERO } from '@/constants/animations'
+import { STORAGE_KEYS } from '@/constants/storageKeys'
 
 // Guard sessionStorage for non-browser contexts (SSR/tests)
 const storage = typeof window !== 'undefined' ? sessionStorage : undefined
@@ -19,8 +20,8 @@ export function useHero() {
   const typingDelay = HERO.typingDelay
 
   // Persist one-time flags so typing and link animations only run on first visit
-  const hasTyped = useStorage<boolean>('hero-hasTyped', false, storage)
-  const hasAnimatedLinks = useStorage<boolean>('hero-hasAnimatedLinks', false, storage)
+  const hasTyped = useStorage<boolean>(STORAGE_KEYS.heroHasTyped, false, storage)
+  const hasAnimatedLinks = useStorage<boolean>(STORAGE_KEYS.heroHasAnimatedLinks, false, storage)
 
   // Keep timer references so we can cancel them on unmount
   let scrollListener: ((this: Window, ev: Event) => void) | null = null

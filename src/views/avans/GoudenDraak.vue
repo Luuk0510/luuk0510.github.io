@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { usePageTitle } from '@/composables/usePageTitle'
 import BaseCard from '@/components/BaseCard.vue'
-
-usePageTitle();
 </script>
 
 <template>

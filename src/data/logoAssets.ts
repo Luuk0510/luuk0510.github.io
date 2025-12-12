@@ -9,6 +9,7 @@ import PythonLogo from '@/assets/images/logo/python_logo.png'
 import PHPLogo from '@/assets/images/logo/php_logo.png'
 import LaravelLogo from '@/assets/images/logo/laravel_logo.png'
 import FlutterLogo from '@/assets/images/logo/flutter_logo.png'
+import AILogo from '@/assets/images/logo/ai_logo.png'
 
 export const logoAssets = {
   html5: HTML5Logo,
@@ -22,4 +23,5 @@ export const logoAssets = {
   php: PHPLogo,
   laravel: LaravelLogo,
   flutter: FlutterLogo,
+  ai: AILogo
 } as const

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { usePageTitle } from '@/composables/usePageTitle'
 
 import Link from '@/components/Link.vue';
 
@@ -8,8 +7,6 @@ import MarvelousLogo from '@/assets/images/logo/marvelous_logo.png'
 import IconGitHub from '@/components/icons/IconGitHub.vue';
 import { avansProjects, type Project } from '@/data/projects';
 import ProjectCard from '@/components/ProjectCard.vue';
-
-usePageTitle();
 
 const projects = computed<Project[]>(() => avansProjects);
 </script>

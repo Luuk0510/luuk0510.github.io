@@ -1,4 +1,5 @@
 export interface ExperienceItem {
+  id: string
   title: string
   dates: string
   description: string[]
@@ -6,6 +7,7 @@ export interface ExperienceItem {
 
 export const experienceItems: ExperienceItem[] = [
   {
+    id: 'marvelous',
     title: 'Marvelous',
     dates: 'sep 2024 - jan 2025',
     description: [
@@ -15,6 +17,7 @@ export const experienceItems: ExperienceItem[] = [
     ],
   },
   {
+    id: 'mobicoach',
     title: 'Mobicoach',
     dates: 'feb 2021 - aug 2024',
     description: [
@@ -22,6 +25,10 @@ export const experienceItems: ExperienceItem[] = [
       'Na deze stages heb ik daar ook parttime gewerkt. Ik werkte aan interne websystemen die dagelijks door het team werden gebruikt.',
       'In deze periode heb ik veel geleerd over samenwerken en duidelijk communiceren binnen een klein ontwikkelteam. Bij Mobicoach heb ik mijn basis in webontwikkeling verder versterkt en geleerd om gestructureerd en zelfstandig te werken.',
       'Deze ervaring heeft een belangrijke rol gespeeld in mijn ontwikkeling en vormt een goede basis voor mijn huidige opleiding.',
+      'Ik ben derdejaars student Informatica aan Avans Hogeschool in Den Bosch. Tijdens mijn studie heb ik gewerkt met programmeertalen zoals C#, Laravel, Python en Unity, met een focus op webapplicaties.',
+      "In duo's heb ik veel ervaring opgedaan met samenwerking en projectmanagement. Ik heb methodieken zoals Agile, Scrum en Kanban gebruikt, wat mijn vaardigheden in planning, communicatie en flexibiliteit heeft verbeterd.",
+      'Naast webontwikkeling heb ik een game ontwikkeld in Unity en een Python-project gedaan, waarbij ik objectgeoriënteerd programmeren en algoritmes heb toegepast.',
+      'Deze projecten hebben me een brede basis gegeven in frontend- en backend-ontwikkeling en mijn teamwork- en probleemoplossende vaardigheden sterk ontwikkeld.',
     ],
   },
 ]

@@ -1,19 +1,19 @@
 import { defineStore } from 'pinia'
 import { computed } from 'vue'
 import { useStorage } from '@vueuse/core'
-
-export type ThemeChoice = 'light' | 'dark' | 'retro' | 'black' | 'default' | null
+import { STORAGE_KEYS } from '@/constants/storageKeys'
+import type { ThemeChoice } from '@/constants/themes'
 
 export const useThemeStore = defineStore('theme', () => {
-  const theme = useStorage<ThemeChoice>('theme', null)
+  const theme = useStorage<ThemeChoice>(STORAGE_KEYS.theme, null)
 
   const applyTheme = (value: ThemeChoice) => {
     if (!value || value === 'default') {
       document.documentElement.removeAttribute('data-theme')
-      localStorage.removeItem('theme')
+      localStorage.removeItem(STORAGE_KEYS.theme)
     } else {
       document.documentElement.setAttribute('data-theme', value)
-      localStorage.setItem('theme', value)
+      localStorage.setItem(STORAGE_KEYS.theme, value)
     }
   }
 

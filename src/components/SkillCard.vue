@@ -1,19 +1,21 @@
 <script setup lang="ts">
 import BaseCard from '@/components/BaseCard.vue'
+import { MOTION } from '@/constants/animations'
 
 defineProps<{
   src: string
   alt: string
   description?: string
   delay?: number
+  motion?: boolean
 }>()
 </script>
 
 <template>
   <BaseCard
-    :motion="true"
+    :motion="motion !== false"
     :delay="delay"
-    :duration="800"
+    :duration="MOTION.cardDuration"
     cardClass="bg-neutral text-neutral-content mb-4"
     bodyClass="items-center"
     tag="section"

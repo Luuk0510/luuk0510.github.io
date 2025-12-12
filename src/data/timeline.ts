@@ -32,7 +32,7 @@ export const timelineItems: TimelineItem[] = [
     title: 'Stage & Werk - Mobicoach',
     description:
       'Als onderdeel van mijn opleiding bij de Leijgraaf werkte ik aan Mobicoach, een platform voor mobiele coaches. Ontdek meer over dit project... ',
-    link: '/experience',
+    link: '/experience#mobicoach',
   },
   {
     time: 'aug 2019 - jun 2022',
