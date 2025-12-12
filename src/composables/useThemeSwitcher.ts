@@ -1,6 +1,7 @@
 import { onBeforeUnmount, onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
-import { useThemeStore, type ThemeChoice } from '@/stores/theme'
+import { useThemeStore } from '@/stores/theme'
+import type { ThemeChoice } from '@/constants/themes'
 
 export function useThemeSwitcher() {
   const themeStore = useThemeStore()
