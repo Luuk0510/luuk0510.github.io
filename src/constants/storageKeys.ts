@@ -4,4 +4,5 @@ export const STORAGE_KEYS = {
   heroHasAnimatedLinks: 'hero-hasAnimatedLinks',
   skillsHasAnimated: 'skills-hasAnimated',
   experienceHasAnimated: 'experience-hasAnimated',
+  educationHasAnimated: 'education-hasAnimated',
 } as const
