@@ -1,0 +1,6 @@
+export const STORAGE_KEYS = {
+  theme: 'theme',
+  heroHasTyped: 'hero-hasTyped',
+  heroHasAnimatedLinks: 'hero-hasAnimatedLinks',
+  skillsHasAnimated: 'skills-hasAnimated',
+} as const
