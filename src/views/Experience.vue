@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import { usePageTitle } from '@/composables/usePageTitle'
 import BaseCard from '@/components/BaseCard.vue'
 import { experienceItems } from '@/data/experience'
-
-usePageTitle();
 </script>
 
 <template>

@@ -1,13 +1,9 @@
 <script setup lang="ts">
-import { usePageTitle } from '@/composables/usePageTitle'
-
 import Link from '@/components/Link.vue';
 import BaseCard from '@/components/BaseCard.vue';
 
 import LeijgraafLogo from '@/assets/images/logo/leijgraaf_logo.png';
 import AvansLogo from '@/assets/images/logo/avans_logo.png';
-
-usePageTitle();
 </script>
 
 <template>

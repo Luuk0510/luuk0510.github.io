@@ -1,11 +1,7 @@
 <script setup lang="ts">
-import { usePageTitle } from '@/composables/usePageTitle'
-
 import Link from '@/components/Link.vue';
 
 import MobicoachLogo from '@/assets/images/logo/mobicoach_logo.png';
-
-usePageTitle();
 </script>
 
 <template>  

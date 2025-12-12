@@ -75,4 +75,11 @@ const router = createRouter({
   },
 });
 
+router.afterEach((to) => {
+  if (typeof document === 'undefined') return
+  const baseTitle = 'Portfolio'
+  const titleSuffix = to.meta?.title
+  document.title = titleSuffix ? `${baseTitle} - ${titleSuffix}` : baseTitle
+})
+
 export default router

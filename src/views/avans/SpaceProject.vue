@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { usePageTitle } from '@/composables/usePageTitle';
 import Screenshot from '@/components/Screenshot.vue';
 import BaseCard from '@/components/BaseCard.vue';
 import { projectImage } from '@/utils/projectImage';
@@ -16,8 +15,6 @@ const images = ref<string[]>([
     projectImage('space_project/space_project_mars_phone.png'),
     projectImage('space_project/space_project_footer.png'),
 ]);
-
-usePageTitle();
 </script>
 
 <template>
