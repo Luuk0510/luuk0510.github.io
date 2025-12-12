@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import BaseCard from '@/components/BaseCard.vue'
 import { experienceItems } from '@/data/experience'
+import { useAnimateOnce } from '@/composables/useAnimateOnce'
+import { STORAGE_KEYS } from '@/constants/storageKeys'
+
+const { shouldAnimate } = useAnimateOnce(STORAGE_KEYS.experienceHasAnimated)
 </script>
 
 <template>
@@ -11,18 +15,22 @@ import { experienceItems } from '@/data/experience'
             <div
               v-for="(experience, index) in experienceItems"
               :key="experience.title"
-              class="flex flex-col items-center gap-2"
+              :id="experience.id"
+              class="flex flex-col items-center gap-2 scroll-mt-28"
             >
-                <p
-                  class="font-mono italic"
+                <v-motion
+                  v-if="shouldAnimate"
                   v-motion-slide-bottom
                   :delay="700 + index * 100"
                   :duration="700"
+                  tag="p"
+                  class="font-mono italic"
                 >
                   {{ experience.dates }}
-                </p>
+                </v-motion>
+                <p v-else class="font-mono italic">{{ experience.dates }}</p>
                 <BaseCard
-                    :motion="true"
+                    :motion="shouldAnimate"
                     :delay="800 + index * 100"
                     :duration="800"
                     cardClass="bg-neutral text-neutral-content lg:w-3/6 shadow-xl"

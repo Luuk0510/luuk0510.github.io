@@ -59,21 +59,18 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
   scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
-    } else {
+    if (savedPosition) return savedPosition
+
+    if (to.hash) {
       return new Promise((resolve) => {
-        setTimeout(() => {
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-          resolve({ top: 0 });
-        }, 300);
-      });
+        // Wait a tick so the routed component exists (and transitions can mount).
+        setTimeout(() => resolve({ el: to.hash, behavior: 'smooth' }), 350)
+      })
     }
+
+    return { top: 0, behavior: 'smooth' }
   },
-});
+})
 
 router.afterEach((to) => {
   if (typeof document === 'undefined') return
