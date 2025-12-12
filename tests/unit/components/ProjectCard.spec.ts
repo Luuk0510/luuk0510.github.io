@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import ProjectCard from '../ProjectCard.vue'
+import ProjectCard from '@/components/ProjectCard.vue'
 
 describe('ProjectCard', () => {
   it('renders title, description, badges, and GitHub link', () => {
