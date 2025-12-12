@@ -40,8 +40,8 @@ const isChecked = (value: ThemeChoice) => theme.value === value
                 <li v-for="link in navLinks" :key="link.path">
                     <router-link
                         :to="link.path"
-                        class="btn btn-ghost text-xl"
-                        :class="{ 'btn-active': $route.path === link.path }"
+                        class="btn text-xl"
+                        :class="$route.path === link.path ? 'btn-primary text-primary-content' : 'btn-ghost'"
                     >
                         {{ link.label }}
                     </router-link>
@@ -59,25 +59,29 @@ const isChecked = (value: ThemeChoice) => theme.value === value
                         <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
                     </svg>
                 </div>
-                <ul tabindex="0" class="dropdown-content bg-base-200 text-4xl rounded-box z-1 w-52 p-2 shadow-2xl">
+                <ul tabindex="0" class="dropdown-content bg-base-200 rounded-box z-1 w-52 p-2 shadow-2xl">
                     <li>
                         <input type="radio" name="theme-dropdown"
-                            class="theme-controller btn btn-sm btn-block btn-ghost justify-start text-4xl checked:text-white"
+                            class="theme-controller btn btn-sm btn-block justify-start text-xl"
+                            :class="isChecked('light') ? 'btn-primary text-primary-content' : 'btn-ghost'"
                             aria-label="Light" data-set-theme="light" value="light" :checked="isChecked('light')" @change="handleThemeChange('light')" />
                     </li>
                     <li>
                         <input type="radio" name="theme-dropdown"
-                            class="theme-controller btn btn-sm btn-block btn-ghost justify-start text-xl"
+                            class="theme-controller btn btn-sm btn-block justify-start text-xl"
+                            :class="isChecked('dark') ? 'btn-primary text-primary-content' : 'btn-ghost'"
                             aria-label="Dark" data-set-theme="dark" value="dark" :checked="isChecked('dark')" @change="handleThemeChange('dark')" />
                     </li>
                     <li>
                         <input type="radio" name="theme-dropdown"
-                            class="theme-controller btn btn-sm btn-block btn-ghost justify-start text-xl"
+                            class="theme-controller btn btn-sm btn-block justify-start text-xl"
+                            :class="isChecked('retro') ? 'btn-primary text-primary-content' : 'btn-ghost'"
                             aria-label="Retro" data-set-theme="retro" value="retro" :checked="isChecked('retro')" @change="handleThemeChange('retro')" />
                     </li>
                     <li>
                         <input type="radio" name="theme-dropdown"
-                            class="theme-controller btn btn-sm btn-block btn-ghost justify-start text-xl"
+                            class="theme-controller btn btn-sm btn-block justify-start text-xl"
+                            :class="isChecked('black') ? 'btn-primary text-primary-content' : 'btn-ghost'"
                             aria-label="Black" data-set-theme="black" value="black" :checked="isChecked('black')" @change="handleThemeChange('black')" />
                     </li>
                 </ul>

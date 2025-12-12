@@ -54,17 +54,49 @@
   --size-field: 0.28125rem;
 }
 
+@plugin "daisyui/theme" {
+  name: "black";
+  /* OLED cyberpunk: pitch black with neon accents. */
+  --color-base-100: oklch(0% 0 0);
+  --color-base-200: oklch(15% 0.04 270);
+  --color-base-300: oklch(18% 0.05 270);
+  --color-base-content: oklch(92% 0.01 260);
+
+  /* Cards using `bg-neutral` should pop from the OLED background. */
+  --color-neutral: oklch(16% 0.05 270);
+  --color-neutral-content: oklch(92% 0.01 260);
+
+  /* Neon cyan (primary) + neon magenta (secondary) + neon lime (accent). */
+  --color-primary: oklch(82% 0.19 200);
+  --color-primary-content: oklch(0% 0 0);
+
+  --color-secondary: oklch(76% 0.22 330);
+  --color-secondary-content: oklch(0% 0 0);
+
+  /* Used by `badge-accent` in ProjectCard. */
+  --color-accent: oklch(84% 0.22 135);
+  --color-accent-content: oklch(0% 0 0);
+
+  --color-info: oklch(82% 0.14 240);
+  --color-info-content: oklch(0% 0 0);
+  --color-success: oklch(82% 0.2 145);
+  --color-success-content: oklch(0% 0 0);
+  --color-warning: oklch(88% 0.18 85);
+  --color-warning-content: oklch(20% 0.05 85);
+  --color-error: oklch(72% 0.22 25);
+  --color-error-content: oklch(0% 0 0);
+
+  --radius-selector: 1rem;
+  --radius-field: 1rem;
+  --radius-box: 1rem;
+  --border: 0.5px;
+  --size-selector: 0.28125rem;
+  --size-field: 0.28125rem;
+}
+
 
 @config '../../tailwind.config.js';
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
   *,
   ::after,
