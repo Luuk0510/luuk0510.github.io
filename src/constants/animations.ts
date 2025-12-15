@@ -30,6 +30,11 @@ export const HOME = {
   ctaDuration: 300,
 } as const
 
+export const SKILLS = {
+  cardStartDelay: 900,
+  cardStaggerDelay: 300,
+} as const
+
 export const TRANSITIONS = {
   slideDurationMs: 450,
   slideEase: 'ease',

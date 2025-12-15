@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import Screenshot from '@/components/Screenshot.vue';
 import BaseCard from '@/components/BaseCard.vue';
 import { projectImage } from '@/utils/projectImage';
+import { EXTERNAL_LINK_ATTRS } from '@/utils/externalLink'
 
 const images = ref<string[]>([
     projectImage('bazaar_transport/screenshot_1.png'),
@@ -66,7 +67,7 @@ const images = ref<string[]>([
                     weersomstandigheden te wisselen.</li>
             </ul>
             <div class="flex justify-center">
-                <a href="https://luuk0510.github.io/bazaar-transport/" target="_blank" rel="noopener noreferrer"
+                <a href="https://luuk0510.github.io/bazaar-transport/" v-bind="EXTERNAL_LINK_ATTRS"
                     class="btn btn-primary text-lg">Link naar project</a>
             </div>
         </BaseCard>

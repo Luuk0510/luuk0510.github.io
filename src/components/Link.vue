@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useThemeSwitcher } from '@/composables/useThemeSwitcher'
+import { relForTargetBlank } from '@/utils/externalLink'
 
 const props = defineProps<{
   href: string
@@ -11,8 +12,7 @@ const props = defineProps<{
 const { isBlackTheme } = useThemeSwitcher()
 
 const relValue = computed(() => {
-  if (props.target === '_blank') return props.rel ?? 'noopener noreferrer'
-  return props.rel
+  return relForTargetBlank(props.target, props.rel)
 })
 </script>
 

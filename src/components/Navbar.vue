@@ -5,6 +5,12 @@ import { navLinks } from '@/data/navLinks'
 
 const { theme, setTheme } = useThemeSwitcher()
 
+const themeLabel = (value: ThemeChoice) => {
+  if (!value) return 'Default'
+  if (value === 'default') return 'Default'
+  return value.charAt(0).toUpperCase() + value.slice(1)
+}
+
 const handleThemeChange = (value: ThemeChoice) => {
   setTheme(value)
 }
@@ -66,7 +72,7 @@ const isChecked = (value: ThemeChoice) => theme.value === value
                           name="theme-dropdown"
                           class="theme-controller btn btn-sm btn-block justify-start text-xl"
                           :class="isChecked(t) ? 'btn-primary text-primary-content' : 'btn-ghost'"
-                          :aria-label="t"
+                          :aria-label="themeLabel(t)"
                           :data-set-theme="t"
                           :value="t"
                           :checked="isChecked(t)"

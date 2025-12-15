@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { EXTERNAL_LINK_ATTRS } from '@/utils/externalLink'
+
 defineProps<{
   title: string
   badges?: string[]
@@ -17,8 +19,7 @@ defineProps<{
         <a
           v-if="githubLink"
           :href="githubLink"
-          target="_blank"
-          rel="noopener noreferrer"
+          v-bind="EXTERNAL_LINK_ATTRS"
           aria-label="Open GitHub repository"
           class="absolute mt-4 right-4 top-4"
         >
