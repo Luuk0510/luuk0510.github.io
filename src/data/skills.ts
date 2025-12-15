@@ -11,6 +11,7 @@ export interface SkillItem {
 import { logoAssets } from '@/data/logoAssets'
 
 export const skills: SkillItem[] = [
+  // Frontend
   {
     title: 'HTML',
     logo: logoAssets.html5,
@@ -42,6 +43,8 @@ export const skills: SkillItem[] = [
     delay: 1800,
     category: 'frontend',
   },
+
+  // Frameworks
   {
     title: 'Vue',
     logo: logoAssets.vue,
@@ -50,6 +53,32 @@ export const skills: SkillItem[] = [
     delay: 900,
     category: 'frameworks',
   },
+  {
+    title: 'Laravel',
+    logo: logoAssets.laravel,
+    description:
+      'Laravel is het framework waarin ik tijdens mijn studie veel ervaring heb opgedaan. Ik heb het gebruikt voor het bouwen van complexe backends voor verschillende webapplicaties.',
+    delay: 1200,
+    category: 'frameworks',
+  },
+  {
+    title: 'DotNet Maui',
+    logo: logoAssets.dotnetmaui,
+    description:
+      'DotNet Maui',
+    delay: 1500,
+    category: 'frameworks',
+  },
+  {
+    title: 'Flutter',
+    logo: logoAssets.flutter,
+    description:
+      'Flutter heb ik gebruikt voor mijn Shiny Counter app.',
+    delay: 1800,
+    category: 'frameworks',
+  },
+
+  // Backend
   {
     title: 'SQL',
     logo: logoAssets.sql,
@@ -81,29 +110,5 @@ export const skills: SkillItem[] = [
       "Tijdens mijn studie heb ik met PHP gewerkt, met name in combinatie met Laravel voor het bouwen van efficiënte webapplicaties en API's, waarbij ik MySQL-databases heb geïntegreerd.",
     delay: 1800,
     category: 'backend',
-  },
-  {
-    title: 'Laravel',
-    logo: logoAssets.laravel,
-    description:
-      'Laravel is het framework waarin ik tijdens mijn studie veel ervaring heb opgedaan. Ik heb het gebruikt voor het bouwen van complexe backends voor verschillende webapplicaties.',
-    delay: 1200,
-    category: 'frameworks',
-  },
-  {
-    title: 'DotNet Maui',
-    logo: logoAssets.dotnetmaui,
-    description:
-      'DotNet Maui',
-    delay: 1500,
-    category: 'frameworks',
-  },
-  {
-    title: 'Flutter',
-    logo: logoAssets.flutter,
-    description:
-      'Flutter heb ik gebruikt voor mijn Shiny Counter app.',
-    delay: 1800,
-    category: 'frameworks',
   },
 ]
