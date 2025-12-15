@@ -15,7 +15,8 @@ export const heroLogos: Logo[] = [
   { src: logoAssets.csharp, alt: 'C Sharp logo' },
   { src: logoAssets.python, alt: 'Python logo' },
   { src: logoAssets.php, alt: 'PHP logo' },
+  { src: logoAssets.llamaindex, alt: 'LlamaIndex Logo'},
   { src: logoAssets.laravel, alt: 'Laravel logo' },
+  { src: logoAssets.dotnetmaui, alt: 'Dotnet Maui logo' },
   { src: logoAssets.flutter, alt: 'Flutter logo' },
-  { src: logoAssets.ai, alt: 'AI Logo'}
 ]

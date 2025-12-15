@@ -9,6 +9,8 @@ import PythonLogo from '@/assets/images/logo/python_logo.png'
 import PHPLogo from '@/assets/images/logo/php_logo.png'
 import LaravelLogo from '@/assets/images/logo/laravel_logo.png'
 import FlutterLogo from '@/assets/images/logo/flutter_logo.png'
+import DotNetMauiLogo from '@/assets/images/logo/dotnet_maui_logo.png'
+import LlamaIndexLogo from '@/assets/images/logo/llamaindex_logo.png'
 import AILogo from '@/assets/images/logo/ai_logo.png'
 
 export const logoAssets = {
@@ -23,5 +25,7 @@ export const logoAssets = {
   php: PHPLogo,
   laravel: LaravelLogo,
   flutter: FlutterLogo,
+  dotnetmaui: DotNetMauiLogo,
+  llamaindex: LlamaIndexLogo,
   ai: AILogo
 } as const
