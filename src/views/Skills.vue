@@ -6,6 +6,7 @@ import type { SkillItem } from '@/data/skills';
 import { useAnimateOnce } from '@/composables/useAnimateOnce';
 import { STORAGE_KEYS } from '@/constants/storageKeys';
 import { MOTION, SKILLS } from '@/constants/animations';
+import { EXTERNAL_LINK_ATTRS } from '@/utils/externalLink'
 
 type SkillSection = {
   title: string
@@ -50,7 +51,18 @@ const sections = computed<SkillSection[]>(() => [
             :delay="SKILLS.cardStartDelay + index * SKILLS.cardStaggerDelay"
             :description="skill.description"
             :motion="shouldAnimate"
-          />
+          >
+            <template v-if="skill.repoUrl" #footer>
+              <a
+                :href="skill.repoUrl"
+                v-bind="EXTERNAL_LINK_ATTRS"
+                class="btn btn-primary btn-sm"
+                :aria-label="`Open ${skill.title} project op GitHub`"
+              >
+                Shiny Counter GitHub
+              </a>
+            </template>
+          </SkillCard>
         </section>
       </div>
     </div>

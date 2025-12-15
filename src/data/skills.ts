@@ -5,6 +5,7 @@ export interface SkillItem {
   logo: string
   description: string
   category: SkillCategory
+  repoUrl?: string
 }
 
 import { logoAssets } from '@/data/logoAssets'
@@ -58,15 +59,16 @@ export const skills: SkillItem[] = [
     title: 'DotNet Maui',
     logo: logoAssets.dotnetmaui,
     description:
-      'DotNet Maui',
+      'Met .NET MAUI heb ik meegewerkt aan FlexFlow: een app voor hybride werken waarin werknemers hun werkplek (thuis/kantoor/onderweg) en bureauplek kunnen aangeven. De app geeft teams, HR en facility managers een actueel overzicht, ondersteunt meerdere locaties, en kan planning delen via iCal zodat agenda’s automatisch up-to-date blijven.',
     category: 'frameworks',
   },
   {
     title: 'Flutter',
     logo: logoAssets.flutter,
     description:
-      'Flutter heb ik gebruikt voor mijn Shiny Counter app.',
+      'Met Flutter heb ik de Shiny Counter app gebouwd: een Pokémon shiny counter met een Pokédex-lijst, filters/zoekfunctie, detailpagina met counters (+/-), sprite toggles (shiny/normal), en een Android overlay mini-counter. Alles (counters, caught status, custom entries, theme/taal) wordt opgeslagen met SharedPreferences.',
     category: 'frameworks',
+    repoUrl: 'https://github.com/Luuk0510/ShinyCounter',
   },
 
   // Backend
