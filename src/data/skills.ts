@@ -54,6 +54,13 @@ export const skills: SkillItem[] = [
     category: 'frameworks',
   },
   {
+    title: 'LlamaIndex',
+    logo: logoAssets.llamaindex,
+    description:
+      'Met 3 anderen heb ik voor SDW Zorg een chatbot gebouwd met LlamaIndex. Hierbij hebben we documenten ingeladen en geïndexeerd, zodat de bot via retrieval/embeddings antwoorden kan geven op basis van eigen data.',
+    category: 'frameworks',
+  },
+  {
     title: 'Laravel',
     logo: logoAssets.laravel,
     description:
