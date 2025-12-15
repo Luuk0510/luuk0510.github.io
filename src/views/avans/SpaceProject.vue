@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import Screenshot from '@/components/Screenshot.vue';
 import BaseCard from '@/components/BaseCard.vue';
 import { projectImage } from '@/utils/projectImage';
+import { EXTERNAL_LINK_ATTRS } from '@/utils/externalLink'
 
 const images = ref<string[]>([
     projectImage('space_project/space_project_home.png'),
@@ -82,7 +83,7 @@ const images = ref<string[]>([
                 </li>
             </ul>
             <div class="flex justify-center">
-                <a href="https://luuk0510.github.io/space-project/" target="_blank" rel="noopener noreferrer" class="btn btn-primary text-lg">Link
+                <a href="https://luuk0510.github.io/space-project/" v-bind="EXTERNAL_LINK_ATTRS" class="btn btn-primary text-lg">Link
                     naar project</a>
             </div>
         </BaseCard>

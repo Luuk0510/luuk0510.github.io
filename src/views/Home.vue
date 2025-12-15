@@ -13,6 +13,7 @@ import { heroLogos, type Logo } from '@/data/logos';
 import { useAnimateOnce } from '@/composables/useAnimateOnce'
 import { STORAGE_KEYS } from '@/constants/storageKeys'
 import { HOME } from '@/constants/animations'
+import { EXTERNAL_LINK_ATTRS } from '@/utils/externalLink'
 
 const { displayedText, isTyping, showBlinkingCursor, showButton, linksAnimated, scrollToItem } = useHero();
 
@@ -29,11 +30,11 @@ const { shouldAnimate } = useAnimateOnce(STORAGE_KEYS.homeHasAnimated)
             <span v-if="showBlinkingCursor" class="blinking-cursor"></span>
         </h1>
         <div class="flex justify-center mt-2 gap-x-2">
-            <a href="https://github.com/Luuk0510" target="_blank" rel="noopener noreferrer" aria-label="GitHub profiel">
+            <a href="https://github.com/Luuk0510" v-bind="EXTERNAL_LINK_ATTRS" aria-label="GitHub profiel">
                 <IconGitHub v-if="linksAnimated" v-motion-slide-left :delay="4500" :duration="1200" size="60px" />
                 <IconGitHub v-else size="60px" />
             </a>
-            <a href="https://www.linkedin.com/in/luuk-spruijtenburg-05aa89243/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profiel">
+            <a href="https://www.linkedin.com/in/luuk-spruijtenburg-05aa89243/" v-bind="EXTERNAL_LINK_ATTRS" aria-label="LinkedIn profiel">
                 <IconLinkedIn v-if="linksAnimated" v-motion-slide-right :delay="4500" :duration="1200" size="60px" />
                 <IconLinkedIn v-else size="60px" />
             </a>
