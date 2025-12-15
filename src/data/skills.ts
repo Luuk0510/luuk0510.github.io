@@ -45,7 +45,7 @@ export const skills: SkillItem[] = [
     title: 'Vue',
     logo: logoAssets.vue,
     description:
-      'Vue.js is mijn go-to framework voor het ontwikkelen van dynamische interfaces. Ik heb het in verschillende projecten gebruikt, waaronder dit portfolio.',
+      'Vue.js is mijn go-to framework voor het ontwikkelen van dynamische interfaces. Ik heb het in verschillende projecten gebruikt, waaronder dit portfolio. Ik werk graag met componenten en composables om de code modulair en goed onderhoudbaar te houden.',
     category: 'frameworks',
   },
   {
@@ -97,7 +97,7 @@ export const skills: SkillItem[] = [
     title: 'PHP',
     logo: logoAssets.php,
     description:
-      "Tijdens mijn studie heb ik met PHP gewerkt, met name in combinatie met Laravel voor het bouwen van efficiënte webapplicaties en API's, waarbij ik MySQL-databases heb geïntegreerd.",
+      "Tijdens mijn MBO-opleiding heb ik veel met PHP gewerkt en daarmee een sterke basis gelegd in programmeren. Later heb ik PHP ook gebruikt in combinatie met Laravel voor het bouwen van webapplicaties en API's, waarbij ik MySQL-databases heb geïntegreerd.",
     category: 'backend',
   },
 ]
