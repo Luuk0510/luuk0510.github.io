@@ -1,4 +1,4 @@
-export type SkillCategory = 'frontend' | 'backend'
+export type SkillCategory = 'frontend' | 'backend' | 'frameworks'
 
 export interface SkillItem {
   title: string
@@ -47,8 +47,8 @@ export const skills: SkillItem[] = [
     logo: logoAssets.vue,
     description:
       'Vue.js is mijn go-to framework voor het ontwikkelen van dynamische interfaces. Ik heb het in verschillende projecten gebruikt, waaronder dit portfolio.',
-    delay: 2000,
-    category: 'frontend',
+    delay: 900,
+    category: 'frameworks',
   },
   {
     title: 'SQL',
@@ -87,15 +87,23 @@ export const skills: SkillItem[] = [
     logo: logoAssets.laravel,
     description:
       'Laravel is het framework waarin ik tijdens mijn studie veel ervaring heb opgedaan. Ik heb het gebruikt voor het bouwen van complexe backends voor verschillende webapplicaties.',
-    delay: 2100,
-    category: 'backend',
+    delay: 1200,
+    category: 'frameworks',
+  },
+  {
+    title: 'DotNet Maui',
+    logo: logoAssets.dotnetmaui,
+    description:
+      'DotNet Maui',
+    delay: 1500,
+    category: 'frameworks',
   },
   {
     title: 'Flutter',
     logo: logoAssets.flutter,
     description:
-      'Flutter gebruikt voor mijn Shiny Counter app',
-    delay: 2300,
-    category: 'backend',
+      'Flutter heb ik gebruikt voor mijn Shiny Counter app.',
+    delay: 1800,
+    category: 'frameworks',
   },
 ]
