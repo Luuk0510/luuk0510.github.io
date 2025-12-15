@@ -5,7 +5,7 @@ import SkillCard from '@/components/SkillCard.vue';
 import type { SkillItem } from '@/data/skills';
 import { useAnimateOnce } from '@/composables/useAnimateOnce';
 import { STORAGE_KEYS } from '@/constants/storageKeys';
-import { MOTION } from '@/constants/animations';
+import { MOTION, SKILLS } from '@/constants/animations';
 
 type SkillSection = {
   title: string
@@ -43,11 +43,11 @@ const sections = computed<SkillSection[]>(() => [
           <h2 v-else class="text-3xl font-bold mb-4 text-center">{{ section.title }}</h2>
 
           <SkillCard
-            v-for="skill in section.items"
+            v-for="(skill, index) in section.items"
             :key="skill.title"
             :src="skill.logo"
             :alt="skill.title"
-            :delay="skill.delay"
+            :delay="SKILLS.cardStartDelay + index * SKILLS.cardStaggerDelay"
             :description="skill.description"
             :motion="shouldAnimate"
           />
