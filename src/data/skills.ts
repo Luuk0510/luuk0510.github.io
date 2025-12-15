@@ -36,7 +36,8 @@ export const skills: SkillItem[] = [
   {
     title: 'JavaScript',
     logo: logoAssets.javascript,
-    description: 'JavaScript geeft mij de mogelijkheid om interactieve en dynamische webapplicaties te bouwen.',
+    description:
+      'JavaScript geeft mij de mogelijkheid om interactieve en dynamische webapplicaties te bouwen. Ik gebruik het vaak samen met Vue om UX en logica netjes te structureren in componenten.',
     category: 'frontend',
   },
 
