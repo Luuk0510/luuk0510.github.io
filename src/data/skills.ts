@@ -5,7 +5,11 @@ export interface SkillItem {
   logo: string
   description: string
   category: SkillCategory
-  repoUrl?: string
+  link?: {
+    url: string
+    label: string
+    ariaLabel?: string
+  }
 }
 
 import { logoAssets } from '@/data/logoAssets'
@@ -62,6 +66,11 @@ export const skills: SkillItem[] = [
     description:
       'Met .NET MAUI heb ik meegewerkt aan FlexFlow: een app voor hybride werken waarin werknemers hun werkplek (thuis/kantoor/onderweg) en bureauplek kunnen aangeven. De app geeft teams, HR en facility managers een actueel overzicht, ondersteunt meerdere locaties, en kan planning delen via iCal zodat agenda’s automatisch up-to-date blijven.',
     category: 'frameworks',
+    link: {
+      url: 'https://flexflow.thover.eu/',
+      label: 'FlexFlow website',
+      ariaLabel: 'Open FlexFlow website',
+    },
   },
   {
     title: 'Flutter',
@@ -69,7 +78,11 @@ export const skills: SkillItem[] = [
     description:
       'Met Flutter heb ik de Shiny Counter app gebouwd: een Pokémon shiny counter met een Pokédex-lijst, filters/zoekfunctie, detailpagina met counters (+/-), sprite toggles (shiny/normal), en een Android overlay mini-counter. Alles (counters, caught status, custom entries, theme/taal) wordt opgeslagen met SharedPreferences.',
     category: 'frameworks',
-    repoUrl: 'https://github.com/Luuk0510/ShinyCounter',
+    link: {
+      url: 'https://github.com/Luuk0510/ShinyCounter',
+      label: 'Shiny Counter GitHub',
+      ariaLabel: 'Open Shiny Counter GitHub repo',
+    },
   },
 
   // Backend

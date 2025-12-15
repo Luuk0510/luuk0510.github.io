@@ -52,14 +52,14 @@ const sections = computed<SkillSection[]>(() => [
             :description="skill.description"
             :motion="shouldAnimate"
           >
-            <template v-if="skill.repoUrl" #footer>
+            <template v-if="skill.link" #footer>
               <a
-                :href="skill.repoUrl"
+                :href="skill.link.url"
                 v-bind="EXTERNAL_LINK_ATTRS"
-                class="btn btn-primary btn-sm"
-                :aria-label="`Open ${skill.title} project op GitHub`"
+                class="btn btn-primary btn-md"
+                :aria-label="skill.link.ariaLabel ?? `Open ${skill.link.label}`"
               >
-                Shiny Counter GitHub
+                {{ skill.link.label }}
               </a>
             </template>
           </SkillCard>
