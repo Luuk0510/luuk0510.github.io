@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luuk Spruijtenburg - Software Developer</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style type="text/css">
+        /* SCSS-stijl Variabelen voor IDE & Modern Dark Theme */
+        :root {
+            --bg-main: #0f172a;      /* slate-900 (Editor background) */
+            --bg-sidebar: #1e293b;   /* slate-800 (Sidebar background) */
+            --bg-bar: #020617;       /* slate-950 (Top/Bottom bars) */
+            --bg-card: #1e293b;      /* slate-800 */
+            --bg-card-hover: #334155;/* slate-700 */
+            
+            --text-primary: #f8fafc; /* slate-50 */
+            --text-secondary: #94a3b8;/* slate-400 */
+            --text-muted: #64748b;   /* slate-500 */
+            
+            --brand: #10b981;        /* emerald-500 */
+            --brand-light: #34d399;  /* emerald-400 */
+            --brand-dim: rgba(16, 185, 129, 0.15);
+            
+            --border: #334155;       /* slate-700 */
+            --border-light: #475569; /* slate-600 */
+            --border-highlight: rgba(255, 255, 255, 0.05); /* Toegevoegd voor glans/textuur */
+            --aceternity-glow: rgba(16, 185, 129, 0.3);
+            
+            --font-main: 'Inter', sans-serif;
+            --font-mono: 'Fira Code', monospace;
+        }
+
+        /* Typing Animatie */
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 22ch; } /* Exacte breedte van de tekst + cursor ruimte */
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--brand-light); }
+        }
+
+        .typewriter {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 4px solid var(--brand-light); /* Dikker gemaakt voor dat echte IDE gevoel */
+            width: 0;
+            margin: 0 auto;
+            animation: 
+                typing 2.5s steps(21, end) 0.5s forwards,
+                blink-caret 1s step-end 3s 3 forwards; /* Begint na 3s, knippert 3 seconden en verdwijnt dan */
+        }
+
+        /* Base & Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scrollbar-width: thin;
+            scrollbar-color: var(--border-light) var(--bg-main);
+        }
+
+        /* Custom Scrollbar voor Webkit (Chrome, Edge, Safari) */
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-main);
+            border-left: 1px solid var(--border);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--border-light);
+            border-radius: 6px;
+            border: 3px solid var(--bg-main);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: var(--text-muted);
+        }
+
+        body {
+            background-color: #030712; /* Zeer donkere basis (Aceternity style) */
+            /* Subtiel grid op de achtergrond met een lichte emerald glow bovenaan */
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.12), transparent 50%),
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 0;
+        }
+
+        /* Container voor het venster-effect */
+        .ide-window {
+            width: 100%;
+            max-width: 1250px;
+            height: 100vh; /* Neemt nu de volledige hoogte in */
+            background-color: rgba(15, 23, 42, 0.7); /* Glassmorphism basis */
+            backdrop-filter: blur(20px);
+            border-left: 1px solid rgba(255, 255, 255, 0.08);
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: none;
+            border-bottom: none;
+            border-radius: 0;
+            box-shadow: 0 0 80px -20px rgba(16, 185, 129, 0.15); /* Zachte emerald gloed rondom */
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Verwijder de marges en randen op mobiele schermen */
+        @media (max-width: 1024px) {
+            body {
+                padding: 0;
+            }
+            .ide-window {
+                height: 100vh;
+                border-radius: 0;
+                border: none;
+            }
+        }
+
+        ::selection {
+            background-color: var(--brand);
+            color: #ffffff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: var(--brand-light);
+            }
+        }
+
+        /* --- IDE BARS --- */
+        .ide-topbar {
+            background-color: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            height: 40px;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 1rem;
+            font-family: var(--font-mono);
+            flex-shrink: 0;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 0.5rem;
+            padding-bottom: 0.75rem;
+            margin-right: 1.5rem;
+
+            div {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+            }
+            .close { background-color: #ff5f56; }
+            .minimize { background-color: #ffbd2e; }
+            .maximize { background-color: #27c93f; }
+        }
+
+        .ide-tab {
+            background-color: var(--bg-sidebar);
+            color: var(--text-primary);
+            padding: 0.4rem 1.5rem;
+            border-top: 2px solid var(--brand);
+            border-right: 1px solid var(--border);
+            border-left: 1px solid var(--border);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            i {
+                color: var(--brand-light);
+                width: 1rem;
+                height: 1rem;
+            }
+
+            &.inactive {
+                background-color: transparent;
+                border-top: 2px solid transparent;
+                color: var(--text-muted);
+                cursor: pointer;
+
+                &:hover {
+                    background-color: var(--bg-sidebar);
+                }
+            }
+        }
+
+        .status-bar {
+            background-color: var(--brand);
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+            font-size: 0.75rem;
+            color: #064e3b; /* Donkergroen voor contrast */
+            font-family: var(--font-mono);
+            font-weight: 600;
+            flex-shrink: 0;
+
+            .status-left, .status-right {
+                display: flex;
+                align-items: center;
+                gap: 1.25rem;
+            }
+
+            .status-item {
+                display: flex;
+                align-items: center;
+                gap: 0.3rem;
+                cursor: pointer;
+            }
+
+            i {
+                width: 0.8rem;
+                height: 0.8rem;
+            }
+        }
+
+        /* --- HOOFD LAYOUT --- */
+        .app-layout {
+            display: flex;
+            flex: 1;
+            overflow-y: auto; /* Eén gecombineerde scroll voor mobiel */
+            overflow-x: hidden;
+            flex-direction: column;
+
+            @media (min-width: 1024px) {
+                flex-direction: row;
+                overflow: hidden; /* Sluit de algemene scroll af op desktop */
+            }
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: rgba(30, 41, 59, 0.3); /* Transparanter voor het glass effect */
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+
+            @media (min-width: 1024px) {
+                width: 320px;
+                border-bottom: none;
+                border-right: 1px solid rgba(255, 255, 255, 0.05);
+                flex-shrink: 0;
+                height: 100%;
+                overflow-y: auto; /* Maakt de sidebar onafhankelijk scrollbaar op desktop */
+            }
+
+            .profile {
+                text-align: center;
+                margin-bottom: 2.5rem;
+                position: relative;
+
+                .avatar {
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50%;
+                    background: linear-gradient(135deg, var(--bg-main), var(--bg-sidebar));
+                    border: 2px solid rgba(16, 185, 129, 0.4);
+                    color: var(--brand);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 2rem;
+                    font-weight: 700;
+                    margin: 0 auto 1.5rem auto;
+                    box-shadow: 0 0 30px var(--brand-dim);
+                    position: relative;
+                    z-index: 2;
+                }
+                
+                /* Subtiele glow achter de avatar */
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 10px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 80px;
+                    height: 80px;
+                    background: var(--brand);
+                    filter: blur(40px);
+                    opacity: 0.2;
+                    z-index: 1;
+                    border-radius: 50%;
+                }
+
+                h1 {
+                    font-size: 1.5rem;
+                    font-weight: 700;
+                    margin-bottom: 0.25rem;
+                }
+
+                h2 {
+                    font-size: 1rem;
+                    color: var(--brand-light);
+                    font-family: var(--font-mono); /* Tech feel */
+                    font-weight: 400;
+                }
+            }
+
+            .info-group {
+                margin-bottom: 2rem;
+
+                h3 {
+                    font-size: 0.75rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                    color: var(--text-secondary);
+                    margin-bottom: 1rem;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                }
+
+                .contact-list {
+                    list-style: none;
+                    font-size: 0.9rem;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.75rem;
+
+                    li {
+                        display: flex;
+                        align-items: center;
+                        gap: 0.75rem;
+                        color: var(--text-primary);
+
+                        i {
+                            width: 1.25rem;
+                            height: 1.25rem;
+                            color: var(--text-secondary);
+                        }
+                    }
+                }
+
+                .tags {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+
+                    .tag {
+                        background: rgba(255, 255, 255, 0.03);
+                        border: 1px solid rgba(255, 255, 255, 0.08);
+                        padding: 0.35rem 0.75rem;
+                        border-radius: 6px;
+                        font-size: 0.85rem;
+                        color: var(--text-primary);
+                        transition: all 0.3s ease;
+
+                        &:hover {
+                            background: rgba(16, 185, 129, 0.1);
+                            border-color: rgba(16, 185, 129, 0.4);
+                            box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
+                            transform: translateY(-1px);
+                        }
+                    }
+                }
+
+                .pill-list {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+
+                    .pill {
+                        background: transparent;
+                        border: 1px solid var(--brand);
+                        color: var(--brand-light);
+                        padding: 0.25rem 0.75rem;
+                        border-radius: 999px;
+                        font-size: 0.8rem;
+                        font-weight: 500;
+                        box-shadow: inset 0 0 10px rgba(16, 185, 129, 0.1);
+                    }
+                }
+            }
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 2.5rem 1.5rem;
+
+            @media (min-width: 1024px) {
+                padding: 4rem 5rem;
+                height: 100%;
+                overflow-y: auto; /* Maakt de rechterkant onafhankelijk scrollbaar */
+            }
+
+            .content-wrapper {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+        }
+
+        /* Secties */
+        section {
+            margin-bottom: 4rem;
+
+            .section-title {
+                font-size: 1.5rem; /* Kleiner gemaakt (was 1.75rem) */
+                font-weight: 700;
+                margin-bottom: 2rem;
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                color: var(--text-primary);
+
+                i {
+                    color: var(--brand);
+                }
+
+                &::after {
+                    content: '';
+                    flex: 1;
+                    height: 1px;
+                    background-color: var(--border);
+                    margin-left: 1rem;
+                }
+            }
+        }
+
+        /* Tekst elementen */
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem; /* Kleiner gemaakt (was 1.05rem) */
+            line-height: 1.7;
+        }
+
+        /* Timeline / Cards */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Project Grid (2 kolommen op desktop) */
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+
+            @media (min-width: 768px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* --- Nieuwe Aceternity Project Card Styling --- */
+        .project-card {
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px; /* Iets rondere hoeken */
+            padding: 1.75rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Subtiele Aceternity achtergrond glow (zichtbaar op hover) */
+        .project-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top left, rgba(16, 185, 129, 0.15), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Highlight rand effect on hover met webkit mask */
+        .project-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px; /* Dikte van de oplichtende rand */
+            background: linear-gradient(to bottom right, rgba(16, 185, 129, 0.8), transparent 50%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 30px rgba(16, 185, 129, 0.05);
+        }
+
+        .project-card:hover::before,
+        .project-card:hover::after {
+            opacity: 1;
+        }
+
+        .project-card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.75rem;
+            height: 2.75rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 10px;
+            color: var(--brand-light);
+        }
+
+        .project-card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .project-tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .project-tech-tag {
+            font-size: 0.7rem;
+            font-family: var(--font-mono);
+            color: var(--brand-light);
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px; /* Pill vorm */
+            box-shadow: inset 0 0 10px rgba(16, 185, 129, 0.05);
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-top: 1rem;
+            transition: color 0.2s, gap 0.2s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-link:hover {
+            color: var(--brand-light);
+            gap: 0.75rem; /* Pijltje schuift op */
+        }
+
+        /* --- Knop voor meer projecten (GitHub) --- */
+        .github-more-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-top: 2rem;
+            padding: 0.85rem 1.75rem;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 999px; /* Ronde 'pill' vorm */
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        .github-more-btn:hover {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: rgba(16, 185, 129, 0.5);
+            color: var(--brand-light);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px -5px rgba(16, 185, 129, 0.2), 0 0 15px rgba(16, 185, 129, 0.1);
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+            padding: 1.75rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+
+            /* Subtiel verlichte lijn bovenaan de kaart (Spotlight effect) */
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 1px;
+                background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0), transparent);
+                transition: background 0.4s ease;
+            }
+
+            &:hover {
+                border-color: rgba(255, 255, 255, 0.1);
+                transform: translateY(-3px);
+                box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 20px rgba(16, 185, 129, 0.05);
+                
+                &::before {
+                    background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.8), transparent);
+                }
+            }
+
+            .card-header {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 1rem;
+
+                @media (min-width: 640px) {
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: baseline;
+                }
+
+                h4 {
+                    font-size: 1.1rem; /* Kleiner gemaakt (was 1.25rem) */
+                    font-weight: 600;
+                    color: var(--text-primary);
+                }
+
+                .date {
+                    font-size: 0.85rem; /* Iets kleiner gemaakt */
+                    color: var(--brand-light);
+                    font-family: var(--font-mono); /* Tech feel voor datums */
+                    font-weight: 500;
+                    margin-top: 0.25rem;
+                }
+            }
+
+            .company {
+                display: block;
+                font-size: 0.9rem; /* Kleiner gemaakt (was 1rem) */
+                color: var(--text-secondary);
+                margin-bottom: 1.25rem;
+                font-weight: 500;
+            }
+
+            p {
+                font-size: 0.85rem; /* Zelfde kleine formaat als de eerdere lijstjes */
+                color: var(--text-secondary);
+                line-height: 1.7;
+                margin-bottom: 1rem;
+                white-space: pre-wrap; /* Behoudt de witregels van je toegevoegde tekst */
+            }
+
+            .details-list {
+                list-style: none;
+                color: var(--text-secondary);
+                font-size: 0.85rem; /* Kleiner gemaakt (was 0.95rem) */
+
+                li {
+                    position: relative;
+                    padding-left: 1.5rem;
+                    margin-bottom: 0.75rem;
+
+                    &::before {
+                        content: '>';
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        color: var(--brand);
+                        font-family: var(--font-mono);
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+
+        /* Footer styling */
+        .portfolio-footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-family: var(--font-mono);
+            padding-bottom: 2rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="ide-window">
+        <!-- IDE Top Tab balk -->
+        <header class="ide-topbar">
+            <div class="window-controls">
+                <div class="close"></div>
+                <div class="minimize"></div>
+                <div class="maximize"></div>
+            </div>
+            <div class="ide-tab">
+                <i data-lucide="file-code"></i>
+                portfolio.html
+            </div>
+        </header>
+
+    <!-- Applicatie Layout (Sidebar + Content) -->
+    <div class="app-layout">
+        <!-- Linker Zijbalk -->
+        <aside class="sidebar">
+            <div class="profile">
+                <div class="avatar">LS</div>
+                <h1>Luuk Spruijtenburg</h1>
+                <h2 class="typewriter">Software Ontwikkelaar</h2>
+            </div>
+
+            <div class="info-group">
+                <h3>Profielen</h3>
+                <ul class="contact-list">
+                    <li>
+                        <i data-lucide="linkedin"></i>
+                        <a href="https://www.linkedin.com/in/luuk-spruijtenburg-05aa89243/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    </li>
+                    <li>
+                        <i data-lucide="github"></i>
+                        <a href="https://github.com/Luuk0510" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="info-group">
+                <h3>Vaardigheden</h3>
+                <div class="tags">
+                    <span class="tag">C#</span>
+                    <span class="tag">Laravel</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Vue.js</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">SQL / MySQL</span>
+                    <span class="tag">PHP</span>
+                    <span class="tag">Swift</span>
+                    <span class="tag">Kotlin</span>
+                    <span class="tag">DevOps</span>
+                    <span class="tag">LlamaIndex</span>
+                </div>
+            </div>
+
+            <div class="info-group">
+                <h3>Persoonlijke focus</h3>
+                <div class="pill-list">
+                    <span class="pill">Gedreven</span>
+                    <span class="pill">Doelgericht</span>
+                    <span class="pill">Prestatiegericht</span>
+                    <span class="pill">Teamspeler</span>
+                </div>
+            </div>
+
+            <div class="info-group">
+                <h3>Talen</h3>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.35rem;">
+                            <span style="color: var(--text-primary);">Nederlands</span>
+                            <span style="color: var(--brand-light); font-family: var(--font-mono); font-size: 0.7rem;">Moedertaal</span>
+                        </div>
+                        <div style="height: 4px; background: rgba(255, 255, 255, 0.1); border-radius: 2px; overflow: hidden;">
+                            <div style="width: 100%; height: 100%; background: var(--brand-light); box-shadow: 0 0 10px var(--brand-light);"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.35rem;">
+                            <span style="color: var(--text-primary);">Engels</span>
+                            <span style="color: var(--text-secondary); font-family: var(--font-mono); font-size: 0.7rem;">Zeer goed</span>
+                        </div>
+                        <div style="height: 4px; background: rgba(255, 255, 255, 0.1); border-radius: 2px; overflow: hidden;">
+                            <div style="width: 90%; height: 100%; background: var(--brand); box-shadow: 0 0 10px var(--brand);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-group" style="margin-bottom: 0;">
+                <h3>Interesses</h3>
+                <div class="pill-list">
+                    <span class="pill">Programmeren</span>
+                    <span class="pill">Lezen</span>
+                    <span class="pill">Gamen</span>
+                    <span class="pill">Films en series</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Hoofd Content -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                
+                <!-- Over mij -->
+                <section id="over-mij">
+                    <h2 class="section-title">
+                        <i data-lucide="user"></i> Over mij
+                    </h2>
+                    <p>
+                        Ik ben een softwareontwikkelaar en zit momenteel in het tweede jaar van de opleiding Informatica 
+                        aan Avans Hogeschool in Den Bosch. Ik zet mijn passie voor programmeren om in praktische vaardigheden 
+                        met verschillende programmeertalen en frameworks.
+                    </p>
+                    <p>
+                        Ik houd van technische uitdagingen en werk graag samen in een team om doelen te bereiken. 
+                        Daarnaast ben ik analytisch sterk en vertaal ik complexe opdrachten naar goed werkende processen 
+                        of programma's. Ik ben leergierig en sta altijd open om mijzelf verder te ontwikkelen.
+                    </p>
+                </section>
+
+                <!-- Werkervaring -->
+                <section id="werkervaring">
+                    <h2 class="section-title">
+                        <i data-lucide="briefcase"></i> Werkervaring
+                    </h2>
+                    
+                    <div class="timeline">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Stagiair Software Developer</h4>
+                                <span class="date">sep 2024 - jan 2025</span>
+                            </div>
+                            <span class="company">Marvelous | ’s-Hertogenbosch</span>
+                            <p>Tijdens mijn derdejaars HBO-stage bij Marvelous werkte ik met C# en het Backlot-framework. Ik ontwikkelde functies in een interne webapplicatie binnen een grotere codebase. Ik leerde werken in sprints en taken bijhouden. Ook heb ik veel geleerd over samenwerken en communiceren in een professioneel team.</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Junior Softwareontwikkelaar</h4>
+                                <span class="date">feb 2021 - aug 2024</span>
+                            </div>
+                            <span class="company">Mobicoach | Oss</span>
+                            <p>Tijdens mijn MBO-opleiding liep ik twee keer stage bij Mobicoach. Daarna werkte ik er parttime. Ik werkte aan interne websystemen die dagelijks werden gebruikt. In een klein team leerde ik duidelijk communiceren. Ook werd ik zelfstandiger en werkte ik meer gestructureerd. Dit gaf mij een sterke basis voor mijn HBO-opleiding.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Opleidingen -->
+                <section id="opleidingen" style="margin-bottom: 2rem;">
+                    <h2 class="section-title">
+                        <i data-lucide="graduation-cap"></i> Opleidingen
+                    </h2>
+
+                    <div class="timeline">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Bachelorgraad, Informatica</h4>
+                                <span class="date">2022 - heden</span>
+                            </div>
+                            <span class="company">Avans Hogeschool | Den Bosch</span>
+                            <p>Ik ben derdejaars student Informatica aan Avans in Den Bosch. Ik werk vooral aan webapplicaties met C#, Laravel en Python. In duo’s deed ik veel ervaring op met samenwerking en projectaanpak. Ik gebruikte Agile, Scrum en Kanban. Naast webontwikkeling maakte ik ook een Unity game en een Python project. In mijn minor Artificial Intelligence werkte ik met RAG en tools zoals LlamaIndex.</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>MBO niveau 4, Software Development</h4>
+                                <span class="date">2019 - 2022</span>
+                            </div>
+                            <span class="company">De Leijgraaf</span>
+                            <p>Van 2019 tot 2022 deed ik MBO Software Development in Oss. Ik legde een basis in webontwikkeling met PHP, HTML en CSS. Ik kreeg ook UX en UI lessen, waardoor ik beter werd in het ontwerpen van duidelijke interfaces. Tijdens de opleiding liep ik twee stages en werkte ik vaak in teams met deadlines. Deze periode gaf mij een brede basis in frontend en backend.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Projecten -->
+                <section id="projecten" style="margin-bottom: 2rem;">
+                    <h2 class="section-title">
+                        <i data-lucide="code"></i> Projecten
+                    </h2>
+
+                    <div class="project-grid">
+                        <!-- Project 1: Chatbot SDW -->
+                        <div class="project-card">
+                            <div class="project-card-content">
+                                <div class="project-header">
+                                    <div class="project-icon">
+                                        <i data-lucide="bot"></i>
+                                    </div>
+                                    <h4>Chatbot (PoC) voor SDW</h4>
+                                </div>
+                                <div class="project-tech-stack">
+                                    <span class="project-tech-tag">LlamaIndex</span>
+                                    <span class="project-tech-tag">AI</span>
+                                </div>
+                                <p>Tijdens mijn AI minor in Breda heb ik een proof of concept ontwikkeld voor een slimme chatbot. Met behulp van LlamaIndex kan de bot gerichte en correcte antwoorden geven op basis van specifieke documentatie van SDW.</p>
+                            </div>
+                            <a href="#" class="project-link">Meer informatie <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></a>
+                        </div>
+
+                        <!-- Project 2: FlexFlow -->
+                        <div class="project-card">
+                            <div class="project-card-content">
+                                <div class="project-header">
+                                    <div class="project-icon">
+                                        <i data-lucide="smartphone"></i>
+                                    </div>
+                                    <h4>FlexFlow</h4>
+                                </div>
+                                <div class="project-tech-stack">
+                                    <span class="project-tech-tag">.NET MAUI</span>
+                                    <span class="project-tech-tag">C#</span>
+                                </div>
+                                <p>Voor het bedrijf CBYTE heb ik gewerkt aan de ontwikkeling van FlexFlow. Dit is een cross-platform mobiele applicatie gebouwd met .NET MAUI, ontworpen om processen soepeler te laten verlopen.</p>
+                            </div>
+                            <a href="#" class="project-link">Meer informatie <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></a>
+                        </div>
+
+                        <!-- Project 3: De Koppeling -->
+                        <div class="project-card">
+                            <div class="project-card-content">
+                                <div class="project-header">
+                                    <div class="project-icon">
+                                        <i data-lucide="link"></i>
+                                    </div>
+                                    <h4>De Koppeling</h4>
+                                </div>
+                                <div class="project-tech-stack">
+                                    <span class="project-tech-tag">Laravel</span>
+                                    <span class="project-tech-tag">PHP</span>
+                                </div>
+                                <p>Een webontwikkelingsproject gebouwd met het Laravel-framework. Voor dit project heb ik gewerkt aan de backend-logica en gezorgd voor een gestructureerde en veilige koppeling van gegevens.</p>
+                            </div>
+                            <a href="#" class="project-link">Meer informatie <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></a>
+                        </div>
+
+                        <!-- Project 4: Bumbo -->
+                        <div class="project-card">
+                            <div class="project-card-content">
+                                <div class="project-header">
+                                    <div class="project-icon">
+                                        <i data-lucide="server"></i>
+                                    </div>
+                                    <h4>Bumbo</h4>
+                                </div>
+                                <div class="project-tech-stack">
+                                    <span class="project-tech-tag">C#</span>
+                                    <span class="project-tech-tag">Azure</span>
+                                </div>
+                                <p>Een applicatie gebouwd met C# waarbij gebruik is gemaakt van cloudhosting via Azure. Hierbij lag de focus op het ontwikkelen van een robuuste backend en betrouwbare dataverwerking in de cloud.</p>
+                            </div>
+                            <a href="#" class="project-link">Meer informatie <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- GitHub Knop -->
+                    <div style="text-align: center;">
+                        <a href="https://github.com/Luuk0510" target="_blank" rel="noopener noreferrer" class="github-more-btn">
+                            <i data-lucide="github" style="width: 18px; height: 18px;"></i>
+                            Bekijk de rest van mijn projecten op GitHub
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Footer -->
+                <div class="portfolio-footer">
+                    &copy; 2026 Luuk Spruijtenburg • Avans Hogeschool Den Bosch
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- IDE Status Bar -->
+    <footer class="status-bar">
+        <div class="status-left">
+            <span class="status-item"><i data-lucide="git-branch"></i> main</span>
+            <span class="status-item hidden sm:flex"><i data-lucide="x-circle" style="color: #064e3b;"></i> 0</span>
+            <span class="status-item hidden sm:flex"><i data-lucide="alert-triangle" style="color: #064e3b;"></i> 0</span>
+        </div>
+        <div class="status-right hidden sm:flex">
+            <span>UTF-8</span>
+            <span>HTML</span>
+            <span>Prettier</span>
+            <span class="status-item"><i data-lucide="bell"></i></span>
+        </div>
+    </footer>
+    </div>
+
+    <script>
+        // Initialiseer de iconen
+        lucide.createIcons();
+    </script>
+</body>
+</html>
