@@ -358,6 +358,38 @@
                     gap: 0.5rem;
                 }
 
+                /* Social Iconen naast elkaar */
+                .social-row {
+                    display: flex;
+                    gap: 0.75rem;
+                }
+
+                .social-icon-btn {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 2.5rem;
+                    height: 2.5rem;
+                    background: rgba(255, 255, 255, 0.03);
+                    border: 1px solid rgba(255, 255, 255, 0.08);
+                    border-radius: 8px;
+                    color: var(--text-secondary);
+                    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+                    &:hover {
+                        background: var(--brand-dim);
+                        border-color: var(--brand);
+                        color: var(--brand-light);
+                        transform: translateY(-3px);
+                        box-shadow: 0 5px 15px var(--brand-dim);
+                    }
+
+                    i {
+                        width: 1.25rem;
+                        height: 1.25rem;
+                    }
+                }
+
                 .contact-list {
                     list-style: none;
                     font-size: 0.9rem;
@@ -536,7 +568,7 @@
         }
 
         .project-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-6px);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 30px var(--brand-dim);
         }
 
@@ -741,18 +773,6 @@
             }
         }
 
-        /* Footer styling */
-        .portfolio-footer {
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.8rem;
-            font-family: var(--font-mono);
-            padding-bottom: 2rem;
-        }
-
         /* Easter Egg Skill Bars */
         .skill-bar {
             height: 4px; 
@@ -785,7 +805,7 @@
                 <i data-lucide="file-code"></i>
                 portfolio.html
             </div>
-        </header>
+    </header>
 
     <!-- Applicatie Layout (Sidebar + Content) -->
     <div class="app-layout">
@@ -799,16 +819,14 @@
 
             <div class="info-group">
                 <h3>Profielen</h3>
-                <ul class="contact-list">
-                    <li>
+                <div class="social-row">
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="LinkedIn">
                         <i data-lucide="linkedin"></i>
-                        <a href="https://www.linkedin.com/in/luuk-spruijtenburg-05aa89243/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                    </li>
-                    <li>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="GitHub">
                         <i data-lucide="github"></i>
-                        <a href="https://github.com/Luuk0510" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    </li>
-                </ul>
+                    </a>
+                </div>
             </div>
 
             <div class="info-group">
@@ -901,6 +919,16 @@
                     </h2>
                     
                     <div class="timeline">
+                        <!-- Nieuwe kaart: Toekomstige stage -->
+                        <div class="card" style="border-style: dashed; opacity: 0.8;">
+                            <div class="card-header">
+                                <h4>Stagiair Software Developer</h4>
+                                <span class="date">sep 2026 - jan 2027</span>
+                            </div>
+                            <span class="company">Beschikbaar voor stage</span>
+                            <p>Ik ben momenteel op zoek naar een leerzame stageplek voor de periode van september 2026 tot januari 2027 om mijn vaardigheden verder te verdiepen.</p>
+                        </div>
+
                         <div class="card">
                             <div class="card-header">
                                 <h4>Stagiair Software Developer</h4>
@@ -1029,8 +1057,8 @@
                     </div>
 
                     <!-- GitHub Knop -->
-                    <div style="text-align: center;">
-                        <a href="https://github.com/Luuk0510" target="_blank" rel="noopener noreferrer" class="github-more-btn">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <a href="https://github.com/JouwGitHubNaam" target="_blank" rel="noopener noreferrer" class="github-more-btn">
                             <i data-lucide="github" style="width: 18px; height: 18px;"></i>
                             Bekijk de rest van mijn projecten op GitHub
                         </a>
