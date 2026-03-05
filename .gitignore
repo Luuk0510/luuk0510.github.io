@@ -1,3 +1,4 @@
 /.vscode
 styles.css
 *.css.map
+/node_modules
