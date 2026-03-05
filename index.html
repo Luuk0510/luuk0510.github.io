@@ -14,9 +14,9 @@
         <!-- IDE top tab bar -->
         <header class="ide-topbar">
             <div class="window-controls">
-                <div class="close" title="Accent: Rood" data-accent="red"></div>
-                <div class="minimize" title="Accent: Geel" data-accent="yellow"></div>
-                <div class="maximize" title="Accent: Groen" data-accent="green"></div>
+                <div class="window-control window-control--red" title="Accent: Rood" role="button" tabindex="0" aria-label="Set accent to red" data-accent="red"></div>
+                <div class="window-control window-control--yellow" title="Accent: Geel" role="button" tabindex="0" aria-label="Set accent to yellow" data-accent="yellow"></div>
+                <div class="window-control window-control--green" title="Accent: Groen" role="button" tabindex="0" aria-label="Set accent to green" data-accent="green"></div>
             </div>
             <div class="ide-tab">
                 <i data-lucide="file-code"></i>
@@ -151,7 +151,7 @@
                                 <h4>Stagiair Software Developer</h4>
                                 <span class="date">sep 2024 - jan 2025</span>
                             </div>
-                            <span class="company">Marvelous | ’s-Hertogenbosch</span>
+                            <span class="company">Marvelous | 's-Hertogenbosch</span>
                             <p>Tijdens mijn derdejaars HBO-stage bij Marvelous werkte ik met C# en het Backlot-framework. Ik ontwikkelde functies in een interne webapplicatie binnen een grotere codebase. Ik leerde werken in sprints en taken bijhouden. Ook heb ik veel geleerd over samenwerken en communiceren in een professioneel team.</p>
                         </div>
 
@@ -179,7 +179,7 @@
                                 <span class="date">2022 - heden</span>
                             </div>
                             <span class="company">Avans Hogeschool | Den Bosch</span>
-                            <p>Ik ben derdejaars student Informatica aan Avans in Den Bosch. Ik werk vooral aan webapplicaties met C#, Laravel en Python. In duo’s deed ik veel ervaring op met samenwerking en projectaanpak. Ik gebruikte Agile, Scrum en Kanban. Naast webontwikkeling maakte ik ook een Unity game en een Python project. In mijn minor Artificial Intelligence werkte ik met RAG en tools zoals LlamaIndex.</p>
+                            <p>Ik ben derdejaars student Informatica aan Avans in Den Bosch. Ik werk vooral aan webapplicaties met C#, Laravel en Python. In duo's deed ik veel ervaring op met samenwerking en projectaanpak. Ik gebruikte Agile, Scrum en Kanban. Naast webontwikkeling maakte ik ook een Unity game en een Python project. In mijn minor Artificial Intelligence werkte ik met RAG en tools zoals LlamaIndex.</p>
                         </div>
 
                         <div class="card">
@@ -274,10 +274,10 @@
     <footer class="status-bar" id="bottom-status-bar">
         <div class="status-left">
             <span class="status-item"><i data-lucide="git-branch"></i> main</span>
-            <span class="status-item hidden sm:flex"><i data-lucide="x-circle" class="icon-inherit"></i> 0</span>
-            <span class="status-item hidden sm:flex"><i data-lucide="alert-triangle" class="icon-inherit"></i> 0</span>
+            <span class="status-item status-item--desktop"><i data-lucide="x-circle" class="icon-inherit"></i> 0</span>
+            <span class="status-item status-item--desktop"><i data-lucide="alert-triangle" class="icon-inherit"></i> 0</span>
         </div>
-        <div class="status-right hidden sm:flex">
+        <div class="status-right status-right--desktop">
             <span>UTF-8</span>
             <span>HTML</span>
             <span>Prettier</span>

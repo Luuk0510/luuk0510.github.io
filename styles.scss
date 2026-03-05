@@ -168,6 +168,21 @@ a {
   animation: typing 2.5s steps(21, end) 0.5s forwards, blink-caret 1s step-end 3s 3 forwards;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .typewriter {
+    width: auto;
+    border-right: 0;
+  }
+}
+
 .ide-window {
   width: 100%;
   max-width: 1250px;
@@ -208,29 +223,31 @@ a {
   padding-bottom: 0.75rem;
   margin-right: 1.5rem;
 
-  div {
+  .window-control {
     width: 12px;
     height: 12px;
+    display: inline-block;
     border-radius: 50%;
     cursor: pointer;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
     transition: transform $ease-fast, box-shadow $ease-fast;
 
     &:hover {
       transform: scale(1.15);
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.35);
     }
   }
 }
 
-.close {
+.window-control--red {
   background-color: #ff5f56;
 }
 
-.minimize {
+.window-control--yellow {
   background-color: #ffbd2e;
 }
 
-.maximize {
+.window-control--green {
   background-color: #27c93f;
 }
 
@@ -282,6 +299,22 @@ a {
   align-items: center;
   gap: 0.3rem;
   cursor: pointer;
+}
+
+.status-item--desktop {
+  display: none;
+
+  @include up($bp-sm) {
+    display: flex;
+  }
+}
+
+.status-right--desktop {
+  display: none;
+
+  @include up($bp-sm) {
+    display: flex;
+  }
 }
 
 .app-layout {
@@ -353,13 +386,13 @@ a {
   @include flex-center;
 }
 
-h1 {
+.profile h1 {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 0.25rem;
 }
 
-h2 {
+.profile h2 {
   font-size: 1rem;
   color: var(--brand-light);
   font-family: var(--font-mono);
