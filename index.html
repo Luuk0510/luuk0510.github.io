@@ -38,10 +38,10 @@
             transition: --brand 0.5s ease, --brand-light 0.5s ease, --brand-dim 0.5s ease;
         }
 
-        /* Typing Animatie */
+        /* Animaties */
         @keyframes typing {
             from { width: 0; }
-            to { width: 22ch; } /* Exacte breedte van de tekst + cursor ruimte */
+            to { width: 22ch; }
         }
 
         @keyframes blink-caret {
@@ -53,12 +53,12 @@
             display: inline-block;
             overflow: hidden;
             white-space: nowrap;
-            border-right: 4px solid var(--brand-light); /* Dikker gemaakt voor dat echte IDE gevoel */
+            border-right: 4px solid var(--brand-light);
             width: 0;
             margin: 0 auto;
             animation: 
                 typing 2.5s steps(21, end) 0.5s forwards,
-                blink-caret 1s step-end 3s 3 forwards; /* Begint na 3s, knippert 3 seconden en verdwijnt dan */
+                blink-caret 1s step-end 3s 3 forwards;
         }
 
         /* Base & Reset */
@@ -70,7 +70,21 @@
             scrollbar-color: var(--border-light) var(--bg-main);
         }
 
-        /* Custom Scrollbar voor Webkit (Chrome, Edge, Safari) */
+        /* Noise texture overlay */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            z-index: 9999;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 12px;
             height: 12px;
@@ -87,13 +101,8 @@
             border: 3px solid var(--bg-main);
         }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background-color: var(--text-muted);
-        }
-
         body {
-            background-color: #030712; /* Zeer donkere basis (Aceternity style) */
-            /* Subtiel grid op de achtergrond met een lichte brand glow bovenaan */
+            background-color: #030712;
             background-image: 
                 radial-gradient(circle at 50% 0%, var(--brand-dim), transparent 50%),
                 linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
@@ -108,36 +117,28 @@
             justify-content: center;
             min-height: 100vh;
             padding: 0;
+            position: relative;
         }
 
         /* Container voor het venster-effect */
         .ide-window {
             width: 100%;
             max-width: 1250px;
-            height: 100vh; /* Neemt nu de volledige hoogte in */
-            background-color: rgba(15, 23, 42, 0.7); /* Glassmorphism basis */
-            backdrop-filter: blur(20px);
+            height: 100vh;
+            background-color: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(25px);
             border-left: 1px solid rgba(255, 255, 255, 0.08);
             border-right: 1px solid rgba(255, 255, 255, 0.08);
-            border-top: none;
-            border-bottom: none;
-            border-radius: 0;
-            box-shadow: 0 0 80px -20px var(--brand-dim); /* Zachte gloed rondom */
+            box-shadow: 0 0 80px -20px var(--brand-dim);
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            position: relative;
         }
 
-        /* Verwijder de marges en randen op mobiele schermen */
         @media (max-width: 1024px) {
-            body {
-                padding: 0;
-            }
-            .ide-window {
-                height: 100vh;
-                border-radius: 0;
-                border: none;
-            }
+            body { padding: 0; }
+            .ide-window { height: 100vh; border: none; }
         }
 
         ::selection {
@@ -149,15 +150,15 @@
             text-decoration: none;
             color: inherit;
             transition: color 0.2s ease;
+        }
 
-            &:hover {
-                color: var(--brand-light);
-            }
+        a:hover {
+            color: var(--brand-light);
         }
 
         /* --- IDE BARS --- */
         .ide-topbar {
-            background-color: rgba(2, 6, 23, 0.8);
+            background-color: rgba(2, 6, 23, 0.85);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             height: 40px;
@@ -175,22 +176,24 @@
             gap: 0.5rem;
             padding-bottom: 0.75rem;
             margin-right: 1.5rem;
-
-            div {
-                width: 12px;
-                height: 12px;
-                border-radius: 50%;
-                cursor: pointer; /* Maakt de bollen klikbaar */
-                transition: transform 0.2s;
-
-                &:hover {
-                    transform: scale(1.15);
-                }
-            }
-            .close { background-color: #ff5f56; }
-            .minimize { background-color: #ffbd2e; }
-            .maximize { background-color: #27c93f; }
         }
+
+        .window-controls div {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .window-controls div:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+        }
+
+        .close { background-color: #ff5f56; }
+        .minimize { background-color: #ffbd2e; }
+        .maximize { background-color: #27c93f; }
 
         .ide-tab {
             background-color: var(--bg-sidebar);
@@ -204,24 +207,13 @@
             align-items: center;
             gap: 0.5rem;
             transition: border-color 0.5s ease;
+        }
 
-            i {
-                color: var(--brand-light);
-                width: 1rem;
-                height: 1rem;
-                transition: color 0.5s ease;
-            }
-
-            &.inactive {
-                background-color: transparent;
-                border-top: 2px solid transparent;
-                color: var(--text-muted);
-                cursor: pointer;
-
-                &:hover {
-                    background-color: var(--bg-sidebar);
-                }
-            }
+        .ide-tab i {
+            color: var(--brand-light);
+            width: 1rem;
+            height: 1rem;
+            transition: color 0.5s ease;
         }
 
         .status-bar {
@@ -232,277 +224,269 @@
             justify-content: space-between;
             padding: 0 1rem;
             font-size: 0.75rem;
-            color: rgba(0, 0, 0, 0.7); /* Contrast aangepast voor leesbaarheid op alle kleuren */
+            color: rgba(0, 0, 0, 0.7);
             font-family: var(--font-mono);
             font-weight: 600;
             flex-shrink: 0;
             transition: background-color 0.5s ease;
+        }
 
-            .status-left, .status-right {
-                display: flex;
-                align-items: center;
-                gap: 1.25rem;
-            }
+        .status-left, .status-right {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
 
-            .status-item {
-                display: flex;
-                align-items: center;
-                gap: 0.3rem;
-                cursor: pointer;
-            }
-
-            i {
-                width: 0.8rem;
-                height: 0.8rem;
-            }
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            cursor: pointer;
         }
 
         /* --- HOOFD LAYOUT --- */
         .app-layout {
             display: flex;
             flex: 1;
-            overflow-y: auto; /* Eén gecombineerde scroll voor mobiel */
+            overflow-y: auto;
             overflow-x: hidden;
             flex-direction: column;
+        }
 
-            @media (min-width: 1024px) {
+        @media (min-width: 1024px) {
+            .app-layout {
                 flex-direction: row;
-                overflow: hidden; /* Sluit de algemene scroll af op desktop */
+                overflow: hidden;
             }
         }
 
         /* Sidebar */
         .sidebar {
-            background: rgba(30, 41, 59, 0.3); /* Transparanter voor het glass effect */
+            background: rgba(30, 41, 59, 0.3);
             border-right: 1px solid rgba(255, 255, 255, 0.05);
             padding: 2.5rem 2rem;
             display: flex;
             flex-direction: column;
+        }
 
-            @media (min-width: 1024px) {
+        @media (min-width: 1024px) {
+            .sidebar {
                 width: 320px;
                 border-bottom: none;
-                border-right: 1px solid rgba(255, 255, 255, 0.05);
                 flex-shrink: 0;
                 height: 100%;
-                overflow-y: auto; /* Maakt de sidebar onafhankelijk scrollbaar op desktop */
+                overflow-y: auto;
+                box-shadow: inset -20px 0 30px -20px rgba(0,0,0,0.3);
             }
+        }
 
-            .profile {
-                text-align: center;
-                margin-bottom: 2.5rem;
-                position: relative;
+        .profile {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
 
-                .avatar {
-                    width: 100px;
-                    height: 100px;
-                    border-radius: 50%;
-                    background: linear-gradient(135deg, var(--bg-main), var(--bg-sidebar));
-                    border: 2px solid var(--brand);
-                    color: var(--brand);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 2rem;
-                    font-weight: 700;
-                    margin: 0 auto 1.5rem auto;
-                    box-shadow: 0 0 30px var(--brand-dim);
-                    position: relative;
-                    z-index: 2;
-                    transition: border-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
-                }
-                
-                /* Subtiele glow achter de avatar */
-                &::before {
-                    content: '';
-                    position: absolute;
-                    top: 10px;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    width: 80px;
-                    height: 80px;
-                    background: var(--brand);
-                    filter: blur(40px);
-                    opacity: 0.2;
-                    z-index: 1;
-                    border-radius: 50%;
-                    transition: background 0.5s ease;
-                }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--bg-main), var(--bg-sidebar));
+            border: 2px solid var(--brand);
+            color: var(--brand);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem auto;
+            box-shadow: 0 0 30px var(--brand-dim);
+            position: relative;
+            z-index: 2;
+            transition: border-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
+        }
+        
+        .profile::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: var(--brand);
+            filter: blur(40px);
+            opacity: 0.2;
+            z-index: 1;
+            border-radius: 50%;
+            transition: background 0.5s ease;
+        }
 
-                h1 {
-                    font-size: 1.5rem;
-                    font-weight: 700;
-                    margin-bottom: 0.25rem;
-                }
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
 
-                h2 {
-                    font-size: 1rem;
-                    color: var(--brand-light);
-                    font-family: var(--font-mono); /* Tech feel */
-                    font-weight: 400;
-                    transition: color 0.5s ease;
-                }
-            }
+        h2 {
+            font-size: 1rem;
+            color: var(--brand-light);
+            font-family: var(--font-mono);
+            font-weight: 400;
+            transition: color 0.5s ease;
+        }
 
-            .info-group {
-                margin-bottom: 2rem;
+        .info-group {
+            margin-bottom: 2rem;
+        }
 
-                h3 {
-                    font-size: 0.75rem;
-                    text-transform: uppercase;
-                    letter-spacing: 0.05em;
-                    color: var(--text-secondary);
-                    margin-bottom: 1rem;
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                }
+        .info-group h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-                /* Social Iconen naast elkaar */
-                .social-row {
-                    display: flex;
-                    gap: 0.75rem;
-                }
+        .social-row {
+            display: flex;
+            gap: 0.75rem;
+        }
 
-                .social-icon-btn {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: 2.5rem;
-                    height: 2.5rem;
-                    background: rgba(255, 255, 255, 0.03);
-                    border: 1px solid rgba(255, 255, 255, 0.08);
-                    border-radius: 8px;
-                    color: var(--text-secondary);
-                    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        .social-icon-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
 
-                    &:hover {
-                        background: var(--brand-dim);
-                        border-color: var(--brand);
-                        color: var(--brand-light);
-                        transform: translateY(-3px);
-                        box-shadow: 0 5px 15px var(--brand-dim);
-                    }
+        .social-icon-btn:hover {
+            background: var(--brand-dim);
+            border-color: var(--brand);
+            color: var(--brand-light);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--brand-dim);
+        }
 
-                    i {
-                        width: 1.25rem;
-                        height: 1.25rem;
-                    }
-                }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
 
-                .contact-list {
-                    list-style: none;
-                    font-size: 0.9rem;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 0.75rem;
+        .tag {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
 
-                    li {
-                        display: flex;
-                        align-items: center;
-                        gap: 0.75rem;
-                        color: var(--text-primary);
+        .tag:hover {
+            background: var(--brand-dim);
+            border-color: var(--brand);
+            box-shadow: 0 0 15px var(--brand-dim);
+            transform: translateY(-1px);
+        }
 
-                        i {
-                            width: 1.25rem;
-                            height: 1.25rem;
-                            color: var(--text-secondary);
-                        }
-                    }
-                }
+        .pill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
 
-                .tags {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 0.5rem;
-
-                    .tag {
-                        background: rgba(255, 255, 255, 0.03);
-                        border: 1px solid rgba(255, 255, 255, 0.08);
-                        padding: 0.35rem 0.75rem;
-                        border-radius: 6px;
-                        font-size: 0.85rem;
-                        color: var(--text-primary);
-                        transition: all 0.3s ease;
-
-                        &:hover {
-                            background: var(--brand-dim);
-                            border-color: var(--brand);
-                            box-shadow: 0 0 15px var(--brand-dim);
-                            transform: translateY(-1px);
-                        }
-                    }
-                }
-
-                .pill-list {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 0.5rem;
-
-                    .pill {
-                        background: transparent;
-                        border: 1px solid var(--brand);
-                        color: var(--brand-light);
-                        padding: 0.25rem 0.75rem;
-                        border-radius: 999px;
-                        font-size: 0.8rem;
-                        font-weight: 500;
-                        box-shadow: inset 0 0 10px var(--brand-dim);
-                        transition: border-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
-                    }
-                }
-            }
+        .pill {
+            background: transparent;
+            border: 1px solid var(--brand);
+            color: var(--brand-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            box-shadow: inset 0 0 10px var(--brand-dim);
+            transition: border-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
         }
 
         .main-content {
             flex: 1;
             padding: 2.5rem 1.5rem;
+        }
 
-            @media (min-width: 1024px) {
+        @media (min-width: 1024px) {
+            .main-content {
                 padding: 4rem 5rem;
                 height: 100%;
-                overflow-y: auto; /* Maakt de rechterkant onafhankelijk scrollbaar */
+                overflow-y: auto;
             }
+        }
 
-            .content-wrapper {
-                max-width: 800px;
-                margin: 0 auto;
-            }
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         /* Secties */
         section {
             margin-bottom: 4rem;
-
-            .section-title {
-                font-size: 1.5rem; /* Kleiner gemaakt (was 1.75rem) */
-                font-weight: 700;
-                margin-bottom: 2rem;
-                display: flex;
-                align-items: center;
-                gap: 0.75rem;
-                color: var(--text-primary);
-
-                i {
-                    color: var(--brand);
-                    transition: color 0.5s ease;
-                }
-
-                &::after {
-                    content: '';
-                    flex: 1;
-                    height: 1px;
-                    background-color: var(--border);
-                    margin-left: 1rem;
-                }
-            }
         }
 
-        /* Tekst elementen */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-primary);
+            position: relative;
+            /* Gebruik het normale hoofdlettertype */
+            font-family: var(--font-main);
+        }
+
+        .section-title i {
+            color: var(--brand);
+            transition: color 0.5s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Title Spotlight Effect */
+        .section-title i::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--brand);
+            filter: blur(20px);
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--border), transparent);
+            margin-left: 1rem;
+        }
+
         p {
             color: var(--text-secondary);
             margin-bottom: 1.25rem;
-            font-size: 0.95rem; /* Kleiner gemaakt (was 1.05rem) */
+            font-size: 0.95rem;
             line-height: 1.7;
         }
 
@@ -513,73 +497,52 @@
             gap: 1.5rem;
         }
 
-        /* Project Grid (2 kolommen op desktop) */
         .project-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
+        }
 
-            @media (min-width: 768px) {
+        @media (min-width: 768px) {
+            .project-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        /* --- Nieuwe Aceternity Project Card Styling --- */
+        /* --- Project Card Styling --- */
         .project-card {
             background: rgba(15, 23, 42, 0.4);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px; /* Iets rondere hoeken */
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
             padding: 1.75rem;
             position: relative;
             overflow: hidden;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.5s ease;
+            /* Sync transition met de andere kaarten */
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
         }
 
-        /* Subtiele Aceternity achtergrond glow (zichtbaar op hover) */
         .project-card::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at top left, var(--brand-dim), transparent 60%);
+            background: radial-gradient(circle at top left, var(--brand-dim), transparent 70%);
             opacity: 0;
             transition: opacity 0.5s ease;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        /* Highlight rand effect on hover met webkit mask */
-        .project-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            padding: 1px; /* Dikte van de oplichtende rand */
-            background: linear-gradient(to bottom right, var(--brand), transparent 50%);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.4s ease;
             pointer-events: none;
         }
 
         .project-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 30px var(--brand-dim);
+            /* Sync omhoog schuiven (was -6px) */
+            transform: translateY(-3px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 30px var(--brand-dim);
+            border-color: rgba(255, 255, 255, 0.1);
         }
 
-        .project-card:hover::before,
-        .project-card:hover::after {
+        .project-card:hover::before {
             opacity: 1;
-        }
-
-        .project-card-content {
-            position: relative;
-            z-index: 1;
         }
 
         .project-header {
@@ -596,7 +559,7 @@
             width: 2.75rem;
             height: 2.75rem;
             background: var(--brand-dim);
-            border: 1px solid var(--brand-dim);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 10px;
             color: var(--brand-light);
             transition: background 0.5s ease, color 0.5s ease;
@@ -608,13 +571,6 @@
             color: var(--text-primary);
         }
 
-        .project-tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem;
-            margin-bottom: 1.25rem;
-        }
-
         .project-tech-tag {
             font-size: 0.7rem;
             font-family: var(--font-mono);
@@ -622,55 +578,34 @@
             background: rgba(15, 23, 42, 0.6);
             border: 1px solid var(--brand-dim);
             padding: 0.25rem 0.6rem;
-            border-radius: 999px; /* Pill vorm */
+            border-radius: 999px;
             box-shadow: inset 0 0 10px var(--brand-dim);
-            transition: color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+            transition: color 0.5s ease;
         }
 
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            margin-top: 1rem;
-            transition: color 0.2s, gap 0.2s;
-            position: relative;
-            z-index: 1;
-        }
-
-        .project-link:hover {
-            color: var(--brand-light);
-            gap: 0.75rem; /* Pijltje schuift op */
-        }
-
-        /* --- Knop voor meer projecten (GitHub) --- */
+        /* Knop voor meer projecten */
         .github-more-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 0.75rem;
-            margin-top: 2rem;
-            padding: 0.85rem 1.75rem;
+            margin-top: 3rem;
+            padding: 0.85rem 2rem;
             background: rgba(15, 23, 42, 0.6);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 999px; /* Ronde 'pill' vorm */
+            border-radius: 999px;
             color: var(--text-primary);
             font-size: 0.95rem;
-            font-weight: 500;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-decoration: none;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
         }
 
         .github-more-btn:hover {
             background: var(--brand-dim);
             border-color: var(--brand);
             color: var(--brand-light);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 25px -5px var(--brand-dim), 0 0 15px var(--brand-dim);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 25px -5px var(--brand-dim);
         }
 
         .card {
@@ -683,94 +618,49 @@
             position: relative;
             overflow: hidden;
             transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
 
-            /* Subtiel verlichte lijn bovenaan de kaart (Spotlight effect) */
-            &::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                height: 1px;
-                background: linear-gradient(90deg, transparent, transparent, transparent);
-                transition: background 0.4s ease;
-            }
+        .card:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 20px var(--brand-dim);
+        }
 
-            &:hover {
-                border-color: rgba(255, 255, 255, 0.1);
-                transform: translateY(-3px);
-                box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 20px var(--brand-dim);
-                
-                &::before {
-                    background: linear-gradient(90deg, transparent, var(--brand), transparent);
-                }
-            }
+        .card-header {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1rem;
+        }
 
+        @media (min-width: 640px) {
             .card-header {
-                display: flex;
-                flex-direction: column;
-                margin-bottom: 1rem;
-
-                @media (min-width: 640px) {
-                    flex-direction: row;
-                    justify-content: space-between;
-                    align-items: baseline;
-                }
-
-                h4 {
-                    font-size: 1.1rem; /* Kleiner gemaakt (was 1.25rem) */
-                    font-weight: 600;
-                    color: var(--text-primary);
-                }
-
-                .date {
-                    font-size: 0.85rem; /* Iets kleiner gemaakt */
-                    color: var(--brand-light);
-                    font-family: var(--font-mono); /* Tech feel voor datums */
-                    font-weight: 500;
-                    margin-top: 0.25rem;
-                    transition: color 0.5s ease;
-                }
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: baseline;
             }
+        }
 
-            .company {
-                display: block;
-                font-size: 0.9rem; /* Kleiner gemaakt (was 1rem) */
-                color: var(--text-secondary);
-                margin-bottom: 1.25rem;
-                font-weight: 500;
-            }
+        .card h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
 
-            p {
-                font-size: 0.85rem; /* Zelfde kleine formaat als de eerdere lijstjes */
-                color: var(--text-secondary);
-                line-height: 1.7;
-                margin-bottom: 1rem;
-                white-space: pre-wrap; /* Behoudt de witregels van je toegevoegde tekst */
-            }
+        .date {
+            font-size: 0.85rem;
+            color: var(--brand-light);
+            font-family: var(--font-mono);
+            font-weight: 500;
+            margin-top: 0.25rem;
+            transition: color 0.5s ease;
+        }
 
-            .details-list {
-                list-style: none;
-                color: var(--text-secondary);
-                font-size: 0.85rem; /* Kleiner gemaakt (was 0.95rem) */
-
-                li {
-                    position: relative;
-                    padding-left: 1.5rem;
-                    margin-bottom: 0.75rem;
-
-                    &::before {
-                        content: '>';
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        color: var(--brand);
-                        font-family: var(--font-mono);
-                        font-weight: bold;
-                        transition: color 0.5s ease;
-                    }
-                }
-            }
+        .company {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+            font-weight: 500;
         }
 
         /* Easter Egg Skill Bars */
@@ -796,7 +686,6 @@
         <!-- IDE Top Tab balk -->
         <header class="ide-topbar">
             <div class="window-controls">
-                <!-- Easter Egg: Klikken op de MacOS bollen verandert de accent kleur -->
                 <div class="close" title="Accent: Rood" onclick="setAccent('red')"></div>
                 <div class="minimize" title="Accent: Geel" onclick="setAccent('yellow')"></div>
                 <div class="maximize" title="Accent: Groen" onclick="setAccent('green')"></div>
@@ -805,7 +694,7 @@
                 <i data-lucide="file-code"></i>
                 portfolio.html
             </div>
-    </header>
+        </header>
 
     <!-- Applicatie Layout (Sidebar + Content) -->
     <div class="app-layout">
@@ -820,10 +709,10 @@
             <div class="info-group">
                 <h3>Profielen</h3>
                 <div class="social-row">
-                    <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="LinkedIn">
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="LinkedIn">
                         <i data-lucide="linkedin"></i>
                     </a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="GitHub">
+                    <a href="https://github.com/LuukS1" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="GitHub">
                         <i data-lucide="github"></i>
                     </a>
                 </div>
@@ -862,7 +751,7 @@
                     <div>
                         <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.35rem;">
                             <span style="color: var(--text-primary);">Nederlands</span>
-                            <span style="color: var(--brand-light); font-family: var(--font-mono); font-size: 0.7rem;" id="lang-label-1">Moedertaal</span>
+                            <span style="color: var(--brand-light); font-family: var(--font-mono); font-size: 0.7rem;">Moedertaal</span>
                         </div>
                         <div class="skill-bar">
                             <div class="skill-progress" style="width: 100%;"></div>
@@ -919,8 +808,8 @@
                     </h2>
                     
                     <div class="timeline">
-                        <!-- Nieuwe kaart: Toekomstige stage -->
-                        <div class="card" style="border-style: dashed; opacity: 0.8;">
+                        <!-- Aangepaste kaart: Toekomstige stage (ondoorzichtigheid verwijderd) -->
+                        <div class="card" style="border-style: dashed;">
                             <div class="card-header">
                                 <h4>Stagiair Software Developer</h4>
                                 <span class="date">sep 2026 - jan 2027</span>
@@ -983,84 +872,68 @@
                     </h2>
 
                     <div class="project-grid">
-                        <!-- Project 1: Chatbot SDW -->
                         <div class="project-card">
-                            <div class="project-card-content">
-                                <div class="project-header">
-                                    <div class="project-icon">
-                                        <i data-lucide="bot"></i>
-                                    </div>
-                                    <h4>Chatbot (PoC) voor SDW</h4>
+                            <div class="project-header">
+                                <div class="project-icon">
+                                    <i data-lucide="bot"></i>
                                 </div>
-                                <div class="project-tech-stack">
-                                    <span class="project-tech-tag">LlamaIndex</span>
-                                    <span class="project-tech-tag">AI</span>
-                                </div>
-                                <p>Tijdens mijn AI minor in Breda heb ik een proof of concept ontwikkeld voor een slimme chatbot. Met behulp van LlamaIndex kan de bot gerichte en correcte antwoorden geven op basis van specifieke documentatie van SDW.</p>
+                                <h4>Chatbot (PoC) voor SDW</h4>
                             </div>
-                            <a href="#" class="project-link">Meer informatie <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></a>
+                            <div class="project-tech-stack" style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                                <span class="project-tech-tag">LlamaIndex</span>
+                                <span class="project-tech-tag">AI</span>
+                            </div>
+                            <p>Tijdens mijn AI minor in Breda heb ik een proof of concept ontwikkeld voor een slimme chatbot. Met behulp van LlamaIndex kan de bot gerichte antwoorden geven op basis van SDW-documentatie.</p>
                         </div>
 
-                        <!-- Project 2: FlexFlow -->
                         <div class="project-card">
-                            <div class="project-card-content">
-                                <div class="project-header">
-                                    <div class="project-icon">
-                                        <i data-lucide="smartphone"></i>
-                                    </div>
-                                    <h4>FlexFlow</h4>
+                            <div class="project-header">
+                                <div class="project-icon">
+                                    <i data-lucide="smartphone"></i>
                                 </div>
-                                <div class="project-tech-stack">
-                                    <span class="project-tech-tag">.NET MAUI</span>
-                                    <span class="project-tech-tag">C#</span>
-                                </div>
-                                <p>Voor het bedrijf CBYTE heb ik gewerkt aan de ontwikkeling van FlexFlow. Dit is een cross-platform mobiele applicatie gebouwd met .NET MAUI, ontworpen om processen soepeler te laten verlopen.</p>
+                                <h4>FlexFlow</h4>
                             </div>
-                            <a href="#" class="project-link">Meer informatie <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></a>
+                            <div class="project-tech-stack" style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                                <span class="project-tech-tag">.NET MAUI</span>
+                                <span class="project-tech-tag">C#</span>
+                            </div>
+                            <p>Voor het bedrijf CBYTE heb ik gewerkt aan de ontwikkeling van FlexFlow. Dit is een cross-platform mobiele applicatie ontworpen om logistieke processen soepeler te laten verlopen.</p>
                         </div>
 
-                        <!-- Project 3: De Koppeling -->
                         <div class="project-card">
-                            <div class="project-card-content">
-                                <div class="project-header">
-                                    <div class="project-icon">
-                                        <i data-lucide="link"></i>
-                                    </div>
-                                    <h4>De Koppeling</h4>
+                            <div class="project-header">
+                                <div class="project-icon">
+                                    <i data-lucide="link"></i>
                                 </div>
-                                <div class="project-tech-stack">
-                                    <span class="project-tech-tag">Laravel</span>
-                                    <span class="project-tech-tag">PHP</span>
-                                </div>
-                                <p>Een webontwikkelingsproject gebouwd met het Laravel-framework. Voor dit project heb ik gewerkt aan de backend-logica en gezorgd voor een gestructureerde en veilige koppeling van gegevens.</p>
+                                <h4>De Koppeling</h4>
                             </div>
-                            <a href="#" class="project-link">Meer informatie <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></a>
+                            <div class="project-tech-stack" style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                                <span class="project-tech-tag">Laravel</span>
+                                <span class="project-tech-tag">PHP</span>
+                            </div>
+                            <p>Een webontwikkelingsproject gebouwd met het Laravel-framework. Hierbij lag de focus op backend-logica en een gestructureerde koppeling van bedrijfsgegevens.</p>
                         </div>
 
-                        <!-- Project 4: Bumbo -->
                         <div class="project-card">
-                            <div class="project-card-content">
-                                <div class="project-header">
-                                    <div class="project-icon">
-                                        <i data-lucide="server"></i>
-                                    </div>
-                                    <h4>Bumbo</h4>
+                            <div class="project-header">
+                                <div class="project-icon">
+                                    <i data-lucide="server"></i>
                                 </div>
-                                <div class="project-tech-stack">
-                                    <span class="project-tech-tag">C#</span>
-                                    <span class="project-tech-tag">Azure</span>
-                                </div>
-                                <p>Een applicatie gebouwd met C# waarbij gebruik is gemaakt van cloudhosting via Azure. Hierbij lag de focus op het ontwikkelen van een robuuste backend en betrouwbare dataverwerking in de cloud.</p>
+                                <h4>Bumbo</h4>
                             </div>
-                            <a href="#" class="project-link">Meer informatie <i data-lucide="arrow-right" style="width: 14px; height: 14px;"></i></a>
+                            <div class="project-tech-stack" style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                                <span class="project-tech-tag">C#</span>
+                                <span class="project-tech-tag">Azure</span>
+                            </div>
+                            <p>Een applicatie gebouwd met C# waarbij gebruik is gemaakt van cloudhosting via Azure. Focus op robuuste backend-architectuur en cloud-integratie.</p>
                         </div>
                     </div>
 
                     <!-- GitHub Knop -->
                     <div style="text-align: center; margin-bottom: 2rem;">
-                        <a href="https://github.com/JouwGitHubNaam" target="_blank" rel="noopener noreferrer" class="github-more-btn">
+                        <a href="https://github.com/LuukS1" target="_blank" rel="noopener noreferrer" class="github-more-btn">
                             <i data-lucide="github" style="width: 18px; height: 18px;"></i>
-                            Bekijk de rest van mijn projecten op GitHub
+                            Bekijk de rest op GitHub
                         </a>
                     </div>
                 </section>
@@ -1086,35 +959,18 @@
     </div>
 
     <script>
-        // Initialiseer de iconen
         lucide.createIcons();
 
-        // Easter Egg Functie: Accent Kleur Veranderen
         function setAccent(color) {
             const root = document.documentElement;
-            
             const themes = {
-                'green': {
-                    'rgb': '16, 185, 129',
-                    'light': '#34d399'
-                },
-                'yellow': {
-                    'rgb': '245, 158, 11',
-                    'light': '#fbbf24'
-                },
-                'red': {
-                    'rgb': '244, 63, 94',
-                    'light': '#fb7185'
-                }
+                'green': { 'rgb': '16, 185, 129', 'light': '#34d399' },
+                'yellow': { 'rgb': '245, 158, 11', 'light': '#fbbf24' },
+                'red': { 'rgb': '244, 63, 94', 'light': '#fb7185' }
             };
-
             const selected = themes[color];
-            
-            // Update CSS variabelen op het root element
             root.style.setProperty('--brand-rgb', selected.rgb);
             root.style.setProperty('--brand-light', selected.light);
-            
-            // Opnieuw iconen laden voor de zekerheid (sommige kleuren zitten in inline SVG styles)
             lucide.createIcons();
         }
     </script>
