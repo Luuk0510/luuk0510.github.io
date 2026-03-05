@@ -15,11 +15,17 @@ function setAccent(color) {
 
     root.style.setProperty("--brand-rgb", selected.rgb);
     root.style.setProperty("--brand-light", selected.light);
-    lucide.createIcons();
 }
 
 document.querySelectorAll("[data-accent]").forEach((control) => {
     control.addEventListener("click", () => {
         setAccent(control.dataset.accent);
+    });
+
+    control.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            setAccent(control.dataset.accent);
+        }
     });
 });

@@ -11,12 +11,12 @@
 <body>
 
     <div class="ide-window">
-        <!-- IDE Top Tab balk -->
+        <!-- IDE top tab bar -->
         <header class="ide-topbar">
             <div class="window-controls">
-                <div class="close" title="Accent: Rood" data-accent="red"></div>
-                <div class="minimize" title="Accent: Geel" data-accent="yellow"></div>
-                <div class="maximize" title="Accent: Groen" data-accent="green"></div>
+                <div class="window-control window-control--red" title="Accent: Rood" role="button" tabindex="0" aria-label="Set accent to red" data-accent="red"></div>
+                <div class="window-control window-control--yellow" title="Accent: Geel" role="button" tabindex="0" aria-label="Set accent to yellow" data-accent="yellow"></div>
+                <div class="window-control window-control--green" title="Accent: Groen" role="button" tabindex="0" aria-label="Set accent to green" data-accent="green"></div>
             </div>
             <div class="ide-tab">
                 <i data-lucide="file-code"></i>
@@ -24,9 +24,9 @@
             </div>
         </header>
 
-    <!-- Applicatie Layout (Sidebar + Content) -->
+    <!-- Application layout (sidebar + content) -->
     <div class="app-layout">
-        <!-- Linker Zijbalk -->
+        <!-- Left sidebar -->
         <aside class="sidebar">
             <div class="profile">
                 <div class="avatar">LS</div>
@@ -37,10 +37,10 @@
             <div class="info-group">
                 <h3>Profielen</h3>
                 <div class="social-row">
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="LinkedIn">
+                    <a href="https://www.linkedin.com/in/luuk-spruijtenburg-05aa89243/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="LinkedIn">
                         <i data-lucide="linkedin"></i>
                     </a>
-                    <a href="https://github.com/LuukS1" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="GitHub">
+                    <a href="https://github.com/luuk0510" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="GitHub">
                         <i data-lucide="github"></i>
                     </a>
                 </div>
@@ -82,7 +82,7 @@
                             <span class="language-level language-level--native">Moedertaal</span>
                         </div>
                         <div class="skill-bar">
-                            <div class="skill-progress" class="skill-progress skill-progress--100"></div>
+                            <div class="skill-progress skill-progress--100"></div>
                         </div>
                     </div>
                     <div>
@@ -91,7 +91,7 @@
                             <span class="language-level language-level--good">Zeer goed</span>
                         </div>
                         <div class="skill-bar">
-                            <div class="skill-progress" class="skill-progress skill-progress--90"></div>
+                            <div class="skill-progress skill-progress--90"></div>
                         </div>
                     </div>
                 </div>
@@ -108,11 +108,11 @@
             </div>
         </aside>
 
-        <!-- Hoofd Content -->
+        <!-- Main content -->
         <main class="main-content">
             <div class="content-wrapper">
                 
-                <!-- Over mij -->
+                <!-- About me -->
                 <section id="over-mij">
                     <h2 class="section-title">
                         <i data-lucide="user"></i> Over mij
@@ -129,14 +129,14 @@
                     </p>
                 </section>
 
-                <!-- Werkervaring -->
+                <!-- Work experience -->
                 <section id="werkervaring">
                     <h2 class="section-title">
                         <i data-lucide="briefcase"></i> Werkervaring
                     </h2>
                     
                     <div class="timeline">
-                        <!-- Aangepaste kaart: Toekomstige stage (ondoorzichtigheid verwijderd) -->
+                        <!-- Custom card: future internship -->
                         <div class="card card--dashed">
                             <div class="card-header">
                                 <h4>Stagiair Software Developer</h4>
@@ -151,7 +151,7 @@
                                 <h4>Stagiair Software Developer</h4>
                                 <span class="date">sep 2024 - jan 2025</span>
                             </div>
-                            <span class="company">Marvelous | ’s-Hertogenbosch</span>
+                            <span class="company">Marvelous | 's-Hertogenbosch</span>
                             <p>Tijdens mijn derdejaars HBO-stage bij Marvelous werkte ik met C# en het Backlot-framework. Ik ontwikkelde functies in een interne webapplicatie binnen een grotere codebase. Ik leerde werken in sprints en taken bijhouden. Ook heb ik veel geleerd over samenwerken en communiceren in een professioneel team.</p>
                         </div>
 
@@ -166,7 +166,7 @@
                     </div>
                 </section>
 
-                <!-- Opleidingen -->
+                <!-- Education -->
                 <section id="opleidingen" class="section--compact">
                     <h2 class="section-title">
                         <i data-lucide="graduation-cap"></i> Opleidingen
@@ -179,7 +179,7 @@
                                 <span class="date">2022 - heden</span>
                             </div>
                             <span class="company">Avans Hogeschool | Den Bosch</span>
-                            <p>Ik ben derdejaars student Informatica aan Avans in Den Bosch. Ik werk vooral aan webapplicaties met C#, Laravel en Python. In duo’s deed ik veel ervaring op met samenwerking en projectaanpak. Ik gebruikte Agile, Scrum en Kanban. Naast webontwikkeling maakte ik ook een Unity game en een Python project. In mijn minor Artificial Intelligence werkte ik met RAG en tools zoals LlamaIndex.</p>
+                            <p>Ik ben derdejaars student Informatica aan Avans in Den Bosch. Ik werk vooral aan webapplicaties met C#, Laravel en Python. In duo's deed ik veel ervaring op met samenwerking en projectaanpak. Ik gebruikte Agile, Scrum en Kanban. Naast webontwikkeling maakte ik ook een Unity game en een Python project. In mijn minor Artificial Intelligence werkte ik met RAG en tools zoals LlamaIndex.</p>
                         </div>
 
                         <div class="card">
@@ -193,7 +193,7 @@
                     </div>
                 </section>
 
-                <!-- Projecten -->
+                <!-- Projects -->
                 <section id="projecten" class="section--compact">
                     <h2 class="section-title">
                         <i data-lucide="code"></i> Projecten
@@ -257,9 +257,9 @@
                         </div>
                     </div>
 
-                    <!-- GitHub Knop -->
+                    <!-- GitHub button -->
                     <div class="github-more-wrapper">
-                        <a href="https://github.com/LuukS1" target="_blank" rel="noopener noreferrer" class="github-more-btn">
+                        <a href="https://github.com/luuk0510" target="_blank" rel="noopener noreferrer" class="github-more-btn">
                             <i data-lucide="github" class="github-icon"></i>
                             Bekijk de rest op GitHub
                         </a>
@@ -274,10 +274,10 @@
     <footer class="status-bar" id="bottom-status-bar">
         <div class="status-left">
             <span class="status-item"><i data-lucide="git-branch"></i> main</span>
-            <span class="status-item hidden sm:flex"><i data-lucide="x-circle" class="icon-inherit"></i> 0</span>
-            <span class="status-item hidden sm:flex"><i data-lucide="alert-triangle" class="icon-inherit"></i> 0</span>
+            <span class="status-item status-item--desktop"><i data-lucide="x-circle" class="icon-inherit"></i> 0</span>
+            <span class="status-item status-item--desktop"><i data-lucide="alert-triangle" class="icon-inherit"></i> 0</span>
         </div>
-        <div class="status-right hidden sm:flex">
+        <div class="status-right status-right--desktop">
             <span>UTF-8</span>
             <span>HTML</span>
             <span>Prettier</span>
