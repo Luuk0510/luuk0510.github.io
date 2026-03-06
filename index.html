@@ -6,7 +6,8 @@
     <title>Luuk Spruijtenburg - Software Developer</title>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link id="site-favicon" rel="icon" type="image/x-icon" href="assets/icons/green_favicon.ico">
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
 
@@ -29,7 +30,9 @@
         <!-- Left sidebar -->
         <aside class="sidebar">
             <div class="profile">
-                <div class="avatar">LS</div>
+                <div class="avatar avatar--image">
+                    <img src="assets/images/profile.jpg" alt="Portrait of Luuk Spruijtenburg">
+                </div>
                 <h1>Luuk Spruijtenburg</h1>
                 <h2 class="typewriter">Software Ontwikkelaar</h2>
             </div>
@@ -49,27 +52,30 @@
             <div class="info-group">
                 <h3>Vaardigheden</h3>
                 <div class="tags">
-                    <span class="tag">C#</span>
-                    <span class="tag">Laravel</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">Vue.js</span>
-                    <span class="tag">Python</span>
-                    <span class="tag">SQL / MySQL</span>
-                    <span class="tag">PHP</span>
-                    <span class="tag">Swift</span>
-                    <span class="tag">Kotlin</span>
-                    <span class="tag">DevOps</span>
-                    <span class="tag">LlamaIndex</span>
+                    <portfolio-badge variant="tag" label="C#"></portfolio-badge>
+                    <portfolio-badge variant="tag" label="Laravel"></portfolio-badge>
+                    <portfolio-badge variant="tag" label="JavaScript"></portfolio-badge>
+                    <portfolio-badge variant="tag" label="Tailwind"></portfolio-badge>
+                    <portfolio-badge variant="tag" label="Vue.js"></portfolio-badge>
+                    <portfolio-badge variant="tag" label="Python"></portfolio-badge>
+                    <portfolio-badge variant="tag" label="SQL / MySQL"></portfolio-badge>
+                    <portfolio-badge variant="tag" label="PHP"></portfolio-badge>
+                    <portfolio-badge variant="tag" label="Swift"></portfolio-badge>
+                    <portfolio-badge variant="tag" label="Kotlin"></portfolio-badge>
+                    <portfolio-badge variant="tag" label="Flutter"></portfolio-badge>
+                    <portfolio-badge variant="tag" label="DevOps"></portfolio-badge>
+                    <portfolio-badge variant="tag" label="Microservices"></portfolio-badge>
+                    <portfolio-badge variant="tag" label="LlamaIndex"></portfolio-badge>
                 </div>
             </div>
 
             <div class="info-group">
                 <h3>Persoonlijke focus</h3>
                 <div class="pill-list">
-                    <span class="pill">Gedreven</span>
-                    <span class="pill">Doelgericht</span>
-                    <span class="pill">Prestatiegericht</span>
-                    <span class="pill">Teamspeler</span>
+                    <portfolio-badge variant="pill" label="Gedreven"></portfolio-badge>
+                    <portfolio-badge variant="pill" label="Doelgericht"></portfolio-badge>
+                    <portfolio-badge variant="pill" label="Prestatiegericht"></portfolio-badge>
+                    <portfolio-badge variant="pill" label="Teamspeler"></portfolio-badge>
                 </div>
             </div>
 
@@ -100,10 +106,10 @@
             <div class="info-group info-group--no-margin">
                 <h3>Interesses</h3>
                 <div class="pill-list">
-                    <span class="pill">Programmeren</span>
-                    <span class="pill">Lezen</span>
-                    <span class="pill">Gamen</span>
-                    <span class="pill">Films en series</span>
+                    <portfolio-badge variant="pill" label="Programmeren"></portfolio-badge>
+                    <portfolio-badge variant="pill" label="Lezen"></portfolio-badge>
+                    <portfolio-badge variant="pill" label="Gamen"></portfolio-badge>
+                    <portfolio-badge variant="pill" label="Films en series"></portfolio-badge>
                 </div>
             </div>
         </aside>
@@ -118,7 +124,7 @@
                         <i data-lucide="user"></i> Over mij
                     </h2>
                     <p>
-                        Ik ben een softwareontwikkelaar en zit momenteel in het tweede jaar van de opleiding Informatica 
+                        Ik ben een softwareontwikkelaar en zit momenteel in het vierde jaar van de opleiding Informatica 
                         aan Avans Hogeschool in Den Bosch. Ik zet mijn passie voor programmeren om in praktische vaardigheden 
                         met verschillende programmeertalen en frameworks.
                     </p>
@@ -136,33 +142,24 @@
                     </h2>
                     
                     <div class="timeline">
-                        <!-- Custom card: future internship -->
-                        <div class="card card--dashed">
-                            <div class="card-header">
-                                <h4>Stagiair Software Developer</h4>
-                                <span class="date">sep 2026 - jan 2027</span>
-                            </div>
-                            <span class="company">Beschikbaar voor stage</span>
-                            <p>Ik ben momenteel op zoek naar een leerzame stageplek voor de periode van september 2026 tot januari 2027 om mijn vaardigheden verder te verdiepen.</p>
-                        </div>
+                        <timeline-card
+                            title="Stagiair Software Developer"
+                            date="sep 2026 - jan 2027"
+                            company="Beschikbaar voor stage"
+                            description="Ik ben momenteel op zoek naar een leerzame stageplek voor de periode van september 2026 tot januari 2027 om mijn vaardigheden verder te verdiepen."
+                            dashed="true"></timeline-card>
 
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Stagiair Software Developer</h4>
-                                <span class="date">sep 2024 - jan 2025</span>
-                            </div>
-                            <span class="company">Marvelous | 's-Hertogenbosch</span>
-                            <p>Tijdens mijn derdejaars HBO-stage bij Marvelous werkte ik met C# en het Backlot-framework. Ik ontwikkelde functies in een interne webapplicatie binnen een grotere codebase. Ik leerde werken in sprints en taken bijhouden. Ook heb ik veel geleerd over samenwerken en communiceren in een professioneel team.</p>
-                        </div>
+                        <timeline-card
+                            title="Stagiair Software Developer"
+                            date="sep 2024 - jan 2025"
+                            company="Marvelous | 's-Hertogenbosch"
+                            description="Tijdens mijn derdejaars HBO-stage bij Marvelous werkte ik met C# en het Backlot-framework. Ik ontwikkelde functies in een interne webapplicatie binnen een grotere codebase. Ik leerde werken in sprints en taken bijhouden. Ook heb ik veel geleerd over samenwerken en communiceren in een professioneel team."></timeline-card>
 
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Junior Softwareontwikkelaar</h4>
-                                <span class="date">feb 2021 - aug 2024</span>
-                            </div>
-                            <span class="company">Mobicoach | Oss</span>
-                            <p>Tijdens mijn MBO-opleiding liep ik twee keer stage bij Mobicoach. Daarna werkte ik er parttime. Ik werkte aan interne websystemen die dagelijks werden gebruikt. In een klein team leerde ik duidelijk communiceren. Ook werd ik zelfstandiger en werkte ik meer gestructureerd. Dit gaf mij een sterke basis voor mijn HBO-opleiding.</p>
-                        </div>
+                        <timeline-card
+                            title="Junior Softwareontwikkelaar"
+                            date="feb 2021 - aug 2024"
+                            company="Mobicoach | Oss"
+                            description="Tijdens mijn MBO-opleiding liep ik twee keer stage bij Mobicoach. Daarna werkte ik er parttime. Ik werkte aan interne websystemen die dagelijks werden gebruikt. In een klein team leerde ik duidelijk communiceren. Ook werd ik zelfstandiger en werkte ik meer gestructureerd. Dit gaf mij een sterke basis voor mijn HBO-opleiding."></timeline-card>
                     </div>
                 </section>
 
@@ -173,23 +170,17 @@
                     </h2>
 
                     <div class="timeline">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Bachelorgraad, Informatica</h4>
-                                <span class="date">2022 - heden</span>
-                            </div>
-                            <span class="company">Avans Hogeschool | Den Bosch</span>
-                            <p>Ik ben derdejaars student Informatica aan Avans in Den Bosch. Ik werk vooral aan webapplicaties met C#, Laravel en Python. In duo's deed ik veel ervaring op met samenwerking en projectaanpak. Ik gebruikte Agile, Scrum en Kanban. Naast webontwikkeling maakte ik ook een Unity game en een Python project. In mijn minor Artificial Intelligence werkte ik met RAG en tools zoals LlamaIndex.</p>
-                        </div>
+                        <timeline-card
+                            title="Bachelorgraad, Informatica"
+                            date="2022 - heden"
+                            company="Avans Hogeschool | Den Bosch"
+                            description="Ik ben derdejaars student Informatica aan Avans in Den Bosch. Ik werk vooral aan webapplicaties met C#, Laravel en Python. In duo's deed ik veel ervaring op met samenwerking en projectaanpak. Ik gebruikte Agile, Scrum en Kanban. Naast webontwikkeling maakte ik ook een Unity game en een Python project. In mijn minor Artificial Intelligence werkte ik met RAG en tools zoals LlamaIndex."></timeline-card>
 
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>MBO niveau 4, Software Development</h4>
-                                <span class="date">2019 - 2022</span>
-                            </div>
-                            <span class="company">De Leijgraaf</span>
-                            <p>Van 2019 tot 2022 deed ik MBO Software Development in Oss. Ik legde een basis in webontwikkeling met PHP, HTML en CSS. Ik kreeg ook UX en UI lessen, waardoor ik beter werd in het ontwerpen van duidelijke interfaces. Tijdens de opleiding liep ik twee stages en werkte ik vaak in teams met deadlines. Deze periode gaf mij een brede basis in frontend en backend.</p>
-                        </div>
+                        <timeline-card
+                            title="MBO niveau 4, Software Development"
+                            date="2019 - 2022"
+                            company="De Leijgraaf"
+                            description="Van 2019 tot 2022 deed ik MBO Software Development in Oss. Ik legde een basis in webontwikkeling met PHP, HTML en CSS. Ik kreeg ook UX en UI lessen, waardoor ik beter werd in het ontwerpen van duidelijke interfaces. Tijdens de opleiding liep ik twee stages en werkte ik vaak in teams met deadlines. Deze periode gaf mij een brede basis in frontend en backend."></timeline-card>
                     </div>
                 </section>
 
@@ -200,61 +191,29 @@
                     </h2>
 
                     <div class="project-grid">
-                        <div class="project-card">
-                            <div class="project-header">
-                                <div class="project-icon">
-                                    <i data-lucide="bot"></i>
-                                </div>
-                                <h4>Chatbot (PoC) voor SDW</h4>
-                            </div>
-                            <div class="project-tech-stack">
-                                <span class="project-tech-tag">LlamaIndex</span>
-                                <span class="project-tech-tag">AI</span>
-                            </div>
-                            <p>Tijdens mijn AI minor in Breda heb ik een proof of concept ontwikkeld voor een slimme chatbot. Met behulp van LlamaIndex kan de bot gerichte antwoorden geven op basis van SDW-documentatie.</p>
-                        </div>
+                        <project-card-entry
+                            title="Chatbot (PoC) voor SDW"
+                            icon="bot"
+                            tech="LlamaIndex|AI"
+                            description="Tijdens mijn AI minor in Breda heb ik een proof of concept ontwikkeld voor een slimme chatbot. Met behulp van LlamaIndex kan de bot gerichte antwoorden geven op basis van SDW-documentatie."></project-card-entry>
 
-                        <div class="project-card">
-                            <div class="project-header">
-                                <div class="project-icon">
-                                    <i data-lucide="smartphone"></i>
-                                </div>
-                                <h4>FlexFlow</h4>
-                            </div>
-                            <div class="project-tech-stack">
-                                <span class="project-tech-tag">.NET MAUI</span>
-                                <span class="project-tech-tag">C#</span>
-                            </div>
-                            <p>Voor het bedrijf CBYTE heb ik gewerkt aan de ontwikkeling van FlexFlow. Dit is een cross-platform mobiele applicatie ontworpen om logistieke processen soepeler te laten verlopen.</p>
-                        </div>
+                        <project-card-entry
+                            title="FlexFlow"
+                            icon="smartphone"
+                            tech=".NET MAUI|C#"
+                            description="Voor het bedrijf CBYTE heb ik gewerkt aan de ontwikkeling van FlexFlow. Dit is een cross-platform mobiele applicatie ontworpen om logistieke processen soepeler te laten verlopen."></project-card-entry>
 
-                        <div class="project-card">
-                            <div class="project-header">
-                                <div class="project-icon">
-                                    <i data-lucide="link"></i>
-                                </div>
-                                <h4>De Koppeling</h4>
-                            </div>
-                            <div class="project-tech-stack">
-                                <span class="project-tech-tag">Laravel</span>
-                                <span class="project-tech-tag">PHP</span>
-                            </div>
-                            <p>Een webontwikkelingsproject gebouwd met het Laravel-framework. Hierbij lag de focus op backend-logica en een gestructureerde koppeling van bedrijfsgegevens.</p>
-                        </div>
+                        <project-card-entry
+                            title="De Koppeling"
+                            icon="link"
+                            tech="Laravel|PHP"
+                            description="Een webontwikkelingsproject gebouwd met het Laravel-framework. Hierbij lag de focus op backend-logica en een gestructureerde koppeling van bedrijfsgegevens."></project-card-entry>
 
-                        <div class="project-card">
-                            <div class="project-header">
-                                <div class="project-icon">
-                                    <i data-lucide="server"></i>
-                                </div>
-                                <h4>Bumbo</h4>
-                            </div>
-                            <div class="project-tech-stack">
-                                <span class="project-tech-tag">C#</span>
-                                <span class="project-tech-tag">Azure</span>
-                            </div>
-                            <p>Een applicatie gebouwd met C# waarbij gebruik is gemaakt van cloudhosting via Azure. Focus op robuuste backend-architectuur en cloud-integratie.</p>
-                        </div>
+                        <project-card-entry
+                            title="Bumbo"
+                            icon="server"
+                            tech="C#|Azure"
+                            description="Een applicatie gebouwd met C# waarbij gebruik is gemaakt van cloudhosting via Azure. Focus op robuuste backend-architectuur en cloud-integratie."></project-card-entry>
                     </div>
 
                     <!-- GitHub button -->
@@ -285,6 +244,6 @@
         </div>
     </footer>
     </div>
-    <script src="script.js"></script>
+    <script type="module" src="scripts/main.js"></script>
 </body>
 </html>

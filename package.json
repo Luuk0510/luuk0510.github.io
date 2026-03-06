@@ -2,10 +2,9 @@
   "name": "luuk0510.github.io",
   "version": "1.0.0",
   "description": "",
-  "main": "script.js",
   "scripts": {
-    "build:css": "sass --no-source-map --style=compressed styles.scss styles.css",
-    "watch:css": "sass --watch styles.scss:styles.css"
+    "build:css": "sass --no-source-map --style=compressed styles/styles.scss styles/styles.css",
+    "watch:css": "sass --watch styles/styles.scss:styles/styles.css"
   },
   "repository": {
     "type": "git",
@@ -14,7 +13,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/Luuk0510/luuk0510.github.io/issues"
   },
