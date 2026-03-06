@@ -1,6 +1,7 @@
 lucide.createIcons();
 
 const favicon = document.getElementById("site-favicon");
+const revealTargets = document.querySelectorAll(".card, .project-card");
 
 function setAccent(color) {
     const root = document.documentElement;
@@ -48,4 +49,39 @@ document.querySelectorAll("[data-accent]").forEach((control) => {
     });
 });
 
+function setupScrollReveal() {
+    if (!revealTargets.length) {
+        return;
+    }
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        revealTargets.forEach((target) => target.classList.add("is-visible"));
+        return;
+    }
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+            });
+        },
+        {
+            threshold: 0.05,
+            rootMargin: "0px 0px 12% 0px"
+        }
+    );
+
+    revealTargets.forEach((target, index) => {
+        target.classList.add("reveal-on-scroll");
+        target.style.transitionDelay = `${index * 80}ms`;
+        observer.observe(target);
+    });
+}
+
 setAccent("green");
+setupScrollReveal();
