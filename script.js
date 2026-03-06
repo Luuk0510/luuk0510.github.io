@@ -1,11 +1,25 @@
 lucide.createIcons();
 
+const favicon = document.getElementById("site-favicon");
+
 function setAccent(color) {
     const root = document.documentElement;
     const themes = {
-        green: { rgb: "16, 185, 129", light: "#34d399" },
-        yellow: { rgb: "245, 158, 11", light: "#fbbf24" },
-        red: { rgb: "244, 63, 94", light: "#fb7185" }
+        green: {
+            rgb: "16, 185, 129",
+            light: "#34d399",
+            favicon: "assets/icons/green_favicon.ico"
+        },
+        yellow: {
+            rgb: "245, 158, 11",
+            light: "#fbbf24",
+            favicon: "assets/icons/yellow_favicon.ico"
+        },
+        red: {
+            rgb: "244, 63, 94",
+            light: "#fb7185",
+            favicon: "assets/icons/red_favicon.ico"
+        }
     };
 
     const selected = themes[color];
@@ -15,6 +29,10 @@ function setAccent(color) {
 
     root.style.setProperty("--brand-rgb", selected.rgb);
     root.style.setProperty("--brand-light", selected.light);
+
+    if (favicon) {
+        favicon.href = selected.favicon;
+    }
 }
 
 document.querySelectorAll("[data-accent]").forEach((control) => {
@@ -29,3 +47,5 @@ document.querySelectorAll("[data-accent]").forEach((control) => {
         }
     });
 });
+
+setAccent("green");
