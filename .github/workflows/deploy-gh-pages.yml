@@ -32,7 +32,9 @@ jobs:
       - name: Prepare deploy directory
         run: |
           mkdir -p dist
-          cp index.html script.js styles.css dist/
+          cp index.html dist/
+          cp -R styles dist/
+          cp -R scripts dist/
           if [ -f CNAME ]; then cp CNAME dist/; fi
           if [ -d assets ]; then cp -R assets dist/; fi
 
