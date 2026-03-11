@@ -466,7 +466,9 @@ a {
   height: 2.5rem;
   border-radius: 8px;
   color: var(--text-secondary);
-  transition: all $ease-base $spring;
+  transform: translateY(0);
+  box-shadow: 0 0 0 transparent;
+  transition: transform $ease-base, border-color $ease-base, box-shadow $ease-base, background $ease-base, color $ease-base;
   @include flex-center;
 
   &:hover {
@@ -717,7 +719,9 @@ p {
   border-radius: 999px;
   color: var(--text-primary);
   font-size: 0.95rem;
-  transition: all $ease-base $spring;
+  transform: translateY(0) scale(1);
+  box-shadow: 0 0 0 transparent;
+  transition: transform $ease-base, border-color $ease-base, box-shadow $ease-base, background $ease-base, color $ease-base;
 
   &:hover {
     background: var(--brand-dim);
