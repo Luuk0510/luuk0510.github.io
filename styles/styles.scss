@@ -80,7 +80,7 @@ project-card-entry {
   }
 
   to {
-    width: 22ch;
+    width: calc(var(--typewriter-ch, 22) * 1ch);
   }
 }
 
@@ -168,6 +168,7 @@ a {
 }
 
 .typewriter {
+  --typewriter-ch: 22;
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
@@ -219,11 +220,21 @@ a {
   height: 40px;
   display: flex;
   align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
   padding: 0 1rem;
   font-family: var(--font-mono);
   flex-shrink: 0;
-  overflow-x: auto;
+  overflow: hidden;
   white-space: nowrap;
+}
+
+.topbar-main {
+  display: flex;
+  align-items: flex-end;
+  min-width: 0;
+  flex: 1;
+  overflow-x: auto;
 }
 
 .window-controls {
@@ -278,6 +289,53 @@ a {
     width: 1rem;
     height: 1rem;
     transition: color $ease-slow;
+  }
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.35rem;
+  flex-shrink: 0;
+}
+
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.language-toggle {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1;
+  padding: 0.45rem 0.8rem;
+  transition: background $ease-base, color $ease-base;
+
+  & + & {
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  &:hover {
+    color: var(--text-primary);
+  }
+
+  &:focus-visible {
+    outline: 1px solid var(--brand);
+    outline-offset: -1px;
+  }
+
+  &.is-active {
+    background: var(--brand-dim);
+    color: var(--brand-light);
   }
 }
 
@@ -466,7 +524,9 @@ a {
   height: 2.5rem;
   border-radius: 8px;
   color: var(--text-secondary);
-  transition: all $ease-base $spring;
+  transform: translateY(0);
+  box-shadow: 0 0 0 transparent;
+  transition: transform $ease-base, border-color $ease-base, box-shadow $ease-base, background $ease-base, color $ease-base;
   @include flex-center;
 
   &:hover {
@@ -717,7 +777,9 @@ p {
   border-radius: 999px;
   color: var(--text-primary);
   font-size: 0.95rem;
-  transition: all $ease-base $spring;
+  transform: translateY(0) scale(1);
+  box-shadow: 0 0 0 transparent;
+  transition: transform $ease-base, border-color $ease-base, box-shadow $ease-base, background $ease-base, color $ease-base;
 
   &:hover {
     background: var(--brand-dim);
