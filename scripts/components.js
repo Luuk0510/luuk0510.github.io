@@ -1,7 +1,31 @@
+function getCurrentLocale() {
+    return document.documentElement.lang?.startsWith("en") ? "en" : "nl";
+}
+
+function getLocalizedAttribute(element, name) {
+    const locale = getCurrentLocale();
+    return element.getAttribute(`${name}-${locale}`) ?? element.getAttribute(name) ?? "";
+}
+
 class PortfolioBadge extends HTMLElement {
     connectedCallback() {
+        if (!this.localeChangeHandler) {
+            this.localeChangeHandler = () => this.render();
+            document.addEventListener("portfolio:localechange", this.localeChangeHandler);
+        }
+
+        this.render();
+    }
+
+    disconnectedCallback() {
+        if (this.localeChangeHandler) {
+            document.removeEventListener("portfolio:localechange", this.localeChangeHandler);
+        }
+    }
+
+    render() {
         const variant = this.getAttribute("variant") ?? "tag";
-        const label = this.getAttribute("label") ?? "";
+        const label = getLocalizedAttribute(this, "label");
         const className = {
             tag: "tag",
             pill: "pill",
@@ -14,12 +38,26 @@ class PortfolioBadge extends HTMLElement {
 
 class TimelineCard extends HTMLElement {
     connectedCallback() {
-        const title = this.getAttribute("title") ?? "";
-        const date = this.getAttribute("date") ?? "";
-        const company = this.getAttribute("company") ?? "";
-        const description = this.getAttribute("description") ?? "";
-        const dashed = this.getAttribute("dashed") === "true" ? " card--dashed" : "";
+        if (!this.localeChangeHandler) {
+            this.localeChangeHandler = () => this.render();
+            document.addEventListener("portfolio:localechange", this.localeChangeHandler);
+        }
 
+        this.render();
+    }
+
+    disconnectedCallback() {
+        if (this.localeChangeHandler) {
+            document.removeEventListener("portfolio:localechange", this.localeChangeHandler);
+        }
+    }
+
+    render() {
+        const title = getLocalizedAttribute(this, "title");
+        const date = this.getAttribute("date") ?? "";
+        const company = getLocalizedAttribute(this, "company");
+        const description = getLocalizedAttribute(this, "description");
+        const dashed = this.getAttribute("dashed") === "true" ? " card--dashed" : "";
         this.innerHTML = `
             <article class="card${dashed}">
                 <div class="card-header">
@@ -35,14 +73,29 @@ class TimelineCard extends HTMLElement {
 
 class ProjectCardEntry extends HTMLElement {
     connectedCallback() {
-        const title = this.getAttribute("title") ?? "";
+        if (!this.localeChangeHandler) {
+            this.localeChangeHandler = () => this.render();
+            document.addEventListener("portfolio:localechange", this.localeChangeHandler);
+        }
+
+        this.render();
+    }
+
+    disconnectedCallback() {
+        if (this.localeChangeHandler) {
+            document.removeEventListener("portfolio:localechange", this.localeChangeHandler);
+        }
+    }
+
+    render() {
+        const title = getLocalizedAttribute(this, "title");
         const icon = this.getAttribute("icon") ?? "code";
-        const tech = (this.getAttribute("tech") ?? "")
+        const tech = (getLocalizedAttribute(this, "tech") ?? "")
             .split("|")
             .filter(Boolean)
             .map((item) => `<portfolio-badge variant="tech" label="${item}"></portfolio-badge>`)
             .join("");
-        const description = this.getAttribute("description") ?? "";
+        const description = getLocalizedAttribute(this, "description");
 
         this.innerHTML = `
             <article class="project-card">
