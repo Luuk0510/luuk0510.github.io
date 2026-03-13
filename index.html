@@ -14,14 +14,22 @@
     <div class="ide-window">
         <!-- IDE top tab bar -->
         <header class="ide-topbar">
-            <div class="window-controls">
-                <div class="window-control window-control--red" title="Accent: Rood" role="button" tabindex="0" aria-label="Set accent to red" data-accent="red"></div>
-                <div class="window-control window-control--yellow" title="Accent: Geel" role="button" tabindex="0" aria-label="Set accent to yellow" data-accent="yellow"></div>
-                <div class="window-control window-control--green" title="Accent: Groen" role="button" tabindex="0" aria-label="Set accent to green" data-accent="green"></div>
+            <div class="topbar-main">
+                <div class="window-controls">
+                    <div class="window-control window-control--red" title="Accent: Rood" role="button" tabindex="0" aria-label="Zet accentkleur op rood" data-accent="red" data-i18n-attr="title:accentRed,aria-label:accentRedLabel"></div>
+                    <div class="window-control window-control--yellow" title="Accent: Geel" role="button" tabindex="0" aria-label="Zet accentkleur op geel" data-accent="yellow" data-i18n-attr="title:accentYellow,aria-label:accentYellowLabel"></div>
+                    <div class="window-control window-control--green" title="Accent: Groen" role="button" tabindex="0" aria-label="Zet accentkleur op groen" data-accent="green" data-i18n-attr="title:accentGreen,aria-label:accentGreenLabel"></div>
+                </div>
+                <div class="ide-tab">
+                    <i data-lucide="file-code"></i>
+                    portfolio.html
+                </div>
             </div>
-            <div class="ide-tab">
-                <i data-lucide="file-code"></i>
-                portfolio.html
+            <div class="topbar-actions">
+                <div class="language-switcher" role="group" aria-label="Selecteer taal" data-i18n-attr="aria-label:languageSelector">
+                    <button type="button" class="language-toggle is-active" data-locale="nl" aria-pressed="true">NL</button>
+                    <button type="button" class="language-toggle" data-locale="en" aria-pressed="false">EN</button>
+                </div>
             </div>
         </header>
 
@@ -31,26 +39,26 @@
         <aside class="sidebar">
             <div class="profile">
                 <div class="avatar avatar--image">
-                    <img src="assets/images/profile.jpg" alt="Portrait of Luuk Spruijtenburg">
+                    <img src="assets/images/profile.jpg" alt="Portret van Luuk Spruijtenburg" data-i18n-attr="alt:profileImageAlt">
                 </div>
                 <h1>Luuk Spruijtenburg</h1>
-                <h2 class="typewriter">Software Ontwikkelaar</h2>
+                <h2 class="typewriter" data-i18n="profileRole">Software Ontwikkelaar</h2>
             </div>
 
             <div class="info-group">
-                <h3>Profielen</h3>
+                <h3 data-i18n="profilesHeading">Profielen</h3>
                 <div class="social-row">
-                    <a href="https://www.linkedin.com/in/luuk-spruijtenburg-05aa89243/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="LinkedIn">
+                    <a href="https://www.linkedin.com/in/luuk-spruijtenburg-05aa89243/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="LinkedIn-profiel" aria-label="LinkedIn-profiel" data-i18n-attr="title:linkedinLabel,aria-label:linkedinLabel">
                         <i data-lucide="linkedin"></i>
                     </a>
-                    <a href="https://github.com/luuk0510" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="GitHub">
+                    <a href="https://github.com/luuk0510" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="GitHub-profiel" aria-label="GitHub-profiel" data-i18n-attr="title:githubLabel,aria-label:githubLabel">
                         <i data-lucide="github"></i>
                     </a>
                 </div>
             </div>
 
             <div class="info-group">
-                <h3>Vaardigheden</h3>
+                <h3 data-i18n="skillsHeading">Vaardigheden</h3>
                 <div class="tags">
                     <portfolio-badge variant="tag" label="C#"></portfolio-badge>
                     <portfolio-badge variant="tag" label="Laravel"></portfolio-badge>
@@ -70,22 +78,22 @@
             </div>
 
             <div class="info-group">
-                <h3>Persoonlijke focus</h3>
+                <h3 data-i18n="personalFocusHeading">Persoonlijke focus</h3>
                 <div class="pill-list">
-                    <portfolio-badge variant="pill" label="Gedreven"></portfolio-badge>
-                    <portfolio-badge variant="pill" label="Doelgericht"></portfolio-badge>
-                    <portfolio-badge variant="pill" label="Prestatiegericht"></portfolio-badge>
-                    <portfolio-badge variant="pill" label="Teamspeler"></portfolio-badge>
+                    <portfolio-badge variant="pill" label-nl="Gedreven" label-en="Driven"></portfolio-badge>
+                    <portfolio-badge variant="pill" label-nl="Doelgericht" label-en="Goal-oriented"></portfolio-badge>
+                    <portfolio-badge variant="pill" label-nl="Prestatiegericht" label-en="Performance-driven"></portfolio-badge>
+                    <portfolio-badge variant="pill" label-nl="Teamspeler" label-en="Team player"></portfolio-badge>
                 </div>
             </div>
 
             <div class="info-group">
-                <h3>Talen</h3>
+                <h3 data-i18n="languagesHeading">Talen</h3>
                 <div class="languages-list">
                     <div>
                         <div class="language-row">
-                            <span class="language-name">Nederlands</span>
-                            <span class="language-level language-level--native">Moedertaal</span>
+                            <span class="language-name" data-i18n="nativeLanguage">Nederlands</span>
+                            <span class="language-level language-level--native" data-i18n="nativeLevel">Moedertaal</span>
                         </div>
                         <div class="skill-bar">
                             <div class="skill-progress skill-progress--100"></div>
@@ -93,8 +101,8 @@
                     </div>
                     <div>
                         <div class="language-row">
-                            <span class="language-name">Engels</span>
-                            <span class="language-level language-level--good">Zeer goed</span>
+                            <span class="language-name" data-i18n="englishLanguage">Engels</span>
+                            <span class="language-level language-level--good" data-i18n="englishLevel">Zeer goed</span>
                         </div>
                         <div class="skill-bar">
                             <div class="skill-progress skill-progress--90"></div>
@@ -104,12 +112,12 @@
             </div>
 
             <div class="info-group info-group--no-margin">
-                <h3>Interesses</h3>
+                <h3 data-i18n="interestsHeading">Interesses</h3>
                 <div class="pill-list">
-                    <portfolio-badge variant="pill" label="Programmeren"></portfolio-badge>
-                    <portfolio-badge variant="pill" label="Lezen"></portfolio-badge>
-                    <portfolio-badge variant="pill" label="Gamen"></portfolio-badge>
-                    <portfolio-badge variant="pill" label="Films en series"></portfolio-badge>
+                    <portfolio-badge variant="pill" label-nl="Programmeren" label-en="Programming"></portfolio-badge>
+                    <portfolio-badge variant="pill" label-nl="Lezen" label-en="Reading"></portfolio-badge>
+                    <portfolio-badge variant="pill" label-nl="Gamen" label-en="Gaming"></portfolio-badge>
+                    <portfolio-badge variant="pill" label-nl="Films en series" label-en="Movies and series"></portfolio-badge>
                 </div>
             </div>
         </aside>
@@ -121,14 +129,14 @@
                 <!-- About me -->
                 <section id="over-mij">
                     <h2 class="section-title">
-                        <i data-lucide="user"></i> Over mij
+                        <i data-lucide="user"></i> <span data-i18n="aboutTitle">Over mij</span>
                     </h2>
-                    <p>
+                    <p data-i18n="aboutParagraph1">
                         Ik ben een softwareontwikkelaar en zit momenteel in het vierde jaar van de opleiding Informatica 
                         aan Avans Hogeschool in Den Bosch. Ik zet mijn passie voor programmeren om in praktische vaardigheden 
                         met verschillende programmeertalen en frameworks.
                     </p>
-                    <p>
+                    <p data-i18n="aboutParagraph2">
                         Ik houd van technische uitdagingen en werk graag samen in een team om doelen te bereiken. 
                         Daarnaast ben ik analytisch sterk en vertaal ik complexe opdrachten naar goed werkende processen 
                         of programma's. Ik ben leergierig en sta altijd open om mijzelf verder te ontwikkelen.
@@ -138,89 +146,107 @@
                 <!-- Work experience -->
                 <section id="werkervaring">
                     <h2 class="section-title">
-                        <i data-lucide="briefcase"></i> Werkervaring
+                        <i data-lucide="briefcase"></i> <span data-i18n="experienceTitle">Werkervaring</span>
                     </h2>
                     
                     <div class="timeline">
                         <timeline-card
-                            title="Stagiair Software Developer"
+                            title-nl="Stagiair Software Developer"
+                            title-en="Software Developer Intern"
                             date="sep 2026 - jan 2027"
-                            company="Beschikbaar voor stage"
-                            description="Ik ben momenteel op zoek naar een leerzame stageplek voor de periode van september 2026 tot januari 2027 om mijn vaardigheden verder te verdiepen."
+                            company-nl="Beschikbaar voor stage"
+                            company-en="Available for internship"
+                            description-nl="Ik ben momenteel op zoek naar een leerzame stageplek voor de periode van september 2026 tot januari 2027 om mijn vaardigheden verder te verdiepen."
+                            description-en="I am currently looking for an internship from September 2026 through January 2027 where I can deepen my skills in a practical environment."
                             dashed="true"></timeline-card>
 
                         <timeline-card
-                            title="Stagiair Software Developer"
+                            title-nl="Stagiair Software Developer"
+                            title-en="Software Developer Intern"
                             date="sep 2024 - jan 2025"
                             company="Marvelous | 's-Hertogenbosch"
-                            description="Tijdens mijn derdejaars HBO-stage bij Marvelous werkte ik met C# en hun eigen framework, Backlot. Ik ontwikkelde verschillende functies voor hun interne dashboard, dat met meerdere API's werkte. Ik leerde werken in sprints en taken bijhouden. Ook heb ik veel geleerd over samenwerken en communiceren in een professioneel team."></timeline-card>
+                            description-nl="Tijdens mijn derdejaars HBO-stage bij Marvelous werkte ik met C# en het Backlot-framework. Ik ontwikkelde functies in een interne webapplicatie binnen een grotere codebase. Ik leerde werken in sprints en taken bijhouden. Ook heb ik veel geleerd over samenwerken en communiceren in een professioneel team."
+                            description-en="During my third-year internship at Marvelous, I worked with C# and the Backlot framework. I built features in an internal web application within a larger codebase. I learned how to work in sprints, track tasks, and collaborate effectively in a professional team."></timeline-card>
 
                         <timeline-card
-                            title="Junior Softwareontwikkelaar"
+                            title-nl="Junior Softwareontwikkelaar"
+                            title-en="Junior Software Developer"
                             date="feb 2021 - aug 2024"
                             company="Mobicoach | Oss"
-                            description="Tijdens mijn MBO-opleiding liep ik twee keer stage bij Mobicoach. Daarna werkte ik er parttime. Ik werkte aan interne websystemen die dagelijks werden gebruikt. In een klein team leerde ik duidelijk communiceren. Ook werd ik zelfstandiger en werkte ik meer gestructureerd. Dit gaf mij een sterke basis voor mijn HBO-opleiding."></timeline-card>
+                            description-nl="Tijdens mijn MBO-opleiding liep ik twee keer stage bij Mobicoach. Daarna werkte ik er parttime. Ik werkte aan interne websystemen die dagelijks werden gebruikt. In een klein team leerde ik duidelijk communiceren. Ook werd ik zelfstandiger en werkte ik meer gestructureerd. Dit gaf mij een sterke basis voor mijn HBO-opleiding."
+                            description-en="During my vocational software development program, I interned twice at Mobicoach and later stayed on part-time. I worked on internal web systems used every day. In a small team, I improved my communication, became more independent, and learned to work in a more structured way."></timeline-card>
                     </div>
                 </section>
 
                 <!-- Education -->
                 <section id="opleidingen" class="section--compact">
                     <h2 class="section-title">
-                        <i data-lucide="graduation-cap"></i> Opleidingen
+                        <i data-lucide="graduation-cap"></i> <span data-i18n="educationTitle">Opleidingen</span>
                     </h2>
 
                     <div class="timeline">
                         <timeline-card
-                            title="Bachelorgraad, Informatica"
+                            title-nl="Bachelorgraad, Informatica"
+                            title-en="Bachelor's degree, Computer Science"
                             date="2022 - heden"
-                            company="Avans Hogeschool | Den Bosch"
-                            description="Ik ben vierdejaars student Informatica aan Avans in Den Bosch. Ik werk vooral aan webapplicaties met C#, Laravel en Python. In duo's deed ik veel ervaring op met samenwerking en projectaanpak. Ik gebruikte Agile, Scrum en Kanban. Naast webontwikkeling maakte ik ook een Unity game en een Python project. In mijn minor Artificial Intelligence werkte ik met RAG en tools zoals LlamaIndex."></timeline-card>
+                            company-nl="Avans Hogeschool | Den Bosch"
+                            company-en="Avans University of Applied Sciences | Den Bosch"
+                            description-nl="Ik ben vierdejaars student Informatica aan Avans in Den Bosch. Ik werk vooral aan webapplicaties met C#, Laravel en Python. In duo's deed ik veel ervaring op met samenwerking en projectaanpak. Ik gebruikte Agile, Scrum en Kanban. Naast webontwikkeling maakte ik ook een Unity game en een Python project. In mijn minor Artificial Intelligence werkte ik met RAG en tools zoals LlamaIndex."
+                            description-en="I am a fourth-year Computer Science student at Avans in Den Bosch. I mainly work on web applications with C#, Laravel, and Python. I gained a lot of experience in collaboration and project delivery through paired work. I used Agile, Scrum, and Kanban, and alongside web development I also built a Unity game and a Python project. During my Artificial Intelligence minor, I worked with RAG and tools such as LlamaIndex."></timeline-card>
 
                         <timeline-card
-                            title="MBO niveau 4, Software Development"
+                            title-nl="MBO niveau 4, Software Development"
+                            title-en="Vocational level 4, Software Development"
                             date="2019 - 2022"
                             company="De Leijgraaf"
-                            description="Van 2019 tot 2022 deed ik MBO Software Development in Oss. Ik legde een basis in webontwikkeling met PHP, HTML en CSS. Ik kreeg ook UX en UI lessen, waardoor ik beter werd in het ontwerpen van duidelijke interfaces. Tijdens de opleiding liep ik twee stages en werkte ik vaak in teams met deadlines. Deze periode gaf mij een brede basis in frontend en backend."></timeline-card>
+                            description-nl="Van 2019 tot 2022 deed ik MBO Software Development in Oss. Ik legde een basis in webontwikkeling met PHP, HTML en CSS. Ik kreeg ook UX en UI lessen, waardoor ik beter werd in het ontwerpen van duidelijke interfaces. Tijdens de opleiding liep ik twee stages en werkte ik vaak in teams met deadlines. Deze periode gaf mij een brede basis in frontend en backend."
+                            description-en="From 2019 to 2022, I completed a vocational Software Development program in Oss. I built a solid foundation in web development with PHP, HTML, and CSS. I also had UX and UI classes, which improved the way I design clear interfaces. During the program I completed two internships and often worked in teams under deadlines, giving me a broad frontend and backend foundation."></timeline-card>
                     </div>
                 </section>
 
                 <!-- Projects -->
                 <section id="projecten" class="section--compact">
                     <h2 class="section-title">
-                        <i data-lucide="code"></i> Projecten
+                        <i data-lucide="code"></i> <span data-i18n="projectsTitle">Projecten</span>
                     </h2>
 
                     <div class="project-grid">
                         <project-card-entry
-                            title="Chatbot (PoC) voor SDW"
+                            title-nl="Chatbot (PoC) voor SDW"
+                            title-en="Chatbot (PoC) for SDW"
                             icon="bot"
                             tech="LlamaIndex|AI"
-                            description="Tijdens mijn AI minor in Breda heb ik een proof of concept ontwikkeld voor een slimme chatbot. Met behulp van LlamaIndex kan de bot gerichte antwoorden geven op basis van SDW-documentatie."></project-card-entry>
+                            description-nl="Tijdens mijn AI minor in Breda heb ik een proof of concept ontwikkeld voor een slimme chatbot. Met behulp van LlamaIndex kan de bot gerichte antwoorden geven op basis van SDW-documentatie."
+                            description-en="During my AI minor in Breda, I developed a proof of concept for a smart chatbot. Using LlamaIndex, the bot can provide targeted answers based on SDW documentation."></project-card-entry>
 
                         <project-card-entry
                             title="FlexFlow"
                             icon="smartphone"
                             tech=".NET MAUI|C#"
-                            description="Voor het bedrijf CBYTE heb ik gewerkt aan de ontwikkeling van FlexFlow. Dit is een cross-platform mobiele applicatie ontworpen om logistieke processen soepeler te laten verlopen."></project-card-entry>
+                            description-nl="Voor het bedrijf CBYTE heb ik gewerkt aan de ontwikkeling van FlexFlow. Dit is een cross-platform mobiele applicatie ontworpen om logistieke processen soepeler te laten verlopen."
+                            description-en="For CBYTE, I worked on the development of FlexFlow. It is a cross-platform mobile application designed to make logistics processes run more smoothly."></project-card-entry>
 
                         <project-card-entry
-                            title="De Koppeling"
+                            title-nl="De Koppeling"
+                            title-en="The Link"
                             icon="link"
                             tech="Laravel|PHP"
-                            description="Een webontwikkelingsproject gebouwd met het Laravel-framework. Hierbij lag de focus op backend-logica en een gestructureerde koppeling van bedrijfsgegevens."></project-card-entry>
+                            description-nl="Een webontwikkelingsproject gebouwd met het Laravel-framework. Hierbij lag de focus op backend-logica en een gestructureerde koppeling van bedrijfsgegevens."
+                            description-en="A web development project built with the Laravel framework, focused on backend logic and a structured integration of business data."></project-card-entry>
 
                         <project-card-entry
                             title="Bumbo"
                             icon="server"
                             tech="C#|Azure"
-                            description="Een applicatie gebouwd met C# waarbij gebruik is gemaakt van cloudhosting via Azure. Focus op robuuste backend-architectuur en cloud-integratie."></project-card-entry>
+                            description-nl="Een applicatie gebouwd met C# waarbij gebruik is gemaakt van cloudhosting via Azure. Focus op robuuste backend-architectuur en cloud-integratie."
+                            description-en="An application built with C# and hosted in the cloud through Azure, focused on robust backend architecture and cloud integration."></project-card-entry>
                     </div>
 
                     <!-- GitHub button -->
                     <div class="github-more-wrapper">
-                        <a href="https://github.com/luuk0510" target="_blank" rel="noopener noreferrer" class="github-more-btn">
+                        <a href="https://github.com/luuk0510" target="_blank" rel="noopener noreferrer" class="github-more-btn" aria-label="Bekijk de rest van mijn projecten op GitHub" data-i18n-attr="aria-label:githubMoreLabel">
                             <i data-lucide="github" class="github-icon"></i>
-                            Bekijk de rest op GitHub
+                            <span data-i18n="githubMore">Bekijk de rest op GitHub</span>
                         </a>
                     </div>
                 </section>
