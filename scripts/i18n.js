@@ -134,19 +134,26 @@ export function applyLocale(locale, options = {}) {
         })
     );
 
-    if (window.lucide?.createIcons) {
-        lucide.createIcons();
-    }
-
     if (persist) {
-        window.localStorage.setItem(STORAGE_KEY, nextLocale);
+        try {
+            window.localStorage.setItem(STORAGE_KEY, nextLocale);
+        } catch {
+            // Language switching still works when browser storage is unavailable.
+        }
     }
 }
 
 export function initLocalization() {
-    const storedLocale = window.localStorage.getItem(STORAGE_KEY);
+    let storedLocale;
+
+    try {
+        storedLocale = window.localStorage.getItem(STORAGE_KEY);
+    } catch {
+        // Fall back to the browser language when storage access is blocked.
+    }
+
     const browserLocale = navigator.language?.toLowerCase().startsWith("en") ? "en" : "nl";
-    const initialLocale = resolveLocale(storedLocale ?? browserLocale);
+    const initialLocale = ["nl", "en"].includes(storedLocale) ? storedLocale : browserLocale;
 
     document.querySelectorAll("[data-locale]").forEach((button) => {
         button.addEventListener("click", () => {
