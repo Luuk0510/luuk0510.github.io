@@ -89,7 +89,10 @@ class ProjectCardEntry extends HTMLElement {
 
     render() {
         const title = getLocalizedAttribute(this, "title");
-        const icon = this.getAttribute("icon") ?? "code";
+        const requestedIcon = this.getAttribute("icon");
+        const icon = ["bot", "smartphone", "link", "server", "code"].includes(requestedIcon)
+            ? requestedIcon
+            : "code";
         const tech = (getLocalizedAttribute(this, "tech") ?? "")
             .split("|")
             .filter(Boolean)
@@ -101,7 +104,7 @@ class ProjectCardEntry extends HTMLElement {
             <article class="project-card">
                 <div class="project-header">
                     <div class="project-icon">
-                        <i data-lucide="${icon}"></i>
+                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#${icon}"></use></svg>
                     </div>
                     <h4>${title}</h4>
                 </div>

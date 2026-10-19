@@ -134,10 +134,6 @@ export function applyLocale(locale, options = {}) {
         })
     );
 
-    if (window.lucide?.createIcons) {
-        lucide.createIcons();
-    }
-
     if (persist) {
         window.localStorage.setItem(STORAGE_KEY, nextLocale);
     }

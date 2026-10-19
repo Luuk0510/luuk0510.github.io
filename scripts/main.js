@@ -6,7 +6,4 @@ import { initThemeSwitcher } from "./theme.js";
 initComponents();
 initThemeSwitcher();
 initLocalization();
-if (window.lucide?.createIcons) {
-    lucide.createIcons();
-}
 setupScrollReveal();
