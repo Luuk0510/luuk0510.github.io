@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luuk Spruijtenburg - Software Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link id="site-favicon" rel="icon" type="image/x-icon" href="assets/icons/green_favicon.ico">
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+
+    <div class="ide-window">
+        <!-- IDE top tab bar -->
+        <header class="ide-topbar">
+            <div class="topbar-main">
+                <div class="window-controls">
+                    <div class="window-control window-control--red" title="Accent: Rood" role="button" tabindex="0" aria-label="Zet accentkleur op rood" data-accent="red" data-i18n-attr="title:accentRed,aria-label:accentRedLabel"></div>
+                    <div class="window-control window-control--yellow" title="Accent: Geel" role="button" tabindex="0" aria-label="Zet accentkleur op geel" data-accent="yellow" data-i18n-attr="title:accentYellow,aria-label:accentYellowLabel"></div>
+                    <div class="window-control window-control--green" title="Accent: Groen" role="button" tabindex="0" aria-label="Zet accentkleur op groen" data-accent="green" data-i18n-attr="title:accentGreen,aria-label:accentGreenLabel"></div>
+                </div>
+                <div class="ide-tab">
+                    <svg class="icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#file-code"></use></svg>
+                    portfolio.html
+                </div>
+            </div>
+            <div class="topbar-actions">
+                <div class="language-switcher" role="group" aria-label="Selecteer taal" data-i18n-attr="aria-label:languageSelector">
+                    <button type="button" class="language-toggle is-active" data-locale="nl" aria-pressed="true">NL</button>
+                    <button type="button" class="language-toggle" data-locale="en" aria-pressed="false">EN</button>
+                </div>
+            </div>
+        </header>
+
+    <!-- Application layout (sidebar + content) -->
+    <div class="app-layout">
+        <!-- Left sidebar -->
+        <aside class="sidebar">
+            <div class="profile">
+                <div class="avatar avatar--image">
+                    <img src="assets/images/profile.jpg" alt="Portret van Luuk Spruijtenburg" data-i18n-attr="alt:profileImageAlt">
+                </div>
+                <h1>Luuk Spruijtenburg</h1>
+                <h2 class="typewriter" data-i18n="profileRole">Software Ontwikkelaar</h2>
+            </div>
+
+            <div class="info-group">
+                <h3 data-i18n="profilesHeading">Profielen</h3>
+                <div class="social-row">
+                    <a href="https://www.linkedin.com/in/luuk-spruijtenburg-05aa89243/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="LinkedIn-profiel" aria-label="LinkedIn-profiel" data-i18n-attr="title:linkedinLabel,aria-label:linkedinLabel">
+                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#linkedin"></use></svg>
+                    </a>
+                    <a href="https://github.com/luuk0510" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="GitHub-profiel" aria-label="GitHub-profiel" data-i18n-attr="title:githubLabel,aria-label:githubLabel">
+                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#github"></use></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="info-group">
+                <h3 data-i18n="skillsHeading">Vaardigheden</h3>
+                <div class="tags">
+                    <portfolio-badge><span class="tag">C#</span></portfolio-badge>
+                    <portfolio-badge><span class="tag">Laravel</span></portfolio-badge>
+                    <portfolio-badge><span class="tag">JavaScript</span></portfolio-badge>
+                    <portfolio-badge><span class="tag">Tailwind</span></portfolio-badge>
+                    <portfolio-badge><span class="tag">Vue.js</span></portfolio-badge>
+                    <portfolio-badge><span class="tag">Python</span></portfolio-badge>
+                    <portfolio-badge><span class="tag">SQL / NoSQL</span></portfolio-badge>
+                    <portfolio-badge><span class="tag">PHP</span></portfolio-badge>
+                    <portfolio-badge><span class="tag">Swift</span></portfolio-badge>
+                    <portfolio-badge><span class="tag">Kotlin</span></portfolio-badge>
+                    <portfolio-badge><span class="tag">Flutter</span></portfolio-badge>
+                    <portfolio-badge><span class="tag">DevOps</span></portfolio-badge>
+                    <portfolio-badge><span class="tag">Microservices</span></portfolio-badge>
+                    <portfolio-badge><span class="tag">LlamaIndex</span></portfolio-badge>
+                </div>
+            </div>
+
+            <div class="info-group">
+                <h3 data-i18n="personalFocusHeading">Persoonlijke focus</h3>
+                <div class="pill-list">
+                    <portfolio-badge><span class="pill" data-i18n-en="Driven">Gedreven</span></portfolio-badge>
+                    <portfolio-badge><span class="pill" data-i18n-en="Goal-oriented">Doelgericht</span></portfolio-badge>
+                    <portfolio-badge><span class="pill" data-i18n-en="Performance-driven">Prestatiegericht</span></portfolio-badge>
+                    <portfolio-badge><span class="pill" data-i18n-en="Team player">Teamspeler</span></portfolio-badge>
+                </div>
+            </div>
+
+            <div class="info-group">
+                <h3 data-i18n="languagesHeading">Talen</h3>
+                <div class="languages-list">
+                    <div>
+                        <div class="language-row">
+                            <span class="language-name" data-i18n="nativeLanguage">Nederlands</span>
+                            <span class="language-level language-level--native" data-i18n="nativeLevel">Moedertaal</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress skill-progress--100"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="language-row">
+                            <span class="language-name" data-i18n="englishLanguage">Engels</span>
+                            <span class="language-level language-level--good" data-i18n="englishLevel">Zeer goed</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress skill-progress--90"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-group info-group--no-margin">
+                <h3 data-i18n="interestsHeading">Interesses</h3>
+                <div class="pill-list">
+                    <portfolio-badge><span class="pill" data-i18n-en="Programming">Programmeren</span></portfolio-badge>
+                    <portfolio-badge><span class="pill" data-i18n-en="Reading">Lezen</span></portfolio-badge>
+                    <portfolio-badge><span class="pill" data-i18n-en="Gaming">Gamen</span></portfolio-badge>
+                    <portfolio-badge><span class="pill" data-i18n-en="Movies and series">Films en series</span></portfolio-badge>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main content -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                
+                <!-- About me -->
+                <section id="over-mij">
+                    <h2 class="section-title">
+                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#user"></use></svg> <span data-i18n="aboutTitle">Over mij</span>
+                    </h2>
+                    <p data-i18n="aboutParagraph1">
+                        Ik ben een softwareontwikkelaar en zit momenteel in het vierde jaar van de opleiding Informatica 
+                        aan Avans Hogeschool in Den Bosch. Ik zet mijn passie voor programmeren om in praktische vaardigheden 
+                        met verschillende programmeertalen en frameworks.
+                    </p>
+                    <p data-i18n="aboutParagraph2">
+                        Ik houd van technische uitdagingen en werk graag samen in een team om doelen te bereiken. 
+                        Daarnaast ben ik analytisch sterk en vertaal ik complexe opdrachten naar goed werkende processen 
+                        of programma's. Ik ben leergierig en sta altijd open om mijzelf verder te ontwikkelen.
+                    </p>
+                </section>
+
+                <!-- Work experience -->
+                <section id="werkervaring">
+                    <h2 class="section-title">
+                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#briefcase"></use></svg> <span data-i18n="experienceTitle">Werkervaring</span>
+                    </h2>
+                    
+                    <div class="timeline">
+                        <timeline-card>
+                            <article class="card">
+                                <div class="card-header">
+                                    <h4 data-i18n-en="Software Development Graduation Intern">Afstudeerstagiair Software Developer</h4>
+                                    <span class="date">sep 2026 - jan 2027</span>
+                                </div>
+                                <span class="company">IKDB Innovatielab | 's-Hertogenbosch</span>
+                                <p data-i18n-en="During my graduation internship, I developed a project management tool with Laravel and Vue to help students and supervisors track projects, tasks, and progress. I also researched how AI could support users with their project management tasks.">Tijdens mijn afstudeerstage ontwikkelde ik met Laravel en Vue een projectmanagementtool waarmee studenten en begeleiders projecten, taken en voortgang konden bijhouden. Daarnaast onderzocht ik hoe AI gebruikers kon ondersteunen bij hun projectmanagementtaken.</p>
+                            </article>
+                        </timeline-card>
+
+                        <timeline-card>
+                            <article class="card">
+                                <div class="card-header">
+                                    <h4 data-i18n-en="Software Developer Intern">Stagiair Software Developer</h4>
+                                    <span class="date">sep 2024 - jan 2025</span>
+                                </div>
+                                <span class="company">Marvelous | 's-Hertogenbosch</span>
+                                <p data-i18n-en="During my third-year internship at Marvelous, I worked with C# and the Backlot framework. I built features in an internal web application within a larger codebase. I learned how to work in sprints, track tasks, and collaborate effectively in a professional team.">Tijdens mijn derdejaars HBO-stage bij Marvelous werkte ik met C# en het Backlot-framework. Ik ontwikkelde functies in een interne webapplicatie binnen een grotere codebase. Ik leerde werken in sprints en taken bijhouden. Ook heb ik veel geleerd over samenwerken en communiceren in een professioneel team.</p>
+                            </article>
+                        </timeline-card>
+
+                        <timeline-card>
+                            <article class="card">
+                                <div class="card-header">
+                                    <h4 data-i18n-en="Junior Software Developer">Junior Softwareontwikkelaar</h4>
+                                    <span class="date">feb 2021 - aug 2024</span>
+                                </div>
+                                <span class="company">Mobicoach | Oss</span>
+                                <p data-i18n-en="During my vocational software development program, I interned twice at Mobicoach and later stayed on part-time. I worked on internal web systems used every day. In a small team, I improved my communication, became more independent, and learned to work in a more structured way.">Tijdens mijn MBO-opleiding liep ik twee keer stage bij Mobicoach. Daarna werkte ik er parttime. Ik werkte aan interne websystemen die dagelijks werden gebruikt. In een klein team leerde ik duidelijk communiceren. Ook werd ik zelfstandiger en werkte ik meer gestructureerd. Dit gaf mij een sterke basis voor mijn HBO-opleiding.</p>
+                            </article>
+                        </timeline-card>
+                    </div>
+                </section>
+
+                <!-- Education -->
+                <section id="opleidingen" class="section--compact">
+                    <h2 class="section-title">
+                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#graduation-cap"></use></svg> <span data-i18n="educationTitle">Opleidingen</span>
+                    </h2>
+
+                    <div class="timeline">
+                        <timeline-card>
+                            <article class="card">
+                                <div class="card-header">
+                                    <h4 data-i18n-en="Bachelor&#x27;s degree, Computer Science">Bachelorgraad, Informatica</h4>
+                                    <span class="date">2022 - heden</span>
+                                </div>
+                                <span class="company" data-i18n-en="Avans University of Applied Sciences | Den Bosch">Avans Hogeschool | Den Bosch</span>
+                                <p data-i18n-en="I am a fourth-year Computer Science student at Avans in Den Bosch. I mainly work on web applications with C#, Laravel, and Python. I gained a lot of experience in collaboration and project delivery through paired work. I used Agile, Scrum, and Kanban, and alongside web development I also built a Unity game and a Python project. During my Artificial Intelligence minor, I worked with RAG and tools such as LlamaIndex.">Ik ben vierdejaars student Informatica aan Avans in Den Bosch. Ik werk vooral aan webapplicaties met C#, Laravel en Python. In duo's deed ik veel ervaring op met samenwerking en projectaanpak. Ik gebruikte Agile, Scrum en Kanban. Naast webontwikkeling maakte ik ook een Unity game en een Python project. In mijn minor Artificial Intelligence werkte ik met RAG en tools zoals LlamaIndex.</p>
+                            </article>
+                        </timeline-card>
+
+                        <timeline-card>
+                            <article class="card">
+                                <div class="card-header">
+                                    <h4 data-i18n-en="Vocational level 4, Software Development">MBO niveau 4, Software Development</h4>
+                                    <span class="date">2019 - 2022</span>
+                                </div>
+                                <span class="company">De Leijgraaf</span>
+                                <p data-i18n-en="From 2019 to 2022, I completed a vocational Software Development program in Oss. I built a solid foundation in web development with PHP, HTML, and CSS. I also had UX and UI classes, which improved the way I design clear interfaces. During the program I completed two internships and often worked in teams under deadlines, giving me a broad frontend and backend foundation.">Van 2019 tot 2022 deed ik MBO Software Development in Oss. Ik legde een basis in webontwikkeling met PHP, HTML en CSS. Ik kreeg ook UX en UI lessen, waardoor ik beter werd in het ontwerpen van duidelijke interfaces. Tijdens de opleiding liep ik twee stages en werkte ik vaak in teams met deadlines. Deze periode gaf mij een brede basis in frontend en backend.</p>
+                            </article>
+                        </timeline-card>
+                    </div>
+                </section>
+
+                <!-- Projects -->
+                <section id="projecten" class="section--compact">
+                    <h2 class="section-title">
+                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#code"></use></svg> <span data-i18n="projectsTitle">Projecten</span>
+                    </h2>
+
+                    <div class="project-grid">
+                        <project-card-entry>
+                            <article class="project-card">
+                                <div class="project-header">
+                                    <div class="project-icon">
+                                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#bot"></use></svg>
+                                    </div>
+                                    <h4 data-i18n-en="Chatbot (PoC) for SDW">Chatbot (PoC) voor SDW</h4>
+                                </div>
+                                <div class="project-tech-stack">
+                                    <portfolio-badge><span class="project-tech-tag">LlamaIndex</span></portfolio-badge>
+                                    <portfolio-badge><span class="project-tech-tag">AI</span></portfolio-badge>
+                                </div>
+                                <p data-i18n-en="During my AI minor in Breda, I developed a proof of concept for a smart chatbot. Using LlamaIndex, the bot can provide targeted answers based on SDW documentation.">Tijdens mijn AI minor in Breda heb ik een proof of concept ontwikkeld voor een slimme chatbot. Met behulp van LlamaIndex kan de bot gerichte antwoorden geven op basis van SDW-documentatie.</p>
+                            </article>
+                        </project-card-entry>
+
+                        <project-card-entry>
+                            <article class="project-card">
+                                <div class="project-header">
+                                    <div class="project-icon">
+                                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#smartphone"></use></svg>
+                                    </div>
+                                    <h4>FlexFlow</h4>
+                                </div>
+                                <div class="project-tech-stack">
+                                    <portfolio-badge><span class="project-tech-tag">.NET MAUI</span></portfolio-badge>
+                                    <portfolio-badge><span class="project-tech-tag">C#</span></portfolio-badge>
+                                </div>
+                                <p data-i18n-en="For CBYTE, I worked on the development of FlexFlow. It is a cross-platform mobile application designed to make logistics processes run more smoothly.">Voor het bedrijf CBYTE heb ik gewerkt aan de ontwikkeling van FlexFlow. Dit is een cross-platform mobiele applicatie ontworpen om logistieke processen soepeler te laten verlopen.</p>
+                            </article>
+                        </project-card-entry>
+
+                        <project-card-entry>
+                            <article class="project-card">
+                                <div class="project-header">
+                                    <div class="project-icon">
+                                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#link"></use></svg>
+                                    </div>
+                                    <h4 data-i18n-en="The Link">De Koppeling</h4>
+                                </div>
+                                <div class="project-tech-stack">
+                                    <portfolio-badge><span class="project-tech-tag">Laravel</span></portfolio-badge>
+                                    <portfolio-badge><span class="project-tech-tag">PHP</span></portfolio-badge>
+                                </div>
+                                <p data-i18n-en="A web development project built with the Laravel framework, focused on backend logic and a structured integration of business data.">Een webontwikkelingsproject gebouwd met het Laravel-framework. Hierbij lag de focus op backend-logica en een gestructureerde koppeling van bedrijfsgegevens.</p>
+                            </article>
+                        </project-card-entry>
+
+                        <project-card-entry>
+                            <article class="project-card">
+                                <div class="project-header">
+                                    <div class="project-icon">
+                                        <svg class="icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#server"></use></svg>
+                                    </div>
+                                    <h4>Bumbo</h4>
+                                </div>
+                                <div class="project-tech-stack">
+                                    <portfolio-badge><span class="project-tech-tag">C#</span></portfolio-badge>
+                                    <portfolio-badge><span class="project-tech-tag">Azure</span></portfolio-badge>
+                                </div>
+                                <p data-i18n-en="An application built with C# and hosted in the cloud through Azure, focused on robust backend architecture and cloud integration.">Een applicatie gebouwd met C# waarbij gebruik is gemaakt van cloudhosting via Azure. Focus op robuuste backend-architectuur en cloud-integratie.</p>
+                            </article>
+                        </project-card-entry>
+                    </div>
+
+                    <!-- GitHub button -->
+                    <div class="github-more-wrapper">
+                        <a href="https://github.com/luuk0510" target="_blank" rel="noopener noreferrer" class="github-more-btn" aria-label="Bekijk de rest van mijn projecten op GitHub" data-i18n-attr="aria-label:githubMoreLabel">
+                            <svg class="icon github-icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#github"></use></svg>
+                            <span data-i18n="githubMore">Bekijk de rest op GitHub</span>
+                        </a>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- IDE Status Bar -->
+    <footer class="status-bar" id="bottom-status-bar">
+        <div class="status-left">
+            <span class="status-item"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#git-branch"></use></svg> main</span>
+            <span class="status-item status-item--desktop"><svg class="icon icon-inherit" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#x-circle"></use></svg> 0</span>
+            <span class="status-item status-item--desktop"><svg class="icon icon-inherit" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#alert-triangle"></use></svg> 0</span>
+        </div>
+        <div class="status-right status-right--desktop">
+            <span>UTF-8</span>
+            <span>HTML</span>
+            <span>Prettier</span>
+            <span class="status-item"><svg class="icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="assets/icons/sprite.svg#bell"></use></svg></span>
+        </div>
+    </footer>
+    </div>
+    <script type="module" src="scripts/main.js"></script>
+</body>
+</html>
